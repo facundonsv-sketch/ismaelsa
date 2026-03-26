@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -676,11 +676,11 @@ footer{background:var(--d);border-top:1px solid var(--b);padding:5rem 8vw 3rem;}
 
     <div class="fg">
       <label class="fl" id="cvf">Adjuntar CV (solo PDF)</label>
-      <input type="file" name="cv" accept=".pdf" required style="background:var(--d3);border:1px solid var(--b);color:#777;font-family:var(--f);font-size:.82rem;padding:.8rem 1rem;outline:none;cursor:pointer;width:100%;box-sizing:border-box;" onchange="validateCV(this)"/>
+      <input type="file" name="cv" accept=".pdf" required style="background:var(--d3);border:1px solid var(--b);color:#777;font-family:var(--f);font-size:.82rem;padding:.8rem 1rem;outline:none;cursor:pointer;width:100%;box-sizing:border-box;"/>
       <span id="cv-file-error" style="font-size:.75rem;color:#e55;display:none;margin-top:.3rem;">Solo se aceptan archivos PDF.</span>
     </div>
 
-    <button type="button" class="fs" id="cvsend" onclick="submitCVForm()">ENVIAR CV</button>
+    <button type="submit" class="fs" id="cvsend">ENVIAR CV</button>
   </form>
 </section>
 
@@ -876,63 +876,9 @@ if(sb) sObs.observe(sb);
 
 
 
-function validateCV(input) {
-  var err = document.getElementById('cv-file-error');
-  if (input.files[0] && !input.files[0].name.toLowerCase().endsWith('.pdf')) {
-    err.style.display = 'block';
-    input.value = '';
-  } else {
-    err.style.display = 'none';
-  }
-}
 
-function submitCVForm() {
-  var form = document.getElementById('cv-form');
-  var btn = document.getElementById('cvsend');
-  var fileInput = form.querySelector('input[type="file"]');
 
-  // Validate required fields
-  if (!form.nombre.value.trim() || !form.email.value.trim()) {
-    alert(currentLang === 'en' ? 'Please fill in name and email.' : 'Por favor completá nombre y email.');
-    return;
-  }
-  // Validate file
-  if (!fileInput.files[0]) {
-    alert(currentLang === 'en' ? 'Please attach your CV (PDF).' : 'Por favor adjuntá tu CV en PDF.');
-    return;
-  }
-  if (!fileInput.files[0].name.toLowerCase().endsWith('.pdf')) {
-    alert('Solo se aceptan archivos PDF.');
-    return;
-  }
 
-  btn.textContent = '...';
-  btn.disabled = true;
-
-  var data = new FormData(form);
-
-  fetch('/', {
-    method: 'POST',
-    body: data
-  })
-  .then(function(r) {
-    if (r.ok) {
-      form.style.display = 'none';
-      var success = document.getElementById('cv-success');
-      success.style.display = 'block';
-      if (currentLang === 'en') {
-        document.getElementById('cv-success-msg').textContent = 'CV sent successfully. We will contact you soon.';
-      }
-    } else {
-      btn.textContent = currentLang === 'en' ? 'Error - try again' : 'Error - intentá de nuevo';
-      btn.disabled = false;
-    }
-  })
-  .catch(function() {
-    btn.textContent = currentLang === 'en' ? 'Error - try again' : 'Error - intentá de nuevo';
-    btn.disabled = false;
-  });
-}
 
 </script>
 </body>
