@@ -1,0 +1,27 @@
+# Imágenes
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.svg
+*.ico
+
+# Documentos
+*.pdf
+*.doc
+*.docx
+*.txt
+*.md
+*.MD
+*.rtf
+*.xlsx
+*.pptx
+*.csv
+README*
+LICENSE*
+
+# Carpetas de documentación
+docs/
+doc/
+documentation/

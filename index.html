@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISMAEL S.A. — Logística Minera e Industrial en San Juan</title>
+  <meta name="description" content="ISMAEL S.A. — Empresa sanjuanina de logística, transporte y soporte operativo para la minería. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.">
+  <meta property="og:title" content="ISMAEL S.A. — Logística y Transporte Minero en San Juan">
+  <meta property="og:description" content="Logística minera con flota propia, bases operativas en Rawson y Calingasta, y experiencia en proyectos de alta montaña en San Juan, Argentina.">
+  <meta property="og:image" content="assets/WhatsApp Image 2026-06-11 at 17.07.21.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ISMAEL S.A.",
+    "description": "Empresa sanjuanina de logística, transporte y soporte operativo para la industria minera. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.",
+    "telephone": "+54264413151",
+    "email": "contacto@ismaelsa.info",
+    "url": "https://ismaelsa.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rawson",
+      "addressRegion": "San Juan",
+      "addressCountry": "AR"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "San Juan"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand: White + corporate green (#2D7A50, logo color) + neutral green-charcoal */
+      --bg-dark:       #0E1612;
+      --bg-dark-2:     #1A2520;
+      --bg-dark-3:     #2B3631;
+      --surface:       #F8FAF7;
+      --surface-alt:   #F0F3EF;
+      --card:          #FFFFFF;
+      --green:         #2D7A50;
+      --green-dark:    #1F5A39;
+      --green-light:   #4A9670;
+      --green-soft:    #E8F1EC;
+      --stone:         #6B7268;
+      --stone-dark:    #2B3631;
+      --stone-darker:  #1A2520;
+      --fg:            #0F1611;
+      --fg-mid:        #2B3631;
+      --fg-muted:      #5C625E;
+      --fg-subtle:     #8C928F;
+      --border:        #E1E6E0;
+      --border-dark:   rgba(255,255,255,0.08);
+      --white:         #FFFFFF;
+      --font: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px, 5vw, 72px);
+      background: rgba(14,22,18,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      color: white;
+    }
+    /* Brand mark only (mountains, no letters) — white-on-transparent PNG */
+    .nav-logo-img {
+      display: block; flex-shrink: 0;
+      height: 56px; width: auto;
+      object-fit: contain;
+      margin: 0;
+    }
+    /* Hide SVG + text fallback by default (img is shown) */
+    .nav-logo .nav-logo-svg,
+    .nav-logo .nav-logo-text { display: none; }
+    /* If img fails to load, JS toggles .logo-fallback and shows SVG + text */
+    .nav-logo.logo-fallback .nav-logo-svg { display: block; flex-shrink: 0; }
+    .nav-logo.logo-fallback .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-logo-name {
+      font-size: 17px; font-weight: 700; color: white; letter-spacing: 0.8px;
+    }
+    .nav-logo-sub {
+      font-size: 10px; color: var(--fg-subtle); letter-spacing: 1.8px; text-transform: uppercase; margin-top: 2px;
+    }
+    /* ── FOOTER LOGO (same official PNG, smaller) ── */
+    .footer-logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 6px;
+    }
+    .footer-logo-img {
+      display: block;
+      height: 48px; width: auto;
+      opacity: 0.92;
+    }
+    .footer-logo .footer-logo-svg,
+    .footer-logo .footer-logo-text { display: none; }
+    .footer-logo.logo-fallback .footer-logo-svg { display: block; }
+    .footer-logo.logo-fallback .footer-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .footer-logo-name {
+      font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.8px;
+    }
+    .footer-logo-sub {
+      font-size: 9px; color: var(--fg-subtle); letter-spacing: 1.6px; text-transform: uppercase; margin-top: 1px;
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7);
+      text-decoration: none; letter-spacing: 0.2px;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: white; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 100px;
+    }
+    .lang-btn {
+      background: transparent; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.55);
+      font-family: var(--font); font-size: 12px; font-weight: 600;
+      letter-spacing: 1px; padding: 2px 6px;
+      transition: color 0.15s;
+    }
+    .lang-btn:hover { color: rgba(255,255,255,0.85); }
+    .lang-btn.is-active { color: #FFFFFF; }
+    .lang-sep { color: rgba(255,255,255,0.25); font-size: 11px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 600; font-size: 14px;
+      border: none; cursor: pointer; border-radius: var(--r-sm);
+      text-decoration: none; transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-green {
+      padding: 10px 22px;
+      background: var(--green); color: white;
+      box-shadow: 0 2px 12px rgba(45,122,80,0.3);
+    }
+    .btn-green:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline-dark {
+      padding: 9px 20px;
+      background: transparent; color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline-dark:hover { background: rgba(255,255,255,0.06); color: white; }
+    .btn-outline {
+      padding: 13px 28px;
+      background: transparent; color: var(--stone-dark);
+      border: 1.5px solid var(--border);
+      font-size: 15px;
+    }
+    .btn-outline:hover { border-color: var(--stone); background: var(--surface-alt); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; border-radius: var(--r-md); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      width: 22px; height: 2px; background: white; border-radius: 2px; display: block;
+      transition: transform 0.25s, opacity 0.2s;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU PANEL ── */
+    .nav-mobile {
+      display: none;
+      position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: rgba(14,22,18,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      padding: 32px clamp(24px, 8vw, 48px) 40px;
+      overflow-y: auto;
+    }
+    .nav-mobile.is-open { display: flex; }
+    .nav-mobile ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 4px;
+      margin-bottom: 28px;
+    }
+    .nav-mobile ul a {
+      display: block;
+      font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      letter-spacing: 0.2px;
+      transition: color 0.15s;
+    }
+    .nav-mobile ul a:hover { color: white; }
+    .nav-mobile .mobile-actions {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 8px;
+    }
+
+    /* ── HERO — full-bleed con slider de imágenes ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 112px clamp(24px,5vw,72px) 64px;
+      overflow: hidden;
+    }
+    /* Slider de fondo — capas absolutas que cruzan fade */
+    .hero-slides {
+      position: absolute; inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center 55%;
+      opacity: 0;
+      transition: opacity 1.8s ease;
+      will-change: opacity;
+    }
+    .hero-slide.is-active { opacity: 1; }
+    /* Overlay para legibilidad sobre cualquier slide */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(14,22,18,0.55) 0%, rgba(14,22,18,0.30) 35%, rgba(14,22,18,0.78) 100%),
+        linear-gradient(90deg, rgba(14,22,18,0.55) 0%, rgba(14,22,18,0.18) 50%, rgba(14,22,18,0.0) 100%),
+        radial-gradient(ellipse 80% 100% at 50% 100%, rgba(14,22,18,0.55) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Indicadores discretos del slider */
+    .hero-dots {
+      position: absolute;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex; gap: 8px;
+    }
+    .hero-dot {
+      width: 32px; height: 3px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 100px;
+      border: none; padding: 0; cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .hero-dot.is-active { background: rgba(255,255,255,0.85); }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide { transition: none; }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .hero-brandmark {
+      display: block;
+      height: clamp(140px, 16vw, 240px);
+      width: auto;
+      margin-bottom: 28px;
+      margin-top: 0;
+      margin-left: 0;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: #5FAE82;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+    .hero-tag-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(45,122,80,0.9);
+    }
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 72px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 28px;
+      max-width: 800px;
+      text-shadow: 0 4px 32px rgba(0,0,0,0.55);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #5FAE82 0%, #2D7A50 100%);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.3vw, 17px);
+      color: rgba(255,255,255,0.78);
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 0;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+    }
+    .hero-sub-lead {
+      font-size: clamp(18px, 1.8vw, 22px);
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.45;
+      margin-top: 4px;
+      margin-bottom: 18px;
+    }
+    .hero-sub + .hero-actions { margin-top: 44px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-trust {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      max-width: 800px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+    .trust-item svg { flex-shrink: 0; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg-dark-2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 0 clamp(24px,5vw,72px);
+    }
+    .stats-inner {
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .stat-item {
+      flex: 1; min-width: 140px;
+      padding: 36px 24px;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-number span { color: var(--green); }
+    .stat-label {
+      font-size: 12px; font-weight: 500;
+      color: var(--fg-subtle); text-transform: uppercase;
+      letter-spacing: 1.2px; line-height: 1.4;
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 96px clamp(24px,5vw,72px);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .section-full {
+      padding: 96px clamp(24px,5vw,72px);
+    }
+    .section-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 700; letter-spacing: -0.8px; line-height: 1.15;
+      color: var(--fg-mid);
+      margin-bottom: 18px;
+    }
+    .section-title-light {
+      color: var(--white);
+    }
+    .section-body {
+      font-size: 17px; color: var(--fg-muted);
+      line-height: 1.75; max-width: 600px;
+    }
+    .section-body-light { color: rgba(255,255,255,0.6); }
+
+    /* ── QUIÉNES SOMOS ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 72px; align-items: center;
+      margin-top: 0;
+    }
+    .about-media {
+      position: relative;
+      padding-right: 40px;
+      padding-bottom: 40px;
+    }
+    .about-image {
+      background: var(--bg-dark-2);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+    .about-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.04) saturate(1.05);
+    }
+    .about-image-accent {
+      position: absolute;
+      right: 0; bottom: 0;
+      width: 55%;
+      aspect-ratio: 4/3;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.25), 0 0 0 6px var(--surface);
+    }
+    .about-image-accent img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .about-image::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,22,18,0.35) 0%, transparent 35%);
+      pointer-events: none;
+    }
+    .about-image-label {
+      position: absolute; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; color: #FFFFFF; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 600;
+      padding: 8px 14px;
+      background: rgba(14,22,18,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      z-index: 2;
+    }
+    .about-image-label::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(45,122,80,0.9);
+    }
+    .about-content { }
+    .about-text { font-size: 17px; color: var(--fg-muted); line-height: 1.8; margin-bottom: 32px; }
+    .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 20px;
+      background: var(--surface-alt);
+      border-radius: var(--r-md);
+      border-left: 3px solid var(--green);
+    }
+    .highlight-item svg { flex-shrink: 0; margin-top: 2px; }
+    .highlight-text { font-size: 15px; color: var(--fg-mid); line-height: 1.5; }
+
+    /* ── SERVICIOS ── */
+    .services-bg { background: var(--surface-alt); }
+    .services-header {
+      max-width: 1200px; margin: 0 auto 56px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .services-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: default;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 240px;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: var(--svc-img);
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.45s ease, transform 0.6s ease;
+      transform: scale(1.05);
+      z-index: -2;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,22,18,0.55) 0%, rgba(14,22,18,0.92) 100%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      z-index: -1;
+    }
+    .service-card:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .service-card:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .service-card:hover::after { opacity: 1; }
+    .service-card:hover h3,
+    .service-card:hover p { color: #FFFFFF; }
+    .service-card:hover .service-icon {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+    }
+    .service-card:hover .service-icon svg { stroke: #FFFFFF; }
+    /* Mobile: show image when card is in view (scroll-triggered) */
+    .service-card.is-visible::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .service-card.is-visible::after { opacity: 1; }
+    .service-card.is-visible h3,
+    .service-card.is-visible p { color: #FFFFFF; }
+    .service-card.is-visible .service-icon {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+    }
+    .service-card.is-visible .service-icon svg { stroke: #FFFFFF; }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(45,122,80,0.08);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      transition: background 0.25s ease;
+    }
+    .service-icon svg { transition: stroke 0.25s ease; }
+    .service-card h3 {
+      font-size: 18px; font-weight: 700;
+      color: var(--fg-mid); margin-bottom: 10px; letter-spacing: -0.2px;
+      transition: color 0.25s ease;
+    }
+    .service-card p {
+      font-size: 14px; color: var(--fg-muted); line-height: 1.7;
+      transition: color 0.25s ease;
+    }
+
+    /* ── FLOTA ── */
+    .fleet-banner {
+      width: 100%;
+      aspect-ratio: 21 / 7;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 56px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .fleet-banner img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 8% 50%;
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .fleet-banner::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(14,22,18,0.45) 0%, transparent 35%, transparent 65%, rgba(14,22,18,0.45) 100%);
+      pointer-events: none;
+    }
+    .fleet-banner-caption {
+      position: absolute; bottom: 22px; left: 28px; right: 28px;
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+      color: white; z-index: 2;
+    }
+    .fleet-banner-caption-title {
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .fleet-banner-caption-meta {
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+      margin-top: 0;
+    }
+    .fleet-intro { }
+    .fleet-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    .fleet-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: var(--surface-alt);
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+    }
+    .fleet-item-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(45,122,80,0.1);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fleet-item-name {
+      font-size: 15px; font-weight: 600; color: var(--fg-mid);
+    }
+    .fleet-tech {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .tech-card {
+      background: var(--bg-dark);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      border: 1px solid var(--border-dark);
+    }
+    .tech-card-title {
+      font-size: 14px; font-weight: 600; color: var(--green);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .tech-card-list {
+      display: flex; flex-direction: column; gap: 10px;
+      list-style: none;
+    }
+    .tech-card-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: rgba(255,255,255,0.7);
+    }
+    .tech-card-list li::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    /* ── SEGURIDAD ── (foto team-pe como bg desaturada/opacada, contenido encima) */
+    .safety-bg {
+      position: relative;
+      background-color: var(--surface);
+      overflow: hidden;
+    }
+    .safety-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('assets/WhatsApp Image 2026-06-11 at 17.05.56.jpeg');
+      background-size: cover;
+      background-position: center 35%;
+      opacity: 0.18;
+      filter: saturate(0.7) contrast(1.05);
+      pointer-events: none;
+    }
+    .safety-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(248,250,247,0.55) 0%, rgba(248,250,247,0.25) 50%, rgba(248,250,247,0.55) 100%),
+        radial-gradient(ellipse at top right, rgba(45,122,80,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .safety-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 64px; align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    .safety-media {
+      display: flex; flex-direction: column; gap: 24px;
+      position: sticky; top: 110px;
+    }
+    .safety-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--r-lg);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+    }
+    .safety-photo-caption {
+      font-size: 12px; color: var(--fg-subtle);
+      letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 500;
+      text-align: center;
+      margin-top: -10px;
+    }
+    .safety-quote {
+      border-left: 4px solid var(--green);
+      padding-left: 28px;
+      margin-bottom: 40px;
+    }
+    .safety-quote p {
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 600; font-style: italic;
+      color: var(--fg-mid); line-height: 1.4; letter-spacing: -0.3px;
+    }
+    .safety-certs {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .cert-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .cert-check {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: rgba(45,122,80,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cert-text {
+      font-size: 14px; color: var(--fg-mid); font-weight: 500;
+    }
+    .safety-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      padding: 28px 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .safety-num-item {
+      padding: 0 14px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .safety-num-item:last-child { border-right: none; }
+    .safety-num-item { }
+    .safety-num-value {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 800; letter-spacing: -1.5px;
+      color: var(--green); line-height: 1;
+    }
+    .safety-num-label {
+      font-size: 11px; color: var(--fg-muted); margin-top: 8px; line-height: 1.4;
+      letter-spacing: 0.2px;
+    }
+    .safety-divider { display: none; }
+
+    /* ── CAPITAL HUMANO ── */
+    .team-bg { background: var(--card); }
+    .team-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .team-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    .team-cert {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: var(--surface-alt);
+      border-radius: var(--r-md);
+      border-left: 3px solid var(--green);
+    }
+    .team-cert-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(45,122,80,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-cert-text {
+      font-size: 14px; color: var(--fg-mid); font-weight: 500;
+    }
+    .team-quote {
+      margin-top: 36px;
+      padding: 24px 28px;
+      background: var(--surface-alt);
+      border-left: 4px solid var(--green);
+      border-radius: var(--r-sm);
+      font-size: 17px; font-style: italic; font-weight: 600;
+      color: var(--fg-mid);
+      line-height: 1.5;
+    }
+
+    /* ── POR QUÉ ELEGIRNOS ── */
+    .why-bg { background: var(--surface-alt); }
+    .why-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .why-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 24px 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-item:hover { border-color: var(--green); transform: translateY(-2px); }
+    .why-item-num {
+      font-size: 12px; font-weight: 700;
+      color: var(--green); letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .why-item h3 {
+      font-size: 17px; font-weight: 700;
+      color: var(--fg-mid); margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    .why-item p {
+      font-size: 14px; color: var(--fg-muted);
+      line-height: 1.6;
+    }
+    .why-closing {
+      margin-top: 56px;
+      text-align: center;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 600; color: var(--fg-mid);
+      line-height: 1.5;
+      max-width: 760px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ── SECTOR MINERO ── */
+    .sector-bg {
+      background-color: var(--bg-dark);
+      background-image:
+        linear-gradient(120deg, rgba(14,22,18,0.92) 0%, rgba(14,22,18,0.7) 60%, rgba(14,22,18,0.5) 100%),
+        url('assets/WhatsApp Image 2026-06-11 at 17.06.54.jpeg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .sector-inner {
+      max-width: 1100px; margin: 0 auto;
+      text-align: center;
+      position: relative; z-index: 2;
+    }
+    .sector-bg .section-tag { color: #5FAE82; }
+    .sector-bg .section-title {
+      color: white;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    }
+    .sector-bg .section-body {
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      max-width: 760px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ── EXPERIENCIA / CLIENTES ── */
+    .experience-bg { background: var(--card); }
+    .experience-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .featured-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 44px;
+    }
+    .featured-card {
+      position: relative;
+      padding: 26px 24px;
+      background: linear-gradient(160deg, var(--card) 0%, var(--surface-alt) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+    }
+    .featured-card::after {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 4px; height: 100%;
+      background: var(--green);
+      opacity: 0.6;
+      transition: width 0.2s ease, opacity 0.2s ease;
+    }
+    .featured-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .featured-card:hover::after { width: 6px; opacity: 1; }
+    .featured-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; color: var(--green-dark);
+      letter-spacing: 1.5px; text-transform: uppercase;
+      background: rgba(45,122,80,0.10);
+      padding: 4px 10px; border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .featured-card h3 {
+      font-size: 19px; font-weight: 700;
+      color: var(--fg-mid); letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+    .featured-card p {
+      font-size: 13px; color: var(--fg-muted);
+      line-height: 1.6; margin: 0;
+    }
+    .experience-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .experience-block {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px 24px;
+    }
+    .experience-block-title {
+      font-size: 12px; font-weight: 700;
+      color: var(--green); letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .experience-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .experience-chip {
+      display: inline-flex; align-items: center;
+      padding: 7px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px; font-weight: 500;
+      color: var(--fg-mid);
+      line-height: 1.2;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .experience-chip:hover {
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+
+    /* ── TRABAJÁ CON NOSOTROS ── */
+    .careers-bg { background: var(--surface-alt); }
+    .careers-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px; align-items: center;
+    }
+    .careers-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.04);
+    }
+    .careers-form h3 {
+      font-size: 18px; font-weight: 700;
+      color: var(--fg-mid); margin-bottom: 22px;
+    }
+
+    /* ── CLIENTES (legacy, kept compact) ── */
+    .clients-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px; margin-top: 48px;
+    }
+    .client-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 24px 20px;
+      display: flex; flex-direction: column;
+      gap: 6px; transition: border-color 0.15s;
+    }
+    .client-card:hover { border-color: var(--stone); }
+    .client-name {
+      font-size: 15px; font-weight: 700;
+      color: var(--stone-dark); letter-spacing: -0.2px;
+      filter: grayscale(1); opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+    .client-card:hover .client-name { opacity: 0.85; }
+    .client-project {
+      font-size: 12px; color: var(--fg-subtle);
+      text-transform: uppercase; letter-spacing: 0.8px;
+    }
+    .projects-note {
+      margin-top: 24px;
+      font-size: 14px; color: var(--fg-subtle);
+      font-style: italic;
+    }
+
+    /* ── COBERTURA ── */
+    .coverage-bg { background: var(--surface-alt); }
+    .coverage-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 0;
+    }
+    .base-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .base-card-header {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background-color: var(--bg-dark-3);
+    }
+    .base-card-map {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.04);
+      transform-origin: center center;
+      display: block;
+    }
+    .base-card-name-row {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 28px;
+      display: flex; align-items: center; gap: 16px;
+      z-index: 2;
+    }
+    .base-card-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,22,18,0.0) 0%, rgba(14,22,18,0.3) 50%, rgba(14,22,18,0.88) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .base-marker {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--green);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .base-marker svg { transform: rotate(45deg); }
+    .base-name {
+      font-size: 18px; font-weight: 700; color: white;
+    }
+    .base-subtitle {
+      font-size: 12px; color: var(--fg-subtle); margin-top: 4px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .base-body { padding: 28px; }
+    .base-desc {
+      font-size: 15px; color: var(--fg-muted); line-height: 1.7; margin-bottom: 20px;
+    }
+    .base-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .base-tag {
+      font-size: 12px; font-weight: 500; color: var(--stone-dark);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 12px;
+    }
+
+    /* ── CONTACTO ── (light palette, green accents) */
+    .contact-bg {
+      background: var(--surface-alt);
+      position: relative;
+    }
+    .contact-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(45,122,80,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 18px;
+    }
+    .contact-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(45,122,80,0.10);
+      border: 1px solid rgba(45,122,80,0.25);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item-label {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--fg-muted); margin-bottom: 4px;
+    }
+    .contact-item-value {
+      font-size: 18px; font-weight: 600; color: var(--fg-mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    a.contact-item-value:hover { color: var(--green); }
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+    }
+    .contact-form h3 {
+      font-size: 20px; font-weight: 700; color: var(--fg-mid);
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--fg-mid); margin-bottom: 6px; letter-spacing: 0.2px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-family: var(--font); font-size: 15px; color: var(--fg);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--fg-subtle);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      background: var(--card);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { cursor: pointer; }
+    .form-submit { width: 100%; }
+    .form-submit:disabled { opacity: 0.6; cursor: wait; }
+    .form-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: var(--r-sm);
+      font-size: 14px;
+      display: none;
+    }
+    .form-status.success {
+      display: block;
+      background: rgba(45,122,80,0.12);
+      border: 1px solid rgba(45,122,80,0.35);
+      color: #5FAE82;
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(220,38,38,0.12);
+      border: 1px solid rgba(220,38,38,0.4);
+      color: #fca5a5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 40px clamp(24px,5vw,72px);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-copy {
+      font-size: 13px; color: var(--fg-subtle);
+    }
+    .footer-links {
+      display: flex; gap: 24px;
+    }
+    .footer-links a {
+      font-size: 13px; color: var(--fg-subtle);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding-top: 80px; }
+      .hero-inner { text-align: left; }
+      .hero-brandmark {
+        margin-left: 0;
+        margin-top: 40px;
+        height: clamp(120px, 14vw, 180px);
+      }
+      /* Mobile: imágenes verticales para el hero (no se cortan) */
+      .hero-slide:nth-child(1) { background-image: url('assets/1.png') !important; }
+      .hero-slide:nth-child(2) { background-image: url('assets/2.png') !important; }
+      .hero-slide:nth-child(3) { background-image: url('assets/3.png') !important; }
+      .hero-slide:nth-child(4) { background-image: url('assets/4.png') !important; }
+      /* Mobile: imagen vertical para higiene, seguridad y trazabilidad operativa */
+      .safety-bg::before { background-image: url('assets/higiene nueva.png') !important; }
+      .about-grid, .fleet-grid, .safety-inner,
+      .contact-inner, .coverage-grid,
+      .team-inner, .careers-inner { grid-template-columns: 1fr; gap: 40px; }
+      .experience-blocks { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-right .btn { display: none; }
+      .lang-toggle { display: none; }
+      .stats-inner { justify-content: center; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .stat-item:last-child { border-bottom: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { letter-spacing: -0.5px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr !important; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      .hero-brandmark { margin-top: 20px; height: clamp(100px, 16vw, 160px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<header>
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+    <a href="#" class="nav-logo" aria-label="ISMAEL S.A. — Inicio">
+      <!-- Brand mark (mountain icon only, sin letras) -->
+      <img src="assets/logosolo.png" alt="ISMAEL S.A." class="nav-logo-img" onerror="this.parentNode.classList.add('logo-fallback');this.remove()">
+      <svg width="54" height="40" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="nav-logo-svg">
+        <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
+        <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
+        <polygon points="36,18 54,38 44,38" fill="#E1E6E0" opacity="0.55"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">ISMAEL S.A.</span>
+        <span class="nav-logo-sub">Servicios, Logística y Transporte Minero</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
+      <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
+      <li><a href="#flota" data-i18n="nav.flota">Flota</a></li>
+      <li><a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a></li>
+      <li><a href="#cobertura" data-i18n="nav.bases">Bases</a></li>
+      <li><a href="#experiencia" data-i18n="nav.proyectos">Proyectos</a></li>
+      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
+        <button type="button" class="lang-btn is-active" data-lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="#contacto" class="btn btn-green" data-i18n="cta.contactar">Contactar</a>
+      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ── MOBILE NAV PANEL ── -->
+<nav id="mobileNav" class="nav-mobile" aria-label="Navegación mobile" aria-hidden="true">
+  <ul>
+    <li><a href="#nosotros" class="mobile-nav-link" data-i18n="nav.nosotros">Nosotros</a></li>
+    <li><a href="#servicios" class="mobile-nav-link" data-i18n="nav.servicios">Servicios</a></li>
+    <li><a href="#flota" class="mobile-nav-link" data-i18n="nav.flota">Flota</a></li>
+    <li><a href="#seguridad" class="mobile-nav-link" data-i18n="nav.seguridad">Seguridad</a></li>
+    <li><a href="#cobertura" class="mobile-nav-link" data-i18n="nav.bases">Bases</a></li>
+    <li><a href="#experiencia" class="mobile-nav-link" data-i18n="nav.proyectos">Proyectos</a></li>
+    <li><a href="#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <a href="#contacto" class="btn btn-green mobile-nav-link" style="text-align:center; padding:14px 24px; font-size:15px;" data-i18n="cta.solicitar">Solicitar propuesta</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <!-- Slider de imágenes (primera = camión con logo, default al cargar) -->
+  <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slide is-active" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.27.25.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.01.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.11.jpeg');"></div>
+    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.43.01.jpeg');"></div>
+  </div>
+
+  <div class="hero-inner">
+    <img src="assets/logo.png" alt="ISMAEL S.A. — Servicios, Logística y Transporte Minero" class="hero-brandmark">
+
+    <div class="hero-tag">
+      <span class="hero-tag-dot" aria-hidden="true"></span>
+      <span data-i18n="hero.tag">San Juan, Argentina — Cordillera de los Andes</span>
+    </div>
+
+    <h1 id="hero-heading" data-i18n-html="hero.h1">
+      SERVICIOS MINEROS<br>
+      <em>Y LOGÍSTICA OPERATIVA</em><br>
+      EMPRESA SANJUANINA
+    </h1>
+
+    <p class="hero-sub hero-sub-lead" data-i18n="hero.lead">
+      Flota propia, dos bases en San Juan y más de 20 años operando en la Cordillera de los Andes.
+    </p>
+    <p class="hero-sub" data-i18n="hero.sub">
+      Transporte, abastecimiento, hidrogrúas y soporte en terreno para la minería sanjuanina.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-green btn-lg" data-i18n="cta.solicitar">Solicitar propuesta</a>
+      <a href="#servicios" class="btn btn-outline-dark btn-lg" data-i18n="cta.ver_servicios">Ver servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-dots" role="tablist" aria-label="Slider del hero">
+    <button class="hero-dot is-active" type="button" data-slide="0" aria-label="Imagen 1"></button>
+    <button class="hero-dot" type="button" data-slide="1" aria-label="Imagen 2"></button>
+    <button class="hero-dot" type="button" data-slide="2" aria-label="Imagen 3"></button>
+    <button class="hero-dot" type="button" data-slide="3" aria-label="Imagen 4"></button>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STATS BAR ═══════════════════════ -->
+<div class="stats-bar" role="region" aria-label="Cifras clave">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number"><span>+20</span></div>
+      <div class="stat-label" data-i18n-html="stats.years">Años de<br>trayectoria</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span>+20</span></div>
+      <div class="stat-label" data-i18n-html="stats.units">Unidades<br>propias</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span>2</span></div>
+      <div class="stat-label" data-i18n-html="stats.bases">Bases operativas<br>en San Juan</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span>100<span style="font-size:0.6em">%</span></span></div>
+      <div class="stat-label" data-i18n-html="stats.cert">Personal<br>certificado</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span>+35</span></div>
+      <div class="stat-label" data-i18n-html="stats.projects">Proyectos<br>asistidos</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ QUIÉNES SOMOS ═══════════════════════ -->
+<section id="nosotros" aria-labelledby="about-title">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-media">
+        <div class="about-image">
+          <img src="assets/nieve nueva.png" alt="Camión de la flota ISMAEL S.A. operando en la cordillera de los Andes con nieve." loading="lazy" decoding="async">
+          <span class="about-image-label" data-i18n="about.label">Cordillera de los Andes · San Juan</span>
+        </div>
+        <div class="about-image-accent" role="img" aria-label="Operativo de perforación en alta montaña asistido por la flota de ISMAEL S.A.">
+          <img src="assets/grua nueva.png" alt="Hidrogrúa de ISMAEL S.A. asistiendo una operación de perforación con torre y campamento en alta montaña." loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-tag" data-i18n="about.tag">Quiénes somos</div>
+        <h2 class="section-title" id="about-title" data-i18n="about.title">
+          Operador logístico sanjuanino para la minería
+        </h2>
+        <p class="about-text" data-i18n="about.body1">
+          ISMAEL S.A. es una empresa de San Juan especializada en logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras. Operamos con flota propia en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.
+        </p>
+        <p class="about-text" data-i18n="about.body2" style="margin-bottom: 36px;">
+          Contamos con dos bases en Rawson y Calingasta que nos permiten movilizar equipos rápidamente a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <span class="highlight-text" data-i18n-html="about.hl1"><strong>Acceso a frentes de perforación</strong> — operamos en terrenos cordilleranos inaccesibles para operadores sin base en la provincia</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="highlight-text" data-i18n-html="about.hl2"><strong>Flota 100% propia</strong> — sin intermediarios, sin tercerización de equipamiento crítico</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="highlight-text" data-i18n-html="about.hl3"><strong>Respuesta local</strong> — dos bases en San Juan para movilización rápida en cualquier punto de la cordillera</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SERVICIOS ═══════════════════════ -->
+<div class="section-full services-bg" id="servicios">
+  <div class="services-header">
+    <div>
+      <div class="section-tag" data-i18n="services.tag">Servicios</div>
+      <h2 class="section-title" data-i18n="services.title" style="margin-bottom:0">Lo que hacemos, lo hacemos bien</h2>
+    </div>
+    <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 24px;">Consultar disponibilidad</a>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.25 (1).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.1.title">Servicios y logística de exploración, explotación y perforación</h3>
+      <p data-i18n="svc.1.desc">Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (2).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.2.title">Transporte de agua</h3>
+      <p data-i18n="svc.2.desc">Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (2).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.3.title">Abastecimiento en zonas remotas</h3>
+      <p data-i18n="svc.3.desc">Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (3).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.4.title">Traslados programados</h3>
+      <p data-i18n="svc.4.desc">Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (1).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.5.title">Transporte de equipos e insumos</h3>
+      <p data-i18n="svc.5.desc">Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-11 at 17.07.36.jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.6.title">Soporte operativo en terreno</h3>
+      <p data-i18n="svc.6.desc">Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
+    </div>
+
+    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (1).jpeg');">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
+          <path d="M3 18v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="1" x2="12" y2="3"/>
+        </svg>
+      </div>
+      <h3 data-i18n="svc.7.title">Hidrogrúas y servicios especiales</h3>
+      <p data-i18n="svc.7.desc">Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, riggers certificados y personal habilitado para tareas de alto riesgo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FLOTA ═══════════════════════ -->
+<section id="flota" aria-labelledby="fleet-title">
+  <div class="section">
+    <div class="fleet-banner" role="img" aria-label="Flota de camiones IVECO y Mercedes de ISMAEL S.A. en la base operativa.">
+      <img src="assets/fleet-lineup.jpg" alt="Flota propia de ISMAEL S.A. — camiones aguateros, hidrogrúas y chasis en formación en la base operativa de San Juan." loading="lazy" decoding="async">
+      <div class="fleet-banner-caption">
+        <div class="fleet-banner-caption-title" data-i18n="fleet.caption.title">+20 unidades en operación</div>
+        <div class="fleet-banner-caption-meta" data-i18n="fleet.caption.meta">Base operativa · San Juan</div>
+      </div>
+    </div>
+
+    <div class="fleet-grid">
+      <div class="fleet-intro">
+        <div class="section-tag" data-i18n="fleet.tag">Flota y capacidades</div>
+        <h2 class="section-title" id="fleet-title" data-i18n-html="fleet.title">
+          Equipamiento propio.<br>Sin intermediarios.
+        </h2>
+        <p class="section-body" data-i18n="fleet.body" style="margin-bottom: 20px;">
+          Más de 20 unidades propias preparadas para operar en cordillera, rutas y zonas remotas. Garantizamos disponibilidad, mantenimiento preventivo programado y respuesta operativa local, sin depender de terceros para el equipamiento crítico.
+        </p>
+        <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 22px; font-size:14px; margin-bottom: 24px;">Consultar disponibilidad de flota</a>
+
+        <div class="fleet-list" role="list" aria-label="Tipos de vehículos de la flota">
+          <div class="fleet-item" role="listitem">
+            <div class="fleet-item-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <span class="fleet-item-name" data-i18n="fleet.item1">Camiones aguateros</span>
+          </div>
+          <div class="fleet-item" role="listitem">
+            <div class="fleet-item-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <span class="fleet-item-name" data-i18n="fleet.item2">Camiones con hidrogrúa</span>
+          </div>
+          <div class="fleet-item" role="listitem">
+            <div class="fleet-item-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span class="fleet-item-name" data-i18n="fleet.item3">Camiones chasis</span>
+          </div>
+          <div class="fleet-item" role="listitem">
+            <div class="fleet-item-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v6h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span class="fleet-item-name" data-i18n="fleet.item4">Tractores con semirremolque</span>
+          </div>
+          <div class="fleet-item" role="listitem">
+            <div class="fleet-item-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+            </div>
+            <span class="fleet-item-name" data-i18n="fleet.item5">Vehículos 4×4 / 6×4</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fleet-tech">
+        <div class="tech-card">
+          <div class="tech-card-title" data-i18n="flota.tech.title">Gestión de flota</div>
+          <ul class="tech-card-list">
+            <li data-i18n="flota.tech.li1">Monitoreo GPS satelital en cada unidad</li>
+            <li data-i18n="flota.tech.li2">Mantenimiento preventivo programado</li>
+            <li data-i18n="flota.tech.li3">Revisión pre-operacional diaria</li>
+            <li data-i18n="flota.tech.li4">Documentación técnica al día</li>
+            <li data-i18n="flota.tech.li5">Comunicación VHF/satelital en zonas sin cobertura</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SEGURIDAD ═══════════════════════ -->
+<div class="section-full safety-bg" id="seguridad" aria-labelledby="safety-title">
+  <div class="safety-inner">
+    <div>
+      <div class="section-tag" data-i18n="safety.tag">Higiene, seguridad y trazabilidad operativa</div>
+      <h2 class="section-title" id="safety-title" data-i18n-html="safety.title" style="margin-bottom: 32px;">
+        Seguridad operativa<br>sin excepciones
+      </h2>
+
+      <div class="safety-quote">
+        <p data-i18n="safety.quote">"La seguridad no es un requisito: es nuestro estándar operativo."</p>
+      </div>
+
+      <p class="section-body" data-i18n="safety.body" style="margin-bottom: 36px;">
+        Cada servicio se ejecuta bajo procedimientos de seguridad, seguimiento satelital y control preventivo de la flota, priorizando la protección del personal, la continuidad operativa y el cumplimiento en terreno. Compatibles con las exigencias HSEC de operadoras mineras internacionales.
+      </p>
+
+      <div class="safety-certs" role="list" aria-label="Certificaciones de seguridad">
+        <div class="cert-item" role="listitem">
+          <div class="cert-check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="cert-text" data-i18n="safety.cert1">Personal certificado en manejo defensivo</span>
+        </div>
+        <div class="cert-item" role="listitem">
+          <div class="cert-check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="cert-text" data-i18n="safety.cert2">Operación certificada de vehículos pesados e hidrogrúa</span>
+        </div>
+        <div class="cert-item" role="listitem">
+          <div class="cert-check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="cert-text" data-i18n="safety.cert3">Revisiones pre-operacionales y mantenimiento preventivo</span>
+        </div>
+        <div class="cert-item" role="listitem">
+          <div class="cert-check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="cert-text" data-i18n="safety.cert4">Control de fatiga — monitoreo permanente en ruta</span>
+        </div>
+        <div class="cert-item" role="listitem">
+          <div class="cert-check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="cert-text" data-i18n="safety.cert5">Compatible con exigencias HSEC de clientes internacionales</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="safety-media">
+      <div class="safety-numbers" role="list" aria-label="Indicadores de seguridad">
+        <div class="safety-num-item" role="listitem">
+          <div class="safety-num-value">+20</div>
+          <div class="safety-num-label" data-i18n="safety.num1">Colaboradores certificados</div>
+        </div>
+        <div class="safety-num-item" role="listitem">
+          <div class="safety-num-value">+20</div>
+          <div class="safety-num-label" data-i18n="safety.num2">Años sin incidentes graves</div>
+        </div>
+        <div class="safety-num-item" role="listitem">
+          <div class="safety-num-value">100%</div>
+          <div class="safety-num-label" data-i18n="safety.num3">Flota con GPS y control de fatiga</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ COBERTURA ═══════════════════════ -->
+<div class="section-full coverage-bg" id="cobertura">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-tag" data-i18n="bases.tag">Infraestructura y cobertura</div>
+    <h2 class="section-title" id="coverage-title" data-i18n="bases.title" style="margin-bottom:18px;">
+      Dos bases operativas en San Juan
+    </h2>
+    <p class="section-body" data-i18n="bases.body" style="margin-bottom: 36px; max-width: 760px;">
+      Dos bases operativas estratégicamente ubicadas en San Juan nos permiten responder con rapidez a los proyectos de toda la cordillera, reducir tiempos de movilización y mantener presencia operativa local.
+    </p>
+
+    <div class="coverage-grid">
+      <div class="base-card">
+        <div class="base-card-header">
+          <img src="assets/mapa base rawson.jpg" alt="Mapa Base Rawson — San Juan" class="base-card-map">
+          <div class="base-card-name-row">
+            <div class="base-marker" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="base-name">Base Rawson</div>
+              <div class="base-subtitle" data-i18n="bases.rawson.subtitle">Gran San Juan — Zona urbana e industrial</div>
+            </div>
+          </div>
+        </div>
+        <div class="base-body">
+          <p class="base-desc" data-i18n="bases.rawson.desc">
+            Centro logístico, administrativo y de mantenimiento en el Gran San Juan, con vinculación directa con proveedores, laboratorios y servicios urbanos. Base de coordinación para todas las campañas.
+          </p>
+          <div class="base-tags">
+            <span class="base-tag" data-i18n="bases.rawson.tag1">Centro logístico</span>
+            <span class="base-tag" data-i18n="bases.rawson.tag2">Taller de mantenimiento</span>
+            <span class="base-tag" data-i18n="bases.rawson.tag3">Abastecimiento de flota</span>
+            <span class="base-tag" data-i18n="bases.rawson.tag4">Administración</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="base-card">
+        <div class="base-card-header">
+          <img src="assets/mapa base calingasta.jpg" alt="Mapa Base Calingasta — Cordillera" class="base-card-map">
+          <div class="base-card-name-row">
+            <div class="base-marker" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="base-name">Base Calingasta</div>
+              <div class="base-subtitle" data-i18n="bases.calingasta.subtitle">Zona cordillerana — Acceso a proyectos en altura</div>
+            </div>
+          </div>
+        </div>
+        <div class="base-body">
+          <p class="base-desc" data-i18n="bases.calingasta.desc">
+            Posición avanzada en la zona cordillerana, junto a los principales proyectos de exploración de la provincia. Reduce tiempos de movilización y facilita la respuesta operativa en terreno de altura.
+          </p>
+          <div class="base-tags">
+            <span class="base-tag" data-i18n="bases.calingasta.tag1">Acceso cordillerano</span>
+            <span class="base-tag" data-i18n="bases.calingasta.tag2">Base de avanzada</span>
+            <span class="base-tag" data-i18n="bases.calingasta.tag3">Apoyo en campaña</span>
+            <span class="base-tag" data-i18n="bases.calingasta.tag4">Logística de montaña</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px; padding: 28px 32px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px;">
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv1.title">Menor tiempo de respuesta</strong>
+          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv1.desc">Movilización local sin depender de tránsitos largos desde otras provincias.</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv2.title">Conocimiento del terreno</strong>
+          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv2.desc">Rutas, caminos secundarios, altura cordillerana y clima de montaña.</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv3.title">Compromiso local</strong>
+          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv3.desc">Generación de empleo y desarrollo en la provincia de San Juan.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ FUTURO: MAPA SAN JUAN CON PROYECTOS ════
+         Cuando esté lista la imagen, descomentar este bloque y agregar:
+         assets/images/maps/mapa-san-juan-proyectos.png
+         con marcadores rojos para Bases (Rawson, Calingasta) y secundarios
+         para proyectos mineros (El Pachón, Filo del Sol, etc.).
+    <div style="margin-top: 36px; padding: 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);">
+      <div style="font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;">Mapa de operación</div>
+      <img src="assets/images/maps/mapa-san-juan-proyectos.png" alt="Mapa de San Juan con bases operativas y proyectos asistidos." style="width:100%; height:auto; border-radius: var(--r-md);">
+    </div>
+    -->
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ EXPERIENCIA / CLIENTES ═══════════════════════ -->
+<section id="experiencia" class="section-full experience-bg" aria-labelledby="experience-title">
+  <div class="experience-inner">
+    <div class="section-tag" data-i18n="experience.tag">Experiencia que nos respalda</div>
+    <h2 class="section-title" id="experience-title" data-i18n-html="experience.title" style="margin-bottom: 20px;">
+      Más de 35 proyectos asistidos<br>en alta montaña
+    </h2>
+    <p class="section-body" data-i18n="experience.body">
+      Trabajamos junto a operadoras internacionales y los proyectos mineros más relevantes de San Juan. Conocemos los frentes, las rutas y las exigencias de cada operación.
+    </p>
+
+    <!-- ════ CARRUSEL DESTACADO ════
+         FUTURO: agregar imágenes reales en assets/images/projects/
+         (mapa o foto representativa de cada proyecto). Por ahora usamos
+         cards visuales con tipografía y color, sin fotos repetidas. -->
+    <div class="featured-projects" role="list" aria-label="Proyectos destacados">
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card1.tag">Cobre · Oro · Plata</div>
+        <h3>El Pachón</h3>
+        <p data-i18n="exp.card1.desc">Logística de abastecimiento en una de las mayores reservas de cobre del país, en la Cordillera de los Andes, San Juan.</p>
+      </article>
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card2.tag">Oro · Cobre · Plata</div>
+        <h3>Filo del Sol</h3>
+        <p data-i18n="exp.card2.desc">Soporte operativo en yacimiento de exploración avanzada en la cordillera sanjuanina, sobre los 4.000 m s.n.m.</p>
+      </article>
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card3.tag">Cobre</div>
+        <h3>Los Azules</h3>
+        <p data-i18n="exp.card3.desc">Transporte y abastecimiento para uno de los proyectos cupríferos más relevantes de la región andina.</p>
+      </article>
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card4.tag">Cobre · Oro</div>
+        <h3>José María</h3>
+        <p data-i18n="exp.card4.desc">Asistencia logística a campañas de exploración en zona cordillerana de San Juan durante múltiples temporadas.</p>
+      </article>
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card5.tag">Zona operativa</div>
+        <h3 data-i18n="exp.card5.title">Calingasta — Alta Cordillera</h3>
+        <p data-i18n="exp.card5.desc">Logística de exploración y abastecimiento en proyectos ubicados entre 3.500 y 4.500 m s.n.m., en los departamentos de Calingasta e Iglesia.</p>
+      </article>
+      <article class="featured-card" role="listitem">
+        <div class="featured-tag" data-i18n="exp.card6.tag">Campaña de exploración</div>
+        <h3 data-i18n="exp.card6.title">Exploración Regional</h3>
+        <p data-i18n="exp.card6.desc">Soporte continuo a campañas de exploración de operadoras internacionales durante múltiples temporadas en la provincia de San Juan.</p>
+      </article>
+    </div>
+
+    <p class="section-body" data-i18n="experience.context" style="margin-top: 44px; max-width: 800px;">
+      Operamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CAPITAL HUMANO ═══════════════════════ -->
+<div class="section-full team-bg" id="equipo" aria-labelledby="team-title">
+  <div class="team-inner">
+    <div>
+      <div class="section-tag" data-i18n="team.tag">Capital humano</div>
+      <h2 class="section-title" id="team-title" data-i18n-html="team.title" style="margin-bottom: 28px;">
+        Personas con<br>experiencia operativa real
+      </h2>
+      <p class="section-body" data-i18n="team.body">
+        Contamos con un equipo base de más de 20 colaboradores y dotación escalable según la demanda de cada campaña. Personal con amplia experiencia en operaciones críticas, entornos mineros de altura y respuesta en terreno bajo condiciones exigentes.
+      </p>
+
+      <div class="team-quote">
+        <span data-i18n="team.quote">"No solo cumplimos los estándares: los integramos a nuestra cultura operativa."</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-size:14px; font-weight:600; color:var(--fg-mid); margin-bottom:6px; letter-spacing:0.3px;" data-i18n="team.roles.title">Perfiles operativos</h3>
+      <p style="font-size:13px; color:var(--fg-muted); margin-bottom: 16px;" data-i18n="team.roles.sub">Dotación propia escalable según campaña. Sin dependencia de agencias ni subcontratistas.</p>
+
+      <div class="team-list" role="list">
+        <div class="team-cert" role="listitem">
+          <div class="team-cert-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <span class="team-cert-text" data-i18n="team.role1">Conductores de vehículos pesados y 4x4 en alta montaña</span>
+        </div>
+        <div class="team-cert" role="listitem">
+          <div class="team-cert-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <span class="team-cert-text" data-i18n="team.role2">Operadores de hidrogrúa e izaje de cargas (Rigger)</span>
+        </div>
+        <div class="team-cert" role="listitem">
+          <div class="team-cert-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <span class="team-cert-text" data-i18n="team.role3">Técnicos de mantenimiento preventivo de flota</span>
+        </div>
+        <div class="team-cert" role="listitem">
+          <div class="team-cert-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <span class="team-cert-text" data-i18n="team.role4">Coordinadores de logística en campamento y terreno</span>
+        </div>
+        <div class="team-cert" role="listitem">
+          <div class="team-cert-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <span class="team-cert-text" data-i18n="team.role5">Personal administrativo y de planificación operativa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ POR QUÉ ELEGIRNOS ═══════════════════════ -->
+<div class="section-full why-bg" id="por-que" aria-labelledby="why-title">
+  <div class="why-inner">
+    <div class="section-tag" data-i18n="why.tag">Por qué elegirnos</div>
+    <h2 class="section-title" id="why-title" data-i18n-html="why.title">
+      Soporte logístico minero<br>con criterio operativo real
+    </h2>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-item-num">01</div>
+        <h3 data-i18n="why.item1.title">Presencia local en San Juan</h3>
+        <p data-i18n="why.item1.desc">Bases en Rawson y Calingasta. Sin demoras de movilización interprovincial ni dependencia de operadores externos.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-num">02</div>
+        <h3 data-i18n="why.item2.title">Flota propia, sin intermediarios</h3>
+        <p data-i18n="why.item2.desc">Control directo sobre disponibilidad, mantenimiento y prioridad de asignación de cada unidad.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-num">03</div>
+        <h3 data-i18n="why.item3.title">Capacidad de respuesta rápida</h3>
+        <p data-i18n="why.item3.desc">Movilización en horas, dotación escalable según campaña, disponibilidad fuera de horario administrativo.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-num">04</div>
+        <h3 data-i18n="why.item4.title">Experiencia en alta cordillera</h3>
+        <p data-i18n="why.item4.desc">Más de 20 años operando en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
+      </div>
+    </div>
+
+    <p class="why-closing" data-i18n="why.closing">
+      "Queremos ser parte del crecimiento de cada proyecto, brindando soporte logístico con seguridad, trazabilidad y compromiso local."
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════ CONTACTO ═══════════════════════ -->
+<div class="section-full contact-bg" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag" data-i18n="contact.tag">Contacto comercial</div>
+      <h2 class="section-title" data-i18n-html="contact.title" style="margin-bottom:16px;">
+        Hablemos de<br>su próximo proyecto
+      </h2>
+      <p class="section-body" style="margin-bottom: 0;" data-i18n="contact.body">
+        Contamos con disponibilidad para nuevos proyectos. Consulte sin compromiso sobre disponibilidad de flota, capacidad operativa, cobertura cordillerana y plazos de respuesta.
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.6 6.6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.label.tel">Teléfono</div>
+            <a href="tel:+5426441315" class="contact-item-value">+54 264 413-1515</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.label.email">Correo electrónico</div>
+            <a href="mailto:contacto@ismaelsa.info" class="contact-item-value">contacto@ismaelsa.info</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.label.web">Sitio web</div>
+            <span class="contact-item-value">ismaelsa.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm" aria-label="Formulario de contacto" onsubmit="return sendContactForm(event)">
+      <h3 data-i18n="contact.form.title">Solicitar propuesta</h3>
+
+      <!-- Web3Forms hidden fields -->
+      <input type="hidden" name="access_key" value="f37111ef-4988-45be-b0de-86761f460d8e">
+      <input type="hidden" name="subject" value="Consulta web — ISMAEL S.A.">
+      <input type="hidden" name="from_name" value="Web ISMAEL S.A.">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="form-group">
+          <label for="nombre" data-i18n="contact.form.label.nombre">Nombre <span aria-hidden="true">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Romero" data-i18n-placeholder="ph.nombre" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="empresa" data-i18n="contact.form.label.empresa">Empresa <span aria-hidden="true">*</span></label>
+          <input type="text" id="empresa" name="empresa" placeholder="Ej: Glencore Pachón" data-i18n-placeholder="ph.empresa" required autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" data-i18n="contact.form.label.email">Correo electrónico <span aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" placeholder="correo@empresa.com" data-i18n-placeholder="ph.email.corp" required autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label for="servicio" data-i18n="contact.form.label.servicio">Tipo de servicio</label>
+        <select id="servicio" name="servicio">
+          <option value="" data-i18n="ph.select">Seleccione…</option>
+          <option data-i18n="svc.1.title">Servicios y logística de exploración, explotación y perforación</option>
+          <option data-i18n="svc.2.title">Transporte de agua</option>
+          <option data-i18n="svc.3.title">Abastecimiento en zonas remotas</option>
+          <option data-i18n="svc.4.title">Traslados programados</option>
+          <option data-i18n="svc.5.title">Transporte de equipos e insumos</option>
+          <option data-i18n="svc.6.title">Soporte operativo en terreno</option>
+          <option data-i18n="svc.7.title">Hidrogrúas y servicios especiales</option>
+          <option data-i18n="svc.general">Consulta general</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje" data-i18n="contact.form.label.mensaje">Descripción del requerimiento</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc." data-i18n-placeholder="ph.mensaje"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
+
+      <div style="display:flex; gap: 10px; margin-top: 12px;">
+        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener" class="btn" style="flex:1; background: #25D366; color:white; padding: 12px 18px; font-size:14px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius: var(--r-sm);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:contacto@ismaelsa.info?subject=Consulta%20-%20ISMAEL%20S.A." class="btn btn-outline" style="flex:1; padding: 12px 18px; font-size:14px;">
+          Enviar email
+        </a>
+      </div>
+
+      <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TRABAJÁ CON NOSOTROS ═══════════════════════ -->
+<div class="section-full careers-bg" id="trabajo" aria-labelledby="careers-title">
+  <div class="careers-inner">
+    <div>
+      <div class="section-tag" data-i18n="careers.tag">Trabajá con nosotros</div>
+      <h2 class="section-title" id="careers-title" data-i18n-html="careers.title" style="margin-bottom: 18px;">
+        Sumá tu experiencia<br>al equipo
+      </h2>
+      <p class="section-body" style="margin-bottom: 24px;" data-i18n="careers.body1">
+        Si tenés experiencia en operaciones logísticas, transporte, mantenimiento o servicios de apoyo a la minería, envianos tu información para futuras búsquedas.
+      </p>
+      <p style="font-size: 13px; color: var(--fg-subtle); line-height:1.6;" data-i18n-html="careers.body2">
+        Recibimos postulaciones para roles operativos, técnicos y administrativos. Personal con habilitaciones vigentes tiene prioridad.<br>
+        <strong style="color:var(--fg-mid);">Este canal es exclusivo para postulaciones laborales.</strong> Las consultas comerciales van a <a href="#contacto" style="color:var(--green);">Contacto</a>.
+      </p>
+    </div>
+
+    <form class="careers-form" id="careersForm" aria-label="Postulación laboral" onsubmit="return sendCareersForm(event)">
+      <h3 data-i18n="careers.form.title">Enviar postulación</h3>
+
+      <input type="hidden" name="access_key" value="1334b1a4-10a1-45e4-bee4-04ba742e6041">
+      <input type="hidden" name="subject" value="Postulación laboral — RRHH ISMAEL S.A.">
+      <input type="hidden" name="from_name" value="Postulación web — RRHH">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <label for="cv-nombre" data-i18n="careers.form.label.nombre">Nombre completo <span aria-hidden="true">*</span></label>
+        <input type="text" id="cv-nombre" name="nombre" placeholder="Nombre y apellido" data-i18n-placeholder="ph.cv.nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="cv-email" data-i18n="careers.form.label.email">Email <span aria-hidden="true">*</span></label>
+        <input type="email" id="cv-email" name="email" placeholder="correo@email.com" data-i18n-placeholder="ph.email.general" required>
+      </div>
+      <div class="form-group">
+        <label for="cv-area" data-i18n="careers.form.label.area">Área de interés</label>
+        <select id="cv-area" name="area">
+          <option value="" data-i18n="ph.select">Seleccione…</option>
+          <option data-i18n="area.1">Conducción de vehículos pesados</option>
+          <option data-i18n="area.2">Operación de hidrogrúa</option>
+          <option data-i18n="area.3">Mantenimiento y taller</option>
+          <option data-i18n="area.4">Logística y coordinación</option>
+          <option data-i18n="area.5">Seguridad e higiene</option>
+          <option data-i18n="area.6">Administración</option>
+          <option data-i18n="area.7">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cv-mensaje" data-i18n="careers.form.label.mensaje">Mensaje / experiencia</label>
+        <textarea id="cv-mensaje" name="mensaje" placeholder="Resumen de experiencia, certificaciones y disponibilidad." data-i18n-placeholder="ph.cv.mensaje" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
+      <p style="font-size:11px; color: var(--fg-subtle); margin-top:10px; text-align:center;" data-i18n-html="careers.adjuntos">
+        Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>
+      </p>
+      <div id="careersStatus" class="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+</main>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <div class="footer-inner" style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; align-items: start;">
+    <div>
+      <div class="footer-logo" style="margin-bottom: 14px;">
+        <img src="assets/logo.png" alt="ISMAEL S.A." class="footer-logo-img" onerror="this.parentNode.classList.add('logo-fallback');this.remove()">
+        <svg width="48" height="36" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="footer-logo-svg">
+          <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
+          <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
+          <polygon points="36,18 54,38 44,38" fill="#E1E6E0" opacity="0.55"/>
+        </svg>
+        <div class="footer-logo-text">
+          <span class="footer-logo-name">ISMAEL S.A.</span>
+          <span class="footer-logo-sub" data-i18n="footer.logo.sub">Servicios, Logística y Transporte Minero</span>
+        </div>
+      </div>
+      <p style="font-size:13px; color: rgba(255,255,255,0.55); line-height:1.6; max-width: 320px; margin-bottom: 16px;" data-i18n="footer.tagline">
+        Empresa sanjuanina con más de 20 años de experiencia en soluciones logísticas para la minería, petróleo, gas y grandes obras.
+      </p>
+      <div class="footer-copy" style="font-size:12px;" data-i18n-html="footer.copy">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
+    </div>
+
+    <div>
+      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.empresa">Empresa</div>
+      <nav class="footer-links" aria-label="Empresa" style="display:flex; flex-direction:column; gap:10px;">
+        <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
+        <a href="#servicios" data-i18n="nav.servicios">Servicios</a>
+        <a href="#flota" data-i18n="nav.flota">Flota</a>
+        <a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a>
+        <a href="#experiencia" data-i18n="nav.proyectos">Proyectos</a>
+        <a href="#trabajo" data-i18n="careers.tag">Trabajá con nosotros</a>
+      </nav>
+    </div>
+
+    <div>
+      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.bases">Bases operativas</div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <strong style="font-size:13px; color: rgba(255,255,255,0.85); display:block; margin-bottom:3px;">Rawson</strong>
+          <span style="font-size:12px; color: var(--fg-subtle); line-height:1.5;" data-i18n="footer.rawson.desc">Gran San Juan — centro logístico y administrativo</span>
+        </div>
+        <div>
+          <strong style="font-size:13px; color: rgba(255,255,255,0.85); display:block; margin-bottom:3px;">Calingasta</strong>
+          <span style="font-size:12px; color: var(--fg-subtle); line-height:1.5;" data-i18n="footer.calingasta.desc">Zona cordillerana — base de avanzada operativa</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.contacto">Contacto</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <a href="tel:+542644131515" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">+54 264 413-1515</a>
+        <a href="mailto:contacto@ismaelsa.info" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">contacto@ismaelsa.info</a>
+        <span style="font-size:13px; color: rgba(255,255,255,0.55);">ismaelsa.com</span>
+        <a href="https://wa.me/542644131515" target="_blank" rel="noopener" style="font-size:13px; color: #5FAE82; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── MOBILE MENU ── */
+  function toggleMobileMenu() {
+    const btn = document.getElementById('hamburgerBtn');
+    const panel = document.getElementById('mobileNav');
+    const isOpen = panel.classList.contains('is-open');
+    if (isOpen) {
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Abrir menú');
+      document.body.style.overflow = '';
+    } else {
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'Cerrar menú');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  /* ── SERVICE CARDS: Scroll-triggered image reveal (mobile only) ── */
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
+    document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+  }
+
+  // Cerrar mobile menu al hacer click en un link
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const panel = document.getElementById('mobileNav');
+      const btn = document.getElementById('hamburgerBtn');
+      if (panel.classList.contains('is-open')) {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Abrir menú');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Intersection observer for nav active state
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(14,22,18,0.97)'
+      : 'rgba(14,22,18,0.94)';
+  }, { passive: true });
+
+  /* ──────────────────────────────────────────
+     HERO SLIDER — empieza siempre en la imagen 1 (camión con logo)
+  ────────────────────────────────────────── */
+  (function heroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    if (slides.length < 2) return;
+    let cur = 0;
+    const ROTATE_MS = 6500;
+    let timer = null;
+    function go(i) {
+      slides[cur].classList.remove('is-active');
+      dots[cur]?.classList.remove('is-active');
+      cur = (i + slides.length) % slides.length;
+      slides[cur].classList.add('is-active');
+      dots[cur]?.classList.add('is-active');
+    }
+    function start() { timer = setInterval(() => go(cur + 1), ROTATE_MS); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    dots.forEach(d => d.addEventListener('click', () => {
+      go(parseInt(d.dataset.slide, 10));
+      stop(); start(); // reinicia el ciclo
+    }));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+  })();
+
+  /* ──────────────────────────────────────────
+     I18N — diccionario ES/EN para textos clave
+     Nombres propios (empresas, proyectos, lugares) NO se traducen
+  ────────────────────────────────────────── */
+  const I18N = {
+    es: {
+      'nav.nosotros': 'Nosotros',
+      'nav.servicios': 'Servicios',
+      'nav.flota': 'Flota',
+      'nav.seguridad': 'Seguridad',
+      'nav.bases': 'Bases',
+      'nav.proyectos': 'Proyectos',
+      'nav.contacto': 'Contacto',
+      'cta.contactar': 'Contactar',
+      'cta.solicitar': 'Solicitar propuesta',
+      'cta.ver_servicios': 'Ver servicios',
+      'cta.consultar': 'Consultar disponibilidad',
+      'cta.whatsapp': 'WhatsApp',
+      'cta.email': 'Enviar email',
+      'hero.tag': 'San Juan, Argentina — Cordillera de los Andes',
+      'hero.h1': 'SERVICIOS MINEROS<br><em>Y LOGÍSTICA OPERATIVA</em><br>EMPRESA SANJUANINA',
+      'hero.lead': 'Flota propia, dos bases en San Juan y más de 20 años operando en la Cordillera de los Andes.',
+      'hero.sub': 'Transporte, abastecimiento, hidrogrúas y soporte en terreno para la minería sanjuanina.',
+      'stats.years': 'Años de<br>trayectoria',
+      'stats.units': 'Unidades<br>propias',
+      'stats.bases': 'Bases operativas<br>en San Juan',
+      'stats.cert': 'Personal<br>certificado',
+      'stats.projects': 'Proyectos<br>asistidos',
+      'about.tag': 'Quiénes somos',
+      'about.title': 'Operador logístico sanjuanino para la minería',
+      'about.label': 'Cordillera de los Andes · San Juan',
+      'services.tag': 'Servicios',
+      'services.title': 'Lo que hacemos, lo hacemos bien',
+      'fleet.tag': 'Flota y capacidades',
+      'fleet.title': 'Equipamiento propio.<br>Sin intermediarios.',
+      'safety.tag': 'Higiene, seguridad y trazabilidad operativa',
+      'safety.title': 'Seguridad operativa<br>sin excepciones',
+      'safety.quote': '"La seguridad no es un requisito: es nuestro estándar operativo."',
+      'bases.tag': 'Infraestructura y cobertura',
+      'bases.title': 'Dos bases operativas en San Juan',
+      'experience.tag': 'Experiencia que nos respalda',
+      'experience.title': 'Más de 35 proyectos asistidos<br>en alta montaña',
+      'team.tag': 'Capital humano',
+      'team.title': 'Personas con<br>experiencia operativa real',
+      'team.quote': '"No solo cumplimos los estándares: los integramos a nuestra cultura operativa."',
+      'why.tag': 'Por qué elegirnos',
+      'why.title': 'Soporte logístico minero<br>con criterio operativo real',
+      'contact.tag': 'Contacto comercial',
+      'contact.title': 'Hablemos de<br>su próximo proyecto',
+      'careers.tag': 'Trabajá con nosotros',
+      'careers.title': 'Sumá tu experiencia<br>al equipo',
+      'flota.tech.title': 'Gestión de flota',
+      'flota.tech.li1': 'Monitoreo GPS satelital en cada unidad',
+      'flota.tech.li2': 'Mantenimiento preventivo programado',
+      'flota.tech.li3': 'Revisión pre-operacional diaria',
+      'flota.tech.li4': 'Documentación técnica al día',
+      'flota.tech.li5': 'Comunicación VHF/satelital en zonas sin cobertura',
+      'about.body1': 'ISMAEL S.A. es una empresa de San Juan especializada en logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras. Operamos con flota propia en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.',
+      'about.body2': 'Contamos con dos bases en Rawson y Calingasta que nos permiten movilizar equipos rápidamente a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.',
+      'about.hl1': '<strong>Acceso a frentes de perforación</strong> — operamos en terrenos cordilleranos inaccesibles para operadores sin base en la provincia',
+      'about.hl2': '<strong>Flota 100% propia</strong> — sin intermediarios, sin tercerización de equipamiento crítico',
+      'about.hl3': '<strong>Respuesta local</strong> — dos bases en San Juan para movilización rápida en cualquier punto de la cordillera',
+      'svc.1.title': 'Servicios y logística de exploración, explotación y perforación',
+      'svc.1.desc': 'Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.',
+      'svc.2.title': 'Transporte de agua',
+      'svc.2.desc': 'Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.',
+      'svc.3.title': 'Abastecimiento en zonas remotas',
+      'svc.3.desc': 'Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.',
+      'svc.4.title': 'Traslados programados',
+      'svc.4.desc': 'Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.',
+      'svc.5.title': 'Transporte de equipos e insumos',
+      'svc.5.desc': 'Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.',
+      'svc.6.title': 'Soporte operativo en terreno',
+      'svc.6.desc': 'Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.',
+      'svc.7.title': 'Hidrogrúas y servicios especiales',
+      'svc.7.desc': 'Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, riggers certificados y personal habilitado para tareas de alto riesgo.',
+      'fleet.body': 'Más de 20 unidades propias preparadas para operar en cordillera, rutas y zonas remotas. Garantizamos disponibilidad, mantenimiento preventivo programado y respuesta operativa local, sin depender de terceros para el equipamiento crítico.',
+      'fleet.caption.title': '+20 unidades en operación',
+      'fleet.caption.meta': 'Base operativa · San Juan',
+      'fleet.item1': 'Camiones aguateros',
+      'fleet.item2': 'Camiones con hidrogrúa',
+      'fleet.item3': 'Camiones chasis',
+      'fleet.item4': 'Tractores con semirremolque',
+      'fleet.item5': 'Vehículos 4×4 / 6×4',
+      'safety.body': 'Cada servicio se ejecuta bajo procedimientos de seguridad, seguimiento satelital y control preventivo de la flota, priorizando la protección del personal, la continuidad operativa y el cumplimiento en terreno. Compatibles con las exigencias HSEC de operadoras mineras internacionales.',
+      'safety.cert1': 'Personal certificado en manejo defensivo',
+      'safety.cert2': 'Operación certificada de vehículos pesados e hidrogrúa',
+      'safety.cert3': 'Revisiones pre-operacionales y mantenimiento preventivo',
+      'safety.cert4': 'Control de fatiga — monitoreo permanente en ruta',
+      'safety.cert5': 'Compatible con exigencias HSEC de clientes internacionales',
+      'safety.num1': 'Colaboradores certificados',
+      'safety.num2': 'Años sin incidentes graves',
+      'safety.num3': 'Flota con GPS y control de fatiga',
+      'bases.body': 'Dos bases operativas estratégicamente ubicadas en San Juan nos permiten responder con rapidez a los proyectos de toda la cordillera, reducir tiempos de movilización y mantener presencia operativa local.',
+      'bases.rawson.subtitle': 'Gran San Juan — Zona urbana e industrial',
+      'bases.rawson.desc': 'Centro logístico, administrativo y de mantenimiento en el Gran San Juan, con vinculación directa con proveedores, laboratorios y servicios urbanos. Base de coordinación para todas las campañas.',
+      'bases.rawson.tag1': 'Centro logístico',
+      'bases.rawson.tag2': 'Taller de mantenimiento',
+      'bases.rawson.tag3': 'Abastecimiento de flota',
+      'bases.rawson.tag4': 'Administración',
+      'bases.calingasta.subtitle': 'Zona cordillerana — Acceso a proyectos en altura',
+      'bases.calingasta.desc': 'Posición avanzada en la zona cordillerana, junto a los principales proyectos de exploración de la provincia. Reduce tiempos de movilización y facilita la respuesta operativa en terreno de altura.',
+      'bases.calingasta.tag1': 'Acceso cordillerano',
+      'bases.calingasta.tag2': 'Base de avanzada',
+      'bases.calingasta.tag3': 'Apoyo en campaña',
+      'bases.calingasta.tag4': 'Logística de montaña',
+      'bases.adv1.title': 'Menor tiempo de respuesta',
+      'bases.adv1.desc': 'Movilización local sin depender de tránsitos largos desde otras provincias.',
+      'bases.adv2.title': 'Conocimiento del terreno',
+      'bases.adv2.desc': 'Rutas, caminos secundarios, altura cordillerana y clima de montaña.',
+      'bases.adv3.title': 'Compromiso local',
+      'bases.adv3.desc': 'Generación de empleo y desarrollo en la provincia de San Juan.',
+      'experience.body': 'Trabajamos junto a operadoras internacionales y los proyectos mineros más relevantes de San Juan. Conocemos los frentes, las rutas y las exigencias de cada operación.',
+      'experience.context': 'Operamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.',
+      'exp.card1.tag': 'Cobre · Oro · Plata',
+      'exp.card1.desc': 'Logística de abastecimiento en una de las mayores reservas de cobre del país, en la Cordillera de los Andes, San Juan.',
+      'exp.card2.tag': 'Oro · Cobre · Plata',
+      'exp.card2.desc': 'Soporte operativo en yacimiento de exploración avanzada en la cordillera sanjuanina, sobre los 4.000 m s.n.m.',
+      'exp.card3.tag': 'Cobre',
+      'exp.card3.desc': 'Transporte y abastecimiento para uno de los proyectos cupríferos más relevantes de la región andina.',
+      'exp.card4.tag': 'Cobre · Oro',
+      'exp.card4.desc': 'Asistencia logística a campañas de exploración en zona cordillerana de San Juan durante múltiples temporadas.',
+      'exp.card5.tag': 'Zona operativa',
+      'exp.card5.title': 'Calingasta — Alta Cordillera',
+      'exp.card5.desc': 'Logística de exploración y abastecimiento en proyectos ubicados entre 3.500 y 4.500 m s.n.m., en los departamentos de Calingasta e Iglesia.',
+      'exp.card6.tag': 'Campaña de exploración',
+      'exp.card6.title': 'Exploración Regional',
+      'exp.card6.desc': 'Soporte continuo a campañas de exploración de operadoras internacionales durante múltiples temporadas en la provincia de San Juan.',
+      'team.body': 'Contamos con un equipo base de más de 20 colaboradores y dotación escalable según la demanda de cada campaña. Personal con amplia experiencia en operaciones críticas, entornos mineros de altura y respuesta en terreno bajo condiciones exigentes.',
+      'team.roles.title': 'Perfiles operativos',
+      'team.roles.sub': 'Dotación propia escalable según campaña. Sin dependencia de agencias ni subcontratistas.',
+      'team.role1': 'Conductores de vehículos pesados y 4x4 en alta montaña',
+      'team.role2': 'Operadores de hidrogrúa e izaje de cargas (Rigger)',
+      'team.role3': 'Técnicos de mantenimiento preventivo de flota',
+      'team.role4': 'Coordinadores de logística en campamento y terreno',
+      'team.role5': 'Personal administrativo y de planificación operativa',
+      'why.item1.title': 'Presencia local en San Juan',
+      'why.item1.desc': 'Bases en Rawson y Calingasta. Sin demoras de movilización interprovincial ni dependencia de operadores externos.',
+      'why.item2.title': 'Flota propia, sin intermediarios',
+      'why.item2.desc': 'Control directo sobre disponibilidad, mantenimiento y prioridad de asignación de cada unidad.',
+      'why.item3.title': 'Capacidad de respuesta rápida',
+      'why.item3.desc': 'Movilización en horas, dotación escalable según campaña, disponibilidad fuera de horario administrativo.',
+      'why.item4.title': 'Experiencia en alta cordillera',
+      'why.item4.desc': 'Más de 20 años operando en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.',
+      'why.closing': '"Queremos ser parte del crecimiento de cada proyecto, brindando soporte logístico con seguridad, trazabilidad y compromiso local."',
+      'contact.body': 'Contamos con disponibilidad para nuevos proyectos. Consulte sin compromiso sobre disponibilidad de flota, capacidad operativa, cobertura cordillerana y plazos de respuesta.',
+      'contact.label.tel': 'Teléfono',
+      'contact.label.email': 'Correo electrónico',
+      'contact.label.web': 'Sitio web',
+      'contact.form.title': 'Solicitar propuesta',
+      'contact.form.label.nombre': 'Nombre *',
+      'contact.form.label.empresa': 'Empresa *',
+      'contact.form.label.email': 'Correo electrónico *',
+      'contact.form.label.servicio': 'Tipo de servicio',
+      'contact.form.label.mensaje': 'Descripción del requerimiento',
+      'contact.form.submit': 'Solicitar propuesta',
+      'careers.body1': 'Si tenés experiencia en operaciones logísticas, transporte, mantenimiento o servicios de apoyo a la minería, envianos tu información para futuras búsquedas.',
+      'careers.body2': 'Recibimos postulaciones para roles operativos, técnicos y administrativos. Personal con habilitaciones vigentes tiene prioridad.<br><strong style="color:var(--fg-mid);">Este canal es exclusivo para postulaciones laborales.</strong> Las consultas comerciales van a <a href="#contacto" style="color:var(--green);">Contacto</a>.',
+      'careers.form.title': 'Enviar postulación',
+      'careers.form.label.nombre': 'Nombre completo *',
+      'careers.form.label.email': 'Email *',
+      'careers.form.label.area': 'Área de interés',
+      'careers.form.label.mensaje': 'Mensaje / experiencia',
+      'careers.form.submit': 'Enviar CV',
+      'careers.adjuntos': 'Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
+      'contact.form.sending': 'Enviando…',
+      'contact.form.success': '✓ Consulta enviada. Te responderemos a la brevedad.',
+      'contact.form.error': '✗ No se pudo enviar. Escribinos directo a contacto@ismaelsa.info',
+      'careers.form.sending': 'Enviando…',
+      'careers.form.success': '✓ Postulación enviada. Te contactaremos si tu perfil coincide con una búsqueda activa.',
+      'careers.form.error': '✗ No se pudo enviar. Escribinos directo a ismaelsarr.hh@gmail.com',
+      'footer.logo.sub': 'Servicios, Logística y Transporte Minero',
+      'footer.tagline': 'Empresa sanjuanina con más de 20 años de experiencia en soluciones logísticas para la minería, petróleo, gas y grandes obras.',
+      'footer.copy': '© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.',
+      'footer.col.empresa': 'Empresa',
+      'footer.col.bases': 'Bases operativas',
+      'footer.col.contacto': 'Contacto',
+      'footer.rawson.desc': 'Gran San Juan — centro logístico y administrativo',
+      'footer.calingasta.desc': 'Zona cordillerana — base de avanzada operativa',
+      'ph.select': 'Seleccione…',
+      'ph.nombre': 'Ej: Carlos Romero',
+      'ph.empresa': 'Ej: Glencore Pachón',
+      'ph.email.corp': 'correo@empresa.com',
+      'ph.email.general': 'correo@email.com',
+      'ph.cv.nombre': 'Nombre y apellido',
+      'ph.cv.mensaje': 'Resumen de experiencia, certificaciones y disponibilidad.',
+      'ph.mensaje': 'Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc.',
+      'svc.general': 'Consulta general',
+      'area.1': 'Conducción de vehículos pesados',
+      'area.2': 'Operación de hidrogrúa',
+      'area.3': 'Mantenimiento y taller',
+      'area.4': 'Logística y coordinación',
+      'area.5': 'Seguridad e higiene',
+      'area.6': 'Administración',
+      'area.7': 'Otro',
+    },
+    en: {
+      'nav.nosotros': 'About us',
+      'nav.servicios': 'Services',
+      'nav.flota': 'Fleet',
+      'nav.seguridad': 'Safety',
+      'nav.bases': 'Bases',
+      'nav.proyectos': 'Projects',
+      'nav.contacto': 'Contact',
+      'cta.contactar': 'Contact',
+      'cta.solicitar': 'Request proposal',
+      'cta.ver_servicios': 'View services',
+      'cta.consultar': 'Check availability',
+      'cta.whatsapp': 'WhatsApp',
+      'cta.email': 'Send email',
+      'hero.tag': 'San Juan, Argentina — Andes Mountain Range',
+      'hero.h1': 'MINING SERVICES<br><em>AND OPERATIONAL LOGISTICS</em><br>SAN JUAN-BASED COMPANY',
+      'hero.lead': 'Own fleet, two bases in San Juan and over 20 years operating in the Andes mountain range.',
+      'hero.sub': 'Transport, water supply, cranes and field support for San Juan\'s mining industry.',
+      'stats.years': 'Years of<br>experience',
+      'stats.units': 'Owned<br>units',
+      'stats.bases': 'Operating bases<br>in San Juan',
+      'stats.cert': 'Certified<br>personnel',
+      'stats.projects': 'Projects<br>supported',
+      'about.tag': 'About us',
+      'about.title': 'San Juan-based logistics operator for the mining industry',
+      'about.label': 'Andes Mountain Range · San Juan',
+      'services.tag': 'Services',
+      'services.title': 'What we do, we do well',
+      'fleet.tag': 'Fleet and capabilities',
+      'fleet.title': 'Owned equipment.<br>No middlemen.',
+      'safety.tag': 'Health, safety and operational traceability',
+      'safety.title': 'Operational safety<br>without exceptions',
+      'safety.quote': '"Safety is not a requirement: it is our operational standard."',
+      'bases.tag': 'Infrastructure and coverage',
+      'bases.title': 'Two operating bases in San Juan',
+      'experience.tag': 'Experience that backs us up',
+      'experience.title': 'Over 35 projects supported<br>in high-altitude operations',
+      'team.tag': 'Human capital',
+      'team.title': 'People with<br>real operational experience',
+      'team.quote': '"We don\'t just meet the standards: we integrate them into our operational culture."',
+      'why.tag': 'Why choose us',
+      'why.title': 'Mining logistics support<br>with real operational criteria',
+      'contact.tag': 'Commercial contact',
+      'contact.title': 'Let\'s talk about<br>your next project',
+      'careers.tag': 'Work with us',
+      'careers.title': 'Add your experience<br>to the team',
+      'flota.tech.title': 'Fleet management',
+      'flota.tech.li1': 'Satellite GPS monitoring on every unit',
+      'flota.tech.li2': 'Scheduled preventive maintenance',
+      'flota.tech.li3': 'Daily pre-operational inspection',
+      'flota.tech.li4': 'Technical documentation always up to date',
+      'flota.tech.li5': 'VHF/satellite comms in no-coverage areas',
+      'about.body1': 'ISMAEL S.A. is a San Juan-based company specializing in logistics, transport and operational support for the mining, oil, gas and major construction industries. We operate with our own fleet in the Andes, with over 20 years of presence in the province.',
+      'about.body2': 'We have two bases in Rawson and Calingasta that allow us to mobilize equipment quickly to any point in the mountain range, without relying on external operators or inter-provincial transit.',
+      'about.hl1': '<strong>Access to drilling fronts</strong> — we operate in Andean terrain inaccessible to operators without a base in the province',
+      'about.hl2': '<strong>100% owned fleet</strong> — no middlemen, no outsourcing of critical equipment',
+      'about.hl3': '<strong>Local response</strong> — two bases in San Juan for rapid mobilization to any point in the mountain range',
+      'svc.1.title': 'Services and logistics for exploration, exploitation and drilling',
+      'svc.1.desc': 'Resource coordination, transfers and comprehensive assistance for mining campaigns on Andean fronts under extreme conditions of altitude, cold and isolation.',
+      'svc.2.title': 'Water transport',
+      'svc.2.desc': 'Water supply for drillers, camps and road watering using our own tankers. Continuous supply at isolated mountain fronts.',
+      'svc.3.title': 'Supply in remote areas',
+      'svc.3.desc': 'Transport of materials, modules and supplies to difficult-to-access operation points. Last-mile logistics on mountain roads and non-conventional tracks.',
+      'svc.4.title': 'Scheduled transfers',
+      'svc.4.desc': 'Permanent connection between projects, laboratories, bases, suppliers and camps. Planned rotations and urgent movements with immediate response.',
+      'svc.5.title': 'Equipment and supply transport',
+      'svc.5.desc': "Solutions for critical materials, operational equipment and residential modules. Coordination adjusted to each project's operational windows.",
+      'svc.6.title': 'Field operational support',
+      'svc.6.desc': 'Personnel with experience at exploration and drilling fronts. Resource planning, field coordination and continuous presence throughout the campaign.',
+      'svc.7.title': 'Cranes and special services',
+      'svc.7.desc': 'Lifting, load movement and operational assistance requiring specific equipment, certified riggers and qualified personnel for high-risk tasks.',
+      'fleet.body': 'Over 20 owned units ready to operate in the mountains, roads and remote areas. We guarantee availability, scheduled preventive maintenance and local operational response, without relying on third parties for critical equipment.',
+      'fleet.caption.title': '+20 units in operation',
+      'fleet.caption.meta': 'Operating base · San Juan',
+      'fleet.item1': 'Water tanker trucks',
+      'fleet.item2': 'Trucks with crane',
+      'fleet.item3': 'Chassis trucks',
+      'fleet.item4': 'Semi-trailer tractors',
+      'fleet.item5': '4×4 / 6×4 vehicles',
+      'safety.body': 'Every service is executed under safety procedures, satellite tracking and fleet preventive control, prioritizing personnel protection, operational continuity and on-site compliance. Compatible with the HSEC requirements of international mining operators.',
+      'safety.cert1': 'Personnel certified in defensive driving',
+      'safety.cert2': 'Certified operation of heavy vehicles and crane',
+      'safety.cert3': 'Pre-operational inspections and preventive maintenance',
+      'safety.cert4': 'Fatigue control — permanent route monitoring',
+      'safety.cert5': 'Compatible with HSEC requirements of international clients',
+      'safety.num1': 'Certified staff',
+      'safety.num2': 'Years without major incidents',
+      'safety.num3': 'Fleet with GPS and fatigue control',
+      'bases.body': 'Two strategically located operating bases in San Juan allow us to respond quickly to projects across the mountain range, reduce mobilization times and maintain local operational presence.',
+      'bases.rawson.subtitle': 'Greater San Juan — Urban and industrial area',
+      'bases.rawson.desc': 'Logistics, administrative and maintenance hub in Greater San Juan, with direct links to suppliers, laboratories and urban services. Coordination base for all campaigns.',
+      'bases.rawson.tag1': 'Logistics center',
+      'bases.rawson.tag2': 'Maintenance workshop',
+      'bases.rawson.tag3': 'Fleet supply',
+      'bases.rawson.tag4': 'Administration',
+      'bases.calingasta.subtitle': 'Mountain zone — Access to high-altitude projects',
+      'bases.calingasta.desc': "Forward position in the mountain zone, adjacent to the province's main exploration projects. Reduces mobilization times and facilitates operational response at high-altitude terrain.",
+      'bases.calingasta.tag1': 'Mountain access',
+      'bases.calingasta.tag2': 'Forward base',
+      'bases.calingasta.tag3': 'Campaign support',
+      'bases.calingasta.tag4': 'Mountain logistics',
+      'bases.adv1.title': 'Faster response time',
+      'bases.adv1.desc': 'Local mobilization without relying on long transits from other provinces.',
+      'bases.adv2.title': 'Terrain knowledge',
+      'bases.adv2.desc': 'Roads, secondary tracks, Andean altitude and mountain climate.',
+      'bases.adv3.title': 'Local commitment',
+      'bases.adv3.desc': 'Job creation and development in the province of San Juan.',
+      'experience.body': 'We work alongside international operators and the most relevant mining projects in San Juan. We know the fronts, the roads and the demands of each operation.',
+      'experience.context': 'We operate in the departments of Calingasta, Iglesia, Jáchal and Ullum, supporting exploration, drilling and mining development campaigns alongside international and national operators with an active presence in San Juan.',
+      'exp.card1.tag': 'Copper · Gold · Silver',
+      'exp.card1.desc': "Supply logistics at one of the country's largest copper reserves, in the Andes mountain range, San Juan.",
+      'exp.card2.tag': 'Gold · Copper · Silver',
+      'exp.card2.desc': 'Operational support at an advanced exploration deposit in the San Juan mountains, above 4,000 m a.s.l.',
+      'exp.card3.tag': 'Copper',
+      'exp.card3.desc': 'Transport and supply for one of the most significant copper projects in the Andean region.',
+      'exp.card4.tag': 'Copper · Gold',
+      'exp.card4.desc': 'Logistics assistance for exploration campaigns in the San Juan mountain zone over multiple seasons.',
+      'exp.card5.tag': 'Operating zone',
+      'exp.card5.title': 'Calingasta — High Andes',
+      'exp.card5.desc': 'Exploration logistics and supply for projects located between 3,500 and 4,500 m a.s.l., in the departments of Calingasta and Iglesia.',
+      'exp.card6.tag': 'Exploration campaign',
+      'exp.card6.title': 'Regional Exploration',
+      'exp.card6.desc': 'Continuous support to exploration campaigns by international operators over multiple seasons in the province of San Juan.',
+      'team.body': 'We have a core team of over 20 staff and scalable headcount according to the demand of each campaign. Personnel with extensive experience in critical operations, high-altitude mining environments and field response under demanding conditions.',
+      'team.roles.title': 'Operational profiles',
+      'team.roles.sub': 'Own scalable workforce by campaign. No dependency on agencies or subcontractors.',
+      'team.role1': 'Heavy vehicle and 4×4 drivers in high-altitude terrain',
+      'team.role2': 'Crane operators and load lifting (Rigger)',
+      'team.role3': 'Preventive fleet maintenance technicians',
+      'team.role4': 'Logistics coordinators in camp and field',
+      'team.role5': 'Administrative and operational planning staff',
+      'why.item1.title': 'Local presence in San Juan',
+      'why.item1.desc': 'Bases in Rawson and Calingasta. No inter-provincial mobilization delays or dependence on external operators.',
+      'why.item2.title': 'Own fleet, no middlemen',
+      'why.item2.desc': 'Direct control over availability, maintenance and priority allocation of each unit.',
+      'why.item3.title': 'Rapid response capacity',
+      'why.item3.desc': 'Mobilization within hours, scalable workforce by campaign, availability outside office hours.',
+      'why.item4.title': 'High Andes experience',
+      'why.item4.desc': 'Over 20 years operating on mountain roads, drilling fronts and exploration projects in San Juan.',
+      'why.closing': '"We want to be part of the growth of every project, providing logistics support with safety, traceability and local commitment."',
+      'contact.body': 'We have availability for new projects. Inquire without obligation about fleet availability, operational capacity, Andean coverage and response times.',
+      'contact.label.tel': 'Phone',
+      'contact.label.email': 'Email address',
+      'contact.label.web': 'Website',
+      'contact.form.title': 'Request a proposal',
+      'contact.form.label.nombre': 'Name *',
+      'contact.form.label.empresa': 'Company *',
+      'contact.form.label.email': 'Email address *',
+      'contact.form.label.servicio': 'Service type',
+      'contact.form.label.mensaje': 'Requirement description',
+      'contact.form.submit': 'Request proposal',
+      'careers.body1': 'If you have experience in logistics operations, transport, maintenance or mining support services, send us your information for future openings.',
+      'careers.body2': 'We accept applications for operational, technical and administrative roles. Personnel with current certifications take priority.<br><strong style="color:var(--fg-mid);">This channel is exclusively for job applications.</strong> Commercial inquiries go to <a href="#contacto" style="color:var(--green);">Contact</a>.',
+      'careers.form.title': 'Submit application',
+      'careers.form.label.nombre': 'Full name *',
+      'careers.form.label.email': 'Email *',
+      'careers.form.label.area': 'Area of interest',
+      'careers.form.label.mensaje': 'Message / experience',
+      'careers.form.submit': 'Submit CV',
+      'careers.adjuntos': 'To attach your CV write to <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
+      'contact.form.sending': 'Sending…',
+      'contact.form.success': '✓ Inquiry sent. We\'ll get back to you shortly.',
+      'contact.form.error': '✗ Could not send. Contact us directly at contacto@ismaelsa.info',
+      'careers.form.sending': 'Sending…',
+      'careers.form.success': '✓ Application sent. We\'ll contact you if your profile matches an active opening.',
+      'careers.form.error': '✗ Could not send. Write directly to ismaelsarr.hh@gmail.com',
+      'footer.logo.sub': 'Mining Services, Logistics and Transport',
+      'footer.tagline': 'San Juan-based company with over 20 years of experience in logistics solutions for mining, oil, gas and major construction.',
+      'footer.copy': '© 2025 ISMAEL S.A. — San Juan, Argentina.<br>All rights reserved.',
+      'footer.col.empresa': 'Company',
+      'footer.col.bases': 'Operating bases',
+      'footer.col.contacto': 'Contact',
+      'footer.rawson.desc': 'Greater San Juan — logistics and administrative hub',
+      'footer.calingasta.desc': 'Mountain zone — operational forward base',
+      'ph.select': 'Select…',
+      'ph.nombre': 'E.g.: John Smith',
+      'ph.empresa': 'E.g.: Mining Corp.',
+      'ph.email.corp': 'email@company.com',
+      'ph.email.general': 'email@example.com',
+      'ph.cv.nombre': 'First and last name',
+      'ph.cv.mensaje': 'Experience summary, certifications and availability.',
+      'ph.mensaje': 'Operating zone, estimated dates, volume, equipment required, etc.',
+      'svc.general': 'General inquiry',
+      'area.1': 'Heavy vehicle driving',
+      'area.2': 'Crane operation',
+      'area.3': 'Maintenance and workshop',
+      'area.4': 'Logistics and coordination',
+      'area.5': 'Safety and hygiene',
+      'area.6': 'Administration',
+      'area.7': 'Other',
+    }
+  };
+
+  function applyI18n(lang) {
+    const dict = I18N[lang] || I18N.es;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (dict[k] !== undefined) el.textContent = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.dataset.i18nHtml;
+      if (dict[k] !== undefined) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const k = el.dataset.i18nPlaceholder;
+      if (dict[k] !== undefined) el.placeholder = dict[k];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('is-active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('isa_lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => applyI18n(b.dataset.lang));
+  });
+
+  // Default: ES si no hay preferencia guardada
+  let savedLang = 'es';
+  try { savedLang = localStorage.getItem('isa_lang') || 'es'; } catch (e) {}
+  applyI18n(savedLang);
+
+  /* ─────────────────────────────────────────────────────────────
+     Contact form — Web3Forms integration
+     Setup:
+       1. Ir a https://web3forms.com → "Create Access Key"
+       2. Poner correo: contacto@ismaelsa.info
+       3. Recibir el access key por mail (es un UUID tipo: abc12345-...)
+       4. Reemplazar 'PEGAR_ACCESS_KEY_AQUI' en el hidden input del form
+          por el key real (línea con name="access_key")
+       5. Hecho — las consultas llegan al inbox configurado
+     Fallback si no hay key configurada: mailto: client del usuario
+  ───────────────────────────────────────────────────────────── */
+  async function sendContactForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    const keyField = form.access_key.value;
+
+    status.className = 'form-status'; status.textContent = '';
+
+    // Fallback: si nadie configuró el key todavía, abrir mail del usuario
+    if (!keyField || keyField === 'PEGAR_ACCESS_KEY_AQUI') {
+      const subject = `Consulta web — ${form.servicio.value || 'Consulta general'}`;
+      const body =
+`Nueva consulta desde el sitio web de ISMAEL S.A.
+
+— Nombre y empresa: ${form.nombre.value}
+— Correo de contacto: ${form.email.value}
+— Tipo de servicio: ${form.servicio.value || 'Consulta general'}
+
+Mensaje:
+${form.mensaje.value || '(sin mensaje)'}
+
+— Enviado desde ismaelsa.com`;
+      window.location.href = `mailto:contacto@ismaelsa.info?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return false;
+    }
+
+    // POST a Web3Forms
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    const _d = I18N[document.documentElement.lang] || I18N.es;
+    btn.textContent = _d['contact.form.sending'] || 'Enviando…';
+
+    try {
+      const formData = new FormData(form);
+      const json = Object.fromEntries(formData);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(json),
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.className = 'form-status success';
+        status.textContent = _d['contact.form.success'] || '✓ Consulta enviada. Te responderemos a la brevedad.';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Error de servidor');
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = _d['contact.form.error'] || '✗ No se pudo enviar. Escribinos directo a contacto@ismaelsa.info';
+      console.error('Web3Forms error:', err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+    return false;
+  }
+
+  /* Careers form — Web3Forms */
+  async function sendCareersForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('careersBtn');
+    const status = document.getElementById('careersStatus');
+    status.className = 'form-status'; status.textContent = '';
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    const _d = I18N[document.documentElement.lang] || I18N.es;
+    btn.textContent = _d['careers.form.sending'] || 'Enviando…';
+    try {
+      const formData = new FormData(form);
+      const json = Object.fromEntries(formData);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(json),
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.className = 'form-status success';
+        status.textContent = _d['careers.form.success'] || '✓ Postulación enviada. Te contactaremos si tu perfil coincide con una búsqueda activa.';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Error de servidor');
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = _d['careers.form.error'] || '✗ No se pudo enviar. Escribinos directo a ismaelsarr.hh@gmail.com';
+      console.error('Web3Forms careers error:', err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+    return false;
+  }
+</script>
+</body>
+</html>
