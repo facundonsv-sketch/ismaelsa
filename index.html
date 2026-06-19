@@ -1526,10 +1526,11 @@
       .fleet-carousel-stage { height: 760px; }
       .fleet-carousel-card { width: 1120px; height: 700px; }
     }
-    /* Pantallas de POCA ALTURA (notebooks tipo 1366×768): el carrusel base (560px)
-       no deja ver la imagen completa y las specs a la vez. Se achica y se compacta
-       el espaciado vertical para que entren juntas. Va al final para ganar en el cascade. */
-    @media (max-height: 800px) {
+    /* Pantallas de NOTEBOOK (anchas pero de poca altura, tipo 1366×768): el carrusel
+       base (560px) no deja ver la imagen completa y las specs a la vez. Se achica y se
+       compacta el espaciado para que entren juntas. El min-width:1025 evita que estas
+       reglas toquen tablets/celulares (que ya tienen sus propias reglas por ancho). */
+    @media (min-width: 1025px) and (max-height: 800px) {
       .fleet-carousel { margin-top: 32px; padding: 40px 0 48px; }
       .fleet-carousel-heading { margin-bottom: 18px; }
       .fleet-carousel-stage { height: 360px; margin-bottom: 8px; }
@@ -1539,7 +1540,7 @@
       .fleet-carousel-specs { gap: 8px; margin-bottom: 12px; }
       .fleet-carousel-controls { margin-top: 6px; }
     }
-    @media (max-height: 640px) {
+    @media (min-width: 1025px) and (max-height: 640px) {
       .fleet-carousel-stage { height: 300px; }
       .fleet-carousel-card { width: 448px; height: 280px; }
     }
