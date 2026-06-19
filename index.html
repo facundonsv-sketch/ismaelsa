@@ -3121,7 +3121,8 @@
     nameEl.textContent = dict[nameKey] || vehicle.name;
     metaEl.textContent = dict[metaKey] || vehicle.meta;
     typeEl.textContent = dict[typeKey] || vehicle.type;
-    specsEl.innerHTML = vehicle.specs.map(s => `<span class="fleet-carousel-spec">${s}</span>`).join('');
+    const specList = (lang === 'en' && vehicle.specsEn) ? vehicle.specsEn : vehicle.specs;
+    specsEl.innerHTML = specList.map(s => `<span class="fleet-carousel-spec">${s}</span>`).join('');
   }
 
   /* ──────────────────────────────────────────
@@ -3145,61 +3146,71 @@
         name: 'Mercedes-Benz Atego 3132',
         meta: 'Año 2026',
         type: 'Aguatero',
-        specs: ['320 CV', '1300 Nm', '6.374 cm³', 'PBV 32.000 kg', 'Tanque 300L']
+        specs: ['320 CV', '1300 Nm', '6.374 cm³', 'PBV 32.000 kg', 'Tanque 300L'],
+        specsEn: ['320 HP', '1300 Nm', '6,374 cc', 'GVW 32,000 kg', '300L Tank']
       },
       {
         name: 'Toyota Hilux 2.8 TDI',
         meta: 'Año 2023',
         type: 'Vehículo 4×4',
-        specs: ['204 CV', '500 Nm', '4×4 c/reductora', 'Remolque 3.500 kg']
+        specs: ['204 CV', '500 Nm', '4×4 c/reductora', 'Remolque 3.500 kg'],
+        specsEn: ['204 HP', '500 Nm', '4×4 w/ low range', 'Towing 3,500 kg']
       },
       {
         name: 'IVECO Trakker 440',
         meta: 'Año 2024',
         type: 'Tractor con Semirremolque',
-        specs: ['440 CV', '1900 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4 / 8×4']
+        specs: ['440 CV', '1900 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4 / 8×4'],
+        specsEn: ['440 HP', '1900 Nm', 'Cursor 13', 'GCW 46,000 kg', '6×4 / 8×4']
       },
       {
         name: 'IVECO Tector 260E30',
         meta: 'Año 2024',
         type: 'Camión Chasis',
-        specs: ['300 CV', '1100 Nm', '6×4', 'Carga útil 15.350 kg', 'PBT 26.600 kg']
+        specs: ['300 CV', '1100 Nm', '6×4', 'Carga útil 15.350 kg', 'PBT 26.600 kg'],
+        specsEn: ['300 HP', '1100 Nm', '6×4', 'Payload 15,350 kg', 'GCW 26,600 kg']
       },
       {
         name: 'IVECO Tector 27320 + Palfinger',
         meta: 'Año 2025',
         type: 'Hidrogrúa',
-        specs: ['280 CV', '1000 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m']
+        specs: ['280 CV', '1000 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m'],
+        specsEn: ['280 HP', '1000 Nm', '6×4', 'PK 36080 Crane', '27m Reach']
       },
       {
         name: 'IVECO Trakker 480',
         meta: 'Año 2025',
         type: 'Tractor con Semirremolque',
-        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4']
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4'],
+        specsEn: ['480 HP', '2100 Nm', 'Cursor 13', 'GCW 46,000 kg', '6×4']
       },
       {
         name: 'Mercedes-Benz Axor 3344 + Palfinger',
         meta: 'Año 2025',
         type: 'Hidrogrúa',
-        specs: ['428 CV', '1900 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m']
+        specs: ['428 CV', '1900 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m'],
+        specsEn: ['428 HP', '1900 Nm', '6×4', 'PK 36080 Crane', '27m Reach']
       },
       {
         name: 'Mercedes-Benz Actros + OMBU',
         meta: 'Año 2026',
         type: 'Tractor con Semirremolque',
-        specs: ['428 CV', '1900 Nm', '6×4', 'Semirremolque 14.5m', 'PBT 46.000 kg']
+        specs: ['428 CV', '1900 Nm', '6×4', 'Semirremolque 14.5m', 'PBT 46.000 kg'],
+        specsEn: ['428 HP', '1900 Nm', '6×4', '14.5m Semitrailer', 'GCW 46,000 kg']
       },
       {
         name: 'IVECO Stralis 480 + Niño Jesús de Praga',
         meta: 'Año 2026',
         type: 'Tractor con Semirremolque',
-        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 13m', 'PBT 46.000 kg']
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 13m', 'PBT 46.000 kg'],
+        specsEn: ['480 HP', '2100 Nm', 'Cursor 13', '13m Semitrailer', 'GCW 46,000 kg']
       },
       {
         name: 'IVECO Stralis 480 + OMBU',
         meta: 'Año 2026',
         type: 'Tractor con Semirremolque',
-        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 14.5m', 'PBT 46.000 kg']
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 14.5m', 'PBT 46.000 kg'],
+        specsEn: ['480 HP', '2100 Nm', 'Cursor 13', '14.5m Semitrailer', 'GCW 46,000 kg']
       }
     ];
 
