@@ -240,19 +240,6 @@
       display: flex; flex-direction: column; gap: 10px;
       margin-top: 8px;
     }
-    /* Selector de idioma dentro del menú móvil (el del nav superior se oculta en mobile,
-       así que acá va su reemplazo accesible). Se fuerza display para ganarle a .lang-toggle{display:none}. */
-    .nav-mobile .mobile-lang {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; margin-bottom: 16px;
-      padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav-mobile .mobile-lang-label {
-      font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
-      color: rgba(255,255,255,0.5);
-    }
-    .nav-mobile .lang-toggle { display: inline-flex; padding: 8px 14px; }
-    .nav-mobile .lang-btn { font-size: 14px; padding: 4px 10px; }
 
     /* ── HERO — full-bleed con slider de imágenes ── */
     .hero {
@@ -1311,7 +1298,10 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .nav-right .btn { display: none; }
-      .lang-toggle { display: none; }
+      /* Selector de idioma visible en el header, junto al menú ☰ (acceso rápido,
+         sin tener que abrir el menú). Se compacta para que entre en pantallas chicas. */
+      .lang-toggle { padding: 4px 9px; }
+      .lang-btn { font-size: 11px; padding: 2px 5px; letter-spacing: 0.5px; }
       .stats-inner { justify-content: center; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
       .stat-item:last-child { border-bottom: none; }
@@ -1614,14 +1604,6 @@
     <li><a href="#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
   </ul>
   <div class="mobile-actions">
-    <div class="mobile-lang">
-      <span class="mobile-lang-label">Idioma / Language</span>
-      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
-        <button type="button" class="lang-btn is-active" data-lang="es">ES</button>
-        <span class="lang-sep" aria-hidden="true">/</span>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </div>
-    </div>
     <a href="#contacto" class="btn btn-green mobile-nav-link" style="text-align:center; padding:14px 24px; font-size:15px;" data-i18n="cta.solicitar">Solicitar propuesta</a>
   </div>
 </nav>
