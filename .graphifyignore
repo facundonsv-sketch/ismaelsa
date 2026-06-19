@@ -7,6 +7,9 @@
 *.svg
 *.ico
 
+# Video seguridad folder
+video seguridad/
+
 # Documentos
 *.pdf
 *.doc

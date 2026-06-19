@@ -1,0 +1,14 @@
+# Knowledge graph local (no hace falta en producción)
+graphify-out/
+
+# Config local de Claude Code / editor (rutas de TU máquina)
+.claude/settings.local.json
+.claude/launch.json
+
+# Notas internas de trabajo
+instrucciones/
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store

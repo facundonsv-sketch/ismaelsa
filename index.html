@@ -1,8 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Security headers (meta level). Los headers que el navegador SOLO acepta vía HTTP
+       (X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, Permissions-Policy
+       y frame-ancestors) se configuran en _headers / vercel.json del hosting. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>ISMAEL S.A. — Logística Minera e Industrial en San Juan</title>
   <meta name="description" content="ISMAEL S.A. — Empresa sanjuanina de logística, transporte y soporte operativo para la minería. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.">
   <meta property="og:title" content="ISMAEL S.A. — Logística y Transporte Minero en San Juan">
@@ -63,7 +68,15 @@
       --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
       --shadow: 0 4px 24px rgba(0,0,0,0.08);
       --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+      /* ── Layout system: one source of truth for container width, gutter & rhythm ── */
+      --max-w: 1440px;                       /* main centered content container */
+      --gutter: clamp(24px, 5vw, 72px);      /* fluid horizontal padding */
+      --section-pad-y: clamp(64px, 8vw, 120px); /* fluid vertical section rhythm */
     }
+    /* Big desktop monitors: let the container breathe so content isn't a thin
+       strip lost in the center with dead space on the sides. */
+    @media (min-width: 1920px) { :root { --max-w: 1600px; } }
+    @media (min-width: 2400px) { :root { --max-w: 1760px; } }
 
     html { scroll-behavior: smooth; }
     body {
@@ -79,7 +92,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 72px;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(24px, 5vw, 72px);
+      padding: 0 var(--gutter);
       background: rgba(14,22,18,0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-dark);
@@ -235,7 +248,7 @@
       background-color: var(--bg-dark);
       display: flex; flex-direction: column;
       justify-content: center;
-      padding: 112px clamp(24px,5vw,72px) 64px;
+      padding: 112px var(--gutter) 64px;
       overflow: hidden;
     }
     /* Slider de fondo — capas absolutas que cruzan fade */
@@ -285,7 +298,7 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      max-width: 1200px;
+      max-width: var(--max-w);
       width: 100%;
       margin: 0 auto;
     }
@@ -365,11 +378,11 @@
       background: var(--bg-dark-2);
       border-top: 1px solid rgba(255,255,255,0.04);
       border-bottom: 1px solid rgba(255,255,255,0.04);
-      padding: 0 clamp(24px,5vw,72px);
+      padding: 0 var(--gutter);
     }
     .stats-inner {
       display: flex; justify-content: space-between; flex-wrap: wrap;
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
     }
     .stat-item {
       flex: 1; min-width: 140px;
@@ -395,11 +408,11 @@
 
     /* ── SECTION BASE ── */
     .section {
-      padding: 96px clamp(24px,5vw,72px);
-      max-width: 1200px; margin: 0 auto;
+      padding: var(--section-pad-y) var(--gutter);
+      max-width: var(--max-w); margin: 0 auto;
     }
     .section-full {
-      padding: 96px clamp(24px,5vw,72px);
+      padding: var(--section-pad-y) var(--gutter);
     }
     .section-tag {
       font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
@@ -504,12 +517,12 @@
     /* ── SERVICIOS ── */
     .services-bg { background: var(--surface-alt); }
     .services-header {
-      max-width: 1200px; margin: 0 auto 56px;
+      max-width: var(--max-w); margin: 0 auto 56px;
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 24px;
     }
     .services-grid {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
@@ -639,7 +652,14 @@
       margin-top: 0;
     }
     .fleet-intro { }
-    .fleet-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+    /* Fila horizontal de tipos de vehículo (full-width bajo la grilla).
+       auto-fit: 5 en una fila en desktop, envuelve solo en pantallas chicas. */
+    .fleet-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 56px;
+    }
     .fleet-item {
       display: flex; align-items: center; gap: 14px;
       padding: 14px 18px;
@@ -708,7 +728,7 @@
       pointer-events: none;
     }
     .safety-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       gap: 64px; align-items: start;
@@ -796,7 +816,7 @@
     /* ── CAPITAL HUMANO ── */
     .team-bg { background: var(--card); }
     .team-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px; align-items: start;
@@ -832,7 +852,7 @@
     /* ── POR QUÉ ELEGIRNOS ── */
     .why-bg { background: var(--surface-alt); }
     .why-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
     }
     .why-grid {
       display: grid;
@@ -902,7 +922,7 @@
     /* ── EXPERIENCIA / CLIENTES ── */
     .experience-bg { background: var(--card); }
     .experience-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
     }
     .featured-projects {
       display: grid;
@@ -1010,7 +1030,7 @@
 
     /* ── CLIENTES (legacy, kept compact) ── */
     .clients-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
     }
     .clients-grid {
       display: grid;
@@ -1046,7 +1066,7 @@
     /* ── COBERTURA ── */
     .coverage-bg { background: var(--surface-alt); }
     .coverage-grid {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px; margin-top: 0;
@@ -1127,7 +1147,7 @@
       pointer-events: none;
     }
     .contact-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 72px; align-items: start;
@@ -1195,6 +1215,21 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select { cursor: pointer; }
+    /* Custom file upload (native input is hidden; label is translatable) */
+    .file-upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .file-upload input[type="file"] { display: none; }
+    .file-upload-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 14px; font-weight: 500;
+      color: var(--fg-mid); cursor: pointer;
+      background: var(--surface-alt);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      padding: 10px 16px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .file-upload-btn:hover { border-color: var(--green); background: var(--card); }
+    .file-upload-name { font-size: 13px; color: var(--fg-subtle); word-break: break-all; }
+    .file-upload-name.is-error { color: #e05656; }
     .form-submit { width: 100%; }
     .form-submit:disabled { opacity: 0.6; cursor: wait; }
     .form-status {
@@ -1221,10 +1256,10 @@
     footer {
       background: var(--bg-dark);
       border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 40px clamp(24px,5vw,72px);
+      padding: 40px var(--gutter);
     }
     .footer-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 20px;
     }
@@ -1269,12 +1304,227 @@
       .stat-item:last-child { border-bottom: none; }
       .footer-inner { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
     }
+    /* Notebook chica / tablet landscape (901–1024px): grillas de 2 columnas aún
+       activas pero con menos gap, para que no queden apretadas antes de apilar. */
+    @media (min-width: 901px) and (max-width: 1024px) {
+      .about-grid, .safety-inner, .careers-inner,
+      .contact-inner, .coverage-grid, .team-inner { gap: clamp(40px, 5vw, 56px); }
+    }
     @media (max-width: 600px) {
       .hero h1 { letter-spacing: -0.5px; }
       .services-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr !important; }
       .clients-grid { grid-template-columns: 1fr 1fr; }
       .hero-brandmark { margin-top: 20px; height: clamp(100px, 16vw, 160px); }
+    }
+    /* Celular chico (≤480px): apretar tipografía y simplificar grillas restantes. */
+    @media (max-width: 480px) {
+      .hero h1 { letter-spacing: 0; }
+      .clients-grid { grid-template-columns: 1fr; }
+      .stat-item { padding: 28px 16px; min-width: 120px; }
+      .hero-trust { gap: 18px; }
+    }
+
+    /* ═══════════════════════ CARRUSEL 3D DE FLOTA ═══════════════════════ */
+    .fleet-carousel {
+      margin-top: 64px;
+      padding: 80px 0 100px;
+      background: transparent;
+      border-radius: var(--r-lg);
+      position: relative;
+      /* Clip the 3D side cards so their peek never forces page-wide overflow */
+      overflow: hidden;
+    }
+    .fleet-carousel-heading {
+      text-align: center;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: -0.2px;
+      margin-bottom: 36px;
+    }
+    .fleet-carousel-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 560px;
+      position: relative;
+      perspective: 1600px;
+      margin-bottom: 24px;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .fleet-carousel-card {
+      position: absolute;
+      width: 800px;
+      height: 500px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease;
+      transform-style: preserve-3d;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+    .fleet-carousel-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .fleet-carousel-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,22,18,0.0) 0%, rgba(14,22,18,0.85) 100%);
+      pointer-events: none;
+    }
+    /* Posiciones */
+    .fleet-carousel-card.pos-center {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      z-index: 10;
+    }
+    .fleet-carousel-card.pos-left {
+      transform: translateX(-35%) scale(0.82) rotateY(10deg);
+      opacity: 0.6;
+      z-index: 5;
+    }
+    .fleet-carousel-card.pos-right {
+      transform: translateX(35%) scale(0.82) rotateY(-10deg);
+      opacity: 0.6;
+      z-index: 5;
+    }
+    .fleet-carousel-card.pos-far-left {
+      transform: translateX(-60%) scale(0.68) rotateY(18deg);
+      opacity: 0.3;
+      z-index: 3;
+    }
+    .fleet-carousel-card.pos-far-right {
+      transform: translateX(60%) scale(0.68) rotateY(-18deg);
+      opacity: 0.3;
+      z-index: 3;
+    }
+    /* Ocultar tarjetas que no están en las 5 posiciones visibles */
+    .fleet-carousel-card:not(.pos-center):not(.pos-left):not(.pos-right):not(.pos-far-left):not(.pos-far-right) {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .fleet-carousel-info {
+      text-align: center;
+      padding: 0 24px;
+      margin-top: -12px;
+    }
+    .fleet-carousel-name {
+      font-size: clamp(21px, 3vw, 30px);
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+      margin-bottom: 2px;
+    }
+    .fleet-carousel-meta {
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .fleet-carousel-type {
+      font-size: clamp(14px, 2.2vw, 17px);
+      font-weight: 500;
+      color: var(--fg-mid);
+      margin-bottom: 16px;
+    }
+    .fleet-carousel-specs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .fleet-carousel-spec {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+      background: var(--green-soft);
+      border: 1px solid rgba(45, 122, 80, 0.45);
+      padding: 5px 12px;
+      border-radius: var(--r-sm);
+      letter-spacing: 0.3px;
+    }
+    .fleet-carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .fleet-carousel-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .fleet-carousel-btn:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--green);
+    }
+    .fleet-carousel-btn svg {
+      width: 20px; height: 20px;
+    }
+    .fleet-carousel-dots {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .fleet-carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .fleet-carousel-dot.is-active {
+      background: var(--green);
+      width: 28px;
+      border-radius: 5px;
+    }
+    .fleet-carousel-dot:hover {
+      background: rgba(255,255,255,0.5);
+    }
+    @media (max-width: 900px) {
+      .fleet-carousel-stage { height: 420px; }
+      .fleet-carousel-card { width: min(520px, 72vw); height: 320px; }
+      .fleet-carousel-card.pos-left { transform: translateX(-35%) scale(0.82) rotateY(12deg); }
+      .fleet-carousel-card.pos-right { transform: translateX(35%) scale(0.82) rotateY(-12deg); }
+      .fleet-carousel-card.pos-far-left { transform: translateX(-55%) scale(0.68) rotateY(18deg); }
+      .fleet-carousel-card.pos-far-right { transform: translateX(55%) scale(0.68) rotateY(-18deg); }
+    }
+    @media (max-width: 600px) {
+      .fleet-carousel-stage { height: 340px; }
+      .fleet-carousel-card { width: min(400px, 82vw); height: 240px; }
+      .fleet-carousel-card.pos-left { transform: translateX(-30%) scale(0.82) rotateY(12deg); }
+      .fleet-carousel-card.pos-right { transform: translateX(30%) scale(0.82) rotateY(-12deg); }
+      .fleet-carousel-card.pos-far-left,
+      .fleet-carousel-card.pos-far-right { display: none; }
+    }
+    /* Carrusel más grande en monitores grandes (acompaña los pasos de --max-w).
+       Se mantiene la proporción 8:5; las cards laterales usan % así escalan solas. */
+    @media (min-width: 1920px) {
+      .fleet-carousel-stage { height: 680px; }
+      .fleet-carousel-card { width: 980px; height: 612px; }
+    }
+    @media (min-width: 2400px) {
+      .fleet-carousel-stage { height: 760px; }
+      .fleet-carousel-card { width: 1120px; height: 700px; }
     }
   </style>
 </head>
@@ -1560,40 +1810,7 @@
         <p class="section-body" data-i18n="fleet.body" style="margin-bottom: 20px;">
           Más de 20 unidades propias preparadas para operar en cordillera, rutas y zonas remotas. Garantizamos disponibilidad, mantenimiento preventivo programado y respuesta operativa local, sin depender de terceros para el equipamiento crítico.
         </p>
-        <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 22px; font-size:14px; margin-bottom: 24px;">Consultar disponibilidad de flota</a>
-
-        <div class="fleet-list" role="list" aria-label="Tipos de vehículos de la flota">
-          <div class="fleet-item" role="listitem">
-            <div class="fleet-item-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-            </div>
-            <span class="fleet-item-name" data-i18n="fleet.item1">Camiones aguateros</span>
-          </div>
-          <div class="fleet-item" role="listitem">
-            <div class="fleet-item-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            </div>
-            <span class="fleet-item-name" data-i18n="fleet.item2">Camiones con hidrogrúa</span>
-          </div>
-          <div class="fleet-item" role="listitem">
-            <div class="fleet-item-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <span class="fleet-item-name" data-i18n="fleet.item3">Camiones chasis</span>
-          </div>
-          <div class="fleet-item" role="listitem">
-            <div class="fleet-item-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v6h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <span class="fleet-item-name" data-i18n="fleet.item4">Tractores con semirremolque</span>
-          </div>
-          <div class="fleet-item" role="listitem">
-            <div class="fleet-item-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
-            </div>
-            <span class="fleet-item-name" data-i18n="fleet.item5">Vehículos 4×4 / 6×4</span>
-          </div>
-        </div>
+        <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 22px; font-size:14px;">Consultar disponibilidad de flota</a>
       </div>
 
       <div class="fleet-tech">
@@ -1606,6 +1823,109 @@
             <li data-i18n="flota.tech.li4">Documentación técnica al día</li>
             <li data-i18n="flota.tech.li5">Comunicación VHF/satelital en zonas sin cobertura</li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-list" role="list" aria-label="Tipos de vehículos de la flota">
+      <div class="fleet-item" role="listitem">
+        <div class="fleet-item-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <span class="fleet-item-name" data-i18n="fleet.item1">Camiones aguateros</span>
+      </div>
+      <div class="fleet-item" role="listitem">
+        <div class="fleet-item-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V4h12"/><path d="M6 4l4 4"/><line x1="18" y1="4" x2="18" y2="8"/><rect x="15.5" y="8.5" width="5" height="4" rx="1"/></svg>
+        </div>
+        <span class="fleet-item-name" data-i18n="fleet.item2">Camiones con hidrogrúa</span>
+      </div>
+      <div class="fleet-item" role="listitem">
+        <div class="fleet-item-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span class="fleet-item-name" data-i18n="fleet.item3">Camiones chasis</span>
+      </div>
+      <div class="fleet-item" role="listitem">
+        <div class="fleet-item-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v6h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span class="fleet-item-name" data-i18n="fleet.item4">Tractores con semirremolque</span>
+      </div>
+      <div class="fleet-item" role="listitem">
+        <div class="fleet-item-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        </div>
+        <span class="fleet-item-name" data-i18n="fleet.item5">Vehículos 4×4 / 6×4</span>
+      </div>
+    </div>
+
+    <!-- CARRUSEL 3D DE FLOTA -->
+    <div class="fleet-carousel" role="region" aria-label="Carrusel de vehículos">
+      <p class="fleet-carousel-heading" data-i18n="fleet.carousel.subtitle">Algunos de nuestros vehículos</p>
+      <div class="fleet-carousel-stage" id="fleetCarouselStage">
+        <div class="fleet-carousel-card pos-far-left" data-index="0">
+          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.png" alt="Mercedes-Benz Atego 3132">
+        </div>
+        <div class="fleet-carousel-card pos-left" data-index="1">
+          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.png" alt="Toyota Hilux 2.8 TDI">
+        </div>
+        <div class="fleet-carousel-card pos-center" data-index="2">
+          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.png" alt="IVECO Trakker 440">
+        </div>
+        <div class="fleet-carousel-card pos-right" data-index="3">
+          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.png" alt="IVECO Tector 260E30">
+        </div>
+        <div class="fleet-carousel-card pos-far-right" data-index="4">
+          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.png" alt="IVECO Tector 27320 con Hidrogrúa">
+        </div>
+        <div class="fleet-carousel-card" data-index="5">
+          <img src="assets/flota-carrusel/Iveco trakker 480  2025.png" alt="IVECO Trakker 480">
+        </div>
+        <div class="fleet-carousel-card" data-index="6">
+          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.png" alt="Mercedes-Benz Axor 3344 con Hidrogrúa">
+        </div>
+        <div class="fleet-carousel-card" data-index="7">
+          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.png" alt="Mercedes-Benz Actros con Semirremolque">
+        </div>
+        <div class="fleet-carousel-card" data-index="8">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.png" alt="IVECO Stralis 480 con Semirremolque Niño Jesús de Praga">
+        </div>
+        <div class="fleet-carousel-card" data-index="9">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.png" alt="IVECO Stralis 480 con Semirremolque OMBU">
+        </div>
+      </div>
+
+      <div class="fleet-carousel-info">
+        <div class="fleet-carousel-name" id="carouselName">IVECO Trakker 440</div>
+        <div class="fleet-carousel-meta" id="carouselMeta">Año 2024</div>
+        <div class="fleet-carousel-type" id="carouselType">Tractor con Semirremolque</div>
+        <div class="fleet-carousel-specs" id="carouselSpecs">
+          <span class="fleet-carousel-spec">440 CV</span>
+          <span class="fleet-carousel-spec">1900 Nm</span>
+          <span class="fleet-carousel-spec">Cursor 13</span>
+          <span class="fleet-carousel-spec">PBT 46.000 kg</span>
+          <span class="fleet-carousel-spec">6×4 / 8×4</span>
+        </div>
+        <div class="fleet-carousel-controls">
+          <button class="fleet-carousel-btn" id="carouselPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="fleet-carousel-btn" id="carouselNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="fleet-carousel-dots" id="fleetCarouselDots">
+          <button class="fleet-carousel-dot" data-index="0" aria-label="Ir a vehículo 1"></button>
+          <button class="fleet-carousel-dot" data-index="1" aria-label="Ir a vehículo 2"></button>
+          <button class="fleet-carousel-dot" data-index="2" aria-label="Ir a vehículo 3"></button>
+          <button class="fleet-carousel-dot" data-index="3" aria-label="Ir a vehículo 4"></button>
+          <button class="fleet-carousel-dot" data-index="4" aria-label="Ir a vehículo 5"></button>
+          <button class="fleet-carousel-dot" data-index="5" aria-label="Ir a vehículo 6"></button>
+          <button class="fleet-carousel-dot" data-index="6" aria-label="Ir a vehículo 7"></button>
+          <button class="fleet-carousel-dot" data-index="7" aria-label="Ir a vehículo 8"></button>
+          <button class="fleet-carousel-dot" data-index="8" aria-label="Ir a vehículo 9"></button>
+          <button class="fleet-carousel-dot" data-index="9" aria-label="Ir a vehículo 10"></button>
         </div>
       </div>
     </div>
@@ -1684,7 +2004,7 @@
 
 <!-- ═══════════════════════ COBERTURA ═══════════════════════ -->
 <div class="section-full coverage-bg" id="cobertura">
-  <div style="max-width:1200px; margin:0 auto;">
+  <div style="max-width:var(--max-w); margin:0 auto;">
     <div class="section-tag" data-i18n="bases.tag">Infraestructura y cobertura</div>
     <h2 class="section-title" id="coverage-title" data-i18n="bases.title" style="margin-bottom:18px;">
       Dos bases operativas en San Juan
@@ -2030,10 +2350,22 @@
         <textarea id="mensaje" name="mensaje" placeholder="Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc." data-i18n-placeholder="ph.mensaje"></textarea>
       </div>
 
+      <div class="form-group">
+        <label data-i18n="file.proposal.label">Adjuntar archivo (opcional)</label>
+        <div class="file-upload">
+          <label class="file-upload-btn" for="proposal-file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="file.btn">Seleccionar archivo</span>
+          </label>
+          <input type="file" id="proposal-file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx">
+          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
 
       <div style="display:flex; gap: 10px; margin-top: 12px;">
-        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener" class="btn" style="flex:1; background: #25D366; color:white; padding: 12px 18px; font-size:14px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius: var(--r-sm);">
+        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener noreferrer" class="btn" style="flex:1; background: #25D366; color:white; padding: 12px 18px; font-size:14px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius: var(--r-sm);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
@@ -2094,8 +2426,15 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="cv-mensaje" data-i18n="careers.form.label.mensaje">Mensaje / experiencia</label>
-        <textarea id="cv-mensaje" name="mensaje" placeholder="Resumen de experiencia, certificaciones y disponibilidad." data-i18n-placeholder="ph.cv.mensaje" rows="3"></textarea>
+        <label data-i18n="file.cv.label">Adjuntar CV (obligatorio)</label>
+        <div class="file-upload">
+          <label class="file-upload-btn" for="cv-file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="file.btn">Seleccionar archivo</span>
+          </label>
+          <input type="file" id="cv-file" name="attachment" accept=".pdf,.doc,.docx">
+          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
+        </div>
       </div>
       <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
       <p style="font-size:11px; color: var(--fg-subtle); margin-top:10px; text-align:center;" data-i18n-html="careers.adjuntos">
@@ -2162,7 +2501,7 @@
         <a href="tel:+542644131515" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">+54 264 413-1515</a>
         <a href="mailto:contacto@ismaelsa.info" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">contacto@ismaelsa.info</a>
         <span style="font-size:13px; color: rgba(255,255,255,0.55);">ismaelsa.com</span>
-        <a href="https://wa.me/542644131515" target="_blank" rel="noopener" style="font-size:13px; color: #5FAE82; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+        <a href="https://wa.me/542644131515" target="_blank" rel="noopener noreferrer" style="font-size:13px; color: #5FAE82; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
@@ -2262,9 +2601,10 @@
   })();
 
   /* ──────────────────────────────────────────
-     I18N — diccionario ES/EN para textos clave
-     Nombres propios (empresas, proyectos, lugares) NO se traducen
+     FLEET CAROUSEL 3D
   ────────────────────────────────────────── */
+  let currentLang = 'es';
+
   const I18N = {
     es: {
       'nav.nosotros': 'Nosotros',
@@ -2345,6 +2685,7 @@
       'fleet.item3': 'Camiones chasis',
       'fleet.item4': 'Tractores con semirremolque',
       'fleet.item5': 'Vehículos 4×4 / 6×4',
+      'fleet.carousel.subtitle': 'Algunos de nuestros vehículos',
       'safety.body': 'Cada servicio se ejecuta bajo procedimientos de seguridad, seguimiento satelital y control preventivo de la flota, priorizando la protección del personal, la continuidad operativa y el cumplimiento en terreno. Compatibles con las exigencias HSEC de operadoras mineras internacionales.',
       'safety.cert1': 'Personal certificado en manejo defensivo',
       'safety.cert2': 'Operación certificada de vehículos pesados e hidrogrúa',
@@ -2425,7 +2766,7 @@
       'careers.form.label.area': 'Área de interés',
       'careers.form.label.mensaje': 'Mensaje / experiencia',
       'careers.form.submit': 'Enviar CV',
-      'careers.adjuntos': 'Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
+      'careers.adjuntos': 'También podés enviar tu CV por correo a <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
       'contact.form.sending': 'Enviando…',
       'contact.form.success': '✓ Consulta enviada. Te responderemos a la brevedad.',
       'contact.form.error': '✗ No se pudo enviar. Escribinos directo a contacto@ismaelsa.info',
@@ -2447,6 +2788,14 @@
       'ph.email.general': 'correo@email.com',
       'ph.cv.nombre': 'Nombre y apellido',
       'ph.cv.mensaje': 'Resumen de experiencia, certificaciones y disponibilidad.',
+      'ph.archivo': 'Seleccionar archivos...',
+      'ph.cv.archivo': 'Seleccionar CV (PDF)...',
+      'file.proposal.label': 'Adjuntar archivo (opcional)',
+      'file.cv.label': 'Adjuntar CV (obligatorio)',
+      'file.btn': 'Seleccionar archivo',
+      'file.none': 'Ningún archivo seleccionado',
+      'file.toobig': 'El archivo supera los 5 MB',
+      'careers.form.cv.required': 'Adjuntá tu CV (PDF o Word) para enviar la postulación.',
       'ph.mensaje': 'Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc.',
       'svc.general': 'Consulta general',
       'area.1': 'Conducción de vehículos pesados',
@@ -2456,6 +2805,37 @@
       'area.5': 'Seguridad e higiene',
       'area.6': 'Administración',
       'area.7': 'Otro',
+      // Carrusel de flota
+      'carousel.veh0.name': 'Mercedes-Benz Atego 3132',
+      'carousel.veh0.meta': 'Año 2026',
+      'carousel.veh0.type': 'Aguatero',
+      'carousel.veh1.name': 'Toyota Hilux 2.8 TDI',
+      'carousel.veh1.meta': 'Año 2023',
+      'carousel.veh1.type': 'Vehículo 4×4',
+      'carousel.veh2.name': 'IVECO Trakker 440',
+      'carousel.veh2.meta': 'Año 2024',
+      'carousel.veh2.type': 'Tractor con Semirremolque',
+      'carousel.veh3.name': 'IVECO Tector 260E30',
+      'carousel.veh3.meta': 'Año 2024',
+      'carousel.veh3.type': 'Camión Chasis',
+      'carousel.veh4.name': 'IVECO Tector 27320 + Palfinger',
+      'carousel.veh4.meta': 'Año 2025',
+      'carousel.veh4.type': 'Hidrogrúa',
+      'carousel.veh5.name': 'IVECO Trakker 480',
+      'carousel.veh5.meta': 'Año 2025',
+      'carousel.veh5.type': 'Tractor con Semirremolque',
+      'carousel.veh6.name': 'Mercedes-Benz Axor 3344 + Palfinger',
+      'carousel.veh6.meta': 'Año 2025',
+      'carousel.veh6.type': 'Hidrogrúa',
+      'carousel.veh7.name': 'Mercedes-Benz Actros + OMBU',
+      'carousel.veh7.meta': 'Año 2026',
+      'carousel.veh7.type': 'Tractor con Semirremolque',
+      'carousel.veh8.name': 'IVECO Stralis 480 + Niño Jesús de Praga',
+      'carousel.veh8.meta': 'Año 2026',
+      'carousel.veh8.type': 'Tractor con Semirremolque',
+      'carousel.veh9.name': 'IVECO Stralis 480 + OMBU',
+      'carousel.veh9.meta': 'Año 2026',
+      'carousel.veh9.type': 'Tractor con Semirremolque',
     },
     en: {
       'nav.nosotros': 'About us',
@@ -2536,6 +2916,7 @@
       'fleet.item3': 'Chassis trucks',
       'fleet.item4': 'Semi-trailer tractors',
       'fleet.item5': '4×4 / 6×4 vehicles',
+      'fleet.carousel.subtitle': 'Some of our vehicles',
       'safety.body': 'Every service is executed under safety procedures, satellite tracking and fleet preventive control, prioritizing personnel protection, operational continuity and on-site compliance. Compatible with the HSEC requirements of international mining operators.',
       'safety.cert1': 'Personnel certified in defensive driving',
       'safety.cert2': 'Certified operation of heavy vehicles and crane',
@@ -2616,7 +2997,7 @@
       'careers.form.label.area': 'Area of interest',
       'careers.form.label.mensaje': 'Message / experience',
       'careers.form.submit': 'Submit CV',
-      'careers.adjuntos': 'To attach your CV write to <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
+      'careers.adjuntos': 'You can also email your CV to <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>',
       'contact.form.sending': 'Sending…',
       'contact.form.success': '✓ Inquiry sent. We\'ll get back to you shortly.',
       'contact.form.error': '✗ Could not send. Contact us directly at contacto@ismaelsa.info',
@@ -2638,7 +3019,46 @@
       'ph.email.general': 'email@example.com',
       'ph.cv.nombre': 'First and last name',
       'ph.cv.mensaje': 'Experience summary, certifications and availability.',
+      'ph.archivo': 'Select files...',
+      'ph.cv.archivo': 'Select CV (PDF)...',
+      'file.proposal.label': 'Attach file (optional)',
+      'file.cv.label': 'Attach CV (required)',
+      'file.btn': 'Choose file',
+      'file.none': 'No file selected',
+      'file.toobig': 'File exceeds 5 MB',
+      'careers.form.cv.required': 'Please attach your CV (PDF or Word) to send your application.',
       'ph.mensaje': 'Operating zone, estimated dates, volume, equipment required, etc.',
+      // Carrusel de flota
+      'carousel.veh0.name': 'Mercedes-Benz Atego 3132',
+      'carousel.veh0.meta': 'Year 2026',
+      'carousel.veh0.type': 'Water Tanker',
+      'carousel.veh1.name': 'Toyota Hilux 2.8 TDI',
+      'carousel.veh1.meta': 'Year 2023',
+      'carousel.veh1.type': '4×4 Vehicle',
+      'carousel.veh2.name': 'IVECO Trakker 440',
+      'carousel.veh2.meta': 'Year 2024',
+      'carousel.veh2.type': 'Semi-trailer Tractor',
+      'carousel.veh3.name': 'IVECO Tector 260E30',
+      'carousel.veh3.meta': 'Year 2024',
+      'carousel.veh3.type': 'Chassis Truck',
+      'carousel.veh4.name': 'IVECO Tector 27320 + Palfinger',
+      'carousel.veh4.meta': 'Year 2025',
+      'carousel.veh4.type': 'Crane Truck',
+      'carousel.veh5.name': 'IVECO Trakker 480',
+      'carousel.veh5.meta': 'Year 2025',
+      'carousel.veh5.type': 'Semi-trailer Tractor',
+      'carousel.veh6.name': 'Mercedes-Benz Axor 3344 + Palfinger',
+      'carousel.veh6.meta': 'Year 2025',
+      'carousel.veh6.type': 'Crane Truck',
+      'carousel.veh7.name': 'Mercedes-Benz Actros + OMBU',
+      'carousel.veh7.meta': 'Year 2026',
+      'carousel.veh7.type': 'Semi-trailer Tractor',
+      'carousel.veh8.name': 'IVECO Stralis 480 + Niño Jesús de Praga',
+      'carousel.veh8.meta': 'Year 2026',
+      'carousel.veh8.type': 'Semi-trailer Tractor',
+      'carousel.veh9.name': 'IVECO Stralis 480 + OMBU',
+      'carousel.veh9.meta': 'Year 2026',
+      'carousel.veh9.type': 'Semi-trailer Tractor',
       'svc.general': 'General inquiry',
       'area.1': 'Heavy vehicle driving',
       'area.2': 'Crane operation',
@@ -2653,6 +3073,7 @@
   function applyI18n(lang) {
     const dict = I18N[lang] || I18N.es;
     document.documentElement.lang = lang;
+    currentLang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const k = el.dataset.i18n;
       if (dict[k] !== undefined) el.textContent = dict[k];
@@ -2668,17 +3089,255 @@
     document.querySelectorAll('.lang-btn').forEach(b => {
       b.classList.toggle('is-active', b.dataset.lang === lang);
     });
+    updateCarouselI18n(lang);
     try { localStorage.setItem('isa_lang', lang); } catch (e) {}
   }
 
+  function updateCarouselI18n(lang) {
+    const dict = I18N[lang] || I18N.es;
+    const nameEl = document.getElementById('carouselName');
+    const metaEl = document.getElementById('carouselMeta');
+    const typeEl = document.getElementById('carouselType');
+    const specsEl = document.getElementById('carouselSpecs');
+    if (!nameEl || !metaEl || !typeEl || !specsEl) return;
+
+    const fleetData = window.fleetCarouselData;
+    if (!fleetData || !fleetData.getVehicles || !fleetData.getCurrentIndex) {
+      nameEl.textContent = dict['carousel.veh2.name'] || 'IVECO Trakker 440';
+      metaEl.textContent = dict['carousel.veh2.meta'] || 'Año 2024';
+      typeEl.textContent = dict['carousel.veh2.type'] || 'Tractor con Semirremolque';
+      return;
+    }
+
+    const vehicles = fleetData.getVehicles();
+    const currentIndex = fleetData.getCurrentIndex();
+    const vehicle = vehicles[currentIndex];
+    if (!vehicle) return;
+
+    const nameKey = `carousel.veh${currentIndex}.name`;
+    const metaKey = `carousel.veh${currentIndex}.meta`;
+    const typeKey = `carousel.veh${currentIndex}.type`;
+
+    nameEl.textContent = dict[nameKey] || vehicle.name;
+    metaEl.textContent = dict[metaKey] || vehicle.meta;
+    typeEl.textContent = dict[typeKey] || vehicle.type;
+    specsEl.innerHTML = vehicle.specs.map(s => `<span class="fleet-carousel-spec">${s}</span>`).join('');
+  }
+
+  /* ──────────────────────────────────────────
+     FLEET CAROUSEL 3D LOGIC
+  ────────────────────────────────────────── */
+  (function fleetCarousel() {
+    const cards = document.querySelectorAll('.fleet-carousel-card');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const dots = document.querySelectorAll('.fleet-carousel-dot');
+    const nameEl = document.getElementById('carouselName');
+    const metaEl = document.getElementById('carouselMeta');
+    const specsEl = document.getElementById('carouselSpecs');
+    const typeEl = document.getElementById('carouselType');
+
+    console.log('Fleet carousel init:', cards.length, 'cards found');
+    if (cards.length < 3) return;
+
+    const vehicles = [
+      {
+        name: 'Mercedes-Benz Atego 3132',
+        meta: 'Año 2026',
+        type: 'Aguatero',
+        specs: ['320 CV', '1300 Nm', '6.374 cm³', 'PBV 32.000 kg', 'Tanque 300L']
+      },
+      {
+        name: 'Toyota Hilux 2.8 TDI',
+        meta: 'Año 2023',
+        type: 'Vehículo 4×4',
+        specs: ['204 CV', '500 Nm', '4×4 c/reductora', 'Remolque 3.500 kg']
+      },
+      {
+        name: 'IVECO Trakker 440',
+        meta: 'Año 2024',
+        type: 'Tractor con Semirremolque',
+        specs: ['440 CV', '1900 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4 / 8×4']
+      },
+      {
+        name: 'IVECO Tector 260E30',
+        meta: 'Año 2024',
+        type: 'Camión Chasis',
+        specs: ['300 CV', '1100 Nm', '6×4', 'Carga útil 15.350 kg', 'PBT 26.600 kg']
+      },
+      {
+        name: 'IVECO Tector 27320 + Palfinger',
+        meta: 'Año 2025',
+        type: 'Hidrogrúa',
+        specs: ['280 CV', '1000 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m']
+      },
+      {
+        name: 'IVECO Trakker 480',
+        meta: 'Año 2025',
+        type: 'Tractor con Semirremolque',
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'PBT 46.000 kg', '6×4']
+      },
+      {
+        name: 'Mercedes-Benz Axor 3344 + Palfinger',
+        meta: 'Año 2025',
+        type: 'Hidrogrúa',
+        specs: ['428 CV', '1900 Nm', '6×4', 'Grúa PK 36080', 'Alcance 27m']
+      },
+      {
+        name: 'Mercedes-Benz Actros + OMBU',
+        meta: 'Año 2026',
+        type: 'Tractor con Semirremolque',
+        specs: ['428 CV', '1900 Nm', '6×4', 'Semirremolque 14.5m', 'PBT 46.000 kg']
+      },
+      {
+        name: 'IVECO Stralis 480 + Niño Jesús de Praga',
+        meta: 'Año 2026',
+        type: 'Tractor con Semirremolque',
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 13m', 'PBT 46.000 kg']
+      },
+      {
+        name: 'IVECO Stralis 480 + OMBU',
+        meta: 'Año 2026',
+        type: 'Tractor con Semirremolque',
+        specs: ['480 CV', '2100 Nm', 'Cursor 13', 'Semirremolque 14.5m', 'PBT 46.000 kg']
+      }
+    ];
+
+    let currentIndex = 2;
+    const VISIBLE_CARDS = 5;
+    let autoTimer = null;
+    const AUTO_INTERVAL = 5000;
+
+    window.fleetCarouselData = {
+      getVehicles: () => vehicles,
+      getCurrentIndex: () => currentIndex
+    };
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => next(), AUTO_INTERVAL);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function updatePositions() {
+      cards.forEach((card, i) => {
+        card.className = 'fleet-carousel-card';
+        const offset = (i - currentIndex + vehicles.length) % vehicles.length;
+        if (offset === 0) card.classList.add('pos-center');
+        else if (offset === 1) card.classList.add('pos-right');
+        else if (offset === 2) card.classList.add('pos-far-right');
+        else if (offset === vehicles.length - 1) card.classList.add('pos-left');
+        else if (offset === vehicles.length - 2) card.classList.add('pos-far-left');
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+
+      updateCarouselI18n(currentLang || 'es');
+    }
+
+    function go(index) {
+      currentIndex = (index + vehicles.length) % vehicles.length;
+      updatePositions();
+    }
+
+    function next() { go(currentIndex + 1); }
+    function prev() { go(currentIndex - 1); }
+
+    function onInteract() {
+      stopAuto();
+      startAuto();
+    }
+
+    prevBtn?.addEventListener('click', () => { onInteract(); prev(); });
+    nextBtn?.addEventListener('click', () => { onInteract(); next(); });
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        onInteract();
+        go(parseInt(dot.dataset.index, 10));
+      });
+    });
+
+    let startX = 0;
+    const stage = document.getElementById('fleetCarouselStage');
+    const carousel = document.querySelector('.fleet-carousel');
+
+    carousel?.addEventListener('mouseenter', stopAuto);
+    carousel?.addEventListener('mouseleave', startAuto);
+
+    stage?.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      stopAuto();
+    }, { passive: true });
+
+    stage?.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) next();
+        else prev();
+      }
+      startAuto();
+    }, { passive: true });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { onInteract(); prev(); }
+      if (e.key === 'ArrowRight') { onInteract(); next(); }
+    });
+
+    updatePositions();
+    startAuto();
+  })();
+
+  // Language toggle buttons
   document.querySelectorAll('.lang-btn').forEach(b => {
-    b.addEventListener('click', () => applyI18n(b.dataset.lang));
+    b.addEventListener('click', (e) => {
+      e.preventDefault();
+      const lang = b.dataset.lang;
+      applyI18n(lang);
+    });
   });
 
   // Default: ES si no hay preferencia guardada
   let savedLang = 'es';
   try { savedLang = localStorage.getItem('isa_lang') || 'es'; } catch (e) {}
   applyI18n(savedLang);
+
+  /* ──────────────────────────────────────────
+     Custom file upload — show filename / size guard
+     (native input is hidden; this keeps the label translatable)
+  ────────────────────────────────────────── */
+  const MAX_FILE_BYTES = 5 * 1024 * 1024; // Web3Forms free-tier limit ~5 MB
+  document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
+    const nameEl = input.parentElement.querySelector('.file-upload-name');
+    input.addEventListener('change', () => {
+      const dict = I18N[currentLang] || I18N.es;
+      const file = input.files && input.files[0];
+      if (file && file.size > MAX_FILE_BYTES) {
+        input.value = '';
+        nameEl.removeAttribute('data-i18n');
+        nameEl.classList.add('is-error');
+        nameEl.textContent = dict['file.toobig'] || 'El archivo supera los 5 MB';
+        return;
+      }
+      nameEl.classList.remove('is-error');
+      if (file) {
+        // Drop data-i18n so a language switch doesn't overwrite the filename
+        nameEl.removeAttribute('data-i18n');
+        nameEl.textContent = file.name;
+      } else {
+        nameEl.setAttribute('data-i18n', 'file.none');
+        nameEl.textContent = dict['file.none'] || 'Ningún archivo seleccionado';
+      }
+    });
+  });
 
   /* ─────────────────────────────────────────────────────────────
      Contact form — Web3Forms integration
@@ -2726,11 +3385,11 @@ ${form.mensaje.value || '(sin mensaje)'}
 
     try {
       const formData = new FormData(form);
-      const json = Object.fromEntries(formData);
+      // multipart/form-data (no explicit Content-Type) so file attachments are sent
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(json),
+        headers: { 'Accept': 'application/json' },
+        body: formData,
       });
       const data = await res.json();
       if (data.success) {
@@ -2758,17 +3417,27 @@ ${form.mensaje.value || '(sin mensaje)'}
     const btn = document.getElementById('careersBtn');
     const status = document.getElementById('careersStatus');
     status.className = 'form-status'; status.textContent = '';
+    const _d = I18N[document.documentElement.lang] || I18N.es;
+
+    // CV attachment is mandatory for job applications
+    const cvFile = document.getElementById('cv-file');
+    if (!cvFile || !cvFile.files || cvFile.files.length === 0) {
+      status.className = 'form-status error';
+      status.textContent = _d['careers.form.cv.required'] || 'Adjuntá tu CV para enviar la postulación.';
+      cvFile?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+
     btn.disabled = true;
     const originalText = btn.textContent;
-    const _d = I18N[document.documentElement.lang] || I18N.es;
     btn.textContent = _d['careers.form.sending'] || 'Enviando…';
     try {
       const formData = new FormData(form);
-      const json = Object.fromEntries(formData);
+      // multipart/form-data (no explicit Content-Type) so file attachments are sent
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(json),
+        headers: { 'Accept': 'application/json' },
+        body: formData,
       });
       const data = await res.json();
       if (data.success) {
