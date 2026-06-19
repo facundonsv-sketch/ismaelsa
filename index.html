@@ -1526,6 +1526,23 @@
       .fleet-carousel-stage { height: 760px; }
       .fleet-carousel-card { width: 1120px; height: 700px; }
     }
+    /* Pantallas de POCA ALTURA (notebooks tipo 1366×768): el carrusel base (560px)
+       no deja ver la imagen completa y las specs a la vez. Se achica y se compacta
+       el espaciado vertical para que entren juntas. Va al final para ganar en el cascade. */
+    @media (max-height: 800px) {
+      .fleet-carousel { margin-top: 32px; padding: 40px 0 48px; }
+      .fleet-carousel-heading { margin-bottom: 18px; }
+      .fleet-carousel-stage { height: 360px; margin-bottom: 8px; }
+      .fleet-carousel-card { width: 544px; height: 340px; }
+      .fleet-carousel-info { margin-top: -4px; }
+      .fleet-carousel-type { margin-bottom: 10px; }
+      .fleet-carousel-specs { gap: 8px; margin-bottom: 12px; }
+      .fleet-carousel-controls { margin-top: 6px; }
+    }
+    @media (max-height: 640px) {
+      .fleet-carousel-stage { height: 300px; }
+      .fleet-carousel-card { width: 448px; height: 280px; }
+    }
   </style>
 </head>
 <body>
@@ -1865,34 +1882,34 @@
       <p class="fleet-carousel-heading" data-i18n="fleet.carousel.subtitle">Algunos de nuestros vehículos</p>
       <div class="fleet-carousel-stage" id="fleetCarouselStage">
         <div class="fleet-carousel-card pos-far-left" data-index="0">
-          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.png" alt="Mercedes-Benz Atego 3132">
+          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.webp" decoding="async" alt="Mercedes-Benz Atego 3132">
         </div>
         <div class="fleet-carousel-card pos-left" data-index="1">
-          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.png" alt="Toyota Hilux 2.8 TDI">
+          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.webp" decoding="async" alt="Toyota Hilux 2.8 TDI">
         </div>
         <div class="fleet-carousel-card pos-center" data-index="2">
-          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.png" alt="IVECO Trakker 440">
+          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.webp" decoding="async" alt="IVECO Trakker 440">
         </div>
         <div class="fleet-carousel-card pos-right" data-index="3">
-          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.png" alt="IVECO Tector 260E30">
+          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.webp" decoding="async" alt="IVECO Tector 260E30">
         </div>
         <div class="fleet-carousel-card pos-far-right" data-index="4">
-          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.png" alt="IVECO Tector 27320 con Hidrogrúa">
+          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.webp" decoding="async" alt="IVECO Tector 27320 con Hidrogrúa">
         </div>
         <div class="fleet-carousel-card" data-index="5">
-          <img src="assets/flota-carrusel/Iveco trakker 480  2025.png" alt="IVECO Trakker 480">
+          <img src="assets/flota-carrusel/Iveco trakker 480  2025.webp" decoding="async" alt="IVECO Trakker 480">
         </div>
         <div class="fleet-carousel-card" data-index="6">
-          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.png" alt="Mercedes-Benz Axor 3344 con Hidrogrúa">
+          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.webp" decoding="async" alt="Mercedes-Benz Axor 3344 con Hidrogrúa">
         </div>
         <div class="fleet-carousel-card" data-index="7">
-          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.png" alt="Mercedes-Benz Actros con Semirremolque">
+          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.webp" decoding="async" alt="Mercedes-Benz Actros con Semirremolque">
         </div>
         <div class="fleet-carousel-card" data-index="8">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.png" alt="IVECO Stralis 480 con Semirremolque Niño Jesús de Praga">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.webp" decoding="async" alt="IVECO Stralis 480 con Semirremolque Niño Jesús de Praga">
         </div>
         <div class="fleet-carousel-card" data-index="9">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.png" alt="IVECO Stralis 480 con Semirremolque OMBU">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.webp" decoding="async" alt="IVECO Stralis 480 con Semirremolque OMBU">
         </div>
       </div>
 
