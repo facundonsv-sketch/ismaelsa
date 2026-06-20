@@ -1215,21 +1215,6 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select { cursor: pointer; }
-    /* Custom file upload (native input is hidden; label is translatable) */
-    .file-upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .file-upload input[type="file"] { display: none; }
-    .file-upload-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font); font-size: 14px; font-weight: 500;
-      color: var(--fg-mid); cursor: pointer;
-      background: var(--surface-alt);
-      border: 1px solid var(--border); border-radius: var(--r-sm);
-      padding: 10px 16px;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .file-upload-btn:hover { border-color: var(--green); background: var(--card); }
-    .file-upload-name { font-size: 13px; color: var(--fg-subtle); word-break: break-all; }
-    .file-upload-name.is-error { color: #e05656; }
     .form-submit { width: 100%; }
     .form-submit:disabled { opacity: 0.6; cursor: wait; }
     .form-status {
@@ -2372,15 +2357,9 @@
       </div>
 
       <div class="form-group">
-        <label data-i18n="file.proposal.label">Adjuntar archivo (opcional)</label>
-        <div class="file-upload">
-          <label class="file-upload-btn" for="proposal-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span data-i18n="file.btn">Seleccionar archivo</span>
-          </label>
-          <input type="file" id="proposal-file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx">
-          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
-        </div>
+        <label for="proposal-link" data-i18n="file.proposal.label">Link al proyecto o documento (opcional)</label>
+        <input type="url" id="proposal-link" name="archivo_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.proposal.link" autocomplete="off">
+        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.proposal.hint">¿Tenés un PDF con el proyecto? Subilo a Google Drive, WeTransfer o Dropbox y pegá el enlace acá (sin límite de tamaño). Verificá que el link sea de acceso público.</p>
       </div>
 
       <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
@@ -2447,15 +2426,9 @@
         </select>
       </div>
       <div class="form-group">
-        <label data-i18n="file.cv.label">Adjuntar CV (obligatorio)</label>
-        <div class="file-upload">
-          <label class="file-upload-btn" for="cv-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span data-i18n="file.btn">Seleccionar archivo</span>
-          </label>
-          <input type="file" id="cv-file" name="attachment" accept=".pdf,.doc,.docx">
-          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
-        </div>
+        <label for="cv-link" data-i18n="file.cv.label">Link a tu CV (obligatorio) <span aria-hidden="true">*</span></label>
+        <input type="url" id="cv-link" name="cv_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.cv.link" required autocomplete="off">
+        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.cv.hint">Subí tu CV (PDF) a Google Drive o Dropbox y pegá el enlace acá. Verificá que tenga permiso de lectura público antes de enviar.</p>
       </div>
       <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
       <p style="font-size:11px; color: var(--fg-subtle); margin-top:10px; text-align:center;" data-i18n-html="careers.adjuntos">
@@ -2811,12 +2784,13 @@
       'ph.cv.mensaje': 'Resumen de experiencia, certificaciones y disponibilidad.',
       'ph.archivo': 'Seleccionar archivos...',
       'ph.cv.archivo': 'Seleccionar CV (PDF)...',
-      'file.proposal.label': 'Adjuntar archivo (opcional)',
-      'file.cv.label': 'Adjuntar CV (obligatorio)',
-      'file.btn': 'Seleccionar archivo',
-      'file.none': 'Ningún archivo seleccionado',
-      'file.toobig': 'El archivo supera los 5 MB',
-      'careers.form.cv.required': 'Adjuntá tu CV (PDF o Word) para enviar la postulación.',
+      'file.proposal.label': 'Link al proyecto o documento (opcional)',
+      'file.proposal.hint': '¿Tenés un PDF con el proyecto? Subilo a Google Drive, WeTransfer o Dropbox y pegá el enlace acá (sin límite de tamaño). Verificá que el link sea de acceso público.',
+      'ph.proposal.link': 'https://drive.google.com/…',
+      'file.cv.label': 'Link a tu CV (obligatorio)',
+      'file.cv.hint': 'Subí tu CV (PDF) a Google Drive o Dropbox y pegá el enlace acá. Verificá que tenga permiso de lectura público antes de enviar.',
+      'ph.cv.link': 'https://drive.google.com/…',
+      'careers.form.cv.required': 'Pegá el link a tu CV para enviar la postulación.',
       'ph.mensaje': 'Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc.',
       'svc.general': 'Consulta general',
       'area.1': 'Conducción de vehículos pesados',
@@ -3042,12 +3016,13 @@
       'ph.cv.mensaje': 'Experience summary, certifications and availability.',
       'ph.archivo': 'Select files...',
       'ph.cv.archivo': 'Select CV (PDF)...',
-      'file.proposal.label': 'Attach file (optional)',
-      'file.cv.label': 'Attach CV (required)',
-      'file.btn': 'Choose file',
-      'file.none': 'No file selected',
-      'file.toobig': 'File exceeds 5 MB',
-      'careers.form.cv.required': 'Please attach your CV (PDF or Word) to send your application.',
+      'file.proposal.label': 'Link to your project or document (optional)',
+      'file.proposal.hint': 'Have a project PDF? Upload it to Google Drive, WeTransfer or Dropbox and paste the link here (no size limit). Make sure the link is publicly accessible.',
+      'ph.proposal.link': 'https://drive.google.com/…',
+      'file.cv.label': 'Link to your CV (required)',
+      'file.cv.hint': 'Upload your CV (PDF) to Google Drive or Dropbox and paste the link here. Make sure it has public read access before sending.',
+      'ph.cv.link': 'https://drive.google.com/…',
+      'careers.form.cv.required': 'Please paste the link to your CV to send your application.',
       'ph.mensaje': 'Operating zone, estimated dates, volume, equipment required, etc.',
       // Carrusel de flota
       'carousel.veh0.name': 'Mercedes-Benz Atego 3132',
@@ -3342,35 +3317,6 @@
   try { savedLang = localStorage.getItem('isa_lang') || 'es'; } catch (e) {}
   applyI18n(savedLang);
 
-  /* ──────────────────────────────────────────
-     Custom file upload — show filename / size guard
-     (native input is hidden; this keeps the label translatable)
-  ────────────────────────────────────────── */
-  const MAX_FILE_BYTES = 5 * 1024 * 1024; // Web3Forms free-tier limit ~5 MB
-  document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
-    const nameEl = input.parentElement.querySelector('.file-upload-name');
-    input.addEventListener('change', () => {
-      const dict = I18N[currentLang] || I18N.es;
-      const file = input.files && input.files[0];
-      if (file && file.size > MAX_FILE_BYTES) {
-        input.value = '';
-        nameEl.removeAttribute('data-i18n');
-        nameEl.classList.add('is-error');
-        nameEl.textContent = dict['file.toobig'] || 'El archivo supera los 5 MB';
-        return;
-      }
-      nameEl.classList.remove('is-error');
-      if (file) {
-        // Drop data-i18n so a language switch doesn't overwrite the filename
-        nameEl.removeAttribute('data-i18n');
-        nameEl.textContent = file.name;
-      } else {
-        nameEl.setAttribute('data-i18n', 'file.none');
-        nameEl.textContent = dict['file.none'] || 'Ningún archivo seleccionado';
-      }
-    });
-  });
-
   /* ─────────────────────────────────────────────────────────────
      Contact form — Web3Forms integration
      Setup:
@@ -3451,12 +3397,12 @@ ${form.mensaje.value || '(sin mensaje)'}
     status.className = 'form-status'; status.textContent = '';
     const _d = I18N[document.documentElement.lang] || I18N.es;
 
-    // CV attachment is mandatory for job applications
-    const cvFile = document.getElementById('cv-file');
-    if (!cvFile || !cvFile.files || cvFile.files.length === 0) {
+    // CV link is mandatory for job applications
+    const cvLink = document.getElementById('cv-link');
+    if (!cvLink || !cvLink.value.trim()) {
       status.className = 'form-status error';
-      status.textContent = _d['careers.form.cv.required'] || 'Adjuntá tu CV para enviar la postulación.';
-      cvFile?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      status.textContent = _d['careers.form.cv.required'] || 'Pegá el link a tu CV para enviar la postulación.';
+      cvLink?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return false;
     }
 
