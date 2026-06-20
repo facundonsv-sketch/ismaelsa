@@ -6,7 +6,7 @@
   <!-- Security headers (meta level). Los headers que el navegador SOLO acepta vía HTTP
        (X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, Permissions-Policy
        y frame-ancestors) se configuran en _headers / vercel.json del hosting. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>ISMAEL S.A. — Logística Minera e Industrial en San Juan</title>
   <meta name="description" content="ISMAEL S.A. — Empresa sanjuanina de logística, transporte y soporte operativo para la minería. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.">
@@ -1215,6 +1215,21 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select { cursor: pointer; }
+    /* Custom file upload (native input is hidden; label is translatable) */
+    .file-upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .file-upload input[type="file"] { display: none; }
+    .file-upload-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 14px; font-weight: 500;
+      color: var(--fg-mid); cursor: pointer;
+      background: var(--surface-alt);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      padding: 10px 16px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .file-upload-btn:hover { border-color: var(--green); background: var(--card); }
+    .file-upload-name { font-size: 13px; color: var(--fg-subtle); word-break: break-all; }
+    .file-upload-name.is-error { color: #e05656; }
     .form-submit { width: 100%; }
     .form-submit:disabled { opacity: 0.6; cursor: wait; }
     .form-status {
@@ -2311,14 +2326,15 @@
       </div>
     </div>
 
-    <form class="contact-form" id="contactForm" aria-label="Formulario de contacto" onsubmit="return sendContactForm(event)">
+    <form class="contact-form" id="contactForm" aria-label="Formulario de contacto" action="https://formsubmit.co/contacto@ismaelsa.info" method="POST" enctype="multipart/form-data">
       <h3 data-i18n="contact.form.title">Solicitar propuesta</h3>
 
-      <!-- Web3Forms hidden fields -->
-      <input type="hidden" name="access_key" value="f37111ef-4988-45be-b0de-86761f460d8e">
-      <input type="hidden" name="subject" value="Consulta web — ISMAEL S.A.">
-      <input type="hidden" name="from_name" value="Web ISMAEL S.A.">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <!-- FormSubmit config -->
+      <input type="hidden" name="_subject" value="Solicitud de propuesta — Web ISMAEL S.A.">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
         <div class="form-group">
@@ -2357,9 +2373,21 @@
       </div>
 
       <div class="form-group">
-        <label for="proposal-link" data-i18n="file.proposal.label">Link al proyecto o documento (opcional)</label>
+        <label for="proposal-file" data-i18n="file.proposal.label">Adjuntar archivo (opcional, máx. 5 MB)</label>
+        <div class="file-upload">
+          <label class="file-upload-btn" for="proposal-file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="file.btn">Seleccionar archivo</span>
+          </label>
+          <input type="file" id="proposal-file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx">
+          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="proposal-link" data-i18n="file.proposal.linklabel">¿El archivo pesa más de 5 MB? Pegá un link (opcional)</label>
         <input type="url" id="proposal-link" name="archivo_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.proposal.link" autocomplete="off">
-        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.proposal.hint">¿Tenés un PDF con el proyecto? Subilo a Google Drive, WeTransfer o Dropbox y pegá el enlace acá (sin límite de tamaño). Verificá que el link sea de acceso público.</p>
+        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.proposal.hint">Para PDFs grandes, subilo a Google Drive o WeTransfer y pegá el enlace acá. Verificá que sea de acceso público.</p>
       </div>
 
       <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
@@ -2396,13 +2424,15 @@
       </p>
     </div>
 
-    <form class="careers-form" id="careersForm" aria-label="Postulación laboral" onsubmit="return sendCareersForm(event)">
+    <form class="careers-form" id="careersForm" aria-label="Postulación laboral" action="https://formsubmit.co/ismaelsarr.hh@gmail.com" method="POST" enctype="multipart/form-data">
       <h3 data-i18n="careers.form.title">Enviar postulación</h3>
 
-      <input type="hidden" name="access_key" value="1334b1a4-10a1-45e4-bee4-04ba742e6041">
-      <input type="hidden" name="subject" value="Postulación laboral — RRHH ISMAEL S.A.">
-      <input type="hidden" name="from_name" value="Postulación web — RRHH">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <!-- FormSubmit config -->
+      <input type="hidden" name="_subject" value="Postulación laboral — RRHH ISMAEL S.A.">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="form-group">
         <label for="cv-nombre" data-i18n="careers.form.label.nombre">Nombre completo <span aria-hidden="true">*</span></label>
@@ -2426,9 +2456,16 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="cv-link" data-i18n="file.cv.label">Link a tu CV (obligatorio) <span aria-hidden="true">*</span></label>
-        <input type="url" id="cv-link" name="cv_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.cv.link" required autocomplete="off">
-        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.cv.hint">Subí tu CV (PDF) a Google Drive o Dropbox y pegá el enlace acá. Verificá que tenga permiso de lectura público antes de enviar.</p>
+        <label for="cv-file" data-i18n="file.cv.label">Adjuntar CV (obligatorio, máx. 5 MB) <span aria-hidden="true">*</span></label>
+        <div class="file-upload">
+          <label class="file-upload-btn" for="cv-file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="file.btn">Seleccionar archivo</span>
+          </label>
+          <input type="file" id="cv-file" name="attachment" accept=".pdf,.doc,.docx" required>
+          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
+        </div>
+        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.cv.hint">Formato PDF o Word, hasta 5 MB.</p>
       </div>
       <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
       <p style="font-size:11px; color: var(--fg-subtle); margin-top:10px; text-align:center;" data-i18n-html="careers.adjuntos">
@@ -2784,13 +2821,16 @@
       'ph.cv.mensaje': 'Resumen de experiencia, certificaciones y disponibilidad.',
       'ph.archivo': 'Seleccionar archivos...',
       'ph.cv.archivo': 'Seleccionar CV (PDF)...',
-      'file.proposal.label': 'Link al proyecto o documento (opcional)',
-      'file.proposal.hint': '¿Tenés un PDF con el proyecto? Subilo a Google Drive, WeTransfer o Dropbox y pegá el enlace acá (sin límite de tamaño). Verificá que el link sea de acceso público.',
+      'file.proposal.label': 'Adjuntar archivo (opcional, máx. 5 MB)',
+      'file.proposal.linklabel': '¿El archivo pesa más de 5 MB? Pegá un link (opcional)',
+      'file.proposal.hint': 'Para PDFs grandes, subilo a Google Drive o WeTransfer y pegá el enlace acá. Verificá que sea de acceso público.',
       'ph.proposal.link': 'https://drive.google.com/…',
-      'file.cv.label': 'Link a tu CV (obligatorio)',
-      'file.cv.hint': 'Subí tu CV (PDF) a Google Drive o Dropbox y pegá el enlace acá. Verificá que tenga permiso de lectura público antes de enviar.',
-      'ph.cv.link': 'https://drive.google.com/…',
-      'careers.form.cv.required': 'Pegá el link a tu CV para enviar la postulación.',
+      'file.cv.label': 'Adjuntar CV (obligatorio, máx. 5 MB)',
+      'file.cv.hint': 'Formato PDF o Word, hasta 5 MB.',
+      'file.btn': 'Seleccionar archivo',
+      'file.none': 'Ningún archivo seleccionado',
+      'file.toobig': 'El archivo supera los 5 MB. Para archivos grandes usá el link de Drive.',
+      'careers.form.cv.required': 'Adjuntá tu CV (PDF o Word, máx. 5 MB) para enviar la postulación.',
       'ph.mensaje': 'Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc.',
       'svc.general': 'Consulta general',
       'area.1': 'Conducción de vehículos pesados',
@@ -3016,13 +3056,16 @@
       'ph.cv.mensaje': 'Experience summary, certifications and availability.',
       'ph.archivo': 'Select files...',
       'ph.cv.archivo': 'Select CV (PDF)...',
-      'file.proposal.label': 'Link to your project or document (optional)',
-      'file.proposal.hint': 'Have a project PDF? Upload it to Google Drive, WeTransfer or Dropbox and paste the link here (no size limit). Make sure the link is publicly accessible.',
+      'file.proposal.label': 'Attach file (optional, max 5 MB)',
+      'file.proposal.linklabel': 'File larger than 5 MB? Paste a link (optional)',
+      'file.proposal.hint': 'For large PDFs, upload to Google Drive or WeTransfer and paste the link here. Make sure it is publicly accessible.',
       'ph.proposal.link': 'https://drive.google.com/…',
-      'file.cv.label': 'Link to your CV (required)',
-      'file.cv.hint': 'Upload your CV (PDF) to Google Drive or Dropbox and paste the link here. Make sure it has public read access before sending.',
-      'ph.cv.link': 'https://drive.google.com/…',
-      'careers.form.cv.required': 'Please paste the link to your CV to send your application.',
+      'file.cv.label': 'Attach CV (required, max 5 MB)',
+      'file.cv.hint': 'PDF or Word format, up to 5 MB.',
+      'file.btn': 'Choose file',
+      'file.none': 'No file selected',
+      'file.toobig': 'File exceeds 5 MB. For larger files use the Drive link.',
+      'careers.form.cv.required': 'Attach your CV (PDF or Word, max 5 MB) to send your application.',
       'ph.mensaje': 'Operating zone, estimated dates, volume, equipment required, etc.',
       // Carrusel de flota
       'carousel.veh0.name': 'Mercedes-Benz Atego 3132',
@@ -3318,123 +3361,94 @@
   applyI18n(savedLang);
 
   /* ─────────────────────────────────────────────────────────────
-     Contact form — Web3Forms integration
-     Setup:
-       1. Ir a https://web3forms.com → "Create Access Key"
-       2. Poner correo: contacto@ismaelsa.info
-       3. Recibir el access key por mail (es un UUID tipo: abc12345-...)
-       4. Reemplazar 'PEGAR_ACCESS_KEY_AQUI' en el hidden input del form
-          por el key real (línea con name="access_key")
-       5. Hecho — las consultas llegan al inbox configurado
-     Fallback si no hay key configurada: mailto: client del usuario
+     Formularios — FormSubmit.co (envío nativo con adjuntos)
+       • Propuesta → contacto@ismaelsa.info  (archivo opcional <5MB + link Drive para >5MB)
+       • CV        → ismaelsarr.hh@gmail.com (archivo obligatorio <5MB)
+     FormSubmit acepta adjuntos solo con POST nativo (no AJAX); por eso al
+     enviar, la página redirige a /gracias.html (campo _next).
+     ACTIVACIÓN: la primera vez hay que hacer un envío de prueba en cada
+     formulario y clickear el link de confirmación que manda FormSubmit a
+     cada correo. Después los mensajes llegan automáticamente.
   ───────────────────────────────────────────────────────────── */
-  async function sendContactForm(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = document.getElementById('submitBtn');
+  const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB por archivo (tope FormSubmit: 10 MB total)
+
+  // _next dinámico → página de gracias del mismo dominio (sirve en prod y en preview)
+  document.querySelectorAll('input[name="_next"]').forEach(i => {
+    i.value = location.origin + '/gracias.html';
+  });
+
+  // Mostrar el nombre del archivo elegido y avisar si supera 5 MB
+  document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
+    const nameEl = input.parentElement.querySelector('.file-upload-name');
+    input.addEventListener('change', () => {
+      const _d = I18N[document.documentElement.lang] || I18N.es;
+      const file = input.files && input.files[0];
+      nameEl.classList.remove('is-error');
+      if (file && file.size > MAX_FILE_BYTES) {
+        input.value = '';
+        nameEl.removeAttribute('data-i18n');
+        nameEl.classList.add('is-error');
+        nameEl.textContent = _d['file.toobig'] || 'El archivo supera los 5 MB';
+        return;
+      }
+      if (file) {
+        nameEl.removeAttribute('data-i18n');
+        nameEl.textContent = file.name;
+      } else {
+        nameEl.setAttribute('data-i18n', 'file.none');
+        nameEl.textContent = _d['file.none'] || 'Ningún archivo seleccionado';
+      }
+    });
+  });
+
+  // Guarda de tamaño antes del envío nativo (≤5 MB)
+  function fileTooBig(input) {
+    const file = input && input.files && input.files[0];
+    return !!(file && file.size > MAX_FILE_BYTES);
+  }
+
+  // Propuesta: archivo opcional (<5MB)
+  const contactForm = document.getElementById('contactForm');
+  contactForm?.addEventListener('submit', (e) => {
+    const _d = I18N[document.documentElement.lang] || I18N.es;
     const status = document.getElementById('formStatus');
-    const keyField = form.access_key.value;
-
+    const fileInput = document.getElementById('proposal-file');
     status.className = 'form-status'; status.textContent = '';
-
-    // Fallback: si nadie configuró el key todavía, abrir mail del usuario
-    if (!keyField || keyField === 'PEGAR_ACCESS_KEY_AQUI') {
-      const subject = `Consulta web — ${form.servicio.value || 'Consulta general'}`;
-      const body =
-`Nueva consulta desde el sitio web de ISMAEL S.A.
-
-— Nombre y empresa: ${form.nombre.value}
-— Correo de contacto: ${form.email.value}
-— Tipo de servicio: ${form.servicio.value || 'Consulta general'}
-
-Mensaje:
-${form.mensaje.value || '(sin mensaje)'}
-
-— Enviado desde ismaelsa.com`;
-      window.location.href = `mailto:contacto@ismaelsa.info?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      return false;
-    }
-
-    // POST a Web3Forms
-    btn.disabled = true;
-    const originalText = btn.textContent;
-    const _d = I18N[document.documentElement.lang] || I18N.es;
-    btn.textContent = _d['contact.form.sending'] || 'Enviando…';
-
-    try {
-      const formData = new FormData(form);
-      // multipart/form-data (no explicit Content-Type) so file attachments are sent
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        status.className = 'form-status success';
-        status.textContent = _d['contact.form.success'] || '✓ Consulta enviada. Te responderemos a la brevedad.';
-        form.reset();
-      } else {
-        throw new Error(data.message || 'Error de servidor');
-      }
-    } catch (err) {
+    if (fileTooBig(fileInput)) {
+      e.preventDefault();
       status.className = 'form-status error';
-      status.textContent = _d['contact.form.error'] || '✗ No se pudo enviar. Escribinos directo a contacto@ismaelsa.info';
-      console.error('Web3Forms error:', err);
-    } finally {
-      btn.disabled = false;
-      btn.textContent = originalText;
+      status.textContent = _d['file.toobig'] || 'El archivo supera los 5 MB. Para archivos grandes usá el link de Drive.';
+      fileInput.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
     }
-    return false;
-  }
+    const btn = document.getElementById('submitBtn');
+    if (btn) { btn.disabled = true; btn.textContent = _d['contact.form.sending'] || 'Enviando…'; }
+  });
 
-  /* Careers form — Web3Forms */
-  async function sendCareersForm(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = document.getElementById('careersBtn');
+  // CV: archivo obligatorio (<5MB)
+  const careersForm = document.getElementById('careersForm');
+  careersForm?.addEventListener('submit', (e) => {
+    const _d = I18N[document.documentElement.lang] || I18N.es;
     const status = document.getElementById('careersStatus');
+    const fileInput = document.getElementById('cv-file');
     status.className = 'form-status'; status.textContent = '';
-    const _d = I18N[document.documentElement.lang] || I18N.es;
-
-    // CV link is mandatory for job applications
-    const cvLink = document.getElementById('cv-link');
-    if (!cvLink || !cvLink.value.trim()) {
+    if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+      e.preventDefault();
       status.className = 'form-status error';
-      status.textContent = _d['careers.form.cv.required'] || 'Pegá el link a tu CV para enviar la postulación.';
-      cvLink?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return false;
+      status.textContent = _d['careers.form.cv.required'] || 'Adjuntá tu CV (PDF o Word, máx. 5 MB) para enviar la postulación.';
+      fileInput?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
     }
-
-    btn.disabled = true;
-    const originalText = btn.textContent;
-    btn.textContent = _d['careers.form.sending'] || 'Enviando…';
-    try {
-      const formData = new FormData(form);
-      // multipart/form-data (no explicit Content-Type) so file attachments are sent
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        status.className = 'form-status success';
-        status.textContent = _d['careers.form.success'] || '✓ Postulación enviada. Te contactaremos si tu perfil coincide con una búsqueda activa.';
-        form.reset();
-      } else {
-        throw new Error(data.message || 'Error de servidor');
-      }
-    } catch (err) {
+    if (fileTooBig(fileInput)) {
+      e.preventDefault();
       status.className = 'form-status error';
-      status.textContent = _d['careers.form.error'] || '✗ No se pudo enviar. Escribinos directo a ismaelsarr.hh@gmail.com';
-      console.error('Web3Forms careers error:', err);
-    } finally {
-      btn.disabled = false;
-      btn.textContent = originalText;
+      status.textContent = _d['file.toobig'] || 'El archivo supera los 5 MB.';
+      fileInput.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
     }
-    return false;
-  }
+    const btn = document.getElementById('careersBtn');
+    if (btn) { btn.disabled = true; btn.textContent = _d['careers.form.sending'] || 'Enviando…'; }
+  });
 </script>
 </body>
 </html>
