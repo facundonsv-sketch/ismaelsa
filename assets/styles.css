@@ -670,7 +670,7 @@
     .safety-bg::before {
       content: '';
       position: absolute; inset: 0;
-      background-image: url('assets/WhatsApp Image 2026-06-11 at 17.05.56.jpeg');
+      background-image: url('WhatsApp Image 2026-06-11 at 17.05.56.jpeg');
       background-size: cover;
       background-position: center 35%;
       opacity: 0.18;
@@ -855,7 +855,7 @@
       background-color: var(--bg-dark);
       background-image:
         linear-gradient(120deg, rgba(14,22,18,0.92) 0%, rgba(14,22,18,0.7) 60%, rgba(14,22,18,0.5) 100%),
-        url('assets/WhatsApp Image 2026-06-11 at 17.06.54.jpeg');
+        url('WhatsApp Image 2026-06-11 at 17.06.54.jpeg');
       background-size: cover;
       background-position: center;
       position: relative;
@@ -1243,12 +1243,12 @@
         height: clamp(120px, 14vw, 180px);
       }
       /* Mobile: imágenes verticales para el hero (no se cortan) */
-      .hero-slide:nth-child(1) { background-image: url('assets/1.png') !important; }
-      .hero-slide:nth-child(2) { background-image: url('assets/2.png') !important; }
-      .hero-slide:nth-child(3) { background-image: url('assets/3.png') !important; }
-      .hero-slide:nth-child(4) { background-image: url('assets/4.png') !important; }
+      .hero-slide:nth-child(1) { background-image: url('1.png') !important; }
+      .hero-slide:nth-child(2) { background-image: url('2.png') !important; }
+      .hero-slide:nth-child(3) { background-image: url('3.png') !important; }
+      .hero-slide:nth-child(4) { background-image: url('4.png') !important; }
       /* Mobile: imagen vertical para higiene, seguridad y trazabilidad operativa */
-      .safety-bg::before { background-image: url('assets/higiene nueva.png') !important; }
+      .safety-bg::before { background-image: url('higiene nueva.png') !important; }
       .about-grid, .fleet-grid, .safety-inner,
       .contact-inner, .coverage-grid,
       .team-inner, .careers-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1511,17 +1511,17 @@
   .text-mid   { color: var(--fg-mid); }
 
   /* ── Clases migradas desde estilos inline (elimina style-src 'unsafe-inline') ── */
-  .hero-bg-1 { background-image: url('assets/WhatsApp Image 2026-06-17 at 02.27.25.jpeg'); }
-  .hero-bg-2 { background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.01.jpeg'); }
-  .hero-bg-3 { background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.11.jpeg'); }
-  .hero-bg-4 { background-image: url('assets/WhatsApp Image 2026-06-17 at 02.43.01.jpeg'); }
-  .svc-bg-1 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.25 (1).jpeg'); }
-  .svc-bg-2 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (2).jpeg'); }
-  .svc-bg-3 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (2).jpeg'); }
-  .svc-bg-4 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (3).jpeg'); }
-  .svc-bg-5 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (1).jpeg'); }
-  .svc-bg-6 { --svc-img: url('assets/WhatsApp Image 2026-06-11 at 17.07.36.jpeg'); }
-  .svc-bg-7 { --svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (1).jpeg'); }
+  .hero-bg-1 { background-image: url('WhatsApp Image 2026-06-17 at 02.27.25.jpeg'); }
+  .hero-bg-2 { background-image: url('WhatsApp Image 2026-06-17 at 02.42.01.jpeg'); }
+  .hero-bg-3 { background-image: url('WhatsApp Image 2026-06-17 at 02.42.11.jpeg'); }
+  .hero-bg-4 { background-image: url('WhatsApp Image 2026-06-17 at 02.43.01.jpeg'); }
+  .svc-bg-1 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.27.25 (1).jpeg'); }
+  .svc-bg-2 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.27.26 (2).jpeg'); }
+  .svc-bg-3 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.42.11 (2).jpeg'); }
+  .svc-bg-4 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.42.11 (3).jpeg'); }
+  .svc-bg-5 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.27.26 (1).jpeg'); }
+  .svc-bg-6 { --svc-img: url('WhatsApp Image 2026-06-11 at 17.07.36.jpeg'); }
+  .svc-bg-7 { --svc-img: url('WhatsApp Image 2026-06-17 at 02.42.11 (1).jpeg'); }
   .mobile-cta { text-align:center; padding:14px 24px; font-size:15px; }
   .stat-pct { font-size:0.6em; }
   .mb-36 { margin-bottom:36px; }

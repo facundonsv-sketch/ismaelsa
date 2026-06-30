@@ -230,3 +230,23 @@ assets/fonts/ibm-plex-sans.css — NUEVO
 - **A09**: apuntar `Reporting-Endpoints` a un collector real para *recibir* los reportes
   de CSP (gratis con report-uri.com o una Netlify Function). El cableado ya está listo.
 - **GDPR/privacidad**: sigue sin página de política de privacidad (fuera del alcance de seguridad).
+
+---
+
+## Hotfix — 2026-06-30 · Rutas de imágenes en CSS
+
+**Bug introducido por la migración de estilos inline (y arrastrado del commit `42a6183`):**
+las `background-image: url('assets/…')` que estaban inline en el HTML resolvían bien
+(relativas a `/`), pero al moverlas a `assets/styles.css` pasaron a resolverse relativas
+al CSS → `/assets/assets/…` → **404**. Esto dejó el hero (desktop y mobile) y las
+imágenes de las tarjetas de servicio sin fondo.
+
+**Fix:** se corrigieron las **18** ocurrencias `url('assets/X')` → `url('X')` en
+`assets/styles.css` (incluye las 9 migradas en esta sesión + 9 pre-existentes ya rotas
+desde la externalización del CSS: hero mobile `1–4.png`, `higiene nueva.png`, y fondos
+de secciones). Verificado con logs del servidor (todas `200`) y capturas headless del
+hero desktop+mobile mostrando las imágenes.
+
+**Lección:** la verificación por captura headless a escala reducida no distinguió "foto
+oscura" de "sin foto + overlay oscuro". Ahora se valida también el **estado de red
+(200/404)** de los recursos, no solo el pixel.
