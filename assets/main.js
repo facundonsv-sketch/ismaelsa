@@ -21,6 +21,19 @@
   // Attach hamburger click via addEventListener (removes need for unsafe-inline onclick)
   document.getElementById('hamburgerBtn')?.addEventListener('click', toggleMobileMenu);
 
+  /* ── LOGO FALLBACK ──
+     Reemplaza el antiguo onerror inline (bloqueado por la CSP estricta).
+     Si la imagen del logo falla, activa el fallback SVG y la quita. */
+  function handleLogoError(img) {
+    if (img.parentNode) img.parentNode.classList.add('logo-fallback');
+    img.remove();
+  }
+  document.querySelectorAll('.nav-logo-img, .footer-logo-img').forEach(img => {
+    img.addEventListener('error', () => handleLogoError(img));
+    // Cubre el caso en que el error ya ocurrió antes de ejecutar este script (defer)
+    if (img.complete && img.naturalWidth === 0) handleLogoError(img);
+  });
+
   /* ── SERVICE CARDS: Scroll-triggered image reveal (mobile only) ── */
   if (window.matchMedia('(max-width: 900px)').matches) {
     const observer = new IntersectionObserver((entries) => {

@@ -1,11 +1,30 @@
 ## Security headers para Netlify (y Cloudflare Pages).
 ## Si NO usás Netlify/Cloudflare Pages, borrá este archivo y usá vercel.json.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=(), browsing-topics=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
   X-DNS-Prefetch-Control: off
+  Reporting-Endpoints: csp-endpoint="https://ismaelsa.com/.netlify/functions/csp-report"
+
+## ─────────────────────────────────────────────────────────────────────────
+## A09 — Monitoreo de violaciones de CSP (registro y alertas)
+## La CSP de arriba YA emite reportes al grupo "csp-endpoint" (directiva report-to)
+## y el header Reporting-Endpoints lo declara. Para RECIBIR esos reportes hay que
+## apuntar la URL a un collector real. Opciones (elegí una y reemplazá la URL):
+##   1) Gratis/llave en mano: creá una cuenta en https://report-uri.com y usá la
+##      URL que te dan, p.ej.:  csp-endpoint="https://TU-SUBDOMINIO.report-uri.com/r/d/csp/enforce"
+##   2) Propio en Netlify: creá una Function en /.netlify/functions/csp-report que
+##      reciba el POST y lo loguee (la URL placeholder de arriba ya apunta ahí).
+## Mientras la URL no exista, el navegador simplemente descarta el reporte (sin error visible).
+## ─────────────────────────────────────────────────────────────────────────
+
+## Cache largo para fuentes auto-hosteadas (son inmutables: nombre fijo por archivo)
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

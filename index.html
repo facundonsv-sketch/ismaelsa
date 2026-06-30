@@ -6,7 +6,7 @@
   <!-- Security headers (meta level). Los headers que el navegador SOLO acepta vía HTTP
        (X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, Permissions-Policy
        y frame-ancestors) se configuran en _headers / vercel.json del hosting. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>ISMAEL S.A. — Logística Minera e Industrial en San Juan</title>
   <meta name="description" content="ISMAEL S.A. — Empresa sanjuanina de logística, transporte y soporte operativo para la minería. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.">
@@ -36,9 +36,8 @@
     }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" crossorigin="anonymous">
+  <!-- Fuentes auto-hosteadas (mismo origen): elimina la dependencia de Google Fonts y la necesidad de SRI -->
+  <link rel="stylesheet" href="assets/fonts/ibm-plex-sans.css">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -48,7 +47,7 @@
   <nav class="nav" role="navigation" aria-label="Navegación principal">
     <a href="#" class="nav-logo" aria-label="ISMAEL S.A. — Inicio">
       <!-- Brand mark (mountain icon only, sin letras) -->
-      <img src="assets/logosolo.png" alt="ISMAEL S.A." class="nav-logo-img" onerror="this.parentNode.classList.add('logo-fallback');this.remove()">
+      <img src="assets/logosolo.png" alt="ISMAEL S.A." class="nav-logo-img">
       <svg width="54" height="40" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="nav-logo-svg">
         <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
         <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
@@ -96,7 +95,7 @@
     <li><a href="#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
   </ul>
   <div class="mobile-actions">
-    <a href="#contacto" class="btn btn-green mobile-nav-link" style="text-align:center; padding:14px 24px; font-size:15px;" data-i18n="cta.solicitar">Solicitar propuesta</a>
+    <a href="#contacto" class="btn btn-green mobile-nav-link mobile-cta" data-i18n="cta.solicitar">Solicitar propuesta</a>
   </div>
 </nav>
 
@@ -106,10 +105,10 @@
 <section class="hero" aria-labelledby="hero-heading">
   <!-- Slider de imágenes (primera = camión con logo, default al cargar) -->
   <div class="hero-slides" aria-hidden="true">
-    <div class="hero-slide is-active" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.27.25.jpeg');"></div>
-    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.01.jpeg');"></div>
-    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.42.11.jpeg');"></div>
-    <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-06-17 at 02.43.01.jpeg');"></div>
+    <div class="hero-slide is-active hero-bg-1"></div>
+    <div class="hero-slide hero-bg-2"></div>
+    <div class="hero-slide hero-bg-3"></div>
+    <div class="hero-slide hero-bg-4"></div>
   </div>
 
   <div class="hero-inner">
@@ -163,7 +162,7 @@
       <div class="stat-label" data-i18n-html="stats.bases">Bases operativas<br>en San Juan</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number"><span>100<span style="font-size:0.6em">%</span></span></div>
+      <div class="stat-number"><span>100<span class="stat-pct">%</span></span></div>
       <div class="stat-label" data-i18n-html="stats.cert">Personal<br>certificado</div>
     </div>
     <div class="stat-item">
@@ -195,7 +194,7 @@
         <p class="about-text" data-i18n="about.body1">
           ISMAEL S.A. es una empresa de San Juan especializada en logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras. Operamos con flota propia en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.
         </p>
-        <p class="about-text" data-i18n="about.body2" style="margin-bottom: 36px;">
+        <p class="about-text mb-36" data-i18n="about.body2">
           Contamos con dos bases en Rawson y Calingasta que nos permiten movilizar equipos rápidamente a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
         </p>
 
@@ -223,13 +222,13 @@
   <div class="services-header">
     <div>
       <div class="section-tag" data-i18n="services.tag">Servicios</div>
-      <h2 class="section-title" data-i18n="services.title" style="margin-bottom:0">Lo que hacemos, lo hacemos bien</h2>
+      <h2 class="section-title mb-0" data-i18n="services.title">Lo que hacemos, lo hacemos bien</h2>
     </div>
-    <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 24px;">Consultar disponibilidad</a>
+    <a href="#contacto" class="btn btn-green btn-pad-a" data-i18n="cta.consultar">Consultar disponibilidad</a>
   </div>
 
   <div class="services-grid">
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.25 (1).jpeg');">
+    <div class="service-card svc-bg-1">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -240,7 +239,7 @@
       <p data-i18n="svc.1.desc">Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (2).jpeg');">
+    <div class="service-card svc-bg-2">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -250,7 +249,7 @@
       <p data-i18n="svc.2.desc">Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (2).jpeg');">
+    <div class="service-card svc-bg-3">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
@@ -260,7 +259,7 @@
       <p data-i18n="svc.3.desc">Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (3).jpeg');">
+    <div class="service-card svc-bg-4">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
@@ -271,7 +270,7 @@
       <p data-i18n="svc.4.desc">Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.27.26 (1).jpeg');">
+    <div class="service-card svc-bg-5">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
@@ -281,7 +280,7 @@
       <p data-i18n="svc.5.desc">Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-11 at 17.07.36.jpeg');">
+    <div class="service-card svc-bg-6">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
@@ -291,7 +290,7 @@
       <p data-i18n="svc.6.desc">Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
     </div>
 
-    <div class="service-card" style="--svc-img: url('assets/WhatsApp Image 2026-06-17 at 02.42.11 (1).jpeg');">
+    <div class="service-card svc-bg-7">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M3 18v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="1" x2="12" y2="3"/>
@@ -320,10 +319,10 @@
         <h2 class="section-title" id="fleet-title" data-i18n-html="fleet.title">
           Equipamiento propio.<br>Sin intermediarios.
         </h2>
-        <p class="section-body" data-i18n="fleet.body" style="margin-bottom: 20px;">
+        <p class="section-body mb-20" data-i18n="fleet.body">
           Más de 20 unidades propias preparadas para operar en cordillera, rutas y zonas remotas. Garantizamos disponibilidad, mantenimiento preventivo programado y respuesta operativa local, sin depender de terceros para el equipamiento crítico.
         </p>
-        <a href="#contacto" class="btn btn-green" data-i18n="cta.consultar" style="padding: 11px 22px; font-size:14px;">Consultar disponibilidad de flota</a>
+        <a href="#contacto" class="btn btn-green btn-pad-b" data-i18n="cta.consultar">Consultar disponibilidad de flota</a>
       </div>
 
       <div class="fleet-tech">
@@ -450,7 +449,7 @@
   <div class="safety-inner">
     <div>
       <div class="section-tag" data-i18n="safety.tag">Higiene, seguridad y trazabilidad operativa</div>
-      <h2 class="section-title" id="safety-title" data-i18n-html="safety.title" style="margin-bottom: 32px;">
+      <h2 class="section-title mb-32" id="safety-title" data-i18n-html="safety.title">
         Seguridad operativa<br>sin excepciones
       </h2>
 
@@ -458,7 +457,7 @@
         <p data-i18n="safety.quote">"La seguridad no es un requisito: es nuestro estándar operativo."</p>
       </div>
 
-      <p class="section-body" data-i18n="safety.body" style="margin-bottom: 36px;">
+      <p class="section-body mb-36" data-i18n="safety.body">
         Cada servicio se ejecuta bajo procedimientos de seguridad, seguimiento satelital y control preventivo de la flota, priorizando la protección del personal, la continuidad operativa y el cumplimiento en terreno. Compatibles con las exigencias HSEC de operadoras mineras internacionales.
       </p>
 
@@ -517,12 +516,12 @@
 
 <!-- ═══════════════════════ COBERTURA ═══════════════════════ -->
 <div class="section-full coverage-bg" id="cobertura">
-  <div style="max-width:var(--max-w); margin:0 auto;">
+  <div class="wrap-max">
     <div class="section-tag" data-i18n="bases.tag">Infraestructura y cobertura</div>
-    <h2 class="section-title" id="coverage-title" data-i18n="bases.title" style="margin-bottom:18px;">
+    <h2 class="section-title mb-18" id="coverage-title" data-i18n="bases.title">
       Dos bases operativas en San Juan
     </h2>
-    <p class="section-body" data-i18n="bases.body" style="margin-bottom: 36px; max-width: 760px;">
+    <p class="section-body bases-body" data-i18n="bases.body">
       Dos bases operativas estratégicamente ubicadas en San Juan nos permiten responder con rapidez a los proyectos de toda la cordillera, reducir tiempos de movilización y mantener presencia operativa local.
     </p>
 
@@ -580,32 +579,32 @@
       </div>
     </div>
 
-    <div style="margin-top: 36px; padding: 28px 32px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px;">
-      <div style="display:flex; align-items:flex-start; gap:12px;">
-        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+    <div class="adv-grid">
+      <div class="base-adv">
+        <div class="base-adv-ic">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div>
-          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv1.title">Menor tiempo de respuesta</strong>
-          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv1.desc">Movilización local sin depender de tránsitos largos desde otras provincias.</span>
+          <strong data-i18n="bases.adv1.title" class="base-adv-title">Menor tiempo de respuesta</strong>
+          <span data-i18n="bases.adv1.desc" class="base-adv-desc">Movilización local sin depender de tránsitos largos desde otras provincias.</span>
         </div>
       </div>
-      <div style="display:flex; align-items:flex-start; gap:12px;">
-        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+      <div class="base-adv">
+        <div class="base-adv-ic">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div>
-          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv2.title">Conocimiento del terreno</strong>
-          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv2.desc">Rutas, caminos secundarios, altura cordillerana y clima de montaña.</span>
+          <strong data-i18n="bases.adv2.title" class="base-adv-title">Conocimiento del terreno</strong>
+          <span data-i18n="bases.adv2.desc" class="base-adv-desc">Rutas, caminos secundarios, altura cordillerana y clima de montaña.</span>
         </div>
       </div>
-      <div style="display:flex; align-items:flex-start; gap:12px;">
-        <div style="width:32px; height:32px; flex-shrink:0; background:rgba(45,122,80,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+      <div class="base-adv">
+        <div class="base-adv-ic">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div>
-          <strong style="display:block; font-size:14px; color:var(--fg-mid); margin-bottom:4px;" data-i18n="bases.adv3.title">Compromiso local</strong>
-          <span style="font-size:13px; color:var(--fg-muted); line-height:1.5;" data-i18n="bases.adv3.desc">Generación de empleo y desarrollo en la provincia de San Juan.</span>
+          <strong data-i18n="bases.adv3.title" class="base-adv-title">Compromiso local</strong>
+          <span data-i18n="bases.adv3.desc" class="base-adv-desc">Generación de empleo y desarrollo en la provincia de San Juan.</span>
         </div>
       </div>
     </div>
@@ -615,9 +614,9 @@
          assets/images/maps/mapa-san-juan-proyectos.png
          con marcadores rojos para Bases (Rawson, Calingasta) y secundarios
          para proyectos mineros (El Pachón, Filo del Sol, etc.).
-    <div style="margin-top: 36px; padding: 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);">
-      <div style="font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;">Mapa de operación</div>
-      <img src="assets/images/maps/mapa-san-juan-proyectos.png" alt="Mapa de San Juan con bases operativas y proyectos asistidos." style="width:100%; height:auto; border-radius: var(--r-md);">
+    <div class="panel-card">
+      <div class="eyebrow">Mapa de operación</div>
+      <img src="assets/images/maps/mapa-san-juan-proyectos.png" alt="Mapa de San Juan con bases operativas y proyectos asistidos." class="map-img">
     </div>
     -->
 
@@ -628,7 +627,7 @@
 <section id="experiencia" class="section-full experience-bg" aria-labelledby="experience-title">
   <div class="experience-inner">
     <div class="section-tag" data-i18n="experience.tag">Experiencia que nos respalda</div>
-    <h2 class="section-title" id="experience-title" data-i18n-html="experience.title" style="margin-bottom: 20px;">
+    <h2 class="section-title mb-20" id="experience-title" data-i18n-html="experience.title">
       Más de 35 proyectos asistidos<br>en alta montaña
     </h2>
     <p class="section-body" data-i18n="experience.body">
@@ -672,7 +671,7 @@
       </article>
     </div>
 
-    <p class="section-body" data-i18n="experience.context" style="margin-top: 44px; max-width: 800px;">
+    <p class="section-body exp-context" data-i18n="experience.context">
       Operamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.
     </p>
   </div>
@@ -683,7 +682,7 @@
   <div class="team-inner">
     <div>
       <div class="section-tag" data-i18n="team.tag">Capital humano</div>
-      <h2 class="section-title" id="team-title" data-i18n-html="team.title" style="margin-bottom: 28px;">
+      <h2 class="section-title mb-28" id="team-title" data-i18n-html="team.title">
         Personas con<br>experiencia operativa real
       </h2>
       <p class="section-body" data-i18n="team.body">
@@ -696,8 +695,8 @@
     </div>
 
     <div>
-      <h3 style="font-size:14px; font-weight:600; color:var(--fg-mid); margin-bottom:6px; letter-spacing:0.3px;" data-i18n="team.roles.title">Perfiles operativos</h3>
-      <p style="font-size:13px; color:var(--fg-muted); margin-bottom: 16px;" data-i18n="team.roles.sub">Dotación propia escalable según campaña. Sin dependencia de agencias ni subcontratistas.</p>
+      <h3 data-i18n="team.roles.title" class="team-roles-title">Perfiles operativos</h3>
+      <p data-i18n="team.roles.sub" class="team-roles-sub">Dotación propia escalable según campaña. Sin dependencia de agencias ni subcontratistas.</p>
 
       <div class="team-list" role="list">
         <div class="team-cert" role="listitem">
@@ -778,10 +777,10 @@
   <div class="contact-inner">
     <div>
       <div class="section-tag" data-i18n="contact.tag">Contacto comercial</div>
-      <h2 class="section-title" data-i18n-html="contact.title" style="margin-bottom:16px;">
+      <h2 class="section-title mb-16" data-i18n-html="contact.title">
         Hablemos de<br>su próximo proyecto
       </h2>
-      <p class="section-body" style="margin-bottom: 0;" data-i18n="contact.body">
+      <p class="section-body mb-0" data-i18n="contact.body">
         Contamos con disponibilidad para nuevos proyectos. Consulte sin compromiso sobre disponibilidad de flota, capacidad operativa, cobertura cordillerana y plazos de respuesta.
       </p>
 
@@ -826,9 +825,9 @@
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div class="grid-2">
         <div class="form-group">
           <label for="nombre" data-i18n="contact.form.label.nombre">Nombre <span aria-hidden="true">*</span></label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Romero" data-i18n-placeholder="ph.nombre" required autocomplete="name">
@@ -879,17 +878,17 @@
       <div class="form-group">
         <label for="proposal-link" data-i18n="file.proposal.linklabel">¿El archivo pesa más de 5 MB? Pegá un link (opcional)</label>
         <input type="url" id="proposal-link" name="archivo_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.proposal.link" autocomplete="off">
-        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.proposal.hint">Para PDFs grandes, subilo a Google Drive o WeTransfer y pegá el enlace acá. Verificá que sea de acceso público.</p>
+        <p data-i18n="file.proposal.hint" class="file-hint">Para PDFs grandes, subilo a Google Drive o WeTransfer y pegá el enlace acá. Verificá que sea de acceso público.</p>
       </div>
 
       <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
 
-      <div style="display:flex; gap: 10px; margin-top: 12px;">
-        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener noreferrer" class="btn" style="flex:1; background: #25D366; color:white; padding: 12px 18px; font-size:14px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius: var(--r-sm);">
+      <div class="row-actions">
+        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener noreferrer" class="btn btn-wa">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
-        <a href="mailto:contacto@ismaelsa.info?subject=Consulta%20-%20ISMAEL%20S.A." class="btn btn-outline" style="flex:1; padding: 12px 18px; font-size:14px;">
+        <a href="mailto:contacto@ismaelsa.info?subject=Consulta%20-%20ISMAEL%20S.A." class="btn btn-outline btn-flex">
           Enviar email
         </a>
       </div>
@@ -904,15 +903,15 @@
   <div class="careers-inner">
     <div>
       <div class="section-tag" data-i18n="careers.tag">Trabajá con nosotros</div>
-      <h2 class="section-title" id="careers-title" data-i18n-html="careers.title" style="margin-bottom: 18px;">
+      <h2 class="section-title mb-18" id="careers-title" data-i18n-html="careers.title">
         Sumá tu experiencia<br>al equipo
       </h2>
-      <p class="section-body" style="margin-bottom: 24px;" data-i18n="careers.body1">
+      <p class="section-body mb-24" data-i18n="careers.body1">
         Si tenés experiencia en operaciones logísticas, transporte, mantenimiento o servicios de apoyo a la minería, envianos tu información para futuras búsquedas.
       </p>
-      <p style="font-size: 13px; color: var(--fg-subtle); line-height:1.6;" data-i18n-html="careers.body2">
+      <p data-i18n-html="careers.body2" class="careers-body2">
         Recibimos postulaciones para roles operativos, técnicos y administrativos. Personal con habilitaciones vigentes tiene prioridad.<br>
-        <strong style="color:var(--fg-mid);">Este canal es exclusivo para postulaciones laborales.</strong> Las consultas comerciales van a <a href="#contacto" style="color:var(--green);">Contacto</a>.
+        <strong class="text-mid">Este canal es exclusivo para postulaciones laborales.</strong> Las consultas comerciales van a <a href="#contacto" class="text-green">Contacto</a>.
       </p>
     </div>
 
@@ -924,7 +923,7 @@
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
 
       <div class="form-group">
         <label for="cv-nombre" data-i18n="careers.form.label.nombre">Nombre completo <span aria-hidden="true">*</span></label>
@@ -957,11 +956,11 @@
           <input type="file" id="cv-file" name="attachment" accept=".pdf,.doc,.docx" required>
           <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
         </div>
-        <p style="font-size:11px; color: var(--fg-subtle); margin-top:6px; line-height:1.5;" data-i18n="file.cv.hint">Formato PDF o Word, hasta 5 MB.</p>
+        <p data-i18n="file.cv.hint" class="file-hint">Formato PDF o Word, hasta 5 MB.</p>
       </div>
       <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
-      <p style="font-size:11px; color: var(--fg-subtle); margin-top:10px; text-align:center;" data-i18n-html="careers.adjuntos">
-        Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" style="color: var(--green);">ismaelsarr.hh@gmail.com</a>
+      <p data-i18n-html="careers.adjuntos" class="careers-adjuntos">
+        Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" class="text-green">ismaelsarr.hh@gmail.com</a>
       </p>
       <div id="careersStatus" class="form-status" role="status" aria-live="polite"></div>
     </form>
@@ -972,10 +971,10 @@
 
 <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
 <footer>
-  <div class="footer-inner" style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; align-items: start;">
+  <div class="footer-inner footer-grid">
     <div>
-      <div class="footer-logo" style="margin-bottom: 14px;">
-        <img src="assets/logo.png" alt="ISMAEL S.A." class="footer-logo-img" onerror="this.parentNode.classList.add('logo-fallback');this.remove()">
+      <div class="footer-logo mb-14">
+        <img src="assets/logo.png" alt="ISMAEL S.A." class="footer-logo-img">
         <svg width="48" height="36" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="footer-logo-svg">
           <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
           <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
@@ -986,15 +985,15 @@
           <span class="footer-logo-sub" data-i18n="footer.logo.sub">Servicios, Logística y Transporte Minero</span>
         </div>
       </div>
-      <p style="font-size:13px; color: rgba(255,255,255,0.55); line-height:1.6; max-width: 320px; margin-bottom: 16px;" data-i18n="footer.tagline">
+      <p data-i18n="footer.tagline" class="footer-tagline">
         Empresa sanjuanina con más de 20 años de experiencia en soluciones logísticas para la minería, petróleo, gas y grandes obras.
       </p>
-      <div class="footer-copy" style="font-size:12px;" data-i18n-html="footer.copy">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
+      <div class="footer-copy fs-12" data-i18n-html="footer.copy">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
     </div>
 
     <div>
-      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.empresa">Empresa</div>
-      <nav class="footer-links" aria-label="Empresa" style="display:flex; flex-direction:column; gap:10px;">
+      <div data-i18n="footer.col.empresa" class="footer-col-title">Empresa</div>
+      <nav class="footer-links col-10" aria-label="Empresa">
         <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
         <a href="#servicios" data-i18n="nav.servicios">Servicios</a>
         <a href="#flota" data-i18n="nav.flota">Flota</a>
@@ -1005,26 +1004,26 @@
     </div>
 
     <div>
-      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.bases">Bases operativas</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
+      <div data-i18n="footer.col.bases" class="footer-col-title">Bases operativas</div>
+      <div class="col-14">
         <div>
-          <strong style="font-size:13px; color: rgba(255,255,255,0.85); display:block; margin-bottom:3px;">Rawson</strong>
-          <span style="font-size:12px; color: var(--fg-subtle); line-height:1.5;" data-i18n="footer.rawson.desc">Gran San Juan — centro logístico y administrativo</span>
+          <strong class="footer-base-name">Rawson</strong>
+          <span data-i18n="footer.rawson.desc" class="footer-base-desc">Gran San Juan — centro logístico y administrativo</span>
         </div>
         <div>
-          <strong style="font-size:13px; color: rgba(255,255,255,0.85); display:block; margin-bottom:3px;">Calingasta</strong>
-          <span style="font-size:12px; color: var(--fg-subtle); line-height:1.5;" data-i18n="footer.calingasta.desc">Zona cordillerana — base de avanzada operativa</span>
+          <strong class="footer-base-name">Calingasta</strong>
+          <span data-i18n="footer.calingasta.desc" class="footer-base-desc">Zona cordillerana — base de avanzada operativa</span>
         </div>
       </div>
     </div>
 
     <div>
-      <div style="font-size:11px; font-weight:700; color: var(--green-light); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;" data-i18n="footer.col.contacto">Contacto</div>
-      <div style="display:flex; flex-direction:column; gap:12px;">
-        <a href="tel:+542644131515" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">+54 264 413-1515</a>
-        <a href="mailto:contacto@ismaelsa.info" style="font-size:13px; color: rgba(255,255,255,0.75); text-decoration:none;">contacto@ismaelsa.info</a>
-        <span style="font-size:13px; color: rgba(255,255,255,0.55);">ismaelsa.com</span>
-        <a href="https://wa.me/542644131515" target="_blank" rel="noopener noreferrer" style="font-size:13px; color: #5FAE82; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+      <div data-i18n="footer.col.contacto" class="footer-col-title">Contacto</div>
+      <div class="col-12">
+        <a href="tel:+542644131515" class="footer-contact-link">+54 264 413-1515</a>
+        <a href="mailto:contacto@ismaelsa.info" class="footer-contact-link">contacto@ismaelsa.info</a>
+        <span class="footer-muted">ismaelsa.com</span>
+        <a href="https://wa.me/542644131515" target="_blank" rel="noopener noreferrer" class="footer-wa">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           WhatsApp
         </a>

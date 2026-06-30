@@ -10,7 +10,8 @@
 El sitio es una landing page estática sin backend propio ni base de datos. La superficie de ataque es reducida, pero existían vulnerabilidades concretas en la Content Security Policy que permitían ejecución de scripts arbitrarios vía XSS. Se implementaron todas las correcciones posibles en el stack actual.
 
 **Rating antes:** 6.5 / 10  
-**Rating después:** 8.5 / 10
+**Rating tras 1ª pasada (2026-06-26):** 8.5 / 10  
+**Rating tras 2ª pasada (2026-06-30):** 9.5 / 10 — ver sección "Segunda pasada" al final.
 
 ---
 
@@ -164,3 +165,68 @@ _headers              — MODIFICADO (CSP: script-src sin unsafe-inline)
 .gitignore            — MODIFICADO (exclusiones de seguridad agregadas)
 SECURITY_REPORT.md    — NUEVO (este archivo)
 ```
+
+---
+
+## Segunda pasada — 2026-06-30 · Cobertura total (Claude · Opus 4.8)
+
+Objetivo: cerrar **todas** las brechas residuales posibles en un sitio estático y mapear
+el resultado contra el **OWASP Top 10 (2025)**.
+
+### Brechas residuales — ahora resueltas
+
+| # (1ª pasada) | Brecha | Estado nuevo | Cómo se resolvió |
+|---|--------|--------------|------------------|
+| M-1 | `style-src 'unsafe-inline'` | **RESUELTO** | Migrados los 78 atributos `style=""` del HTML a 57 clases CSS (`assets/styles.css`). `style-src` quedó en `'self'` puro en la meta-CSP y en `_headers`. 0 estilos inline, 0 bloques `<style>` inline en todo el sitio. |
+| M-2 | Sin SRI en Google Fonts | **RESUELTO** | IBM Plex Sans **auto-hospeada** (`assets/fonts/`, 12 `.woff2` + `ibm-plex-sans.css`). Eliminados los `<link>`/`preconnect` a `fonts.googleapis.com` y `fonts.gstatic.com`. Al ser mismo origen, ya no requiere SRI. CSP: `font-src 'self'`, sin dominios externos. |
+| M-3 | Sin `report-uri`/`report-to` | **CABLEADO** | `_headers` ahora emite `report-to csp-endpoint` + header `Reporting-Endpoints`. Sólo falta apuntar la URL a un collector real (report-uri.com o Netlify Function) — instrucciones embebidas en `_headers`. |
+| (extra) | 2 handlers `onerror=` inline en logos | **RESUELTO** | Movidos a `assets/main.js` vía `addEventListener('error', …)` (cubre también el error previo a `defer`). El HTML quedó sin handlers inline → compatible con `script-src 'self'`. |
+| (nuevo) | `gracias.html` tenía `<style>` inline | **RESUELTO** | Externalizado a `assets/page.css` (la CSP estricta de `_headers` aplica a todo el host y habría dejado esa página sin estilos). |
+| B-? | Sin página 404 propia | **RESUELTO** | Agregado `404.html` (rutas absolutas, `noindex`, reusa `assets/page.css`). No filtra información técnica (A10). |
+
+### Headers nuevos/endurecidos en `_headers`
+- `Content-Security-Policy`: `style-src 'self'`, `font-src 'self'`, `frame-src 'none'` + `frame-ancestors 'none'`, `report-to csp-endpoint`.
+- `Cross-Origin-Resource-Policy: same-origin` (nuevo).
+- `X-Permitted-Cross-Domain-Policies: none` (nuevo).
+- `Permissions-Policy`: agregado `browsing-topics=()` (opt-out Topics API).
+- `Reporting-Endpoints` (nuevo) + cache `immutable` para `/assets/fonts/*`.
+
+### Mapeo OWASP Top 10 (2025) — estado final
+
+| Cat. | Estado | Nota |
+|------|--------|------|
+| A01 Control de acceso | N/A | Sin backend/usuarios/roles. |
+| A02 Mala configuración | ✅ | CSP estricta (script/style/font = `'self'`), suite completa de headers. |
+| A03 Cadena de suministro | ✅ | 0 dependencias npm; fuentes auto-hospedadas; sin recursos externos. |
+| A04 Fallos criptográficos | ✅ | HSTS preload + `upgrade-insecure-requests`; sin datos sensibles almacenados. |
+| A05 Inyección | ✅ | Sin backend; `innerHTML` sólo con datos estáticos; CSP bloquea scripts inyectados. |
+| A06 Diseño inseguro | 🟢 | Honeypot anti-bot; validación de tipo+tamaño (client-side, server lo hace FormSubmit). |
+| A07 Fallos de autenticación | N/A | Sin login/sesiones/tokens. |
+| A08 Integridad SW/datos | ✅ | Sin scripts de terceros; todo mismo origen. |
+| A09 Registro y alertas | 🟢 | CSP reporting cableado; falta sólo apuntar el collector (decisión de infra). |
+| A10 Gestión de excepciones | ✅ | `404.html`/`gracias.html` propios; sin stack traces; sin `console.log`. |
+
+### Verificación de render
+Capturas headless (Edge) a 375/768/1024/1440 px + páginas `gracias.html` y `404.html`:
+hero, nav, grid de servicios, carrusel de flota, panel de seguridad, cards de bases,
+sección de equipo, ambos formularios y footer **renderizan idénticos** a antes de la
+migración. No se detectaron regresiones de especificidad (las reglas `!important` de
+hero/footer siguen prevaleciendo; `.sector-bg` no se usa en el HTML).
+
+### Archivos de la 2ª pasada
+```
+assets/styles.css            — MODIFICADO (+57 clases migradas)
+assets/main.js               — MODIFICADO (logo fallback vía addEventListener)
+index.html                   — MODIFICADO (0 estilos inline, CSP endurecida, fuentes locales, sin onerror)
+_headers                     — MODIFICADO (CSP estricta + reporting + headers extra)
+gracias.html                 — MODIFICADO (estilos externalizados a page.css)
+404.html                     — NUEVO
+assets/page.css              — NUEVO (estilos de páginas utilitarias)
+assets/fonts/*.woff2 (×12)   — NUEVO (IBM Plex Sans auto-hospeada)
+assets/fonts/ibm-plex-sans.css — NUEVO
+```
+
+### Único pendiente (requiere decisión externa, no técnica)
+- **A09**: apuntar `Reporting-Endpoints` a un collector real para *recibir* los reportes
+  de CSP (gratis con report-uri.com o una Netlify Function). El cableado ya está listo.
+- **GDPR/privacidad**: sigue sin página de política de privacidad (fuera del alcance de seguridad).
