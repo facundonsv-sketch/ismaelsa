@@ -276,6 +276,10 @@
       'careers.form.sending': 'Enviando…',
       'careers.form.success': '✓ Postulación enviada. Te contactaremos si tu perfil coincide con una búsqueda activa.',
       'careers.form.error': '✗ No se pudo enviar. Escribinos directo a ismaelsarr.hh@gmail.com',
+      'contact.form.ratelimit': '✗ Ya enviaste varias solicitudes desde este dispositivo. Podés volver a intentar en {t}. Si es urgente, escribinos a contacto@ismaelsa.info',
+      'careers.form.ratelimit': '✗ Ya enviaste varias postulaciones desde este dispositivo. Podés volver a intentar en {t}. Si es urgente, escribinos a ismaelsarr.hh@gmail.com',
+      'rl.hours': '{n} h',
+      'rl.lesshour': 'menos de una hora',
       'footer.logo.sub': 'Servicios, Logística y Transporte Minero',
       'footer.tagline': 'Empresa sanjuanina con más de 20 años de experiencia en soluciones logísticas para la minería, petróleo, gas y grandes obras.',
       'footer.copy': '© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.',
@@ -511,6 +515,10 @@
       'careers.form.sending': 'Sending…',
       'careers.form.success': '✓ Application sent. We\'ll contact you if your profile matches an active opening.',
       'careers.form.error': '✗ Could not send. Write directly to ismaelsarr.hh@gmail.com',
+      'contact.form.ratelimit': '✗ You\'ve already sent several requests from this device. You can try again in {t}. If it\'s urgent, email us at contacto@ismaelsa.info',
+      'careers.form.ratelimit': '✗ You\'ve already sent several applications from this device. You can try again in {t}. If it\'s urgent, email us at ismaelsarr.hh@gmail.com',
+      'rl.hours': '{n} h',
+      'rl.lesshour': 'less than an hour',
       'footer.logo.sub': 'Mining Services, Logistics and Transport',
       'footer.tagline': 'San Juan-based company with over 20 years of experience in logistics solutions for mining, oil, gas and major construction.',
       'footer.copy': '© 2025 ISMAEL S.A. — San Juan, Argentina.<br>All rights reserved.',
@@ -887,13 +895,72 @@
     return !ALLOWED_CV_EXTENSIONS.test(file.name);
   }
 
+  /* ─────────────────────────────────────────────────────────────
+     Rate limit por dispositivo (localStorage)
+       • Propuesta: 3 envíos por ventana móvil de 6 h
+       • CV:        2 envíos por ventana móvil de 12 h
+     Es un límite "blando": frena el reenvío honesto y el doble-click,
+     no a un atacante decidido (se saltea con incógnito / otro navegador).
+     La protección anti-bot real es el honeypot (_honey) y, si hiciera
+     falta, reactivar el captcha nativo de FormSubmit (_captcha=true).
+  ───────────────────────────────────────────────────────────── */
+  const RATE_LIMITS = {
+    contact: { key: 'isa_rl_contact', max: 3, windowMs: 6 * 60 * 60 * 1000 },
+    careers: { key: 'isa_rl_careers', max: 2, windowMs: 12 * 60 * 60 * 1000 },
+  };
+
+  function rlReadTimes(cfg) {
+    try {
+      const arr = JSON.parse(localStorage.getItem(cfg.key) || '[]');
+      const now = Date.now();
+      return Array.isArray(arr)
+        ? arr.filter(t => typeof t === 'number' && now - t < cfg.windowMs)
+        : [];
+    } catch (e) { return []; }
+  }
+
+  // Devuelve { blocked, retryMs }
+  function rlState(cfg) {
+    const times = rlReadTimes(cfg);
+    if (times.length < cfg.max) return { blocked: false, retryMs: 0 };
+    const oldest = Math.min.apply(null, times);
+    return { blocked: true, retryMs: Math.max(0, cfg.windowMs - (Date.now() - oldest)) };
+  }
+
+  function rlRecord(cfg) {
+    const times = rlReadTimes(cfg);
+    times.push(Date.now());
+    try { localStorage.setItem(cfg.key, JSON.stringify(times)); } catch (e) {}
+  }
+
+  // Formatea el tiempo restante según el idioma activo
+  function rlFormat(ms, _d) {
+    if (ms < 60 * 60 * 1000) return _d['rl.lesshour'] || 'menos de una hora';
+    const hours = Math.ceil(ms / (60 * 60 * 1000));
+    return (_d['rl.hours'] || '{n} h').replace('{n}', hours);
+  }
+
+  // Si está bloqueado: muestra mensaje, previene el envío y devuelve true
+  function rlBlock(cfg, e, status, btn, _d, msgKey) {
+    const st = rlState(cfg);
+    if (!st.blocked) return false;
+    e.preventDefault();
+    status.className = 'form-status error';
+    status.textContent = (_d[msgKey] || '').replace('{t}', rlFormat(st.retryMs, _d));
+    if (btn) { btn.disabled = true; }
+    status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return true;
+  }
+
   // Propuesta: archivo opcional (<5MB)
   const contactForm = document.getElementById('contactForm');
   contactForm?.addEventListener('submit', (e) => {
     const _d = I18N[document.documentElement.lang] || I18N.es;
     const status = document.getElementById('formStatus');
     const fileInput = document.getElementById('proposal-file');
+    const btn = document.getElementById('submitBtn');
     status.className = 'form-status'; status.textContent = '';
+    if (rlBlock(RATE_LIMITS.contact, e, status, btn, _d, 'contact.form.ratelimit')) return;
     if (fileTooBig(fileInput)) {
       e.preventDefault();
       status.className = 'form-status error';
@@ -901,7 +968,8 @@
       fileInput.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    const btn = document.getElementById('submitBtn');
+    // Todas las validaciones OK → registrar el envío antes de la navegación nativa
+    rlRecord(RATE_LIMITS.contact);
     if (btn) { btn.disabled = true; btn.textContent = _d['contact.form.sending'] || 'Enviando…'; }
   });
 
@@ -911,7 +979,9 @@
     const _d = I18N[document.documentElement.lang] || I18N.es;
     const status = document.getElementById('careersStatus');
     const fileInput = document.getElementById('cv-file');
+    const btn = document.getElementById('careersBtn');
     status.className = 'form-status'; status.textContent = '';
+    if (rlBlock(RATE_LIMITS.careers, e, status, btn, _d, 'careers.form.ratelimit')) return;
     if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
       e.preventDefault();
       status.className = 'form-status error';
@@ -935,6 +1005,7 @@
       fileInput.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    const btn = document.getElementById('careersBtn');
+    // Todas las validaciones OK → registrar el envío antes de la navegación nativa
+    rlRecord(RATE_LIMITS.careers);
     if (btn) { btn.disabled = true; btn.textContent = _d['careers.form.sending'] || 'Enviando…'; }
   });
