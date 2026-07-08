@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,34 +8,116 @@
        y frame-ancestors) se configuran en _headers / vercel.json del hosting. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>ISMAEL S.A. — Logística Minera e Industrial en San Juan</title>
-  <meta name="description" content="ISMAEL S.A. — Empresa sanjuanina de logística, transporte y soporte operativo para la minería. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.">
-  <meta property="og:title" content="ISMAEL S.A. — Logística y Transporte Minero en San Juan">
-  <meta property="og:description" content="Logística minera con flota propia, bases operativas en Rawson y Calingasta, y experiencia en proyectos de alta montaña en San Juan, Argentina.">
-  <meta property="og:image" content="assets/WhatsApp Image 2026-06-11 at 17.07.21.jpeg">
+
+  <!-- SEO base -->
+  <title>ISMAEL S.A. | Logística Minera y Transporte en San Juan</title>
+  <meta name="description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ismaelsa.com/">
+
+  <!-- Favicons (generados desde assets/logosolo.png, ver SEO_NOTES.md) -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="ISMAEL S.A.">
+  <meta property="og:title" content="ISMAEL S.A. | Logística Minera y Transporte en San Juan">
+  <meta property="og:description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
+  <meta property="og:image" content="https://ismaelsa.com/assets/sunset-convoy.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta property="og:image:alt" content="Convoy de camiones de ISMAEL S.A. en ruta hacia la cordillera de San Juan">
+  <meta property="og:url" content="https://ismaelsa.com/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ISMAEL S.A. | Logística Minera y Transporte en San Juan">
+  <meta name="twitter:description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
+  <meta name="twitter:image" content="https://ismaelsa.com/assets/sunset-convoy.jpg">
+  <meta name="twitter:image:alt" content="Convoy de camiones de ISMAEL S.A. en ruta hacia la cordillera de San Juan">
+
+  <!-- Datos estructurados (schema.org). Campos no confirmados (sameAs, geo, horario,
+       dirección exacta) quedan documentados como pendientes en SEO_NOTES.md — no se inventan. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "ISMAEL S.A.",
-    "description": "Empresa sanjuanina de logística, transporte y soporte operativo para la industria minera. Flota propia, dos bases en San Juan y presencia en la Cordillera de los Andes.",
-    "telephone": "+54264413151",
-    "email": "contacto@ismaelsa.info",
-    "url": "https://ismaelsa.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Rawson",
-      "addressRegion": "San Juan",
-      "addressCountry": "AR"
-    },
-    "areaServed": {
-      "@type": "State",
-      "name": "San Juan"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ismaelsa.com/#organization",
+        "name": "ISMAEL S.A.",
+        "legalName": "ISMAEL S.A.",
+        "url": "https://ismaelsa.com/",
+        "logo": "https://ismaelsa.com/assets/logo.png",
+        "image": "https://ismaelsa.com/assets/fleet-lineup.jpg",
+        "description": "Empresa sanjuanina de logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras, con más de 20 años de trayectoria en la Cordillera de los Andes.",
+        "email": "contacto@ismaelsa.info",
+        "telephone": "+542644131515",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rawson",
+          "addressRegion": "San Juan",
+          "addressCountry": "AR"
+        },
+        "areaServed": [
+          { "@type": "State", "name": "San Juan, Argentina" },
+          { "@type": "Place", "name": "Cordillera de los Andes" },
+          { "@type": "Place", "name": "Calingasta" },
+          { "@type": "Place", "name": "Rawson" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ismaelsa.com/#website",
+        "url": "https://ismaelsa.com/",
+        "name": "ISMAEL S.A.",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://ismaelsa.com/#organization" }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://ismaelsa.com/#localbusiness",
+        "name": "ISMAEL S.A.",
+        "parentOrganization": { "@id": "https://ismaelsa.com/#organization" },
+        "description": "Operador logístico minero sanjuanino: transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña, con flota propia y bases en Rawson y Calingasta.",
+        "telephone": "+542644131515",
+        "email": "contacto@ismaelsa.info",
+        "url": "https://ismaelsa.com/",
+        "image": "https://ismaelsa.com/assets/fleet-lineup.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rawson",
+          "addressRegion": "San Juan",
+          "addressCountry": "AR"
+        },
+        "areaServed": [
+          { "@type": "State", "name": "San Juan, Argentina" },
+          { "@type": "Place", "name": "Cordillera de los Andes" },
+          { "@type": "Place", "name": "Calingasta" },
+          { "@type": "Place", "name": "Rawson" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios ISMAEL S.A.",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logística de exploración, explotación y perforación minera" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Transporte de agua para minería" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Abastecimiento en zonas remotas" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Traslados programados" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Transporte de equipos e insumos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soporte operativo en terreno" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hidrogrúas y servicios especiales" } }
+          ]
+        }
+      }
+    ]
   }
   </script>
+
   <!-- Fuentes auto-hosteadas (mismo origen): elimina la dependencia de Google Fonts y la necesidad de SRI -->
   <link rel="stylesheet" href="assets/fonts/ibm-plex-sans.css">
   <link rel="stylesheet" href="assets/styles.css">
@@ -47,7 +129,7 @@
   <nav class="nav" role="navigation" aria-label="Navegación principal">
     <a href="#" class="nav-logo" aria-label="ISMAEL S.A. — Inicio">
       <!-- Brand mark (mountain icon only, sin letras) -->
-      <img src="assets/logosolo.png" alt="ISMAEL S.A." class="nav-logo-img">
+      <img src="assets/logosolo.png" alt="ISMAEL S.A." class="nav-logo-img" width="1536" height="1024">
       <svg width="54" height="40" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="nav-logo-svg">
         <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
         <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
@@ -112,7 +194,7 @@
   </div>
 
   <div class="hero-inner">
-    <img src="assets/logo.png" alt="ISMAEL S.A. — Servicios, Logística y Transporte Minero" class="hero-brandmark">
+    <img src="assets/logo.png" alt="ISMAEL S.A. — Servicios, Logística y Transporte Minero" class="hero-brandmark" width="1536" height="1024">
 
     <div class="hero-tag">
       <span class="hero-tag-dot" aria-hidden="true"></span>
@@ -178,11 +260,11 @@
     <div class="about-grid">
       <div class="about-media">
         <div class="about-image">
-          <img src="assets/nieve nueva.png" alt="Camión de la flota ISMAEL S.A. operando en la cordillera de los Andes con nieve." loading="lazy" decoding="async">
+          <img src="assets/nieve nueva.png" alt="Camión de la flota ISMAEL S.A. operando en la cordillera de los Andes con nieve." loading="lazy" decoding="async" width="1448" height="1086">
           <span class="about-image-label" data-i18n="about.label">Cordillera de los Andes · San Juan</span>
         </div>
         <div class="about-image-accent" role="img" aria-label="Operativo de perforación en alta montaña asistido por la flota de ISMAEL S.A.">
-          <img src="assets/grua nueva.png" alt="Hidrogrúa de ISMAEL S.A. asistiendo una operación de perforación con torre y campamento en alta montaña." loading="lazy" decoding="async">
+          <img src="assets/grua nueva.png" alt="Hidrogrúa de ISMAEL S.A. asistiendo una operación de perforación con torre y campamento en alta montaña." loading="lazy" decoding="async" width="1431" height="1099">
         </div>
       </div>
 
@@ -192,10 +274,10 @@
           Operador logístico sanjuanino para la minería
         </h2>
         <p class="about-text" data-i18n="about.body1">
-          ISMAEL S.A. es una empresa de San Juan especializada en logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras. Operamos con flota propia en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.
+          ISMAEL S.A. es una empresa de San Juan especializada en logística minera, transporte minero y soporte operativo para la industria minera, el petróleo, el gas y grandes obras. Operamos con flota propia para minería en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.
         </p>
         <p class="about-text mb-36" data-i18n="about.body2">
-          Contamos con dos bases en Rawson y Calingasta que nos permiten movilizar equipos rápidamente a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
+          Contamos con dos bases operativas en Rawson y Calingasta que nos permiten ofrecer logística en Calingasta y soporte operativo en alta montaña, con movilización rápida a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
         </p>
 
         <div class="about-highlights">
@@ -306,7 +388,7 @@
 <section id="flota" aria-labelledby="fleet-title">
   <div class="section">
     <div class="fleet-banner" role="img" aria-label="Flota de camiones IVECO y Mercedes de ISMAEL S.A. en la base operativa.">
-      <img src="assets/fleet-lineup.jpg" alt="Flota propia de ISMAEL S.A. — camiones aguateros, hidrogrúas y chasis en formación en la base operativa de San Juan." loading="lazy" decoding="async">
+      <img src="assets/fleet-lineup.jpg" alt="Flota propia de ISMAEL S.A. — camiones aguateros, hidrogrúas y chasis en formación en la base operativa de San Juan." loading="lazy" decoding="async" width="1200" height="1600">
       <div class="fleet-banner-caption">
         <div class="fleet-banner-caption-title" data-i18n="fleet.caption.title">+20 unidades en operación</div>
         <div class="fleet-banner-caption-meta" data-i18n="fleet.caption.meta">Base operativa · San Juan</div>
@@ -377,34 +459,34 @@
       <p class="fleet-carousel-heading" data-i18n="fleet.carousel.subtitle">Algunos de nuestros vehículos</p>
       <div class="fleet-carousel-stage" id="fleetCarouselStage">
         <div class="fleet-carousel-card pos-far-left" data-index="0">
-          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.webp" decoding="async" alt="Mercedes-Benz Atego 3132">
+          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Atego 3132 de la flota de ISMAEL S.A., camión utilizado en logística minera en San Juan">
         </div>
         <div class="fleet-carousel-card pos-left" data-index="1">
-          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.webp" decoding="async" alt="Toyota Hilux 2.8 TDI">
+          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Toyota Hilux 2.8 TDI 4x4 de la flota de ISMAEL S.A. para movilización en alta montaña">
         </div>
         <div class="fleet-carousel-card pos-center" data-index="2">
-          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.webp" decoding="async" alt="IVECO Trakker 440">
+          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Trakker 440, tractor con semirremolque de la flota de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card pos-right" data-index="3">
-          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.webp" decoding="async" alt="IVECO Tector 260E30">
+          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Tector 260E30 de la flota propia de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card pos-far-right" data-index="4">
-          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.webp" decoding="async" alt="IVECO Tector 27320 con Hidrogrúa">
+          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Tector 27320 con hidrogrúa Palfinger de ISMAEL S.A. para izaje y transporte minero">
         </div>
         <div class="fleet-carousel-card" data-index="5">
-          <img src="assets/flota-carrusel/Iveco trakker 480  2025.webp" decoding="async" alt="IVECO Trakker 480">
+          <img src="assets/flota-carrusel/Iveco trakker 480  2025.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Trakker 480, camión pesado de la flota de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card" data-index="6">
-          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.webp" decoding="async" alt="Mercedes-Benz Axor 3344 con Hidrogrúa">
+          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Axor 3344 con hidrogrúa Palfinger de la flota de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card" data-index="7">
-          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.webp" decoding="async" alt="Mercedes-Benz Actros con Semirremolque">
+          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Actros con semirremolque OMBU de la flota de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card" data-index="8">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.webp" decoding="async" alt="IVECO Stralis 480 con Semirremolque Niño Jesús de Praga">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Stralis 480 con semirremolque de la flota de ISMAEL S.A.">
         </div>
         <div class="fleet-carousel-card" data-index="9">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.webp" decoding="async" alt="IVECO Stralis 480 con Semirremolque OMBU">
+          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Stralis 480 con semirremolque OMBU de la flota de ISMAEL S.A.">
         </div>
       </div>
 
@@ -528,7 +610,7 @@
     <div class="coverage-grid">
       <div class="base-card">
         <div class="base-card-header">
-          <img src="assets/mapa base rawson.jpg" alt="Mapa Base Rawson — San Juan" class="base-card-map">
+          <img src="assets/mapa base rawson.jpg" alt="Mapa de ubicación de la Base Rawson de ISMAEL S.A. en el Gran San Juan" class="base-card-map" loading="lazy" decoding="async">
           <div class="base-card-name-row">
             <div class="base-marker" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
@@ -554,7 +636,7 @@
 
       <div class="base-card">
         <div class="base-card-header">
-          <img src="assets/mapa base calingasta.jpg" alt="Mapa Base Calingasta — Cordillera" class="base-card-map">
+          <img src="assets/mapa base calingasta.jpg" alt="Mapa de ubicación de la Base Calingasta de ISMAEL S.A. en la zona cordillerana de San Juan" class="base-card-map" loading="lazy" decoding="async">
           <div class="base-card-name-row">
             <div class="base-marker" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
@@ -672,7 +754,7 @@
     </div>
 
     <p class="section-body exp-context" data-i18n="experience.context">
-      Operamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.
+      Como operador logístico minero sanjuanino, trabajamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.
     </p>
   </div>
 </section>
@@ -791,7 +873,7 @@
           </div>
           <div>
             <div class="contact-item-label" data-i18n="contact.label.tel">Teléfono</div>
-            <a href="tel:+5426441315" class="contact-item-value">+54 264 413-1515</a>
+            <a href="tel:+542644131515" class="contact-item-value">+54 264 413-1515</a>
           </div>
         </div>
 
@@ -974,7 +1056,7 @@
   <div class="footer-inner footer-grid">
     <div>
       <div class="footer-logo mb-14">
-        <img src="assets/logo.png" alt="ISMAEL S.A." class="footer-logo-img">
+        <img src="assets/logo.png" alt="ISMAEL S.A." class="footer-logo-img" width="1536" height="1024">
         <svg width="48" height="36" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="footer-logo-svg">
           <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
           <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
