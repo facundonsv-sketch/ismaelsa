@@ -835,10 +835,17 @@
     });
   });
 
-  // Default: ES si no hay preferencia guardada
+  /* Default: ES si no hay preferencia guardada.
+     El diccionario I18N cubre el contenido de la home, no el de las landings
+     de servicio. Sin este guard, un visitante con 'en' guardado en localStorage
+     abría una landing mitad traducida (nav/footer en inglés, cuerpo en español)
+     y —peor— con <html lang="en"> sobre contenido español, lo que le informa
+     mal el idioma a Google. Las landings no incluyen .lang-toggle, así que
+     quedan fijas en español hasta que exista su versión /en/. */
+  const supportsI18n = !!document.querySelector('.lang-toggle');
   let savedLang = 'es';
   try { savedLang = localStorage.getItem('isa_lang') || 'es'; } catch (e) {}
-  applyI18n(savedLang);
+  if (supportsI18n) applyI18n(savedLang);
 
   /* ─────────────────────────────────────────────────────────────
      Formularios — FormSubmit.co (envío nativo con adjuntos)

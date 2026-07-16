@@ -1,0 +1,161 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SUBPÁGINAS SEO — hoja aditiva
+   ---------------------------------------------------------------------------
+   Se carga DESPUÉS de styles.css y SOLO en las landings de servicio.
+   No redefine ninguna clase de la home: agrega únicamente lo que no existía
+   (encabezado de página, breadcrumbs, tarjetas de servicio clickeables y
+   grilla de sectores). Reutiliza los tokens de :root de styles.css.
+
+   Las imágenes de fondo se declaran acá como clases (no inline) porque la CSP
+   es style-src 'self', sin unsafe-inline: un style="" en el HTML sería
+   bloqueado por el navegador.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── ENCABEZADO DE PÁGINA ──
+   Equivalente sobrio del hero de la home: sin slider ni logo gigante, para no
+   empujar el H1 abajo del fold. El padding-top compensa el nav fijo de 72px. */
+.page-hero {
+  position: relative;
+  padding: calc(72px + clamp(44px, 5vw, 76px)) var(--gutter) clamp(44px, 5vw, 76px);
+  background: var(--bg-dark);
+  overflow: hidden;
+  isolation: isolate;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: var(--page-hero-img);
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,22,18,0.76) 0%, rgba(14,22,18,0.94) 100%);
+  z-index: -1;
+}
+.page-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+.page-hero h1 {
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.14;
+  color: var(--white);
+  margin-bottom: 18px;
+  max-width: 880px;
+}
+.page-hero-lead {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  max-width: 660px;
+  margin-bottom: 30px;
+}
+.page-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Fondo por página (reusa assets ya existentes; rutas relativas a /assets/) */
+.page-hero-servicios { --page-hero-img: url('fleet-lineup.webp'); }
+
+/* ── BREADCRUMBS ── */
+.breadcrumb { margin-bottom: 18px; }
+.breadcrumb ol {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px; list-style: none;
+}
+.breadcrumb li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+.breadcrumb a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.breadcrumb a:hover { color: var(--green-light); }
+.breadcrumb [aria-current="page"] { color: var(--green-light); font-weight: 600; }
+.breadcrumb-sep { color: rgba(255,255,255,0.28); }
+
+/* ── TARJETA DE SERVICIO CLICKEABLE ──
+   En la home .service-card es un <div> informativo (cursor:default). Acá es el
+   enlace al spoke correspondiente, así que hay que revertir esa parte. Todo lo
+   demás (imagen al hover, gradiente, tipografía) lo hereda igual de styles.css. */
+a.service-card {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+a.service-card:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+.service-card-more {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  font-size: 13px; font-weight: 600;
+  color: var(--green);
+  transition: color 0.25s ease;
+}
+.service-card-more svg { transition: transform 0.2s ease; }
+a.service-card:hover .service-card-more { color: #FFFFFF; }
+a.service-card:hover .service-card-more svg { transform: translateX(3px); }
+.service-card.is-visible .service-card-more { color: #FFFFFF; }
+
+/* ── GRILLA DE SECTORES ── */
+.sector-grid {
+  max-width: var(--max-w); margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+.sector-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: var(--r-md);
+  padding: 22px 20px;
+}
+.sector-item h3 {
+  font-size: 16px; font-weight: 700;
+  color: var(--fg-mid); margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.sector-item p {
+  font-size: 14px; color: var(--fg-muted); line-height: 1.65;
+}
+
+/* ── BLOQUE DE CIERRE / CTA ── */
+.page-cta {
+  background: var(--bg-dark);
+  padding: var(--section-pad-y) var(--gutter);
+  text-align: center;
+}
+.page-cta-inner { max-width: 720px; margin: 0 auto; }
+.page-cta h2 {
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 700; letter-spacing: -0.6px; line-height: 1.2;
+  color: var(--white); margin-bottom: 16px;
+}
+.page-cta p {
+  font-size: 16px; line-height: 1.75;
+  color: rgba(255,255,255,0.62);
+  margin-bottom: 30px;
+}
+.page-cta-actions {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+}
+
+/* ── ENLACES CONTEXTUALES DENTRO DEL TEXTO ── */
+.inline-link {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+.inline-link:hover { color: var(--green-dark); }
+
+@media (max-width: 900px) {
+  .page-hero h1 { font-size: clamp(26px, 7vw, 34px); }
+  .page-hero-actions .btn { width: 100%; text-align: center; }
+}
