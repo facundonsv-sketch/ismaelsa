@@ -1243,12 +1243,12 @@
         height: clamp(120px, 14vw, 180px);
       }
       /* Mobile: imágenes verticales para el hero (no se cortan) */
-      .hero-slide:nth-child(1) { background-image: url('1.png') !important; }
-      .hero-slide:nth-child(2) { background-image: url('2.png') !important; }
-      .hero-slide:nth-child(3) { background-image: url('3.png') !important; }
-      .hero-slide:nth-child(4) { background-image: url('4.png') !important; }
+      .hero-slide:nth-child(1) { background-image: url('1.webp') !important; }
+      .hero-slide:nth-child(2) { background-image: url('2.webp') !important; }
+      .hero-slide:nth-child(3) { background-image: url('3.webp') !important; }
+      .hero-slide:nth-child(4) { background-image: url('4.webp') !important; }
       /* Mobile: imagen vertical para higiene, seguridad y trazabilidad operativa */
-      .safety-bg::before { background-image: url('higiene nueva.png') !important; }
+      .safety-bg::before { background-image: url('higiene nueva.webp') !important; }
       .about-grid, .fleet-grid, .safety-inner,
       .contact-inner, .coverage-grid,
       .team-inner, .careers-inner { grid-template-columns: 1fr; gap: 40px; }
