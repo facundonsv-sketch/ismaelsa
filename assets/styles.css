@@ -479,11 +479,36 @@
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 24px;
     }
+    /* Grilla de servicios — 7 tarjetas.
+       7 es primo: ninguna cantidad de columnas lo divide parejo, así que la
+       última fila SIEMPRE queda incompleta. Antes usaba grid con auto-fit, que
+       deja flotar el nº de columnas: a 1600px entraban 5 y la última fila
+       quedaba 2/5, con ~876px de blanco pegados a la derecha (se leía como un
+       bug). Con flex + justify-content:center la fila incompleta queda centrada
+       y se lee como decisión de diseño. El tope de 4 por fila además evita
+       tarjetas flacas en monitores anchos. */
     .services-grid {
       max-width: var(--max-w); margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
+    }
+    /* El ancho va en flex-basis, no en max-width: flex-wrap decide cuántas
+       tarjetas entran por fila según el basis. Con grow:0 la fila incompleta
+       no se estira y justify-content la centra.
+       4 tarjetas de (25% - 15px) + 3 gaps de 20px = 100% exacto. */
+    .services-grid > .service-card {
+      flex: 0 1 calc(25% - 15px);
+    }
+    @media (max-width: 1200px) {
+      .services-grid > .service-card { flex-basis: calc(33.333% - 14px); }
+    }
+    @media (max-width: 860px) {
+      .services-grid > .service-card { flex-basis: calc(50% - 10px); }
+    }
+    @media (max-width: 600px) {
+      .services-grid > .service-card { flex-basis: 100%; }
     }
     .service-card {
       position: relative;
@@ -882,11 +907,27 @@
     .experience-inner {
       max-width: var(--max-w); margin: 0 auto;
     }
+    /* Proyectos — mismo defecto que la grilla de servicios: con 6 tarjetas y
+       auto-fit, a 1600px entraban 5 columnas y la última fila quedaba 1/5, con
+       ~1166px de blanco. Arreglo provisorio con el mismo criterio (centrar la
+       fila incompleta) hasta que esta sección pase a ser un carrusel. */
     .featured-projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 18px;
       margin-top: 44px;
+    }
+    /* 3 tarjetas de (33.333% - 12px) + 2 gaps de 18px = 100% exacto.
+       Con 6 proyectos quedan 3+3: dos filas llenas, sin hueco. */
+    .featured-projects > .featured-card {
+      flex: 0 1 calc(33.333% - 12px);
+    }
+    @media (max-width: 900px) {
+      .featured-projects > .featured-card { flex-basis: calc(50% - 9px); }
+    }
+    @media (max-width: 600px) {
+      .featured-projects > .featured-card { flex-basis: 100%; }
     }
     .featured-card {
       position: relative;
