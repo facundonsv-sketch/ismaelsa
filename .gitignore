@@ -24,16 +24,78 @@ fotos-generadas-ia/
 fotos-seleccionadas/
 logos/
 
-# Fotos originales sin procesar / reemplazadas por su versión .webp
-# (quedan en el disco local para referencia, no se publican)
-assets/WhatsApp Image *.jpeg
+# Fotos originales sin procesar / reemplazadas por su version .webp
+# (quedan en el disco local para referencia, no se publican).
+# Lista EXPLICITA (no patron amplio): varias de estas WhatsApp Image SI se
+# usan via CSS (hero-bg-N, svc-bg-N en styles.css) con nombre de archivo
+# literal, sin prefijo assets/ -- un patron amplio las habia bloqueado por
+# error el 2026-07-23 y rompio el hero y las tarjetas de servicio en vivo.
 assets/*.jpg
-assets/*.jpeg
 !assets/aguatero-snow.jpg
 !assets/fleet-lineup.jpg
 !assets/hidrogrua-depot.jpg
 !assets/sunset-convoy.jpg
 !assets/team-pe.jpg
+assets/WhatsApp Image 2026-06-11 at 17.00.05 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.05 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.05 (3).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.05.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.06.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.07 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.07 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.07.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.08.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.10.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.11 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.11 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.11.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.12 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.12.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.13 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.13 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.13.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.00.14.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.02.31.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.02.43.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.04.10.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.04.30.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.04.40.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.04.47.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.05.10.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.06.11.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.06.22.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.07.02.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.07.12.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.07.21.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.10.14 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.10.14 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.10.14 (3).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.10.14.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24 (3).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24 (4).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24 (5).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.24.jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (1).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (10).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (11).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (12).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (13).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (14).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (15).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (16).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (17).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (2).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (3).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (4).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (5).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (6).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (7).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (8).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25 (9).jpeg
+assets/WhatsApp Image 2026-06-11 at 17.25.25.jpeg
+assets/WhatsApp Image 2026-06-17 at 02.27.26.jpeg
 assets/1.png
 assets/2.png
 assets/3.png
