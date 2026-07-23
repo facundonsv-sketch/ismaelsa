@@ -7,6 +7,47 @@ graphify-out/
 
 # Notas internas de trabajo
 instrucciones/
+documentacion-interna/
+
+# Datos internos del negocio (NUNCA deben publicarse en el sitio)
+*.xlsx
+*.xls
+
+# Servidor local de previsualización (no forma parte del sitio)
+dev-server.py
+
+# Copias de trabajo para corregir imágenes con IA (no forman parte del sitio)
+imagenes-hero-corregir/
+
+# Carpetas de trabajo con fotos sin procesar (no forman parte del sitio)
+fotos-generadas-ia/
+fotos-seleccionadas/
+logos/
+
+# Fotos originales sin procesar / reemplazadas por su versión .webp
+# (quedan en el disco local para referencia, no se publican)
+assets/WhatsApp Image *.jpeg
+assets/*.jpg
+assets/*.jpeg
+!assets/aguatero-snow.jpg
+!assets/fleet-lineup.jpg
+!assets/hidrogrua-depot.jpg
+!assets/sunset-convoy.jpg
+!assets/team-pe.jpg
+assets/1.png
+assets/2.png
+assets/3.png
+assets/4.png
+assets/favicon-48x48.png
+assets/grua nueva.png
+assets/higiene nueva.png
+assets/nieve nueva.png
+
+# Foto guardada aparte por error de asignación (no se usa en ninguna página)
+assets/hilux-4x4-caja.webp
+
+# Herramienta local de previsualización por dispositivos (no se publica en el sitio)
+vistas generales de la web/
 
 # ── Variables de entorno y secretos (NUNCA deben ir al repo) ──────────
 .env

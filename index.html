@@ -199,19 +199,14 @@
   <div class="hero-inner">
     <img src="assets/logo.webp" alt="ISMAEL S.A. — Servicios, Logística y Transporte Minero" class="hero-brandmark" width="1536" height="1024">
 
-    <div class="hero-tag">
-      <span class="hero-tag-dot" aria-hidden="true"></span>
-      <span data-i18n="hero.tag">San Juan, Argentina — Cordillera de los Andes</span>
-    </div>
-
     <h1 id="hero-heading" data-i18n-html="hero.h1">
-      SERVICIOS MINEROS<br>
-      <em>Y LOGÍSTICA OPERATIVA</em><br>
-      EMPRESA SANJUANINA
+      LOGÍSTICA MINERA EN SAN JUAN<br>
+      <em>QUE SOSTIENE TU OPERACIÓN</em><br>
+      EN ALTA MONTAÑA
     </h1>
 
     <p class="hero-sub hero-sub-lead" data-i18n="hero.lead">
-      Flota propia, dos bases en San Juan y más de 20 años operando en la Cordillera de los Andes.
+      Anticipamos los imprevistos para que la operación no se detenga. Flota propia, dos bases en la provincia y más de 20 años en la Cordillera de los Andes.
     </p>
     <p class="hero-sub" data-i18n="hero.sub">
       Transporte, abastecimiento, hidrogrúas y soporte en terreno para la minería sanjuanina.
@@ -264,7 +259,6 @@
       <div class="about-media">
         <div class="about-image">
           <img src="assets/nieve nueva.webp" alt="Camión de la flota ISMAEL S.A. operando en la cordillera de los Andes con nieve." loading="lazy" decoding="async" width="1448" height="1086">
-          <span class="about-image-label" data-i18n="about.label">Cordillera de los Andes · San Juan</span>
         </div>
         <div class="about-image-accent" role="img" aria-label="Operativo de perforación en alta montaña asistido por la flota de ISMAEL S.A.">
           <img src="assets/grua nueva.webp" alt="Hidrogrúa de ISMAEL S.A. asistiendo una operación de perforación con torre y campamento en alta montaña." loading="lazy" decoding="async" width="1431" height="1099">
@@ -277,7 +271,7 @@
           Operador logístico sanjuanino para la minería
         </h2>
         <p class="about-text" data-i18n="about.body1">
-          ISMAEL S.A. es una empresa de San Juan especializada en logística minera, transporte minero y soporte operativo para la industria minera, el petróleo, el gas y grandes obras. Operamos con flota propia para minería en la Cordillera de los Andes, con más de 20 años de presencia en la provincia.
+          ISMAEL S.A. es la empresa sanjuanina en la que la minería delega su logística en terreno y deja de preocuparse por ella. Especializada en logística minera, transporte minero y soporte operativo para la industria minera, el petróleo, el gas y grandes obras, operamos con flota propia en la Cordillera de los Andes, con más de 20 años de trayectoria.
         </p>
         <p class="about-text mb-36" data-i18n="about.body2">
           Contamos con dos bases operativas en Rawson y Calingasta que nos permiten ofrecer logística en Calingasta y soporte operativo en alta montaña, con movilización rápida a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
@@ -294,7 +288,7 @@
           </div>
           <div class="highlight-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span class="highlight-text" data-i18n-html="about.hl3"><strong>Respuesta local</strong> — dos bases en San Juan para movilización rápida en cualquier punto de la cordillera</span>
+            <span class="highlight-text" data-i18n-html="about.hl3"><strong>Respuesta local</strong> — dos bases propias para movilización rápida en cualquier punto de la cordillera</span>
           </div>
         </div>
       </div>
@@ -307,13 +301,17 @@
   <div class="services-header">
     <div>
       <div class="section-tag" data-i18n="services.tag">Servicios</div>
-      <h2 class="section-title mb-0" data-i18n="services.title">Lo que hacemos, lo hacemos bien</h2>
+      <h2 class="section-title mb-0" data-i18n="services.title">Todo lo que la operación necesita en terreno</h2>
     </div>
     <a href="#contacto" class="btn btn-green btn-pad-a" data-i18n="cta.consultar">Consultar disponibilidad</a>
   </div>
 
   <div class="services-grid">
-    <div class="service-card svc-bg-1">
+    <!-- Tarjetas de servicio clickeables → cada una lleva a su página (spoke).
+         Las que aún no tienen página propia (logística general, soporte operativo)
+         apuntan al pillar por ahora. Actualizar la 6 a /soporte-operativo-alta-montana
+         cuando exista. El estilo a.service-card (cursor, sin subrayado) está en styles.css. -->
+    <a href="/logistica-exploracion-perforacion-san-juan" class="service-card svc-bg-1">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -322,9 +320,9 @@
       </div>
       <h3 data-i18n="svc.1.title">Servicios y logística de exploración, explotación y perforación</h3>
       <p data-i18n="svc.1.desc">Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-2">
+    <a href="/transporte-agua-mineria" class="service-card svc-bg-2">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -332,9 +330,9 @@
       </div>
       <h3 data-i18n="svc.2.title">Transporte de agua</h3>
       <p data-i18n="svc.2.desc">Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-3">
+    <a href="/abastecimiento-minero-zonas-remotas" class="service-card svc-bg-3">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
@@ -342,9 +340,9 @@
       </div>
       <h3 data-i18n="svc.3.title">Abastecimiento en zonas remotas</h3>
       <p data-i18n="svc.3.desc">Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-4">
+    <a href="/traslado-de-personal-minero" class="service-card svc-bg-4">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
@@ -353,9 +351,9 @@
       </div>
       <h3 data-i18n="svc.4.title">Traslados programados</h3>
       <p data-i18n="svc.4.desc">Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-5">
+    <a href="/transporte-minero-san-juan" class="service-card svc-bg-5">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
@@ -363,9 +361,9 @@
       </div>
       <h3 data-i18n="svc.5.title">Transporte de equipos e insumos</h3>
       <p data-i18n="svc.5.desc">Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-6">
+    <a href="/soporte-operativo-alta-montana" class="service-card svc-bg-6">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
@@ -373,17 +371,21 @@
       </div>
       <h3 data-i18n="svc.6.title">Soporte operativo en terreno</h3>
       <p data-i18n="svc.6.desc">Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
-    </div>
+    </a>
 
-    <div class="service-card svc-bg-7">
+    <a href="/hidrogruas-mineria-san-juan" class="service-card svc-bg-7">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M3 18v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="1" x2="12" y2="3"/>
         </svg>
       </div>
       <h3 data-i18n="svc.7.title">Hidrogrúas y servicios especiales</h3>
-      <p data-i18n="svc.7.desc">Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, riggers certificados y personal habilitado para tareas de alto riesgo.</p>
-    </div>
+      <p data-i18n="svc.7.desc">Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, operadores de hidrogrúa certificados y personal habilitado para tareas de alto riesgo.</p>
+    </a>
+  </div>
+
+  <div class="services-more">
+    <a href="/servicios-mineros-san-juan" class="btn btn-outline btn-lg" data-i18n="services.all">Ver todos los servicios</a>
   </div>
 </div>
 
@@ -535,15 +537,15 @@
     <div>
       <div class="section-tag" data-i18n="safety.tag">Higiene, seguridad y trazabilidad operativa</div>
       <h2 class="section-title mb-32" id="safety-title" data-i18n-html="safety.title">
-        Seguridad operativa<br>sin excepciones
+        Cada viaje,<br>planificado y controlado
       </h2>
 
       <div class="safety-quote">
-        <p data-i18n="safety.quote">"La seguridad no es un requisito: es nuestro estándar operativo."</p>
+        <p data-i18n="safety.quote">Revisión preoperacional antes de cada salida, monitoreo en cada ruta y más de 20 años en la cordillera sin un incidente grave.</p>
       </div>
 
       <p class="section-body mb-36" data-i18n="safety.body">
-        Cada servicio se ejecuta bajo procedimientos de seguridad, seguimiento satelital y control preventivo de la flota, priorizando la protección del personal, la continuidad operativa y el cumplimiento en terreno. Compatibles con las exigencias HSEC de operadoras mineras internacionales.
+        Cada unidad sale con revisión preoperacional, viaja monitoreada por GPS y sigue un plan de mantenimiento preventivo. En la cordillera, un descuido no se corrige: cuesta una jornada de operación, o algo peor. Por eso trabajamos así hace más de 20 años, en línea con las exigencias HSEC de las operadoras internacionales.
       </p>
 
       <div class="safety-certs" role="list" aria-label="Certificaciones de seguridad">
@@ -719,41 +721,63 @@
       Trabajamos junto a operadoras internacionales y los proyectos mineros más relevantes de San Juan. Conocemos los frentes, las rutas y las exigencias de cada operación.
     </p>
 
-    <!-- ════ CARRUSEL DESTACADO ════
-         FUTURO: agregar imágenes reales en assets/images/projects/
-         (mapa o foto representativa de cada proyecto). Por ahora usamos
-         cards visuales con tipografía y color, sin fotos repetidas. -->
-    <div class="featured-projects" role="list" aria-label="Proyectos destacados">
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card1.tag">Cobre · Oro · Plata</div>
-        <h3>El Pachón</h3>
-        <p data-i18n="exp.card1.desc">Logística de abastecimiento en una de las mayores reservas de cobre del país, en la Cordillera de los Andes, San Juan.</p>
-      </article>
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card2.tag">Oro · Cobre · Plata</div>
-        <h3>Filo del Sol</h3>
-        <p data-i18n="exp.card2.desc">Soporte operativo en yacimiento de exploración avanzada en la cordillera sanjuanina, sobre los 4.000 m s.n.m.</p>
-      </article>
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card3.tag">Cobre</div>
-        <h3>Los Azules</h3>
-        <p data-i18n="exp.card3.desc">Transporte y abastecimiento para uno de los proyectos cupríferos más relevantes de la región andina.</p>
-      </article>
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card4.tag">Cobre · Oro</div>
-        <h3>José María</h3>
-        <p data-i18n="exp.card4.desc">Asistencia logística a campañas de exploración en zona cordillerana de San Juan durante múltiples temporadas.</p>
-      </article>
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card5.tag">Zona operativa</div>
-        <h3 data-i18n="exp.card5.title">Calingasta — Alta Cordillera</h3>
-        <p data-i18n="exp.card5.desc">Logística de exploración y abastecimiento en proyectos ubicados entre 3.500 y 4.500 m s.n.m., en los departamentos de Calingasta e Iglesia.</p>
-      </article>
-      <article class="featured-card" role="listitem">
-        <div class="featured-tag" data-i18n="exp.card6.tag">Campaña de exploración</div>
-        <h3 data-i18n="exp.card6.title">Exploración Regional</h3>
-        <p data-i18n="exp.card6.desc">Soporte continuo a campañas de exploración de operadoras internacionales durante múltiples temporadas en la provincia de San Juan.</p>
-      </article>
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PROYECTOS — 35 de San Juan: 34 del mapa oficial "Principales prospectos
+         y proyectos mineros metalíferos" + Lunahuasi (agregado por confirmación
+         del jefe el 2026-07-20). El jefe confirma que ISMAEL asistió a TODOS y
+         que se pueden nombrar las minas grandes (Veladero, Gualcamayo, etc.).
+         · El TAG de cada tarjeta es la ETAPA según el mapa (Producción,
+           Preconstrucción, Factibilidad, Exploración avanzada, Prospección).
+         · La descripción dice qué es el proyecto (mineral cuando es dato
+           público; si no, etapa + ubicación). No dice qué hizo ISMAEL.
+         · Orden: por etapa, de más avanzado a prospección (como el mapa).
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div class="projects-marquee" role="region" aria-label="Proyectos mineros de San Juan">
+      <div class="projects-track" id="projectsTrack" role="list">
+
+        <!-- PRODUCCIÓN -->
+        <article class="featured-card" role="listitem"><div class="featured-tag">En producción</div><h3>Veladero</h3><p>Mina de oro y plata en operación en el departamento de Iglesia, una de las mayores productoras de oro de la Argentina.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">En producción</div><h3>Gualcamayo</h3><p>Mina de oro en operación en el departamento de Jáchal.</p></article>
+        <!-- PRECONSTRUCCIÓN -->
+        <article class="featured-card" role="listitem"><div class="featured-tag">En preconstrucción</div><h3>Josemaría</h3><p>Yacimiento de cobre, oro y plata del distrito Vicuña, en preparación para su construcción, en Iglesia.</p></article>
+        <!-- FACTIBILIDAD Y PREFACTIBILIDAD -->
+        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>El Pachón</h3><p>Uno de los mayores yacimientos de cobre y molibdeno del país, en la cordillera de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Altar</h3><p>Pórfido de cobre, oro y plata en la cordillera de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Hualilán</h3><p>Proyecto de oro y plata en el departamento de Ullum.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Los Azules</h3><p>Proyecto cuprífero de gran escala en Calingasta, por encima de los 3.500 m s.n.m.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Lama</h3><p>Proyecto de oro y plata en la alta cordillera de Iglesia, sobre el límite con Chile.</p></article>
+        <!-- EXPLORACIÓN AVANZADA -->
+        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Filo del Sol</h3><p>Depósito de cobre, oro y plata del distrito Vicuña, en la cordillera de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Filo Sur (Mogote Metals)</h3><p>Proyecto de cobre, oro y plata del distrito Vicuña, en la cordillera de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Del Carmen</h3><p>Proyecto de oro y plata en el departamento de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Chita</h3><p>Proyecto de cobre y plata en la cordillera de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Lunahuasi</h3><p>Descubrimiento de cobre, oro y plata de alta ley del distrito Vicuña, en el departamento de Iglesia.</p></article>
+        <!-- PROSPECCIÓN / EXPLORACIÓN -->
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Las Flechas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>La Ortiga</h3><p>Prospecto de oro y plata en el departamento de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>El Fierro</h3><p>Prospecto de cobre, oro y molibdeno en la cordillera de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Las Opeñas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Zancarrón</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Jagüelito</h3><p>Prospecto de oro y plata en el departamento de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Nacimiento</h3><p>Prospecto de cobre y oro en el departamento de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Mogotes</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Altos del Cura</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Amarillos II – Despoblados – Zaat</h3><p>Área de prospección metalífera en el departamento de Iglesia.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Coipita – Yaretas</h3><p>Prospecto de cobre y oro en la cordillera de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>San Francisco – Santa Bárbara</h3><p>Prospecto de oro, plata y cobre en la cordillera de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Don Julio (Ex Poposa)</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Brecha Vaca – Minas de Pinto</h3><p>Área de prospección metalífera en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Manantiales</h3><p>Prospecto de oro y plata en el departamento de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Rincones de Araya</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Río Salinas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Calderón Calderoncito</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Piuquenes</h3><p>Prospecto metalífero en la cordillera de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Río Cenicero</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Chasquillal (Vanesa I y II)</h3><p>Prospecto metalífero en el departamento de Calingasta.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Cordón de las Pichireguas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Santo Domingo</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
+
+      </div>
     </div>
 
     <p class="section-body exp-context" data-i18n="experience.context">
@@ -775,7 +799,7 @@
       </p>
 
       <div class="team-quote">
-        <span data-i18n="team.quote">"No solo cumplimos los estándares: los integramos a nuestra cultura operativa."</span>
+        <span data-i18n="team.quote">Buena parte del equipo sube a la cordillera desde hace años: conocen los caminos, los tiempos y los riesgos de memoria.</span>
       </div>
     </div>
 
@@ -794,7 +818,7 @@
           <div class="team-cert-icon" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <span class="team-cert-text" data-i18n="team.role2">Operadores de hidrogrúa e izaje de cargas (Rigger)</span>
+          <span class="team-cert-text" data-i18n="team.role2">Operadores de hidrogrúa, señaleros y eslingadores certificados</span>
         </div>
         <div class="team-cert" role="listitem">
           <div class="team-cert-icon" aria-hidden="true">
@@ -824,29 +848,39 @@
   <div class="why-inner">
     <div class="section-tag" data-i18n="why.tag">Por qué elegirnos</div>
     <h2 class="section-title" id="why-title" data-i18n-html="why.title">
-      Soporte logístico minero<br>con criterio operativo real
+      La tranquilidad de que<br>la logística no falla
     </h2>
 
     <div class="why-grid">
       <div class="why-item">
-        <div class="why-item-num">01</div>
-        <h3 data-i18n="why.item1.title">Presencia local en San Juan</h3>
-        <p data-i18n="why.item1.desc">Bases en Rawson y Calingasta. Sin demoras de movilización interprovincial ni dependencia de operadores externos.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3 data-i18n="why.item1.title">Flota propia, con respaldo</h3>
+        <p data-i18n="why.item1.desc">Control directo de cada unidad. Si una falla, según disponibilidad sale otra: la operación no se frena.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">02</div>
-        <h3 data-i18n="why.item2.title">Flota propia, sin intermediarios</h3>
-        <p data-i18n="why.item2.desc">Control directo sobre disponibilidad, mantenimiento y prioridad de asignación de cada unidad.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 data-i18n="why.item2.title">Presencia local en San Juan</h3>
+        <p data-i18n="why.item2.desc">Bases en Rawson y Calingasta: movilización en horas, sin depender de operadores de otras provincias.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">03</div>
-        <h3 data-i18n="why.item3.title">Capacidad de respuesta rápida</h3>
-        <p data-i18n="why.item3.desc">Movilización en horas, dotación escalable según campaña, disponibilidad fuera de horario administrativo.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <h3 data-i18n="why.item3.title">Personal propio y acreditado</h3>
+        <p data-i18n="why.item3.desc">Operadores de hidrogrúa, señaleros y eslingadores certificados ante la OAA, con experiencia real en operaciones mineras.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">04</div>
-        <h3 data-i18n="why.item4.title">Experiencia en alta cordillera</h3>
-        <p data-i18n="why.item4.desc">Más de 20 años operando en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3 data-i18n="why.item4.title">Seguros y habilitaciones al día</h3>
+        <p data-i18n="why.item4.desc">ART, responsabilidad civil, seguro de carga y habilitaciones de transporte.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 20l6-11 4 7"/><path d="M13 16l3-5 5 9"/></svg></div>
+        <h3 data-i18n="why.item5.title">+20 años en alta cordillera</h3>
+        <p data-i18n="why.item5.desc">Más de 20 años en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg></div>
+        <h3 data-i18n="why.item6.title">Trazabilidad total</h3>
+        <p data-i18n="why.item6.desc">Monitoreo GPS de la flota en cada recorrido: siempre sabés dónde está tu carga.</p>
       </div>
     </div>
 
@@ -1080,7 +1114,7 @@
       <div data-i18n="footer.col.empresa" class="footer-col-title">Empresa</div>
       <nav class="footer-links col-10" aria-label="Empresa">
         <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
-        <a href="#servicios" data-i18n="nav.servicios">Servicios</a>
+        <a href="/servicios-mineros-san-juan" data-i18n="nav.servicios">Servicios</a>
         <a href="#flota" data-i18n="nav.flota">Flota</a>
         <a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a>
         <a href="#experiencia" data-i18n="nav.proyectos">Proyectos</a>

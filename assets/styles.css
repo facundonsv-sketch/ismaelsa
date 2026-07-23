@@ -494,6 +494,12 @@
       justify-content: center;
       gap: 20px;
     }
+    /* Acceso claro a la página pillar de servicios, debajo de la grilla. */
+    .services-more {
+      max-width: var(--max-w);
+      margin: clamp(26px, 4vw, 42px) auto 0;
+      text-align: center;
+    }
     /* El ancho va en flex-basis, no en max-width: flex-wrap decide cuántas
        tarjetas entran por fila según el basis. Con grow:0 la fila incompleta
        no se estira y justify-content la centra.
@@ -510,6 +516,12 @@
     @media (max-width: 600px) {
       .services-grid > .service-card { flex-basis: 100%; }
     }
+    /* Tarjetas de servicio como enlaces (home → páginas de servicio). El home no
+       carga subpage.css, así que la regla vive acá. Sin subrayado, hereda color y
+       cursor de mano; el comportamiento de bloque lo da ser flex-item de .services-grid. */
+    a.service-card { text-decoration: none; color: inherit; cursor: pointer; }
+    a.service-card:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
     .service-card {
       position: relative;
       background: var(--card);
@@ -856,6 +868,13 @@
       color: var(--green); letter-spacing: 1.5px;
       margin-bottom: 12px;
     }
+    .why-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: rgba(45,122,80,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .why-icon svg { width: 24px; height: 24px; }
     .why-item h3 {
       font-size: 17px; font-weight: 700;
       color: var(--fg-mid); margin-bottom: 8px;
@@ -958,6 +977,52 @@
       background: rgba(45,122,80,0.10);
       padding: 4px 10px; border-radius: 100px;
       margin-bottom: 14px;
+    }
+
+    /* ── CARRUSEL DE PROYECTOS (marquee continuo) ──
+       Reemplaza a la grilla: con 20 proyectos una grilla seria un paredon.
+       La cinta se duplica en el HTML (aria-hidden en la copia) y se anima
+       hasta -50%: al llegar, el frame 2 es identico al 0, asi que el salto
+       es invisible y el loop parece infinito.
+       Se pausa al pasar el mouse para poder leer una tarjeta. */
+    .projects-marquee {
+      margin-top: 44px;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .projects-track {
+      display: flex;
+      width: max-content;
+      /* 290s ≈ misma velocidad (~40px/s) con 34 tarjetas (set ≈ 11.500px).
+         Si cambia la cantidad de proyectos, recalcular: setWidth(px) / 40. */
+      animation: projects-scroll 290s linear infinite;
+    }
+    .projects-marquee:hover .projects-track,
+    .projects-marquee:focus-within .projects-track { animation-play-state: paused; }
+    /* La separación va como margin-right de cada tarjeta, NO como gap de la
+       cinta. Con gap, el ancho total es (40 tarjetas + 39 gaps) pero un set
+       mide (20 tarjetas + 20 gaps): translateX(-50%) quedaba 9px corto —medio
+       gap— y el loop daba un tirón visible en cada vuelta. Con margin-right
+       cada tarjeta ocupa 320+18, el total es 40×338 y el 50% cae exacto. */
+    .projects-track > .featured-card {
+      flex: 0 0 320px;
+      min-height: 190px;
+      margin-right: 18px;
+    }
+    @keyframes projects-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    /* Accesibilidad: quien pidio menos movimiento recibe una cinta scrolleable
+       a mano, sin animacion. */
+    @media (prefers-reduced-motion: reduce) {
+      .projects-track { animation: none; }
+      .projects-marquee { overflow-x: auto; }
+    }
+    @media (max-width: 600px) {
+      .projects-track > .featured-card { flex-basis: 270px; }
+      .projects-track { animation-duration: 120s; }
     }
     .featured-card h3 {
       font-size: 19px; font-weight: 700;
@@ -1314,7 +1379,8 @@
     }
     @media (max-width: 600px) {
       .hero h1 { letter-spacing: -0.5px; }
-      .services-grid { grid-template-columns: 1fr; }
+      /* .services-grid ya no es grid sino flex: el apilado en 1 columna lo
+         resuelve su propio flex-basis:100% en este mismo breakpoint. */
       .footer-inner { grid-template-columns: 1fr !important; }
       .clients-grid { grid-template-columns: 1fr 1fr; }
       .hero-brandmark { margin-top: 20px; height: clamp(100px, 16vw, 160px); }

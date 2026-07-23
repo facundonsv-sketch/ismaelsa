@@ -108,22 +108,27 @@
       </svg>
       <div class="nav-logo-text">
         <span class="nav-logo-name">ISMAEL S.A.</span>
-        <span class="nav-logo-sub">Servicios, Logística y Transporte Minero</span>
+        <span class="nav-logo-sub" data-i18n="footer.logo.sub">Servicios, Logística y Transporte Minero</span>
       </div>
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="/#nosotros">Nosotros</a></li>
-      <li><a href="/servicios-mineros-san-juan" aria-current="page">Servicios</a></li>
-      <li><a href="/#flota">Flota</a></li>
-      <li><a href="/#seguridad">Seguridad</a></li>
-      <li><a href="/#cobertura">Bases</a></li>
-      <li><a href="/#experiencia">Proyectos</a></li>
-      <li><a href="/#contacto">Contacto</a></li>
+      <li><a href="/#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
+      <li><a href="/servicios-mineros-san-juan" aria-current="page" data-i18n="nav.servicios">Servicios</a></li>
+      <li><a href="/#flota" data-i18n="nav.flota">Flota</a></li>
+      <li><a href="/#seguridad" data-i18n="nav.seguridad">Seguridad</a></li>
+      <li><a href="/#cobertura" data-i18n="nav.bases">Bases</a></li>
+      <li><a href="/#experiencia" data-i18n="nav.proyectos">Proyectos</a></li>
+      <li><a href="/#contacto" data-i18n="nav.contacto">Contacto</a></li>
     </ul>
 
     <div class="nav-right">
-      <a href="/#contacto" class="btn btn-green">Contactar</a>
+      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
+        <button type="button" class="lang-btn is-active" data-lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="/#contacto" class="btn btn-green" data-i18n="cta.contactar">Contactar</a>
       <button class="nav-hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -134,16 +139,16 @@
 <!-- ── MOBILE NAV PANEL ── -->
 <nav id="mobileNav" class="nav-mobile" aria-label="Navegación mobile" aria-hidden="true">
   <ul>
-    <li><a href="/#nosotros" class="mobile-nav-link">Nosotros</a></li>
-    <li><a href="/servicios-mineros-san-juan" class="mobile-nav-link">Servicios</a></li>
-    <li><a href="/#flota" class="mobile-nav-link">Flota</a></li>
-    <li><a href="/#seguridad" class="mobile-nav-link">Seguridad</a></li>
-    <li><a href="/#cobertura" class="mobile-nav-link">Bases</a></li>
-    <li><a href="/#experiencia" class="mobile-nav-link">Proyectos</a></li>
-    <li><a href="/#contacto" class="mobile-nav-link">Contacto</a></li>
+    <li><a href="/#nosotros" class="mobile-nav-link" data-i18n="nav.nosotros">Nosotros</a></li>
+    <li><a href="/servicios-mineros-san-juan" class="mobile-nav-link" data-i18n="nav.servicios">Servicios</a></li>
+    <li><a href="/#flota" class="mobile-nav-link" data-i18n="nav.flota">Flota</a></li>
+    <li><a href="/#seguridad" class="mobile-nav-link" data-i18n="nav.seguridad">Seguridad</a></li>
+    <li><a href="/#cobertura" class="mobile-nav-link" data-i18n="nav.bases">Bases</a></li>
+    <li><a href="/#experiencia" class="mobile-nav-link" data-i18n="nav.proyectos">Proyectos</a></li>
+    <li><a href="/#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
   </ul>
   <div class="mobile-actions">
-    <a href="/#contacto" class="btn btn-green mobile-nav-link mobile-cta">Solicitar propuesta</a>
+    <a href="/#contacto" class="btn btn-green mobile-nav-link mobile-cta" data-i18n="cta.solicitar">Solicitar propuesta</a>
   </div>
 </nav>
 
@@ -154,23 +159,23 @@
   <div class="page-hero-inner">
     <nav class="breadcrumb" aria-label="Miga de pan">
       <ol>
-        <li><a href="/">Inicio</a></li>
-        <li><span class="breadcrumb-sep" aria-hidden="true">/</span><span aria-current="page">Servicios mineros en San Juan</span></li>
+        <li><a href="/" data-i18n="breadcrumb.inicio">Inicio</a></li>
+        <li><span class="breadcrumb-sep" aria-hidden="true">/</span><span aria-current="page" data-i18n="breadcrumb.servicios">Servicios mineros en San Juan</span></li>
       </ol>
     </nav>
 
-    <h1 id="page-title">Servicios mineros en San Juan, de punta a punta</h1>
+    <h1 id="page-title" data-i18n="pl.hero.h1">Servicios mineros en San Juan, de punta a punta</h1>
 
-    <p class="page-hero-lead">
-      ISMAEL S.A. reúne en un solo operador sanjuanino todo lo que una campaña minera
-      necesita en terreno: transporte, abastecimiento de agua, hidrogrúas, flota propia
-      y personal en frente. Más de 20 años operando en la Cordillera de los Andes, con
-      bases en Rawson y Calingasta.
+    <p class="page-hero-lead" data-i18n="pl.hero.lead">
+      Un solo operador sanjuanino para sostener la continuidad de tu operación en terreno:
+      transporte, abastecimiento de agua, hidrogrúas, flota propia y personal en frente.
+      Un único responsable, con más de 20 años en la Cordillera de los Andes y bases en
+      Rawson y Calingasta.
     </p>
 
     <div class="page-hero-actions">
-      <a href="/#contacto" class="btn btn-green btn-lg">Solicitar propuesta</a>
-      <a href="#servicios" class="btn btn-outline-dark btn-lg">Ver los servicios</a>
+      <a href="/#contacto" class="btn btn-green btn-lg" data-i18n="cta.solicitar">Solicitar propuesta</a>
+      <a href="#servicios" class="btn btn-outline-dark btn-lg" data-i18n="pl.cta.ver_servicios">Ver los servicios</a>
     </div>
   </div>
 </section>
@@ -180,23 +185,23 @@
   <div class="stats-inner">
     <div class="stat-item">
       <div class="stat-number"><span>+20</span></div>
-      <div class="stat-label">Años de<br>trayectoria</div>
+      <div class="stat-label" data-i18n-html="stats.years">Años de<br>trayectoria</div>
     </div>
     <div class="stat-item">
       <div class="stat-number"><span>+20</span></div>
-      <div class="stat-label">Unidades<br>propias</div>
+      <div class="stat-label" data-i18n-html="stats.units">Unidades<br>propias</div>
     </div>
     <div class="stat-item">
       <div class="stat-number"><span>2</span></div>
-      <div class="stat-label">Bases operativas<br>en San Juan</div>
+      <div class="stat-label" data-i18n-html="stats.bases">Bases operativas<br>en San Juan</div>
     </div>
     <div class="stat-item">
       <div class="stat-number"><span>100<span class="stat-pct">%</span></span></div>
-      <div class="stat-label">Personal<br>certificado</div>
+      <div class="stat-label" data-i18n-html="stats.cert">Personal<br>certificado</div>
     </div>
     <div class="stat-item">
       <div class="stat-number"><span>+35</span></div>
-      <div class="stat-label">Proyectos<br>asistidos</div>
+      <div class="stat-label" data-i18n-html="stats.projects">Proyectos<br>asistidos</div>
     </div>
   </div>
 </div>
@@ -209,24 +214,23 @@
 <div class="section-full services-bg" id="servicios">
   <div class="services-header">
     <div>
-      <div class="section-tag">Servicios</div>
-      <h2 class="section-title mb-0">Todos los servicios mineros en un solo operador</h2>
+      <div class="section-tag" data-i18n="pl.servicios.tag">Servicios</div>
+      <h2 class="section-title mb-0" data-i18n="pl.servicios.title">Todos los servicios mineros en un solo operador</h2>
     </div>
-    <a href="/#contacto" class="btn btn-green btn-pad-a">Consultar disponibilidad</a>
+    <a href="/#contacto" class="btn btn-green btn-pad-a" data-i18n="cta.consultar">Consultar disponibilidad</a>
   </div>
 
   <div class="services-grid">
-    <!-- TODO Etapa 2: enlazar a /soporte-operativo-alta-montana -->
-    <a href="/#servicios" class="service-card svc-bg-1">
+    <a href="/logistica-exploracion-perforacion-san-juan" class="service-card svc-bg-1">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
         </svg>
       </div>
-      <h3>Logística de exploración, explotación y perforación</h3>
-      <p>Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card1.title">Logística de exploración, explotación y perforación</h3>
+      <p data-i18n="pl.card1.desc">Coordinación de recursos, traslados y logística de campaña para frentes cordilleranos, bajo condiciones extremas de altura, frío y aislamiento.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
@@ -237,66 +241,62 @@
           <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
         </svg>
       </div>
-      <h3>Transporte de agua</h3>
-      <p>Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card2.title">Transporte de agua</h3>
+      <p data-i18n="pl.card2.desc">Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
 
-    <!-- TODO Etapa 2: enlazar a /transporte-minero-san-juan -->
-    <a href="/#servicios" class="service-card svc-bg-3">
+    <a href="/abastecimiento-minero-zonas-remotas" class="service-card svc-bg-3">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
         </svg>
       </div>
-      <h3>Abastecimiento en zonas remotas</h3>
-      <p>Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card3.title">Abastecimiento en zonas remotas</h3>
+      <p data-i18n="pl.card3.desc">Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
 
-    <!-- TODO Etapa 2: enlazar a /transporte-minero-san-juan -->
-    <a href="/#servicios" class="service-card svc-bg-4">
+    <a href="/traslado-de-personal-minero" class="service-card svc-bg-4">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
           <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
         </svg>
       </div>
-      <h3>Traslados programados</h3>
-      <p>Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card4.title">Traslados programados</h3>
+      <p data-i18n="pl.card4.desc">Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
 
-    <!-- TODO Etapa 2: enlazar a /transporte-minero-san-juan -->
-    <a href="/#servicios" class="service-card svc-bg-5">
+    <a href="/transporte-minero-san-juan" class="service-card svc-bg-5">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
         </svg>
       </div>
-      <h3>Transporte de equipos e insumos</h3>
-      <p>Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card5.title">Transporte de equipos e insumos</h3>
+      <p data-i18n="pl.card5.desc">Transportamos materiales críticos, equipamiento operativo y módulos habitables, coordinados con las ventanas de operación de cada proyecto.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
 
-    <!-- TODO Etapa 2: enlazar a /soporte-operativo-alta-montana -->
-    <a href="/#servicios" class="service-card svc-bg-6">
+    <a href="/soporte-operativo-alta-montana" class="service-card svc-bg-6">
       <div class="service-icon" aria-hidden="true">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
           <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
         </svg>
       </div>
-      <h3>Soporte operativo en terreno</h3>
-      <p>Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card6.title">Soporte operativo en terreno</h3>
+      <p data-i18n="pl.card6.desc">Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
@@ -307,21 +307,32 @@
           <path d="M3 18v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="1" x2="12" y2="3"/>
         </svg>
       </div>
-      <h3>Hidrogrúas y servicios especiales</h3>
-      <p>Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, riggers certificados y personal habilitado para tareas de alto riesgo.</p>
-      <span class="service-card-more">Ver más
+      <h3 data-i18n="pl.card7.title">Hidrogrúas y servicios especiales</h3>
+      <p data-i18n="pl.card7.desc">Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, operadores de hidrogrúa certificados y personal habilitado para tareas de alto riesgo.</p>
+      <span class="service-card-more"><span data-i18n="pl.card.vermas">Ver más</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
       </span>
     </a>
   </div>
 </div>
 
+<!-- ═══════════════════════ BANDA DE IMPACTO ═══════════════════════ -->
+<div class="statement-band">
+  <div class="statement-band-inner">
+    <h2 data-i18n-html="pl.band.title">Todo en un solo operador. <em>Un solo responsable.</em></h2>
+    <p data-i18n="pl.band.body">
+      En vez de coordinar cinco proveedores, tenés uno que responde por todo lo que pasa
+      en terreno. Esa es la tranquilidad de trabajar con ISMAEL.
+    </p>
+  </div>
+</div>
+
 <!-- ═══════════════════════ POR QUÉ UN OPERADOR LOCAL ═══════════════════════ -->
 <div class="section-full why-bg" aria-labelledby="local-title">
   <div class="why-inner">
-    <div class="section-tag">Operador local</div>
-    <h2 class="section-title" id="local-title">Por qué contratar un operador de servicios mineros en San Juan</h2>
-    <p class="section-body">
+    <div class="section-tag" data-i18n="pl.why.tag">Operador local</div>
+    <h2 class="section-title" id="local-title" data-i18n="pl.why.title">Por qué contratar un operador de servicios mineros en San Juan</h2>
+    <p class="section-body" data-i18n="pl.why.body">
       La diferencia entre un proveedor sanjuanino y uno de otra provincia no se mide en
       tarifa: se mide en horas de movilización, en conocimiento de las rutas de montaña
       y en quién atiende el teléfono cuando el frente necesita algo un domingo.
@@ -329,24 +340,34 @@
 
     <div class="why-grid">
       <div class="why-item">
-        <div class="why-item-num">01</div>
-        <h3>Presencia local en San Juan</h3>
-        <p>Bases en Rawson y Calingasta. Sin demoras de movilización interprovincial ni dependencia de operadores externos.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3 data-i18n="pl.why.item1.title">Flota propia, con respaldo</h3>
+        <p data-i18n="pl.why.item1.desc">Control directo de cada unidad. Si una falla, según disponibilidad sale otra: la operación no se frena.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">02</div>
-        <h3>Flota propia, sin intermediarios</h3>
-        <p>Control directo sobre disponibilidad, mantenimiento y prioridad de asignación de cada unidad.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 data-i18n="pl.why.item2.title">Presencia local en San Juan</h3>
+        <p data-i18n="pl.why.item2.desc">Bases en Rawson y Calingasta: movilización en horas, sin depender de operadores de otras provincias.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">03</div>
-        <h3>Capacidad de respuesta rápida</h3>
-        <p>Movilización en horas, dotación escalable según campaña, disponibilidad fuera de horario administrativo.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <h3 data-i18n="pl.why.item3.title">Personal propio y acreditado</h3>
+        <p data-i18n="pl.why.item3.desc">Conductores y operadores certificados, con experiencia real en minería y acreditaciones ante entes reconocidos por la OAA.</p>
       </div>
       <div class="why-item">
-        <div class="why-item-num">04</div>
-        <h3>Experiencia en alta cordillera</h3>
-        <p>Más de 20 años operando en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3 data-i18n="pl.why.item4.title">Seguros y habilitaciones al día</h3>
+        <p data-i18n="pl.why.item4.desc">ART, responsabilidad civil, seguro de carga y habilitaciones de transporte.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 20l6-11 4 7"/><path d="M13 16l3-5 5 9"/></svg></div>
+        <h3 data-i18n="pl.why.item5.title">+20 años en alta cordillera</h3>
+        <p data-i18n="pl.why.item5.desc">Más de 20 años en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg></div>
+        <h3 data-i18n="pl.why.item6.title">Trazabilidad total</h3>
+        <p data-i18n="pl.why.item6.desc">Monitoreo GPS de la flota en cada recorrido: siempre sabés dónde está tu carga.</p>
       </div>
     </div>
   </div>
@@ -355,9 +376,9 @@
 <!-- ═══════════════════════ SECTORES ═══════════════════════ -->
 <div class="section-full" aria-labelledby="sectores-title">
   <div class="why-inner">
-    <div class="section-tag">Sectores</div>
-    <h2 class="section-title" id="sectores-title">A qué industrias damos servicio</h2>
-    <p class="section-body">
+    <div class="section-tag" data-i18n="pl.sect.tag">Sectores</div>
+    <h2 class="section-title" id="sectores-title" data-i18n="pl.sect.title">A qué industrias damos servicio</h2>
+    <p class="section-body" data-i18n="pl.sect.body">
       El núcleo de nuestra operación es la minería sanjuanina, pero la misma flota,
       el mismo personal y las mismas bases dan servicio a otros sectores que operan
       en terreno exigente.
@@ -365,16 +386,16 @@
 
     <div class="sector-grid">
       <div class="sector-item">
-        <h3>Minería</h3>
-        <p>Exploración, explotación y perforación en frentes de la Cordillera de los Andes. Es el eje de nuestra operación y donde acumulamos más de 35 proyectos asistidos.</p>
+        <h3 data-i18n="pl.sect.item1.title">Minería</h3>
+        <p data-i18n="pl.sect.item1.desc">Exploración, explotación y perforación en frentes de la Cordillera de los Andes. Es el eje de nuestra operación y donde acumulamos más de 35 proyectos asistidos.</p>
       </div>
       <div class="sector-item">
-        <h3>Petróleo y gas</h3>
-        <p>Transporte, abastecimiento y soporte operativo para operaciones que requieren logística en zonas alejadas de los centros urbanos.</p>
+        <h3 data-i18n="pl.sect.item2.title">Petróleo y gas</h3>
+        <p data-i18n="pl.sect.item2.desc">Transporte, abastecimiento y soporte operativo para operaciones que requieren logística en zonas alejadas de los centros urbanos.</p>
       </div>
       <div class="sector-item">
-        <h3>Grandes obras</h3>
-        <p>Movimiento de equipos, insumos y módulos para obras de infraestructura, con la misma coordinación y equipamiento que usamos en campaña minera.</p>
+        <h3 data-i18n="pl.sect.item3.title">Grandes obras</h3>
+        <p data-i18n="pl.sect.item3.desc">Movimiento de equipos, insumos y módulos para obras de infraestructura, con la misma coordinación y equipamiento que usamos en campaña minera.</p>
       </div>
     </div>
   </div>
@@ -391,14 +412,14 @@
      el enlace interno hacia la home, sin duplicar. -->
 <section class="section-full experience-bg" aria-labelledby="proyectos-title">
   <div class="experience-inner">
-    <div class="section-tag">Experiencia que nos respalda</div>
-    <h2 class="section-title mb-20" id="proyectos-title">Más de 35 proyectos asistidos en alta montaña</h2>
-    <p class="section-body">
+    <div class="section-tag" data-i18n="pl.exp.tag">Experiencia que nos respalda</div>
+    <h2 class="section-title mb-20" id="proyectos-title" data-i18n="pl.exp.title">Más de 35 proyectos asistidos en alta montaña</h2>
+    <p class="section-body" data-i18n="pl.exp.body">
       Trabajamos junto a operadoras internacionales en los departamentos de Calingasta,
       Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo
       minero. Conocemos los frentes, las rutas y las exigencias de cada operación.
     </p>
-    <p class="section-body">
+    <p class="section-body" data-i18n-html="pl.exp.links">
       Ver el detalle de los <a href="/#experiencia" class="inline-link">proyectos donde operamos</a>
       o conocer nuestras <a href="/#cobertura" class="inline-link">bases operativas en San Juan</a>.
     </p>
@@ -408,13 +429,13 @@
 <!-- ═══════════════════════ CTA ═══════════════════════ -->
 <div class="page-cta">
   <div class="page-cta-inner">
-    <h2>¿Necesitás un operador de servicios mineros en San Juan?</h2>
-    <p>
+    <h2 data-i18n="pl.cta.title">¿Necesitás un operador de servicios mineros en San Juan?</h2>
+    <p data-i18n="pl.cta.body">
       Contanos la zona de operación, las fechas estimadas y el equipamiento que necesitás.
       Te respondemos con una propuesta concreta.
     </p>
     <div class="page-cta-actions">
-      <a href="/#contacto" class="btn btn-green btn-lg">Solicitar propuesta</a>
+      <a href="/#contacto" class="btn btn-green btn-lg" data-i18n="cta.solicitar">Solicitar propuesta</a>
       <a href="tel:+542644131515" class="btn btn-outline-dark btn-lg">+54 264 413-1515</a>
     </div>
   </div>
@@ -435,47 +456,52 @@
         </svg>
         <div class="footer-logo-text">
           <span class="footer-logo-name">ISMAEL S.A.</span>
-          <span class="footer-logo-sub">Servicios, Logística y Transporte Minero</span>
+          <span class="footer-logo-sub" data-i18n="footer.logo.sub">Servicios, Logística y Transporte Minero</span>
         </div>
       </div>
-      <p class="footer-tagline">
+      <p class="footer-tagline" data-i18n="footer.tagline.sub">
         Operador logístico sanjuanino para la industria minera, petróleo, gas y grandes obras.
       </p>
-      <div class="footer-copy fs-12">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
+      <div class="footer-copy fs-12" data-i18n-html="footer.copy">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
     </div>
 
     <div>
-      <div class="footer-col-title">Servicios</div>
+      <div class="footer-col-title" data-i18n="footer.col.servicios">Servicios</div>
       <nav class="footer-links col-10" aria-label="Servicios">
-        <a href="/servicios-mineros-san-juan">Servicios mineros en San Juan</a>
-        <a href="/transporte-agua-mineria">Transporte de agua para minería</a>
-        <a href="/hidrogruas-mineria-san-juan">Hidrogrúas para minería</a>
+        <a href="/servicios-mineros-san-juan" data-i18n="footer.link.pillar">Servicios mineros en San Juan</a>
+        <a href="/logistica-exploracion-perforacion-san-juan" data-i18n="footer.link.exploracion">Logística de exploración y perforación</a>
+        <a href="/transporte-minero-san-juan" data-i18n="footer.link.transporte">Transporte minero</a>
+        <a href="/abastecimiento-minero-zonas-remotas" data-i18n="footer.link.abastecimiento">Abastecimiento en zonas remotas</a>
+        <a href="/traslado-de-personal-minero" data-i18n="footer.link.traslado">Traslado de personal</a>
+        <a href="/transporte-agua-mineria" data-i18n="footer.link.agua">Transporte de agua para minería</a>
+        <a href="/hidrogruas-mineria-san-juan" data-i18n="footer.link.hidrogruas">Hidrogrúas para minería</a>
+        <a href="/soporte-operativo-alta-montana" data-i18n="footer.link.soporte">Soporte operativo en alta montaña</a>
       </nav>
     </div>
 
     <div>
-      <div class="footer-col-title">Bases operativas</div>
+      <div class="footer-col-title" data-i18n="footer.col.bases">Bases operativas</div>
       <div class="col-14">
         <div>
           <strong class="footer-base-name">Rawson</strong>
-          <span class="footer-base-desc">Gran San Juan — centro logístico y administrativo</span>
+          <span class="footer-base-desc" data-i18n="footer.rawson.desc">Gran San Juan — centro logístico y administrativo</span>
         </div>
         <div>
           <strong class="footer-base-name">Calingasta</strong>
-          <span class="footer-base-desc">Zona cordillerana — base de avanzada operativa</span>
+          <span class="footer-base-desc" data-i18n="footer.calingasta.desc">Zona cordillerana — base de avanzada operativa</span>
         </div>
       </div>
     </div>
 
     <div>
-      <div class="footer-col-title">Contacto</div>
+      <div class="footer-col-title" data-i18n="footer.col.contacto">Contacto</div>
       <div class="col-12">
         <a href="tel:+542644131515" class="footer-contact-link">+54 264 413-1515</a>
         <a href="mailto:contacto@ismaelsa.info" class="footer-contact-link">contacto@ismaelsa.info</a>
         <span class="footer-muted">ismaelsa.com</span>
         <a href="https://wa.me/542644131515" target="_blank" rel="noopener noreferrer" class="footer-wa">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp
+          <span data-i18n="cta.whatsapp">WhatsApp</span>
         </a>
       </div>
     </div>

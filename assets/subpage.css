@@ -56,6 +56,186 @@
 
 /* Fondo por página (reusa assets ya existentes; rutas relativas a /assets/) */
 .page-hero-servicios { --page-hero-img: url('fleet-lineup.webp'); }
+/* Agua: foto apaisada de la perforadora con el aguatero en primer plano. Se usa
+   la apaisada (no la vertical del aguatero) porque un hero a pantalla completa
+   recorta feo las imágenes verticales. La vertical va en el .feature-split. */
+.page-hero-agua { --page-hero-img: url('aguateros-lago.webp'); }
+/* Hidrogrúas: IVECO Tector con grúa Palfinger 36080 (foto limpia de la flota). */
+.page-hero-hidrogruas { --page-hero-img: url('hidrogrua-palfinger.webp'); }
+/* Transporte minero: convoy de la flota en ruta al atardecer. */
+.page-hero-transporte { --page-hero-img: url('sunset-convoy.webp'); }
+/* Soporte operativo: camioneta Hilux 4×4 de ISMAEL en la cordillera nevada. */
+.page-hero-soporte { --page-hero-img: url('hilux-4x4.webp'); }
+/* Traslado de personal: el equipo propio de ISMAEL en un frente cordillerano. */
+.page-hero-traslado { --page-hero-img: url('team-pe.webp'); }
+/* Abastecimiento en zonas remotas: Mercedes Actros con semirremolque cargado de
+   materiales, en un camino minero de montaña. */
+.page-hero-abastecimiento { --page-hero-img: url('tractor-semirremolque.webp'); }
+/* Exploración/perforación: aguatero de ISMAEL asistiendo una perforadora en un frente cordillerano. */
+.page-hero-exploracion { --page-hero-img: url('drilling-operation.webp'); }
+
+/* ── BLOQUE FOTO + TEXTO (split) ──
+   Dos columnas: media a un lado, texto al otro. No existía en la home ni en el
+   pillar. La media usa object-fit:cover con altura acotada para que una foto
+   vertical (aguatero 602×800) quede como un bloque prolijo sin desbalancear la
+   fila. En mobile apila (foto arriba, texto abajo). */
+.feature-split {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+/* Variante espejada: imagen a la derecha (el body va primero en el DOM), para
+   alternar el ritmo cuando hay dos splits seguidos (zig-zag). */
+.feature-split-reverse { grid-template-columns: 1.15fr 0.85fr; }
+.feature-split-media {
+  margin: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.feature-split-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Foto vertical (602×800): con height:auto se muestra casi entera y el
+     max-height solo recorta un margen mínimo arriba/abajo, en vez del 48% que
+     recortaba un alto fijo tipo landscape. */
+  max-height: 560px;
+  object-fit: cover;
+  object-position: center;
+}
+.feature-split-media figcaption {
+  font-size: 12px; color: var(--fg-muted);
+  padding: 10px 14px;
+  background: var(--card);
+}
+.feature-split-body h2 { margin-bottom: 16px; }
+@media (max-width: 860px) {
+  .feature-split { grid-template-columns: 1fr; }
+  .feature-split-media img { max-height: 440px; }
+}
+
+/* ── BANDA "TERRENO HOSTIL" (galería de la flota operando en condiciones extremas) ──
+   Fondo oscuro a pantalla completa con 3 fotos. Refuerza el mensaje de marca con
+   prueba visual, no con adjetivos. No usa style="" inline (bloqueado por la CSP). */
+.terrain-band {
+  background: var(--bg-dark);
+  padding: clamp(48px, 6vw, 88px) var(--gutter);
+}
+.terrain-band-inner { max-width: var(--max-w); margin: 0 auto; }
+.terrain-band-head { max-width: 680px; margin-bottom: clamp(28px, 4vw, 44px); }
+.terrain-band-head .section-tag { color: var(--green); }
+.terrain-band-head h2 {
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.18;
+  color: var(--white);
+  margin: 8px 0 14px;
+}
+.terrain-band-head p {
+  font-size: 16px; line-height: 1.7;
+  color: rgba(255,255,255,0.68);
+}
+.terrain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.5vw, 18px);
+}
+.terrain-grid figure { margin: 0; }
+.terrain-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+@media (max-width: 780px) {
+  .terrain-grid { grid-template-columns: 1fr; }
+  .terrain-grid img { aspect-ratio: 16 / 10; }
+}
+
+/* ── CARRUSEL VERTICAL (galería auto-desplazable para el split "última milla") ──
+   CSS puro (sin JS, respeta la CSP). Las fotos de terreno hostil pasan de una a
+   otra en loop. El track lleva las 4 fotos + una repetición de la 1ª al final para
+   que el reinicio no dé salto; el translateY se hace en % del track (5 slides =
+   20% c/u), así es responsive sin depender de un alto fijo. Se detiene con
+   prefers-reduced-motion. */
+.vcarousel {
+  --slide-h: clamp(320px, 40vw, 460px);
+  position: relative;
+  margin: 0;
+  height: var(--slide-h);
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+}
+.vcarousel-track {
+  display: flex;
+  flex-direction: column;
+  animation: vcarousel-scroll 20s ease-in-out infinite;
+}
+.vcarousel-track img {
+  display: block;
+  width: 100%;
+  height: var(--slide-h);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+/* 6 slides (5 fotos + repetición de la 1ª para loop sin salto): paso = 100/6 ≈ 16.667% */
+@keyframes vcarousel-scroll {
+  0%,   18%  { transform: translateY(0); }
+  25%,  43%  { transform: translateY(-20%); }
+  50%,  68%  { transform: translateY(-40%); }
+  75%,  93%  { transform: translateY(-60%); }
+  100%       { transform: translateY(-80%); }
+}
+/* Indicadores (dots): que se lea como carrusel. Cada dot se enciende en la ventana
+   de su foto, sincronizado con el track (misma duración 20s y mismos %). */
+.vcarousel-dots {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px;
+  z-index: 2;
+}
+.vdot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.45);
+  animation: 20s ease-in-out infinite;
+}
+.vdot-1 { animation-name: vdot-1; }
+.vdot-2 { animation-name: vdot-2; }
+.vdot-3 { animation-name: vdot-3; }
+.vdot-4 { animation-name: vdot-4; }
+@keyframes vdot-1 {
+  0%, 18%   { background: var(--white); transform: scale(1.35); }
+  25%, 100% { background: rgba(255,255,255,0.45); transform: scale(1); }
+}
+@keyframes vdot-2 {
+  0%, 18%   { background: rgba(255,255,255,0.45); transform: scale(1); }
+  25%, 43%  { background: var(--white); transform: scale(1.35); }
+  50%, 100% { background: rgba(255,255,255,0.45); transform: scale(1); }
+}
+@keyframes vdot-3 {
+  0%, 43%   { background: rgba(255,255,255,0.45); transform: scale(1); }
+  50%, 68%  { background: var(--white); transform: scale(1.35); }
+  75%, 100% { background: rgba(255,255,255,0.45); transform: scale(1); }
+}
+@keyframes vdot-4 {
+  0%, 68%   { background: rgba(255,255,255,0.45); transform: scale(1); }
+  75%, 93%  { background: var(--white); transform: scale(1.35); }
+  100%      { background: rgba(255,255,255,0.45); transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vcarousel-track, .vdot { animation: none; }
+  .vdot-1 { background: var(--white); }
+}
 
 /* ── BREADCRUMBS ── */
 .breadcrumb { margin-bottom: 18px; }
@@ -124,6 +304,85 @@ a.service-card:hover .service-card-more svg { transform: translateX(3px); }
 .sector-item p {
   font-size: 14px; color: var(--fg-muted); line-height: 1.65;
 }
+/* Enlace interno al servicio específico (páginas tipo hub, ej. exploración/perforación) */
+.sector-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 14px;
+}
+.sector-link:hover { text-decoration: underline; }
+
+/* Separación de la nota que va bajo la grilla de capacidades. Se hace con clase
+   (no con style="" inline, que la CSP style-src 'self' bloquea en el navegador). */
+.cap-note { margin-top: 36px; }
+
+/* ── ÍCONO EN TARJETAS DE CAPACIDAD (sector-grid) ──
+   Convierte las tarjetas de texto plano en algo visual y escaneable. */
+.sector-icon {
+  width: 44px; height: 44px; border-radius: 11px;
+  background: rgba(45,122,80,0.10);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.sector-icon svg { width: 22px; height: 22px; }
+
+/* ── BANDA DE DECLARACIÓN ──
+   Sección a todo el ancho que rompe el ritmo de las grillas y aporta el pico
+   emocional de la página (la frase que "engancha"). */
+.statement-band {
+  background: var(--bg-dark);
+  padding: clamp(56px, 8vw, 92px) var(--gutter);
+  text-align: center;
+}
+.statement-band-inner { max-width: 840px; margin: 0 auto; }
+.statement-band h2 {
+  font-size: clamp(26px, 4vw, 44px); font-weight: 800;
+  letter-spacing: -0.8px; line-height: 1.14; color: var(--white); margin: 0 0 16px;
+}
+.statement-band h2 em { color: var(--green-light); font-style: normal; }
+.statement-band p {
+  font-size: clamp(15px, 1.5vw, 18px); line-height: 1.7;
+  color: rgba(255,255,255,0.64); max-width: 620px; margin: 0 auto;
+}
+/* Dato-estrella: un número grande y específico que rompe el ritmo (estilo marca top).
+   Se usa arriba de la frase en una statement-band. */
+.big-figure {
+  font-size: clamp(52px, 9vw, 104px); font-weight: 800;
+  line-height: 1; letter-spacing: -2px;
+  color: var(--green-light); margin-bottom: 18px;
+}
+.big-figure span {
+  font-size: 0.30em; font-weight: 600; letter-spacing: 0;
+  color: rgba(255,255,255,0.55); vertical-align: middle;
+}
+
+/* ── SECCIÓN CONFIANZA CON IMAGEN ──
+   Los 4 puntos apilados a la izquierda; a la derecha, una foto real. Layout
+   tipo Apple: contenido a un lado, imagen al otro, con aire. Resuelve el
+   amontonamiento y el corte de la versión anterior de 4 columnas. */
+.trust-split {
+  max-width: var(--max-w); margin: 46px auto 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 4vw, 60px);
+  align-items: center;
+}
+.trust-list { display: flex; flex-direction: column; gap: 30px; }
+.trust-cell { display: flex; gap: 18px; align-items: flex-start; }
+.trust-cell .trust-icon {
+  flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px;
+  background: rgba(45,122,80,0.10);
+  display: flex; align-items: center; justify-content: center;
+}
+.trust-cell .trust-icon svg { width: 23px; height: 23px; }
+.trust-cell h3 { font-size: 16.5px; font-weight: 700; color: var(--fg-mid); margin: 2px 0 5px; letter-spacing: -0.2px; }
+.trust-cell p { font-size: 14px; color: var(--fg-muted); line-height: 1.6; }
+.trust-media { margin: 0; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); }
+.trust-media img { display: block; width: 100%; height: auto; }
+@media (max-width: 860px) {
+  .trust-split { grid-template-columns: 1fr; }
+}
 
 /* ── BLOQUE DE CIERRE / CTA ── */
 .page-cta {
@@ -145,6 +404,13 @@ a.service-card:hover .service-card-more svg { transform: translateX(3px); }
 .page-cta-actions {
   display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
 }
+.page-cta-more {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.62);
+}
+.page-cta-more:hover { color: var(--white); }
 
 /* ── ENLACES CONTEXTUALES DENTRO DEL TEXTO ── */
 .inline-link {

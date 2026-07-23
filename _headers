@@ -28,3 +28,15 @@
 ## Cache largo para fuentes auto-hosteadas (son inmutables: nombre fijo por archivo)
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+## CSS y JS del sitio: nombre fijo pero cambian en cada actualización. Forzar que el
+## navegador revalide en cada carga (304 si no cambió), para que el visitante recurrente
+## NUNCA vea una copia vieja/rota. Las imágenes mantienen el cache por defecto de Netlify.
+/assets/styles.css
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/subpage.css
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/page.css
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/main.js
+  Cache-Control: public, max-age=0, must-revalidate
