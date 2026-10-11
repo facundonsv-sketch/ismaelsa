@@ -3,1154 +3,304 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Security headers (meta level). Los headers que el navegador SOLO acepta vía HTTP
-       (X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, Permissions-Policy
-       y frame-ancestors) se configuran en _headers / vercel.json del hosting. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <!-- Security headers (meta). Los que el navegador SOLO acepta vía HTTP (X-Frame-Options,
+       HSTS, Permissions-Policy, frame-ancestors) van en _headers. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="KL2jrl5dkbz-vNek7oF4nhn-2jUqlwIQTPVOkqluiKU" />
-
-  <!-- SEO base -->
-  <title>ISMAEL S.A. | Logística Minera y Transporte en San Juan</title>
-  <meta name="description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
+  <meta name="google-site-verification" content="KL2jrl5dkbz-vNek7oF4nhn-2jUqlwIQTPVOkqluiKU">
+  <title data-i18n-doc="home.title">ISMAEL S.A. | Logística para la minería de San Juan</title>
+  <meta name="description" content="Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios, bases en Rawson y Calingasta." data-i18n-meta="home.desc">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://ismaelsa.com/">
-
-  <!-- Favicons (generados desde assets/logosolo.png, ver SEO_NOTES.md) -->
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-
-  <!-- Open Graph -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <meta property="og:site_name" content="ISMAEL S.A.">
-  <meta property="og:title" content="ISMAEL S.A. | Logística Minera y Transporte en San Juan">
-  <meta property="og:description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
-  <meta property="og:image" content="https://ismaelsa.com/assets/sunset-convoy.jpg">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
-  <meta property="og:image:alt" content="Convoy de camiones de ISMAEL S.A. en ruta hacia la cordillera de San Juan">
+  <meta property="og:title" content="ISMAEL S.A. | Logística para la minería de San Juan">
+  <meta property="og:description" content="Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios, bases en Rawson y Calingasta.">
+  <meta property="og:image" content="https://ismaelsa.com/assets/v7/hero-convoy.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
   <meta property="og:url" content="https://ismaelsa.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ISMAEL S.A. | Logística Minera y Transporte en San Juan">
-  <meta name="twitter:description" content="Empresa sanjuanina de logística minera, transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña. Bases en Rawson y Calingasta.">
-  <meta name="twitter:image" content="https://ismaelsa.com/assets/sunset-convoy.jpg">
-  <meta name="twitter:image:alt" content="Convoy de camiones de ISMAEL S.A. en ruta hacia la cordillera de San Juan">
-
-  <!-- Datos estructurados (schema.org). Campos no confirmados (sameAs, geo, horario,
-       dirección exacta) quedan documentados como pendientes en SEO_NOTES.md — no se inventan. -->
+  <meta name="twitter:title" content="ISMAEL S.A. | Logística para la minería de San Juan">
+  <meta name="twitter:description" content="Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios, bases en Rawson y Calingasta.">
+  <meta name="twitter:image" content="https://ismaelsa.com/assets/v7/hero-convoy.webp">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://ismaelsa.com/#organization",
-        "name": "ISMAEL S.A.",
-        "legalName": "ISMAEL S.A.",
-        "url": "https://ismaelsa.com/",
-        "logo": "https://ismaelsa.com/assets/logo.png",
-        "image": "https://ismaelsa.com/assets/fleet-lineup.jpg",
-        "description": "Empresa sanjuanina de logística, transporte y soporte operativo para la industria minera, petróleo, gas y grandes obras, con más de 20 años de trayectoria en la Cordillera de los Andes.",
-        "email": "contacto@ismaelsa.info",
-        "telephone": "+542644131515",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Rawson",
-          "addressRegion": "San Juan",
-          "addressCountry": "AR"
-        },
-        "areaServed": [
-          { "@type": "State", "name": "San Juan, Argentina" },
-          { "@type": "Place", "name": "Cordillera de los Andes" },
-          { "@type": "Place", "name": "Calingasta" },
-          { "@type": "Place", "name": "Rawson" }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ismaelsa.com/#organization",
+      "name": "ISMAEL S.A.",
+      "legalName": "ISMAEL S.A.",
+      "url": "https://ismaelsa.com/",
+      "logo": "https://ismaelsa.com/assets/v7/logo-completo-verde.webp",
+      "email": "contacto@ismaelsa.info",
+      "telephone": "+542644131515",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gral. Mariano Acha Sur 2356",
+        "addressLocality": "Rawson",
+        "addressRegion": "San Juan",
+        "addressCountry": "AR"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://ismaelsa.com/#website",
-        "url": "https://ismaelsa.com/",
-        "name": "ISMAEL S.A.",
-        "inLanguage": "es-AR",
-        "publisher": { "@id": "https://ismaelsa.com/#organization" }
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://ismaelsa.com/#localbusiness",
-        "name": "ISMAEL S.A.",
-        "parentOrganization": { "@id": "https://ismaelsa.com/#organization" },
-        "description": "Operador logístico minero sanjuanino: transporte, hidrogrúas, abastecimiento de agua y soporte operativo en alta montaña, con flota propia y bases en Rawson y Calingasta.",
-        "telephone": "+542644131515",
-        "email": "contacto@ismaelsa.info",
-        "url": "https://ismaelsa.com/",
-        "image": "https://ismaelsa.com/assets/fleet-lineup.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Rawson",
-          "addressRegion": "San Juan",
-          "addressCountry": "AR"
-        },
-        "areaServed": [
-          { "@type": "State", "name": "San Juan, Argentina" },
-          { "@type": "Place", "name": "Cordillera de los Andes" },
-          { "@type": "Place", "name": "Calingasta" },
-          { "@type": "Place", "name": "Rawson" }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Servicios ISMAEL S.A.",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logística de exploración, explotación y perforación minera" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Transporte de agua para minería" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Abastecimiento en zonas remotas" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Traslados programados" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Transporte de equipos e insumos" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soporte operativo en terreno" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hidrogrúas y servicios especiales" } }
-          ]
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "San Juan, Argentina"
         }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ismaelsa.com/#website",
+      "url": "https://ismaelsa.com/",
+      "name": "ISMAEL S.A.",
+      "inLanguage": "es-AR",
+      "publisher": {
+        "@id": "https://ismaelsa.com/#organization"
       }
-    ]
-  }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ismaelsa.com/#localbusiness",
+      "name": "ISMAEL S.A.",
+      "parentOrganization": {
+        "@id": "https://ismaelsa.com/#organization"
+      },
+      "description": "Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.",
+      "telephone": "+542644131515",
+      "email": "contacto@ismaelsa.info",
+      "url": "https://ismaelsa.com/",
+      "image": "https://ismaelsa.com/assets/v7/hero-convoy.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gral. Mariano Acha Sur 2356",
+        "addressLocality": "Rawson",
+        "addressRegion": "San Juan",
+        "addressCountry": "AR"
+      },
+      "openingHours": "Mo-Fr 09:00-17:00",
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "San Juan, Argentina"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios ISMAEL S.A.",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Logística para exploración, perforación y explotación",
+              "url": "https://ismaelsa.com/logistica-exploracion-perforacion-san-juan"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Transporte de agua",
+              "url": "https://ismaelsa.com/transporte-agua-mineria"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Abastecimiento en zonas remotas",
+              "url": "https://ismaelsa.com/abastecimiento-minero-zonas-remotas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Traslado de personal",
+              "url": "https://ismaelsa.com/traslado-de-personal-minero"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Transporte de equipos e insumos",
+              "url": "https://ismaelsa.com/transporte-minero-san-juan"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Soporte operativo en terreno",
+              "url": "https://ismaelsa.com/soporte-operativo-alta-montana"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hidrogrúas y servicios especiales",
+              "url": "https://ismaelsa.com/hidrogruas-mineria-san-juan"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
   </script>
-
-  <!-- Fuentes auto-hosteadas (mismo origen): elimina la dependencia de Google Fonts y la necesidad de SRI -->
-  <link rel="stylesheet" href="assets/fonts/ibm-plex-sans.css">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preload" href="/assets/fonts/barlow/barlow-semi-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/barlow/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/v7.css">
+  <link rel="stylesheet" href="/assets/vendor/leaflet.css">
+  <script src="/assets/vendor/leaflet.js" defer></script>
 </head>
 <body>
-
-<!-- ═══════════════════════ NAV ═══════════════════════ -->
-<header>
-  <nav class="nav" role="navigation" aria-label="Navegación principal">
-    <a href="#" class="nav-logo" aria-label="ISMAEL S.A. — Inicio">
-      <!-- Brand mark (mountain icon only, sin letras) -->
-      <img src="assets/logosolo.webp" alt="ISMAEL S.A." class="nav-logo-img" width="1536" height="1024">
-      <svg width="54" height="40" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="nav-logo-svg">
-        <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
-        <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
-        <polygon points="36,18 54,38 44,38" fill="#E1E6E0" opacity="0.55"/>
-      </svg>
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">ISMAEL S.A.</span>
-        <span class="nav-logo-sub">Servicios, Logística y Transporte Minero</span>
-      </div>
-    </a>
-
-    <ul class="nav-links" role="list">
-      <li><a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
-      <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
-      <li><a href="#flota" data-i18n="nav.flota">Flota</a></li>
-      <li><a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a></li>
-      <li><a href="#cobertura" data-i18n="nav.bases">Bases</a></li>
-      <li><a href="#experiencia" data-i18n="nav.proyectos">Proyectos</a></li>
-      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
-    </ul>
-
-    <div class="nav-right">
-      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
-        <button type="button" class="lang-btn is-active" data-lang="es">ES</button>
-        <span class="lang-sep" aria-hidden="true">/</span>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </div>
-      <a href="#contacto" class="btn btn-green" data-i18n="cta.contactar">Contactar</a>
-      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span><span></span>
-      </button>
+<a class="skip" href="#main" data-i18n="a11y.skip">Ir al contenido</a>
+<header class="hd" id="hd">
+  <div class="hd-util">
+    <span class="hd-util-loc">San Juan · Argentina</span>
+    <div class="hd-util-r"><a href="tel:+542644131515">+54 264 413-1515</a><a href="mailto:contacto@ismaelsa.info">contacto@ismaelsa.info</a><span class="lang-toggle" role="group" aria-label="Idioma / Language"><button type="button" class="lang-btn is-active" data-lang="es" lang="es">ES</button><span class="lang-sep" aria-hidden="true">|</span><button type="button" class="lang-btn" data-lang="en" lang="en">EN</button></span></div>
+  </div>
+  <div class="hd-bar">
+    <a href="/" class="hd-logo"><img src="/assets/v7/logo-icono.webp" alt="" width="881" height="321"><span class="hd-logo-t"><span class="hd-logo-n">ISMAEL S.A.</span><span class="hd-logo-s" data-i18n="hd.tagline">Logística y transporte</span></span></a>
+    <nav class="hd-nav" aria-label="Navegación principal"><div class="hd-it is-active" data-mega="home"><a href="/"><span data-i18n="nav.inicio">Inicio</span></a></div><div class="hd-it has-sub" data-mega="empresa"><a href="/empresa"><span data-i18n="nav.empresa">Empresa</span><span class="caret" aria-hidden="true">▾</span></a></div><div class="hd-it has-sub" data-mega="servicios"><a href="/servicios"><span data-i18n="nav.servicios">Servicios</span><span class="caret" aria-hidden="true">▾</span></a></div><div class="hd-it has-sub" data-mega="contacto"><a href="/contacto"><span data-i18n="nav.contacto">Contacto</span><span class="caret" aria-hidden="true">▾</span></a></div><div class="hd-cta"><a href="/contacto" data-i18n="cta.cotizar">Solicitar cotización</a></div></nav>
+    <button type="button" class="hd-burger" id="burger" aria-expanded="false" aria-controls="mnav"><span data-i18n="nav.menu">MENÚ</span></button>
+  </div>
+  <div class="mega" id="mega" aria-label="Submenú">
+    <div class="mega-in mega-empresa" data-mega-panel="empresa" hidden>
+      <div><div class="mega-t" data-i18n="mega.emp.t1">Conozca la empresa</div><div class="mega-p"><a href="/empresa#quienes" data-i18n="emp.tab.quienes">Quiénes somos</a><a href="/empresa#mision" data-i18n="emp.tab.mision">Misión y visión</a><a href="/empresa#trayectoria" data-i18n="emp.tab.trayectoria">Trayectoria</a><a href="/empresa#bases" data-i18n="emp.tab.bases">Bases operativas</a><a href="/empresa#flota" data-i18n="emp.tab.flota">Flota</a><a href="/empresa#personas" data-i18n="emp.tab.personas">Nuestra gente</a><a href="/empresa#seguridad" data-i18n="emp.tab.seguridad">Seguridad</a></div></div>
+      <div><div class="mega-t" data-i18n="mega.emp.t2">Más de ISMAEL S.A.</div><div class="mega-s"><a href="/contacto" data-i18n="nav.contacto">Contacto</a><a href="tel:+542644131515">+54 264 413-1515</a><a href="mailto:contacto@ismaelsa.info">contacto@ismaelsa.info</a></div></div>
+      <div class="mega-n"><div class="mega-note" data-i18n="mega.emp.note">Transporte y logística para minería, construcción y grandes obras, con bases en Rawson y Calingasta.</div><a href="/contacto" class="btn btn-g" data-i18n="cta.cotizar">Solicitar cotización</a></div>
     </div>
-  </nav>
+    <div class="mega-in mega-servicios" data-mega-panel="servicios" hidden>
+      <div><div class="mega-t" data-i18n="mega.svc.t1">Nuestros servicios</div><div class="mega-p"><a href="/logistica-exploracion-perforacion-san-juan" data-i18n="svc.01.t">Logística para exploración, perforación y explotación</a><a href="/transporte-agua-mineria" data-i18n="svc.02.t">Transporte de agua</a><a href="/abastecimiento-minero-zonas-remotas" data-i18n="svc.03.t">Abastecimiento en zonas remotas</a><a href="/traslado-de-personal-minero" data-i18n="svc.04.t">Traslado de personal</a><a href="/transporte-minero-san-juan" data-i18n="svc.05.t">Transporte de equipos e insumos</a><a href="/soporte-operativo-alta-montana" data-i18n="svc.06.t">Soporte operativo en terreno</a><a href="/hidrogruas-mineria-san-juan" data-i18n="svc.07.t">Hidrogrúas y servicios especiales</a></div></div>
+      <div><div class="mega-t" data-i18n="mega.svc.t2">Más sobre servicios</div><div class="mega-s"><a href="/servicios" data-i18n="svc.all">Ver todos los servicios</a><a href="/empresa#flota" data-i18n="mega.svc.flota">Flota propia</a><a href="/empresa#seguridad" data-i18n="emp.tab.seguridad">Seguridad</a></div></div>
+      <div class="mega-n"><div class="mega-note" data-i18n="mega.svc.note">Los servicios se contratan por separado o combinados.</div><a href="/contacto" class="btn btn-g" data-i18n="cta.cotizar">Solicitar cotización</a></div>
+    </div>
+    <div class="mega-in mega-contacto" data-mega-panel="contacto" hidden>
+      <div><div class="mega-t" data-i18n="nav.contacto">Contacto</div><div class="mega-p"><a href="/contacto" data-i18n="cta.cotizar">Solicitar cotización</a><a href="tel:+542644131515" data-i18n="mega.con.llamar">Llamar</a><a href="mailto:contacto@ismaelsa.info" data-i18n="mega.con.mail">Escribir un correo</a></div></div>
+      <div><div class="mega-t" data-i18n="emp.tab.bases">Bases operativas</div><div class="mega-s"><a href="/empresa#bases" data-i18n="mega.con.rawson">Base Rawson · Gran San Juan</a><a href="/empresa#bases" data-i18n="mega.con.calingasta">Base Calingasta · Zona cordillerana</a></div></div>
+      <div class="mega-n"><div class="mega-note" data-i18n="mega.con.note">Respondemos las consultas en días hábiles.</div><a href="/contacto" class="btn btn-g" data-i18n="cta.cotizar">Solicitar cotización</a></div>
+    </div>
+  </div>
 </header>
-
-<!-- ── MOBILE NAV PANEL ── -->
-<nav id="mobileNav" class="nav-mobile" aria-label="Navegación mobile" aria-hidden="true">
-  <ul>
-    <li><a href="#nosotros" class="mobile-nav-link" data-i18n="nav.nosotros">Nosotros</a></li>
-    <li><a href="#servicios" class="mobile-nav-link" data-i18n="nav.servicios">Servicios</a></li>
-    <li><a href="#flota" class="mobile-nav-link" data-i18n="nav.flota">Flota</a></li>
-    <li><a href="#seguridad" class="mobile-nav-link" data-i18n="nav.seguridad">Seguridad</a></li>
-    <li><a href="#cobertura" class="mobile-nav-link" data-i18n="nav.bases">Bases</a></li>
-    <li><a href="#experiencia" class="mobile-nav-link" data-i18n="nav.proyectos">Proyectos</a></li>
-    <li><a href="#contacto" class="mobile-nav-link" data-i18n="nav.contacto">Contacto</a></li>
-  </ul>
-  <div class="mobile-actions">
-    <a href="#contacto" class="btn btn-green mobile-nav-link mobile-cta" data-i18n="cta.solicitar">Solicitar propuesta</a>
-  </div>
+<nav class="mnav" id="mnav" aria-label="Menú">
+  <a href="/" class="mnav-l" data-i18n="nav.inicio">Inicio</a><a href="/empresa" class="mnav-l" data-i18n="nav.empresa">Empresa</a><a href="/servicios" class="mnav-l" data-i18n="nav.servicios">Servicios</a><a href="/contacto" class="mnav-l" data-i18n="nav.contacto">Contacto</a>
+  <a href="/contacto" class="mnav-cta" data-i18n="cta.cotizar">Solicitar cotización</a>
+  <div class="mnav-lang"><span class="lang-toggle" role="group" aria-label="Idioma / Language"><button type="button" class="lang-btn is-active" data-lang="es" lang="es">ES</button><span class="lang-sep" aria-hidden="true">|</span><button type="button" class="lang-btn" data-lang="en" lang="en">EN</button></span></div>
+  <div class="mnav-c">+54 264 413-1515<br>contacto@ismaelsa.info</div>
 </nav>
+<main id="main">
 
-<main>
-
-<!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero" aria-labelledby="hero-heading">
-  <!-- Slider de imágenes (primera = camión con logo, default al cargar) -->
-  <div class="hero-slides" aria-hidden="true">
-    <div class="hero-slide is-active hero-bg-1"></div>
-    <div class="hero-slide hero-bg-2"></div>
-    <div class="hero-slide hero-bg-3"></div>
-    <div class="hero-slide hero-bg-4"></div>
+<section class="hero" aria-labelledby="hero-h">
+  <img src="/assets/v7/hero-convoy.webp" srcset="/assets/v7/hero-convoy-720.webp 720w, /assets/v7/hero-convoy-1200.webp 1200w, /assets/v7/hero-convoy.webp 1920w" sizes="100vw" alt="Convoy de camiones de ISMAEL S.A. en ruta" data-i18n-alt="hero.slide1.alt" width="1920" height="1080" class="hero-img op-14-50 is-active" fetchpriority="high" data-slide><img src="/assets/v7/hero-hidrogrua.webp" srcset="/assets/v7/hero-hidrogrua-720.webp 720w, /assets/v7/hero-hidrogrua-1200.webp 1200w, /assets/v7/hero-hidrogrua.webp 1920w" sizes="100vw" alt="Camión con hidrogrúa de ISMAEL S.A. en la cordillera" data-i18n-alt="hero.slide2.alt" width="1920" height="1440" class="hero-img op-55-55" loading="lazy" decoding="async" data-slide><img src="/assets/v7/hero-equipo.webp" srcset="/assets/v7/hero-equipo-720.webp 720w, /assets/v7/hero-equipo-1200.webp 1200w, /assets/v7/hero-equipo.webp 1920w" sizes="100vw" alt="Camión de ISMAEL S.A. transportando un equipo en la montaña" data-i18n-alt="hero.slide3.alt" width="1920" height="1440" class="hero-img op-45-55" loading="lazy" decoding="async" data-slide>
+  <div class="hero-sh" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="eye eye-w" data-i18n="hero.eye">Servicios, logística y transporte · San Juan</div>
+    <h1 id="hero-h" data-i18n="hero.h1">Logística para la minería de San Juan</h1>
+    <p class="hero-p" data-i18n="hero.p">Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.</p>
+    <div class="btns"><a href="/servicios" class="btn btn-g" data-i18n="hero.b1">Conozca nuestros servicios</a><a href="/contacto" class="btn btn-o" data-i18n="hero.b2">Contáctenos</a></div>
   </div>
+  <div class="hero-strip"><div class="hero-strip-in"><a href="/logistica-exploracion-perforacion-san-juan"><span class="n">01</span><span class="t" data-i18n="svc.01.tag">Exploración y explotación</span></a><a href="/transporte-agua-mineria"><span class="n">02</span><span class="t" data-i18n="svc.02.tag">Transporte de agua</span></a><a href="/abastecimiento-minero-zonas-remotas"><span class="n">03</span><span class="t" data-i18n="svc.03.tag">Zonas remotas</span></a><a href="/traslado-de-personal-minero"><span class="n">04</span><span class="t" data-i18n="svc.04.tag">Traslado de personal</span></a><a href="/transporte-minero-san-juan"><span class="n">05</span><span class="t" data-i18n="svc.05.tag">Equipos e insumos</span></a><a href="/soporte-operativo-alta-montana"><span class="n">06</span><span class="t" data-i18n="svc.06.tag">Soporte en terreno</span></a><a href="/hidrogruas-mineria-san-juan"><span class="n">07</span><span class="t" data-i18n="svc.07.tag">Hidrogrúas</span></a></div></div>
+</section>
 
-  <div class="hero-inner">
-    <img src="assets/logo.webp" alt="ISMAEL S.A. — Servicios, Logística y Transporte Minero" class="hero-brandmark" width="1536" height="1024">
-
-    <h1 id="hero-heading" data-i18n-html="hero.h1">
-      LOGÍSTICA MINERA EN SAN JUAN<br>
-      <em>QUE SOSTIENE TU OPERACIÓN</em><br>
-      EN ALTA MONTAÑA
-    </h1>
-
-    <p class="hero-sub hero-sub-lead" data-i18n="hero.lead">
-      Anticipamos los imprevistos para que la operación no se detenga. Flota propia, dos bases en la provincia y más de 20 años en la Cordillera de los Andes.
-    </p>
-    <p class="hero-sub" data-i18n="hero.sub">
-      Transporte, abastecimiento, hidrogrúas y soporte en terreno para la minería sanjuanina.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#contacto" class="btn btn-green btn-lg" data-i18n="cta.solicitar">Solicitar propuesta</a>
-      <a href="#servicios" class="btn btn-outline-dark btn-lg" data-i18n="cta.ver_servicios">Ver servicios</a>
+<section class="sec" aria-labelledby="about-h">
+  <div class="wrap about">
+    <div>
+      <img src="/assets/v7/logo-icono-verde.webp" alt="" class="about-logo" width="881" height="321" loading="lazy">
+      <div class="eye " data-i18n="about.eye">Quiénes somos</div>
+      <h2 id="about-h" class="h2 bal" data-i18n="about.h2">Una empresa sanjuanina al servicio de la minería</h2>
+      <p data-i18n="about.p1">Prestamos servicios de transporte y logística para operadoras mineras y contratistas en la provincia de San Juan, desde dos bases propias: Rawson, en el Gran San Juan, y Calingasta, en la zona cordillerana.</p>
+      <p class="last" data-i18n="about.p2">La flota, el taller y el personal son propios.</p>
+      <a href="/empresa" class="lnk" data-i18n="about.lnk">Conocer la empresa</a>
     </div>
-  </div>
-
-  <div class="hero-dots" role="tablist" aria-label="Slider del hero">
-    <button class="hero-dot is-active" type="button" data-slide="0" aria-label="Imagen 1"></button>
-    <button class="hero-dot" type="button" data-slide="1" aria-label="Imagen 2"></button>
-    <button class="hero-dot" type="button" data-slide="2" aria-label="Imagen 3"></button>
-    <button class="hero-dot" type="button" data-slide="3" aria-label="Imagen 4"></button>
+    <div><img src="/assets/v7/team-pe.webp" alt="Personal de ISMAEL S.A." data-i18n-alt="about.img.alt" width="1600" height="1200" class="about-img" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════ STATS BAR ═══════════════════════ -->
-<div class="stats-bar" role="region" aria-label="Cifras clave">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-number"><span>+20</span></div>
-      <div class="stat-label" data-i18n-html="stats.years">Años de<br>trayectoria</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number"><span>+20</span></div>
-      <div class="stat-label" data-i18n-html="stats.units">Unidades<br>propias</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number"><span>2</span></div>
-      <div class="stat-label" data-i18n-html="stats.bases">Bases operativas<br>en San Juan</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number"><span>100<span class="stat-pct">%</span></span></div>
-      <div class="stat-label" data-i18n-html="stats.cert">Personal<br>certificado</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number"><span>+35</span></div>
-      <div class="stat-label" data-i18n-html="stats.projects">Proyectos<br>asistidos</div>
-    </div>
+<section class="tray-sec" aria-label="Trayectoria">
+  <div class="wrap">
+    <div class="tray"><div><span class="v">+20</span><span class="k" data-i18n="tray.0.k">Años de trabajo en la minería de San Juan</span></div><div><span class="v">+50</span><span class="k" data-i18n="tray.1.k">Proyectos mineros asistidos</span></div><div><span class="v">+25</span><span class="k" data-i18n="tray.2.k">Unidades propias en operación</span></div></div>
+    <a href="/empresa#trayectoria" class="lnk" data-i18n="tray.lnk">Nuestra trayectoria</a>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════════ QUIÉNES SOMOS ═══════════════════════ -->
-<section id="nosotros" aria-labelledby="about-title">
-  <div class="section">
-    <div class="about-grid">
-      <div class="about-media">
-        <div class="about-image">
-          <img src="assets/nieve nueva.webp" alt="Camión de la flota ISMAEL S.A. operando en la cordillera de los Andes con nieve." loading="lazy" decoding="async" width="1448" height="1086">
-        </div>
-        <div class="about-image-accent" role="img" aria-label="Operativo de perforación en alta montaña asistido por la flota de ISMAEL S.A.">
-          <img src="assets/grua nueva.webp" alt="Hidrogrúa de ISMAEL S.A. asistiendo una operación de perforación con torre y campamento en alta montaña." loading="lazy" decoding="async" width="1431" height="1099">
-        </div>
+<section class="sec sec-gray" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="svc-head"><div><div class="eye " data-i18n="svc.eye">Servicios</div><h2 id="svc-h" class="h2" data-i18n="svc.h2">Nuestros servicios</h2></div><a href="/servicios" class="lnk" data-i18n="svc.all">Ver todos los servicios</a></div>
+    <div class="svc-list"><a href="/logistica-exploracion-perforacion-san-juan" class="svc-row"><div class="svc-row-t"><span class="n">01</span><span class="t" data-i18n="svc.01.t">Logística para exploración, perforación y explotación</span><span class="d" data-i18n="svc.01.short">Transporte, recursos y traslados para campañas de exploración y operaciones en explotación.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-exploracion.webp" srcset="/assets/v7/svc-exploracion-720.webp 720w, /assets/v7/svc-exploracion-1200.webp 1200w, /assets/v7/svc-exploracion.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Logística para exploración, perforación y explotación" data-i18n-alt="svc.01.img.alt" width="1920" height="1440" class="op-50-30" loading="lazy" decoding="async"></div></a><a href="/transporte-agua-mineria" class="svc-row"><div class="svc-row-t"><span class="n">02</span><span class="t" data-i18n="svc.02.t">Transporte de agua</span><span class="d" data-i18n="svc.02.short">Abastecimiento con camiones aguateros a campamentos y operaciones sin red.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-agua.webp" srcset="/assets/v7/svc-agua-720.webp 720w, /assets/v7/svc-agua-1200.webp 1200w, /assets/v7/svc-agua.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Transporte de agua" data-i18n-alt="svc.02.img.alt" width="1920" height="1080" class="op-40-50" loading="lazy" decoding="async"></div></a><a href="/abastecimiento-minero-zonas-remotas" class="svc-row"><div class="svc-row-t"><span class="n">03</span><span class="t" data-i18n="svc.03.t">Abastecimiento en zonas remotas</span><span class="d" data-i18n="svc.03.short">Materiales, módulos e insumos hasta puntos de operación de difícil acceso.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-remotas.webp" srcset="/assets/v7/svc-remotas-720.webp 720w, /assets/v7/svc-remotas-1200.webp 1200w, /assets/v7/svc-remotas.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Abastecimiento en zonas remotas" data-i18n-alt="svc.03.img.alt" width="1920" height="1440" class="op-50-35" loading="lazy" decoding="async"></div></a><a href="/traslado-de-personal-minero" class="svc-row"><div class="svc-row-t"><span class="n">04</span><span class="t" data-i18n="svc.04.t">Traslado de personal</span><span class="d" data-i18n="svc.04.short">Camionetas 4×4 entre bases, proyectos y campamentos.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-personal.webp" srcset="/assets/v7/svc-personal-720.webp 720w, /assets/v7/svc-personal-1200.webp 1200w, /assets/v7/svc-personal.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Traslado de personal" data-i18n-alt="svc.04.img.alt" width="1920" height="1435" class="op-45-55" loading="lazy" decoding="async"></div></a><a href="/transporte-minero-san-juan" class="svc-row"><div class="svc-row-t"><span class="n">05</span><span class="t" data-i18n="svc.05.t">Transporte de equipos e insumos</span><span class="d" data-i18n="svc.05.short">Equipos, maquinaria, módulos y estructuras, incluidas cargas sobredimensionadas.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-equipos.webp" srcset="/assets/v7/svc-equipos-720.webp 720w, /assets/v7/svc-equipos-1200.webp 1200w, /assets/v7/svc-equipos.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Transporte de equipos e insumos" data-i18n-alt="svc.05.img.alt" width="1920" height="1440" class="op-40-60" loading="lazy" decoding="async"></div></a><a href="/soporte-operativo-alta-montana" class="svc-row"><div class="svc-row-t"><span class="n">06</span><span class="t" data-i18n="svc.06.t">Soporte operativo en terreno</span><span class="d" data-i18n="svc.06.short">Presencia logística en el lugar durante la campaña.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-soporte.webp" srcset="/assets/v7/svc-soporte-720.webp 720w, /assets/v7/svc-soporte-1200.webp 1200w, /assets/v7/svc-soporte.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Soporte operativo en terreno" data-i18n-alt="svc.06.img.alt" width="1920" height="1081" class="op-45-55" loading="lazy" decoding="async"></div></a><a href="/hidrogruas-mineria-san-juan" class="svc-row"><div class="svc-row-t"><span class="n">07</span><span class="t" data-i18n="svc.07.t">Hidrogrúas y servicios especiales</span><span class="d" data-i18n="svc.07.short">Carga, descarga y posicionamiento con hidrogrúas Palfinger sobre camión.</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img"><img src="/assets/v7/svc-hidrogruas.webp" srcset="/assets/v7/svc-hidrogruas-720.webp 720w, /assets/v7/svc-hidrogruas-1200.webp 1200w, /assets/v7/svc-hidrogruas.webp 1920w" sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw" alt="Hidrogrúas y servicios especiales" data-i18n-alt="svc.07.img.alt" width="1920" height="1081" class="op-50-45" loading="lazy" decoding="async"></div></a></div>
+  </div>
+</section>
+
+<section class="sec-green" aria-labelledby="pres-h">
+  <div class="pres">
+    <div class="pres-t">
+      <div class="eye eye-l" data-i18n="pres.eye">Dónde estamos</div>
+      <h2 id="pres-h" data-i18n="pres.h2">Presencia en la provincia de San Juan</h2>
+      <p data-i18n="pres.p">Operamos desde dos bases propias y trabajamos en los departamentos cordilleranos, como Calingasta e Iglesia.</p>
+      <div class="pres-b">
+        <div><div class="k" data-i18n="base.1.k">Base 01 · Administración</div><div class="t">Rawson</div><div class="a">Gral. Mariano Acha Sur 2356, Rawson, San Juan</div><div class="h" data-i18n="base.1.h">Lunes a viernes de 9 a 17 h</div><a href="https://www.google.com/maps/search/?api=1&query=Gral.+Mariano+Acha+Sur+2356,+Rawson,+San+Juan" target="_blank" rel="noopener noreferrer" class="lnk lnk-l" data-i18n="base.maps">Cómo llegar ↗</a></div>
+        <div><div class="k" data-i18n="base.2.k">Base 02 · Operaciones</div><div class="t">Calingasta</div><div class="a" data-i18n="base.2.a">Zona cordillerana, San Juan</div><div class="h" data-i18n="base.2.h">Base operativa, sin atención al público</div></div>
       </div>
+    </div>
+    <div class="map" id="map" role="region" aria-label="Mapa de las bases de ISMAEL S.A. en San Juan" data-i18n-aria-label="map.label"></div>
+  </div>
+</section>
 
-      <div class="about-content">
-        <div class="section-tag" data-i18n="about.tag">Quiénes somos</div>
-        <h2 class="section-title" id="about-title" data-i18n="about.title">
-          Operador logístico sanjuanino para la minería
-        </h2>
-        <p class="about-text" data-i18n="about.body1">
-          ISMAEL S.A. es la empresa sanjuanina en la que la minería delega su logística en terreno y deja de preocuparse por ella. Especializada en logística minera, transporte minero y soporte operativo para la industria minera, el petróleo, el gas y grandes obras, operamos con flota propia en la Cordillera de los Andes, con más de 20 años de trayectoria.
-        </p>
-        <p class="about-text mb-36" data-i18n="about.body2">
-          Contamos con dos bases operativas en Rawson y Calingasta que nos permiten ofrecer logística en Calingasta y soporte operativo en alta montaña, con movilización rápida a cualquier punto de la cordillera, sin depender de operadores externos ni tránsitos interprovinciales.
-        </p>
+<section class="sec como-sec" aria-labelledby="como-h">
+  <div class="wrap">
+    <div class="eye " data-i18n="como.eye">Cómo trabajamos</div>
+    <h2 id="como-h" class="h2" data-i18n="como.h2">Seguridad en cada operación</h2>
+    <div class="como"><div><span class="n">01</span><span class="t" data-i18n="como.0.t">Antes de salir</span><span class="d" data-i18n="como.0.d">Revisión preoperacional de cada unidad y plan de mantenimiento preventivo.</span></div><div><span class="n">02</span><span class="t" data-i18n="como.1.t">En el camino</span><span class="d" data-i18n="como.1.d">Seguimiento por GPS. Radio VHF o satelital donde no hay señal de celular.</span></div><div><span class="n">03</span><span class="t" data-i18n="como.2.t">Las personas</span><span class="d" data-i18n="como.2.d">Control de horas de manejo y descanso. Inducción de seguridad de cada proyecto antes de ingresar.</span></div><div><span class="n">04</span><span class="t" data-i18n="como.3.t">Seguros y habilitaciones</span><span class="d" data-i18n="como.3.d">ART, responsabilidad civil y seguro de carga. Habilitaciones y revisión técnica al día.</span></div></div>
+  </div>
+</section>
 
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-            <span class="highlight-text" data-i18n-html="about.hl1"><strong>Acceso a frentes de perforación</strong> — operamos en terrenos cordilleranos inaccesibles para operadores sin base en la provincia</span>
-          </div>
-          <div class="highlight-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span class="highlight-text" data-i18n-html="about.hl2"><strong>Flota 100% propia</strong> — sin intermediarios, sin tercerización de equipamiento crítico</span>
-          </div>
-          <div class="highlight-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span class="highlight-text" data-i18n-html="about.hl3"><strong>Respuesta local</strong> — dos bases propias para movilización rápida en cualquier punto de la cordillera</span>
-          </div>
-        </div>
-      </div>
+<section class="sec-2 sec-green" aria-labelledby="jobs-h">
+  <div class="wrap jobs">
+    <div>
+      <div class="eye eye-l" data-i18n="jobs.eye">Súmese al equipo</div>
+      <h2 id="jobs-h" data-i18n="jobs.h2">Oportunidades para crecer en la logística minera</h2>
+      <p data-i18n-html="jobs.p">Envíe su CV a <a href="mailto:rrhh@ismaelsa.info">rrhh@ismaelsa.info</a>. En el asunto, escriba el puesto o la actividad que realiza y la localidad donde reside.</p>
+      <div class="btns"><a href="mailto:rrhh@ismaelsa.info?subject=CV%20-%20%5BPuesto%5D%20-%20%5BLocalidad%5D" class="btn btn-g" data-i18n="jobs.b1">Enviar CV ✉</a><a href="/contacto" class="btn btn-o" data-i18n="jobs.b2">Contactar ahora</a></div>
+    </div>
+    <div class="jobs-s">
+      <div class="k" data-i18n="jobs.k">Cómo postularse</div>
+      <div class="d" data-i18n="jobs.d1">Recibimos currículums de forma permanente. Los guardamos y nos comunicamos cuando surge una búsqueda que coincide con su perfil.</div>
+      <div class="d" data-i18n="jobs.d2">Adjunte el CV en PDF. Si tiene licencias de conducir profesionales o habilitaciones de operación vigentes, indíquelas en el cuerpo del correo.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════ SERVICIOS ═══════════════════════ -->
-<div class="section-full services-bg" id="servicios">
-  <div class="services-header">
-    <div>
-      <div class="section-tag" data-i18n="services.tag">Servicios</div>
-      <h2 class="section-title mb-0" data-i18n="services.title">Todo lo que la operación necesita en terreno</h2>
-    </div>
-    <a href="#contacto" class="btn btn-green btn-pad-a" data-i18n="cta.consultar">Consultar disponibilidad</a>
-  </div>
-
-  <div class="services-grid">
-    <!-- Tarjetas de servicio clickeables → cada una lleva a su página (spoke).
-         Las que aún no tienen página propia (logística general, soporte operativo)
-         apuntan al pillar por ahora. Actualizar la 6 a /soporte-operativo-alta-montana
-         cuando exista. El estilo a.service-card (cursor, sin subrayado) está en styles.css. -->
-    <a href="/logistica-exploracion-perforacion-san-juan" class="service-card svc-bg-1">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.1.title">Servicios y logística de exploración, explotación y perforación</h3>
-      <p data-i18n="svc.1.desc">Coordinación de recursos, traslados y asistencia integral para campañas mineras en frentes cordilleranos bajo condiciones extremas de altura, frío y aislamiento.</p>
-    </a>
-
-    <a href="/transporte-agua-mineria" class="service-card svc-bg-2">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.2.title">Transporte de agua</h3>
-      <p data-i18n="svc.2.desc">Abastecimiento de agua para perforadoras, campamentos y riego de caminos mediante aguateros propios. Provisión continua en frentes aislados de la cordillera.</p>
-    </a>
-
-    <a href="/abastecimiento-minero-zonas-remotas" class="service-card svc-bg-3">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.3.title">Abastecimiento en zonas remotas</h3>
-      <p data-i18n="svc.3.desc">Traslado de materiales, módulos e insumos a puntos de operación de difícil acceso. Logística de última milla en rutas de montaña y caminos no convencionales.</p>
-    </a>
-
-    <a href="/traslado-de-personal-minero" class="service-card svc-bg-4">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-          <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.4.title">Traslados programados</h3>
-      <p data-i18n="svc.4.desc">Conexión permanente entre proyectos, laboratorios, bases, proveedores y campamentos. Rotaciones planificadas y movimientos urgentes con respuesta inmediata.</p>
-    </a>
-
-    <a href="/transporte-minero-san-juan" class="service-card svc-bg-5">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.5.title">Transporte de equipos e insumos</h3>
-      <p data-i18n="svc.5.desc">Soluciones para materiales críticos, equipamiento operativo y módulos habitables. Coordinación ajustada a las ventanas de operación de cada proyecto.</p>
-    </a>
-
-    <a href="/soporte-operativo-alta-montana" class="service-card svc-bg-6">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.6.title">Soporte operativo en terreno</h3>
-      <p data-i18n="svc.6.desc">Personal con experiencia en frentes de exploración y perforación. Planificación de recursos, coordinación en campo y presencia continua durante toda la campaña.</p>
-    </a>
-
-    <a href="/hidrogruas-mineria-san-juan" class="service-card svc-bg-7">
-      <div class="service-icon" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-          <path d="M3 18v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="1" x2="12" y2="3"/>
-        </svg>
-      </div>
-      <h3 data-i18n="svc.7.title">Hidrogrúas y servicios especiales</h3>
-      <p data-i18n="svc.7.desc">Izaje, movimiento de cargas y asistencia a operaciones que requieren equipamiento específico, operadores de hidrogrúa certificados y personal habilitado para tareas de alto riesgo.</p>
-    </a>
-  </div>
-
-  <div class="services-more">
-    <a href="/servicios-mineros-san-juan" class="btn btn-outline btn-lg" data-i18n="services.all">Ver todos los servicios</a>
-  </div>
-</div>
-
-<!-- ═══════════════════════ FLOTA ═══════════════════════ -->
-<section id="flota" aria-labelledby="fleet-title">
-  <div class="section">
-    <div class="fleet-banner" role="img" aria-label="Flota de camiones IVECO y Mercedes de ISMAEL S.A. en la base operativa.">
-      <img src="assets/fleet-lineup.webp" alt="Flota propia de ISMAEL S.A. — camiones aguateros, hidrogrúas y chasis en formación en la base operativa de San Juan." loading="lazy" decoding="async" width="1200" height="1600">
-      <div class="fleet-banner-caption">
-        <div class="fleet-banner-caption-title" data-i18n="fleet.caption.title">+20 unidades en operación</div>
-        <div class="fleet-banner-caption-meta" data-i18n="fleet.caption.meta">Base operativa · San Juan</div>
-      </div>
-    </div>
-
-    <div class="fleet-grid">
-      <div class="fleet-intro">
-        <div class="section-tag" data-i18n="fleet.tag">Flota y capacidades</div>
-        <h2 class="section-title" id="fleet-title" data-i18n-html="fleet.title">
-          Equipamiento propio.<br>Sin intermediarios.
-        </h2>
-        <p class="section-body mb-20" data-i18n="fleet.body">
-          Más de 20 unidades propias preparadas para operar en cordillera, rutas y zonas remotas. Garantizamos disponibilidad, mantenimiento preventivo programado y respuesta operativa local, sin depender de terceros para el equipamiento crítico.
-        </p>
-        <a href="#contacto" class="btn btn-green btn-pad-b" data-i18n="cta.consultar">Consultar disponibilidad de flota</a>
-      </div>
-
-      <div class="fleet-tech">
-        <div class="tech-card">
-          <div class="tech-card-title" data-i18n="flota.tech.title">Gestión de flota</div>
-          <ul class="tech-card-list">
-            <li data-i18n="flota.tech.li1">Monitoreo GPS satelital en cada unidad</li>
-            <li data-i18n="flota.tech.li2">Mantenimiento preventivo programado</li>
-            <li data-i18n="flota.tech.li3">Revisión pre-operacional diaria</li>
-            <li data-i18n="flota.tech.li4">Documentación técnica al día</li>
-            <li data-i18n="flota.tech.li5">Comunicación VHF/satelital en zonas sin cobertura</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="fleet-list" role="list" aria-label="Tipos de vehículos de la flota">
-      <div class="fleet-item" role="listitem">
-        <div class="fleet-item-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-        </div>
-        <span class="fleet-item-name" data-i18n="fleet.item1">Camiones aguateros</span>
-      </div>
-      <div class="fleet-item" role="listitem">
-        <div class="fleet-item-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V4h12"/><path d="M6 4l4 4"/><line x1="18" y1="4" x2="18" y2="8"/><rect x="15.5" y="8.5" width="5" height="4" rx="1"/></svg>
-        </div>
-        <span class="fleet-item-name" data-i18n="fleet.item2">Camiones con hidrogrúa</span>
-      </div>
-      <div class="fleet-item" role="listitem">
-        <div class="fleet-item-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <span class="fleet-item-name" data-i18n="fleet.item3">Camiones chasis</span>
-      </div>
-      <div class="fleet-item" role="listitem">
-        <div class="fleet-item-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v6h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <span class="fleet-item-name" data-i18n="fleet.item4">Tractores con semirremolque</span>
-      </div>
-      <div class="fleet-item" role="listitem">
-        <div class="fleet-item-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
-        </div>
-        <span class="fleet-item-name" data-i18n="fleet.item5">Vehículos 4×4 / 6×4</span>
-      </div>
-    </div>
-
-    <!-- CARRUSEL 3D DE FLOTA -->
-    <div class="fleet-carousel" role="region" aria-label="Carrusel de vehículos">
-      <p class="fleet-carousel-heading" data-i18n="fleet.carousel.subtitle">Algunos de nuestros vehículos</p>
-      <div class="fleet-carousel-stage" id="fleetCarouselStage">
-        <div class="fleet-carousel-card pos-far-left" data-index="0">
-          <img src="assets/flota-carrusel/Mercedes Benz atego 3132 año 2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Atego 3132 de la flota de ISMAEL S.A., camión utilizado en logística minera en San Juan">
-        </div>
-        <div class="fleet-carousel-card pos-left" data-index="1">
-          <img src="assets/flota-carrusel/Toyota hilux 2.8 TDI 6 MT año 2023.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Toyota Hilux 2.8 TDI 4x4 de la flota de ISMAEL S.A. para movilización en alta montaña">
-        </div>
-        <div class="fleet-carousel-card pos-center" data-index="2">
-          <img src="assets/flota-carrusel/iveco trakker 440 año 2024.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Trakker 440, tractor con semirremolque de la flota de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card pos-right" data-index="3">
-          <img src="assets/flota-carrusel/Iveco tector 260e30 año 2024.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Tector 260E30 de la flota propia de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card pos-far-right" data-index="4">
-          <img src="assets/flota-carrusel/Iveco tector 27320 - año 2025 e hidrogua palfinger 36080 - año 2025.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Tector 27320 con hidrogrúa Palfinger de ISMAEL S.A. para izaje y transporte minero">
-        </div>
-        <div class="fleet-carousel-card" data-index="5">
-          <img src="assets/flota-carrusel/Iveco trakker 480  2025.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Trakker 480, camión pesado de la flota de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card" data-index="6">
-          <img src="assets/flota-carrusel/Mercedes Benz axor 3344  año 2025  hidrogrua palfinger 36080.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Axor 3344 con hidrogrúa Palfinger de la flota de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card" data-index="7">
-          <img src="assets/flota-carrusel/Mercedes Benz tractor actros  2026  ombu semirremolque 14.5  año 2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="Mercedes-Benz Actros con semirremolque OMBU de la flota de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card" data-index="8">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  2026 semirremolque Niño Jesús de Praga 2020.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Stralis 480 con semirremolque de la flota de ISMAEL S.A.">
-        </div>
-        <div class="fleet-carousel-card" data-index="9">
-          <img src="assets/flota-carrusel/Tractor iveco stralis 480  año 2026 OMBU semirremolque 14.5 metros  2026.webp" decoding="async" loading="lazy" width="1280" height="960" alt="IVECO Stralis 480 con semirremolque OMBU de la flota de ISMAEL S.A.">
-        </div>
-      </div>
-
-      <div class="fleet-carousel-info">
-        <div class="fleet-carousel-name" id="carouselName">IVECO Trakker 440</div>
-        <div class="fleet-carousel-meta" id="carouselMeta">Año 2024</div>
-        <div class="fleet-carousel-type" id="carouselType">Tractor con Semirremolque</div>
-        <div class="fleet-carousel-specs" id="carouselSpecs">
-          <span class="fleet-carousel-spec">440 CV</span>
-          <span class="fleet-carousel-spec">1900 Nm</span>
-          <span class="fleet-carousel-spec">Cursor 13</span>
-          <span class="fleet-carousel-spec">PBT 46.000 kg</span>
-          <span class="fleet-carousel-spec">6×4 / 8×4</span>
-        </div>
-        <div class="fleet-carousel-controls">
-          <button class="fleet-carousel-btn" id="carouselPrev" aria-label="Anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fleet-carousel-btn" id="carouselNext" aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-        <div class="fleet-carousel-dots" id="fleetCarouselDots">
-          <button class="fleet-carousel-dot" data-index="0" aria-label="Ir a vehículo 1"></button>
-          <button class="fleet-carousel-dot" data-index="1" aria-label="Ir a vehículo 2"></button>
-          <button class="fleet-carousel-dot" data-index="2" aria-label="Ir a vehículo 3"></button>
-          <button class="fleet-carousel-dot" data-index="3" aria-label="Ir a vehículo 4"></button>
-          <button class="fleet-carousel-dot" data-index="4" aria-label="Ir a vehículo 5"></button>
-          <button class="fleet-carousel-dot" data-index="5" aria-label="Ir a vehículo 6"></button>
-          <button class="fleet-carousel-dot" data-index="6" aria-label="Ir a vehículo 7"></button>
-          <button class="fleet-carousel-dot" data-index="7" aria-label="Ir a vehículo 8"></button>
-          <button class="fleet-carousel-dot" data-index="8" aria-label="Ir a vehículo 9"></button>
-          <button class="fleet-carousel-dot" data-index="9" aria-label="Ir a vehículo 10"></button>
-        </div>
-      </div>
-    </div>
+<section class="cta" aria-labelledby="cta-h">
+  <img src="/assets/v7/logo-icono.webp" alt="" class="cta-wm" width="881" height="321" loading="lazy" aria-hidden="true">
+  <div class="cta-in">
+    <h2 id="cta-h" data-i18n="cta.h">Solicite una cotización</h2>
+    <div class="btns"><a href="/contacto" class="btn btn-g" data-i18n="cta.cotizar">Solicitar cotización</a><a href="tel:+542644131515" class="btn btn-o">+54 264 413-1515</a></div>
   </div>
 </section>
-
-<!-- ═══════════════════════ SEGURIDAD ═══════════════════════ -->
-<div class="section-full safety-bg" id="seguridad" aria-labelledby="safety-title">
-  <div class="safety-inner">
-    <div>
-      <div class="section-tag" data-i18n="safety.tag">Higiene, seguridad y trazabilidad operativa</div>
-      <h2 class="section-title mb-32" id="safety-title" data-i18n-html="safety.title">
-        Cada viaje,<br>planificado y controlado
-      </h2>
-
-      <div class="safety-quote">
-        <p data-i18n="safety.quote">Revisión preoperacional antes de cada salida, monitoreo en cada ruta y más de 20 años en la cordillera sin un incidente grave.</p>
-      </div>
-
-      <p class="section-body mb-36" data-i18n="safety.body">
-        Cada unidad sale con revisión preoperacional, viaja monitoreada por GPS y sigue un plan de mantenimiento preventivo. En la cordillera, un descuido no se corrige: cuesta una jornada de operación, o algo peor. Por eso trabajamos así hace más de 20 años, en línea con las exigencias HSEC de las operadoras internacionales.
-      </p>
-
-      <div class="safety-certs" role="list" aria-label="Certificaciones de seguridad">
-        <div class="cert-item" role="listitem">
-          <div class="cert-check" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="cert-text" data-i18n="safety.cert1">Personal certificado en manejo defensivo</span>
-        </div>
-        <div class="cert-item" role="listitem">
-          <div class="cert-check" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="cert-text" data-i18n="safety.cert2">Operación certificada de vehículos pesados e hidrogrúa</span>
-        </div>
-        <div class="cert-item" role="listitem">
-          <div class="cert-check" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="cert-text" data-i18n="safety.cert3">Revisiones pre-operacionales y mantenimiento preventivo</span>
-        </div>
-        <div class="cert-item" role="listitem">
-          <div class="cert-check" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="cert-text" data-i18n="safety.cert4">Control de fatiga — monitoreo permanente en ruta</span>
-        </div>
-        <div class="cert-item" role="listitem">
-          <div class="cert-check" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="cert-text" data-i18n="safety.cert5">Compatible con exigencias HSEC de clientes internacionales</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="safety-media">
-      <div class="safety-numbers" role="list" aria-label="Indicadores de seguridad">
-        <div class="safety-num-item" role="listitem">
-          <div class="safety-num-value">+20</div>
-          <div class="safety-num-label" data-i18n="safety.num1">Colaboradores certificados</div>
-        </div>
-        <div class="safety-num-item" role="listitem">
-          <div class="safety-num-value">+20</div>
-          <div class="safety-num-label" data-i18n="safety.num2">Años sin incidentes graves</div>
-        </div>
-        <div class="safety-num-item" role="listitem">
-          <div class="safety-num-value">100%</div>
-          <div class="safety-num-label" data-i18n="safety.num3">Flota con GPS y control de fatiga</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ COBERTURA ═══════════════════════ -->
-<div class="section-full coverage-bg" id="cobertura">
-  <div class="wrap-max">
-    <div class="section-tag" data-i18n="bases.tag">Infraestructura y cobertura</div>
-    <h2 class="section-title mb-18" id="coverage-title" data-i18n="bases.title">
-      Dos bases operativas en San Juan
-    </h2>
-    <p class="section-body bases-body" data-i18n="bases.body">
-      Dos bases operativas estratégicamente ubicadas en San Juan nos permiten responder con rapidez a los proyectos de toda la cordillera, reducir tiempos de movilización y mantener presencia operativa local.
-    </p>
-
-    <div class="coverage-grid">
-      <div class="base-card">
-        <div class="base-card-header">
-          <img src="assets/mapa base rawson.webp" alt="Mapa de ubicación de la Base Rawson de ISMAEL S.A. en el Gran San Juan" class="base-card-map" loading="lazy" decoding="async">
-          <div class="base-card-name-row">
-            <div class="base-marker" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="base-name">Base Rawson</div>
-              <div class="base-subtitle" data-i18n="bases.rawson.subtitle">Gran San Juan — Zona urbana e industrial</div>
-            </div>
-          </div>
-        </div>
-        <div class="base-body">
-          <p class="base-desc" data-i18n="bases.rawson.desc">
-            Centro logístico, administrativo y de mantenimiento en el Gran San Juan, con vinculación directa con proveedores, laboratorios y servicios urbanos. Base de coordinación para todas las campañas.
-          </p>
-          <div class="base-tags">
-            <span class="base-tag" data-i18n="bases.rawson.tag1">Centro logístico</span>
-            <span class="base-tag" data-i18n="bases.rawson.tag2">Taller de mantenimiento</span>
-            <span class="base-tag" data-i18n="bases.rawson.tag3">Abastecimiento de flota</span>
-            <span class="base-tag" data-i18n="bases.rawson.tag4">Administración</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="base-card">
-        <div class="base-card-header">
-          <img src="assets/mapa base calingasta.webp" alt="Mapa de ubicación de la Base Calingasta de ISMAEL S.A. en la zona cordillerana de San Juan" class="base-card-map" loading="lazy" decoding="async">
-          <div class="base-card-name-row">
-            <div class="base-marker" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="base-name">Base Calingasta</div>
-              <div class="base-subtitle" data-i18n="bases.calingasta.subtitle">Zona cordillerana — Acceso a proyectos en altura</div>
-            </div>
-          </div>
-        </div>
-        <div class="base-body">
-          <p class="base-desc" data-i18n="bases.calingasta.desc">
-            Posición avanzada en la zona cordillerana, junto a los principales proyectos de exploración de la provincia. Reduce tiempos de movilización y facilita la respuesta operativa en terreno de altura.
-          </p>
-          <div class="base-tags">
-            <span class="base-tag" data-i18n="bases.calingasta.tag1">Acceso cordillerano</span>
-            <span class="base-tag" data-i18n="bases.calingasta.tag2">Base de avanzada</span>
-            <span class="base-tag" data-i18n="bases.calingasta.tag3">Apoyo en campaña</span>
-            <span class="base-tag" data-i18n="bases.calingasta.tag4">Logística de montaña</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="adv-grid">
-      <div class="base-adv">
-        <div class="base-adv-ic">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div>
-          <strong data-i18n="bases.adv1.title" class="base-adv-title">Menor tiempo de respuesta</strong>
-          <span data-i18n="bases.adv1.desc" class="base-adv-desc">Movilización local sin depender de tránsitos largos desde otras provincias.</span>
-        </div>
-      </div>
-      <div class="base-adv">
-        <div class="base-adv-ic">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div>
-          <strong data-i18n="bases.adv2.title" class="base-adv-title">Conocimiento del terreno</strong>
-          <span data-i18n="bases.adv2.desc" class="base-adv-desc">Rutas, caminos secundarios, altura cordillerana y clima de montaña.</span>
-        </div>
-      </div>
-      <div class="base-adv">
-        <div class="base-adv-ic">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div>
-          <strong data-i18n="bases.adv3.title" class="base-adv-title">Compromiso local</strong>
-          <span data-i18n="bases.adv3.desc" class="base-adv-desc">Generación de empleo y desarrollo en la provincia de San Juan.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════ FUTURO: MAPA SAN JUAN CON PROYECTOS ════
-         Cuando esté lista la imagen, descomentar este bloque y agregar:
-         assets/images/maps/mapa-san-juan-proyectos.png
-         con marcadores rojos para Bases (Rawson, Calingasta) y secundarios
-         para proyectos mineros (El Pachón, Filo del Sol, etc.).
-    <div class="panel-card">
-      <div class="eyebrow">Mapa de operación</div>
-      <img src="assets/images/maps/mapa-san-juan-proyectos.png" alt="Mapa de San Juan con bases operativas y proyectos asistidos." class="map-img">
-    </div>
-    -->
-
-  </div>
-</div>
-
-<!-- ═══════════════════════ EXPERIENCIA / CLIENTES ═══════════════════════ -->
-<section id="experiencia" class="section-full experience-bg" aria-labelledby="experience-title">
-  <div class="experience-inner">
-    <div class="section-tag" data-i18n="experience.tag">Experiencia que nos respalda</div>
-    <h2 class="section-title mb-20" id="experience-title" data-i18n-html="experience.title">
-      Más de 35 proyectos asistidos<br>en alta montaña
-    </h2>
-    <p class="section-body" data-i18n="experience.body">
-      Trabajamos junto a operadoras internacionales y los proyectos mineros más relevantes de San Juan. Conocemos los frentes, las rutas y las exigencias de cada operación.
-    </p>
-
-    <!-- ═══════════════════════════════════════════════════════════════════
-         PROYECTOS — 35 de San Juan: 34 del mapa oficial "Principales prospectos
-         y proyectos mineros metalíferos" + Lunahuasi (agregado por confirmación
-         del jefe el 2026-07-20). El jefe confirma que ISMAEL asistió a TODOS y
-         que se pueden nombrar las minas grandes (Veladero, Gualcamayo, etc.).
-         · El TAG de cada tarjeta es la ETAPA según el mapa (Producción,
-           Preconstrucción, Factibilidad, Exploración avanzada, Prospección).
-         · La descripción dice qué es el proyecto (mineral cuando es dato
-           público; si no, etapa + ubicación). No dice qué hizo ISMAEL.
-         · Orden: por etapa, de más avanzado a prospección (como el mapa).
-         ═══════════════════════════════════════════════════════════════════ -->
-    <div class="projects-marquee" role="region" aria-label="Proyectos mineros de San Juan">
-      <div class="projects-track" id="projectsTrack" role="list">
-
-        <!-- PRODUCCIÓN -->
-        <article class="featured-card" role="listitem"><div class="featured-tag">En producción</div><h3>Veladero</h3><p>Mina de oro y plata en operación en el departamento de Iglesia, una de las mayores productoras de oro de la Argentina.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">En producción</div><h3>Gualcamayo</h3><p>Mina de oro en operación en el departamento de Jáchal.</p></article>
-        <!-- PRECONSTRUCCIÓN -->
-        <article class="featured-card" role="listitem"><div class="featured-tag">En preconstrucción</div><h3>Josemaría</h3><p>Yacimiento de cobre, oro y plata del distrito Vicuña, en preparación para su construcción, en Iglesia.</p></article>
-        <!-- FACTIBILIDAD Y PREFACTIBILIDAD -->
-        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>El Pachón</h3><p>Uno de los mayores yacimientos de cobre y molibdeno del país, en la cordillera de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Altar</h3><p>Pórfido de cobre, oro y plata en la cordillera de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Hualilán</h3><p>Proyecto de oro y plata en el departamento de Ullum.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Los Azules</h3><p>Proyecto cuprífero de gran escala en Calingasta, por encima de los 3.500 m s.n.m.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Factibilidad</div><h3>Lama</h3><p>Proyecto de oro y plata en la alta cordillera de Iglesia, sobre el límite con Chile.</p></article>
-        <!-- EXPLORACIÓN AVANZADA -->
-        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Filo del Sol</h3><p>Depósito de cobre, oro y plata del distrito Vicuña, en la cordillera de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Filo Sur (Mogote Metals)</h3><p>Proyecto de cobre, oro y plata del distrito Vicuña, en la cordillera de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Del Carmen</h3><p>Proyecto de oro y plata en el departamento de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Chita</h3><p>Proyecto de cobre y plata en la cordillera de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Exploración avanzada</div><h3>Lunahuasi</h3><p>Descubrimiento de cobre, oro y plata de alta ley del distrito Vicuña, en el departamento de Iglesia.</p></article>
-        <!-- PROSPECCIÓN / EXPLORACIÓN -->
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Las Flechas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>La Ortiga</h3><p>Prospecto de oro y plata en el departamento de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>El Fierro</h3><p>Prospecto de cobre, oro y molibdeno en la cordillera de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Las Opeñas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Zancarrón</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Jagüelito</h3><p>Prospecto de oro y plata en el departamento de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Nacimiento</h3><p>Prospecto de cobre y oro en el departamento de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Mogotes</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Altos del Cura</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Amarillos II – Despoblados – Zaat</h3><p>Área de prospección metalífera en el departamento de Iglesia.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Coipita – Yaretas</h3><p>Prospecto de cobre y oro en la cordillera de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>San Francisco – Santa Bárbara</h3><p>Prospecto de oro, plata y cobre en la cordillera de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Don Julio (Ex Poposa)</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Brecha Vaca – Minas de Pinto</h3><p>Área de prospección metalífera en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Manantiales</h3><p>Prospecto de oro y plata en el departamento de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Rincones de Araya</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Río Salinas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Calderón Calderoncito</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Piuquenes</h3><p>Prospecto metalífero en la cordillera de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Río Cenicero</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Chasquillal (Vanesa I y II)</h3><p>Prospecto metalífero en el departamento de Calingasta.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Cordón de las Pichireguas</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-        <article class="featured-card" role="listitem"><div class="featured-tag">Prospección</div><h3>Santo Domingo</h3><p>Prospecto metalífero en la cordillera de San Juan.</p></article>
-
-      </div>
-    </div>
-
-    <p class="section-body exp-context" data-i18n="experience.context">
-      Como operador logístico minero sanjuanino, trabajamos en los departamentos de Calingasta, Iglesia, Jáchal y Ullum, asistiendo campañas de exploración, perforación y desarrollo minero junto a operadoras internacionales y nacionales con presencia activa en San Juan.
-    </p>
-  </div>
-</section>
-
-<!-- ═══════════════════════ CAPITAL HUMANO ═══════════════════════ -->
-<div class="section-full team-bg" id="equipo" aria-labelledby="team-title">
-  <div class="team-inner">
-    <div>
-      <div class="section-tag" data-i18n="team.tag">Capital humano</div>
-      <h2 class="section-title mb-28" id="team-title" data-i18n-html="team.title">
-        Personas con<br>experiencia operativa real
-      </h2>
-      <p class="section-body" data-i18n="team.body">
-        Contamos con un equipo base de más de 20 colaboradores y dotación escalable según la demanda de cada campaña. Personal con amplia experiencia en operaciones críticas, entornos mineros de altura y respuesta en terreno bajo condiciones exigentes.
-      </p>
-
-      <div class="team-quote">
-        <span data-i18n="team.quote">Buena parte del equipo sube a la cordillera desde hace años: conocen los caminos, los tiempos y los riesgos de memoria.</span>
-      </div>
-    </div>
-
-    <div>
-      <h3 data-i18n="team.roles.title" class="team-roles-title">Perfiles operativos</h3>
-      <p data-i18n="team.roles.sub" class="team-roles-sub">Dotación propia escalable según campaña. Sin dependencia de agencias ni subcontratistas.</p>
-
-      <div class="team-list" role="list">
-        <div class="team-cert" role="listitem">
-          <div class="team-cert-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <span class="team-cert-text" data-i18n="team.role1">Conductores de vehículos pesados y 4x4 en alta montaña</span>
-        </div>
-        <div class="team-cert" role="listitem">
-          <div class="team-cert-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <span class="team-cert-text" data-i18n="team.role2">Operadores de hidrogrúa, señaleros y eslingadores certificados</span>
-        </div>
-        <div class="team-cert" role="listitem">
-          <div class="team-cert-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <span class="team-cert-text" data-i18n="team.role3">Técnicos de mantenimiento preventivo de flota</span>
-        </div>
-        <div class="team-cert" role="listitem">
-          <div class="team-cert-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <span class="team-cert-text" data-i18n="team.role4">Coordinadores de logística en campamento y terreno</span>
-        </div>
-        <div class="team-cert" role="listitem">
-          <div class="team-cert-icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <span class="team-cert-text" data-i18n="team.role5">Personal administrativo y de planificación operativa</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════ POR QUÉ ELEGIRNOS ═══════════════════════ -->
-<div class="section-full why-bg" id="por-que" aria-labelledby="why-title">
-  <div class="why-inner">
-    <div class="section-tag" data-i18n="why.tag">Por qué elegirnos</div>
-    <h2 class="section-title" id="why-title" data-i18n-html="why.title">
-      La tranquilidad de que<br>la logística no falla
-    </h2>
-
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h3 data-i18n="why.item1.title">Flota propia, con respaldo</h3>
-        <p data-i18n="why.item1.desc">Control directo de cada unidad. Si una falla, según disponibilidad sale otra: la operación no se frena.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3 data-i18n="why.item2.title">Presencia local en San Juan</h3>
-        <p data-i18n="why.item2.desc">Bases en Rawson y Calingasta: movilización en horas, sin depender de operadores de otras provincias.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-        <h3 data-i18n="why.item3.title">Personal propio y acreditado</h3>
-        <p data-i18n="why.item3.desc">Operadores de hidrogrúa, señaleros y eslingadores certificados ante la OAA, con experiencia real en operaciones mineras.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-        <h3 data-i18n="why.item4.title">Seguros y habilitaciones al día</h3>
-        <p data-i18n="why.item4.desc">ART, responsabilidad civil, seguro de carga y habilitaciones de transporte.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 20l6-11 4 7"/><path d="M13 16l3-5 5 9"/></svg></div>
-        <h3 data-i18n="why.item5.title">+20 años en alta cordillera</h3>
-        <p data-i18n="why.item5.desc">Más de 20 años en rutas de montaña, frentes de perforación y proyectos de exploración en San Juan.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg></div>
-        <h3 data-i18n="why.item6.title">Trazabilidad total</h3>
-        <p data-i18n="why.item6.desc">Monitoreo GPS de la flota en cada recorrido: siempre sabés dónde está tu carga.</p>
-      </div>
-    </div>
-
-    <p class="why-closing" data-i18n="why.closing">
-      "Queremos ser parte del crecimiento de cada proyecto, brindando soporte logístico con seguridad, trazabilidad y compromiso local."
-    </p>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════ CONTACTO ═══════════════════════ -->
-<div class="section-full contact-bg" id="contacto">
-  <div class="contact-inner">
-    <div>
-      <div class="section-tag" data-i18n="contact.tag">Contacto comercial</div>
-      <h2 class="section-title mb-16" data-i18n-html="contact.title">
-        Hablemos de<br>su próximo proyecto
-      </h2>
-      <p class="section-body mb-0" data-i18n="contact.body">
-        Contamos con disponibilidad para nuevos proyectos. Consulte sin compromiso sobre disponibilidad de flota, capacidad operativa, cobertura cordillerana y plazos de respuesta.
-      </p>
-
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.6 6.6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-item-label" data-i18n="contact.label.tel">Teléfono</div>
-            <a href="tel:+542644131515" class="contact-item-value">+54 264 413-1515</a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-item-label" data-i18n="contact.label.email">Correo electrónico</div>
-            <a href="mailto:contacto@ismaelsa.info" class="contact-item-value">contacto@ismaelsa.info</a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="contact-item-label" data-i18n="contact.label.web">Sitio web</div>
-            <span class="contact-item-value">ismaelsa.com</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <form class="contact-form" id="contactForm" aria-label="Formulario de contacto" action="https://formsubmit.co/contacto@ismaelsa.info" method="POST" enctype="multipart/form-data">
-      <h3 data-i18n="contact.form.title">Solicitar propuesta</h3>
-
-      <!-- FormSubmit config -->
-      <input type="hidden" name="_subject" value="Solicitud de propuesta — Web ISMAEL S.A.">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
-      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
-
-      <div class="grid-2">
-        <div class="form-group">
-          <label for="nombre" data-i18n="contact.form.label.nombre">Nombre <span aria-hidden="true">*</span></label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Romero" data-i18n-placeholder="ph.nombre" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label for="empresa" data-i18n="contact.form.label.empresa">Empresa <span aria-hidden="true">*</span></label>
-          <input type="text" id="empresa" name="empresa" placeholder="Ej: Glencore Pachón" data-i18n-placeholder="ph.empresa" required autocomplete="organization">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email" data-i18n="contact.form.label.email">Correo electrónico <span aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" placeholder="correo@empresa.com" data-i18n-placeholder="ph.email.corp" required autocomplete="email">
-      </div>
-
-      <div class="form-group">
-        <label for="servicio" data-i18n="contact.form.label.servicio">Tipo de servicio</label>
-        <select id="servicio" name="servicio">
-          <option value="" data-i18n="ph.select">Seleccione…</option>
-          <option data-i18n="svc.1.title">Servicios y logística de exploración, explotación y perforación</option>
-          <option data-i18n="svc.2.title">Transporte de agua</option>
-          <option data-i18n="svc.3.title">Abastecimiento en zonas remotas</option>
-          <option data-i18n="svc.4.title">Traslados programados</option>
-          <option data-i18n="svc.5.title">Transporte de equipos e insumos</option>
-          <option data-i18n="svc.6.title">Soporte operativo en terreno</option>
-          <option data-i18n="svc.7.title">Hidrogrúas y servicios especiales</option>
-          <option data-i18n="svc.general">Consulta general</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="mensaje" data-i18n="contact.form.label.mensaje">Descripción del requerimiento</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Zona de operación, fechas estimadas, volumen, equipamiento requerido, etc." data-i18n-placeholder="ph.mensaje"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="proposal-file" data-i18n="file.proposal.label">Adjuntar archivo (opcional, máx. 5 MB)</label>
-        <div class="file-upload">
-          <label class="file-upload-btn" for="proposal-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span data-i18n="file.btn">Seleccionar archivo</span>
-          </label>
-          <input type="file" id="proposal-file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx">
-          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="proposal-link" data-i18n="file.proposal.linklabel">¿El archivo pesa más de 5 MB? Pegá un link (opcional)</label>
-        <input type="url" id="proposal-link" name="archivo_link" placeholder="https://drive.google.com/…" data-i18n-placeholder="ph.proposal.link" autocomplete="off">
-        <p data-i18n="file.proposal.hint" class="file-hint">Para PDFs grandes, subilo a Google Drive o WeTransfer y pegá el enlace acá. Verificá que sea de acceso público.</p>
-      </div>
-
-      <button type="submit" class="btn btn-green form-submit btn-lg" id="submitBtn" data-i18n="contact.form.submit">Solicitar propuesta</button>
-
-      <div class="row-actions">
-        <a href="https://wa.me/542644131515?text=Hola%2C%20quisiera%20consultar%20por%20un%20servicio%20log%C3%ADstico." target="_blank" rel="noopener noreferrer" class="btn btn-wa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp
-        </a>
-        <a href="mailto:contacto@ismaelsa.info?subject=Consulta%20-%20ISMAEL%20S.A." class="btn btn-outline btn-flex">
-          Enviar email
-        </a>
-      </div>
-
-      <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
-    </form>
-  </div>
-</div>
-
-<!-- ═══════════════════════ TRABAJÁ CON NOSOTROS ═══════════════════════ -->
-<div class="section-full careers-bg" id="trabajo" aria-labelledby="careers-title">
-  <div class="careers-inner">
-    <div>
-      <div class="section-tag" data-i18n="careers.tag">Trabajá con nosotros</div>
-      <h2 class="section-title mb-18" id="careers-title" data-i18n-html="careers.title">
-        Sumá tu experiencia<br>al equipo
-      </h2>
-      <p class="section-body mb-24" data-i18n="careers.body1">
-        Si tenés experiencia en operaciones logísticas, transporte, mantenimiento o servicios de apoyo a la minería, envianos tu información para futuras búsquedas.
-      </p>
-      <p data-i18n-html="careers.body2" class="careers-body2">
-        Recibimos postulaciones para roles operativos, técnicos y administrativos. Personal con habilitaciones vigentes tiene prioridad.<br>
-        <strong class="text-mid">Este canal es exclusivo para postulaciones laborales.</strong> Las consultas comerciales van a <a href="#contacto" class="text-green">Contacto</a>.
-      </p>
-    </div>
-
-    <form class="careers-form" id="careersForm" aria-label="Postulación laboral" action="https://formsubmit.co/ismaelsarr.hh@gmail.com" method="POST" enctype="multipart/form-data">
-      <h3 data-i18n="careers.form.title">Enviar postulación</h3>
-
-      <!-- FormSubmit config -->
-      <input type="hidden" name="_subject" value="Postulación laboral — RRHH ISMAEL S.A.">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://ismaelsa.com/gracias.html">
-      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
-
-      <div class="form-group">
-        <label for="cv-nombre" data-i18n="careers.form.label.nombre">Nombre completo <span aria-hidden="true">*</span></label>
-        <input type="text" id="cv-nombre" name="nombre" placeholder="Nombre y apellido" data-i18n-placeholder="ph.cv.nombre" required>
-      </div>
-      <div class="form-group">
-        <label for="cv-email" data-i18n="careers.form.label.email">Email <span aria-hidden="true">*</span></label>
-        <input type="email" id="cv-email" name="email" placeholder="correo@email.com" data-i18n-placeholder="ph.email.general" required>
-      </div>
-      <div class="form-group">
-        <label for="cv-area" data-i18n="careers.form.label.area">Área de interés</label>
-        <select id="cv-area" name="area">
-          <option value="" data-i18n="ph.select">Seleccione…</option>
-          <option data-i18n="area.1">Conducción de vehículos pesados</option>
-          <option data-i18n="area.2">Operación de hidrogrúa</option>
-          <option data-i18n="area.3">Mantenimiento y taller</option>
-          <option data-i18n="area.4">Logística y coordinación</option>
-          <option data-i18n="area.5">Seguridad e higiene</option>
-          <option data-i18n="area.6">Administración</option>
-          <option data-i18n="area.7">Otro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="cv-file" data-i18n="file.cv.label">Adjuntar CV (obligatorio, máx. 5 MB) <span aria-hidden="true">*</span></label>
-        <div class="file-upload">
-          <label class="file-upload-btn" for="cv-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span data-i18n="file.btn">Seleccionar archivo</span>
-          </label>
-          <input type="file" id="cv-file" name="attachment" accept=".pdf,.doc,.docx" required>
-          <span class="file-upload-name" data-i18n="file.none">Ningún archivo seleccionado</span>
-        </div>
-        <p data-i18n="file.cv.hint" class="file-hint">Formato PDF o Word, hasta 5 MB.</p>
-      </div>
-      <button type="submit" class="btn btn-green form-submit btn-lg" id="careersBtn" data-i18n="careers.form.submit">Enviar CV</button>
-      <p data-i18n-html="careers.adjuntos" class="careers-adjuntos">
-        Para adjuntar CV escribí a <a href="mailto:ismaelsarr.hh@gmail.com" class="text-green">ismaelsarr.hh@gmail.com</a>
-      </p>
-      <div id="careersStatus" class="form-status" role="status" aria-live="polite"></div>
-    </form>
-  </div>
-</div>
-
 </main>
-
-<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
-<footer>
-  <div class="footer-inner footer-grid">
-    <div>
-      <div class="footer-logo mb-14">
-        <img src="assets/logo.webp" alt="ISMAEL S.A." class="footer-logo-img" width="1536" height="1024">
-        <svg width="48" height="36" viewBox="0 0 54 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="footer-logo-svg">
-          <polygon points="0,38 18,8 27,28 36,18 54,38" fill="#FFFFFF"/>
-          <polygon points="18,8 27,28 22,28" fill="#E1E6E0" opacity="0.6"/>
-          <polygon points="36,18 54,38 44,38" fill="#E1E6E0" opacity="0.55"/>
-        </svg>
-        <div class="footer-logo-text">
-          <span class="footer-logo-name">ISMAEL S.A.</span>
-          <span class="footer-logo-sub" data-i18n="footer.logo.sub">Servicios, Logística y Transporte Minero</span>
-        </div>
-      </div>
-      <p data-i18n="footer.tagline" class="footer-tagline">
-        Empresa sanjuanina con más de 20 años de experiencia en soluciones logísticas para la minería, petróleo, gas y grandes obras.
-      </p>
-      <div class="footer-copy fs-12" data-i18n-html="footer.copy">© 2025 ISMAEL S.A. — San Juan, Argentina.<br>Todos los derechos reservados.</div>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-g">
+      <div><img src="/assets/v7/logo-completo.webp" alt="ISMAEL S.A." class="ft-logo" width="986" height="547" loading="lazy"><p data-i18n="ft.desc">Transporte y logística para minería y grandes obras en San Juan, Argentina.</p></div>
+      <div><div class="ft-t" data-i18n="nav.servicios">Servicios</div><div class="ft-l"><a href="/logistica-exploracion-perforacion-san-juan" data-i18n="svc.01.t">Logística para exploración, perforación y explotación</a><a href="/transporte-agua-mineria" data-i18n="svc.02.t">Transporte de agua</a><a href="/abastecimiento-minero-zonas-remotas" data-i18n="svc.03.t">Abastecimiento en zonas remotas</a><a href="/traslado-de-personal-minero" data-i18n="svc.04.t">Traslado de personal</a><a href="/transporte-minero-san-juan" data-i18n="svc.05.t">Transporte de equipos e insumos</a><a href="/soporte-operativo-alta-montana" data-i18n="svc.06.t">Soporte operativo en terreno</a><a href="/hidrogruas-mineria-san-juan" data-i18n="svc.07.t">Hidrogrúas y servicios especiales</a></div></div>
+      <div><div class="ft-t" data-i18n="nav.empresa">Empresa</div><div class="ft-l"><a href="/empresa#quienes" data-i18n="emp.tab.quienes">Quiénes somos</a><a href="/empresa#mision" data-i18n="emp.tab.mision">Misión y visión</a><a href="/empresa#trayectoria" data-i18n="emp.tab.trayectoria">Trayectoria</a><a href="/empresa#bases" data-i18n="emp.tab.bases">Bases operativas</a><a href="/empresa#flota" data-i18n="emp.tab.flota">Flota</a><a href="/empresa#personas" data-i18n="emp.tab.personas">Nuestra gente</a><a href="/empresa#seguridad" data-i18n="emp.tab.seguridad">Seguridad</a></div></div>
+      <div><div class="ft-t" data-i18n="ft.contacto">Contacto general</div><div class="ft-l ft-c"><a href="tel:+542644131515">+54 264 413-1515</a><a href="mailto:contacto@ismaelsa.info">contacto@ismaelsa.info</a><a href="https://www.google.com/maps/search/?api=1&query=Gral.+Mariano+Acha+Sur+2356,+Rawson,+San+Juan" class="dim" target="_blank" rel="noopener noreferrer" data-i18n="ft.rawson">Base Rawson · Gral. Mariano Acha Sur 2356</a><span class="dim" data-i18n="ft.horario">Lun a vie 9 a 17 h</span><span class="dim" data-i18n="ft.calingasta">Base Calingasta · San Juan</span></div></div>
     </div>
-
-    <div>
-      <div data-i18n="footer.col.empresa" class="footer-col-title">Empresa</div>
-      <nav class="footer-links col-10" aria-label="Empresa">
-        <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
-        <a href="/servicios-mineros-san-juan" data-i18n="nav.servicios">Servicios</a>
-        <a href="#flota" data-i18n="nav.flota">Flota</a>
-        <a href="#seguridad" data-i18n="nav.seguridad">Seguridad</a>
-        <a href="#experiencia" data-i18n="nav.proyectos">Proyectos</a>
-        <a href="#trabajo" data-i18n="careers.tag">Trabajá con nosotros</a>
-      </nav>
-    </div>
-
-    <div>
-      <div data-i18n="footer.col.bases" class="footer-col-title">Bases operativas</div>
-      <div class="col-14">
-        <div>
-          <strong class="footer-base-name">Rawson</strong>
-          <span data-i18n="footer.rawson.desc" class="footer-base-desc">Gran San Juan — centro logístico y administrativo</span>
-        </div>
-        <div>
-          <strong class="footer-base-name">Calingasta</strong>
-          <span data-i18n="footer.calingasta.desc" class="footer-base-desc">Zona cordillerana — base de avanzada operativa</span>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div data-i18n="footer.col.contacto" class="footer-col-title">Contacto</div>
-      <div class="col-12">
-        <a href="tel:+542644131515" class="footer-contact-link">+54 264 413-1515</a>
-        <a href="mailto:contacto@ismaelsa.info" class="footer-contact-link">contacto@ismaelsa.info</a>
-        <span class="footer-muted">ismaelsa.com</span>
-        <a href="https://wa.me/542644131515" target="_blank" rel="noopener noreferrer" class="footer-wa">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-    </div>
+    <div class="ft-b"><span>© 2026 ISMAEL S.A. · San Juan, Argentina</span><span>ismaelsa.com</span></div>
   </div>
 </footer>
-
-<script src="assets/main.js" defer></script>
+<div class="mbar" aria-label="Acciones rápidas"><a href="tel:+542644131515" data-i18n="mbar.llamar">Llamar</a><a href="/contacto" data-i18n="mbar.cotizar">Cotizar</a></div>
+<script src="/assets/main.js" defer></script>
 </body>
 </html>

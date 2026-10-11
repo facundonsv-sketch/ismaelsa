@@ -1,7 +1,9 @@
-## Security headers para Netlify (y Cloudflare Pages).
-## Si NO usás Netlify/Cloudflare Pages, borrá este archivo y usá vercel.json.
+## Security headers para Netlify.
+## La CSP de acá debe coincidir con la <meta http-equiv="Content-Security-Policy"> de cada
+## página (el navegador aplica la intersección de ambas). Única fuente externa permitida:
+## los tiles de OpenStreetMap del mapa de bases (img-src). Todo lo demás es same-origin.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -15,7 +17,7 @@
 
 ## ─────────────────────────────────────────────────────────────────────────
 ## A09 — Monitoreo de violaciones de CSP (registro y alertas)
-## La CSP de arriba YA emite reportes al grupo "csp-endpoint" (directiva report-to)
+## La CSP de arriba emite reportes al grupo "csp-endpoint" (directiva report-to)
 ## y el header Reporting-Endpoints lo declara. Para RECIBIR esos reportes hay que
 ## apuntar la URL a un collector real. Opciones (elegí una y reemplazá la URL):
 ##   1) Gratis/llave en mano: creá una cuenta en https://report-uri.com y usá la
@@ -25,18 +27,19 @@
 ## Mientras la URL no exista, el navegador simplemente descarta el reporte (sin error visible).
 ## ─────────────────────────────────────────────────────────────────────────
 
-## Cache largo para fuentes auto-hosteadas (son inmutables: nombre fijo por archivo)
+## Cache largo para lo inmutable (fuentes, Leaflet con versión fija, imágenes del rediseño:
+## si una imagen cambia, cambia también su nombre de archivo).
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+/assets/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/v7/*
+  Cache-Control: public, max-age=2592000
 
 ## CSS y JS del sitio: nombre fijo pero cambian en cada actualización. Forzar que el
 ## navegador revalide en cada carga (304 si no cambió), para que el visitante recurrente
-## NUNCA vea una copia vieja/rota. Las imágenes mantienen el cache por defecto de Netlify.
-/assets/styles.css
-  Cache-Control: public, max-age=0, must-revalidate
-/assets/subpage.css
-  Cache-Control: public, max-age=0, must-revalidate
-/assets/page.css
+## nunca vea una copia vieja.
+/assets/v7.css
   Cache-Control: public, max-age=0, must-revalidate
 /assets/main.js
   Cache-Control: public, max-age=0, must-revalidate

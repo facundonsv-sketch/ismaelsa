@@ -156,3 +156,17 @@ desktop.ini
 *~
 .vscode/settings.json
 .idea/
+
+# ── Rediseño v7 (2026-10) ──
+# Handoff del diseño (prototipo React + fotos originales): referencia local, no se publica
+_handoff/
+# Assets del sitio anterior, retirados del repo pero conservados en disco
+_old-assets/
+# Documentos de trabajo editorial (internos)
+docs/
+# Fotos sin procesar entregadas por el cliente
+fotos web/
+fotos servicios/
+# Guías de trabajo (internas)
+ISMAEL-guia-de-voz-v0.1.md
+ISMAEL-plan-de-trabajo-con-Claude.md

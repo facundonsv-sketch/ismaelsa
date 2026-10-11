@@ -1,7 +1,25 @@
-/SEO_NOTES.md          /404.html   404!
-/SEO_CONTENT_PLAN.md   /404.html   404!
-/SECURITY_REPORT.md    /404.html   404!
-/CLAUDE.md             /404.html   404!
-/.claude/*             /404.html   404!
-/.gitignore            /404.html   404!
-/.graphifyignore       /404.html   404!
+# ── Archivos y carpetas internos: nunca servirlos (404 forzado aunque existan) ──
+/SEO_NOTES.md            /404.html   404!
+/SEO_CONTENT_PLAN.md     /404.html   404!
+/SECURITY_REPORT.md      /404.html   404!
+/CLAUDE.md               /404.html   404!
+/.claude/*               /404.html   404!
+/.gitignore              /404.html   404!
+/.graphifyignore         /404.html   404!
+/docs/*                  /404.html   404!
+/tools/*                 /404.html   404!
+/_handoff/*              /404.html   404!
+/_old-assets/*           /404.html   404!
+/documentacion-interna/* /404.html   404!
+/assets/v7/manifest.json /404.html   404!
+
+# ── Rediseño v7: el pillar viejo pasa a la página Servicios ──
+/servicios-mineros-san-juan        /servicios   301!
+/servicios-mineros-san-juan.html   /servicios   301!
+
+# ── URLs con .html → limpias (las canónicas no llevan extensión) ──
+/index.html     /           301!
+/empresa.html   /empresa    301!
+/servicios.html /servicios  301!
+/contacto.html  /contacto   301!
+/gracias.html   /gracias    301!

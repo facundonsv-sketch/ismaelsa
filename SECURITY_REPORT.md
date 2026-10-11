@@ -250,3 +250,24 @@ hero desktop+mobile mostrando las imágenes.
 **Lección:** la verificación por captura headless a escala reducida no distinguió "foto
 oscura" de "sin foto + overlay oscuro". Ahora se valida también el **estado de red
 (200/404)** de los recursos, no solo el pixel.
+
+---
+
+## Tercera pasada — Rediseño v7 (2026-10-11)
+
+Auditoría sobre el sitio regenerado (12 páginas, `assets/v7.css`, `assets/main.js`, Leaflet 1.9.4).
+
+**Verificado**
+- CSP estricta idéntica en `<meta>` y `_headers`: `default-src 'self'`, sin `unsafe-inline`; única fuente externa `img-src https://tile.openstreetmap.org` (mapa). `frame-src 'none'`, `object-src 'none'`, `base-uri 'self'`, `form-action` solo FormSubmit.
+- 0 estilos inline y 0 handlers inline en los 12 HTML (el generador `tools/build_v7.py` lo asegura con asserts). Leaflet se integró con íconos por clase CSS (sin `style=""` en el HTML de los marcadores).
+- Scripts: solo `/assets/main.js` y `/assets/vendor/leaflet.js` (self-hosted, versión fija, extraído de npm `leaflet@1.9.4`). Fuentes Barlow self-hosted (OFL). Sin CDNs, sin Google Fonts, sin analítica de terceros.
+- Enlaces externos con `target="_blank"` llevan `rel="noopener noreferrer"`.
+- Formulario: FormSubmit con honeypot `_honey`, `maxlength` en todos los campos, validación de nombre/correo, rate limit blando por dispositivo (3 envíos / 6 h), `_next` a `/gracias`. Sin adjuntos (el prototipo no los incluye). CV por `mailto:` (sin formulario).
+- Ningún secreto, token ni correo interno en el código (solo los contactos públicos del prototipo).
+- `_redirects` bloquea con 404 forzado: `docs/`, `tools/`, `_handoff/`, `_old-assets/`, `documentacion-interna/`, `.claude/`, `CLAUDE.md`, `SEO_*`, `SECURITY_REPORT.md`, `assets/v7/manifest.json`.
+- Assets viejos (fotos originales con patentes/logos sin editar) retirados del repo (`_old-assets/`, gitignorado).
+- Lighthouse móvil: best-practices 96–100, accessibility 96, SEO 100.
+
+**Pendiente (igual que antes)**
+- Endpoint real para los reportes CSP (`Reporting-Endpoints`): hoy apunta a una función de Netlify que no existe; los navegadores descartan el reporte.
+- Verificar `_headers` en vivo con `curl -I https://ismaelsa.com/` tras el deploy.
