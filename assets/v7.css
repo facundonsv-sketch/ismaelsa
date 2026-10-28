@@ -149,12 +149,6 @@ img{max-width:100%;height:auto}
 body.menu-open{overflow:hidden}
 
 /* Barra fija inferior (móvil) */
-.mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;grid-template-columns:1.2fr 1fr 1fr;background:var(--g900);border-top:1px solid rgba(255,255,255,.15)}
-.mbar a{text-align:center;padding:17px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.mbar a{border-right:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;gap:8px}
-.mbar a:last-child{border-right:0}
-.mbar a.mbar-wa{background:var(--wa);color:var(--g900)}
-.mbar a:last-child{background:var(--g500)}
 
 /* ═══════════════ PORTADAS ═══════════════ */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:150px;background:var(--g800);color:#fff;overflow:hidden}
@@ -456,8 +450,7 @@ body.menu-open{overflow:hidden}
   .idx .d{display:none}
   .ft-g{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ft{padding-bottom:96px}
-  .mbar{display:grid}
-}
+  }
 @media (max-width:819px){
   .hd-nav{display:none}
   .hd-burger{display:block}
@@ -501,7 +494,7 @@ body.menu-open{overflow:hidden}
 .det-btns{margin-top:28px}
 .det .det-btns .btn-d{margin-top:0}
 /* Botón flotante (escritorio y tablet; en móvil lo reemplaza la barra inferior) */
-.wa-float{position:fixed;right:24px;bottom:24px;z-index:42;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s,background .2s}
+.wa-float{position:relative;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s,background .2s}
 .wa-float:hover{background:var(--wa2);color:#fff;transform:scale(1.06)}
 .wa-float .ic{width:32px;height:32px}
 /* Redes */
@@ -521,7 +514,6 @@ body.menu-open{overflow:hidden}
 .crows a.c-wa .ic{width:26px;height:26px;color:var(--wa2)}
 .mnav-wa{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--wa);color:var(--g900)}
 .mnav-cta2{margin-top:12px}
-@media (max-width:979px){.wa-float{display:none}}
 @media (max-width:759px){.hero-in .btns .btn{width:100%;text-align:center;justify-content:center}}
 
 /* Selector de idioma en la barra principal, al lado de "Solicitar cotización" (oct 2026):
@@ -598,13 +590,6 @@ body.menu-open{overflow:hidden}
   .soc a.s-li:hover{background:var(--c-li);border-color:var(--c-li);color:#fff}
   .soc a.s-ig:hover{background:var(--c-ig);border-color:#DD2A7B;color:#fff}
 }
-@media (hover:none){
-  .soc a,.hero-soc a{color:#fff;border-color:transparent}
-  .hero-soc a.s-wa{background:var(--c-wa)}
-  .soc a.s-fb{background:var(--c-fb)}
-  .soc a.s-li{background:var(--c-li)}
-  .soc a.s-ig{background:var(--c-ig)}
-}
 /* Celular: los 4 íconos de la portada en una fila pareja */
 @media (max-width:759px){
   .hero-soc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
@@ -612,9 +597,21 @@ body.menu-open{overflow:hidden}
   .hero-soc a{width:auto}
   .about-logo{width:96px;margin-bottom:18px}
 }
-/* La barra fija inferior (< 980 px) no debe tapar los íconos de la portada */
-@media (max-width:979px){.hero{padding-bottom:58px}}
 /* Portada: arriba de todo ya están los 4 íconos; el botón flotante aparece recién al bajar
    (si no, en pantallas medianas tapa el ítem 07 de la franja de servicios) */
 .wa-float{transition:transform .2s,background .2s,opacity .25s}
-body:has(.hero-soc):not(.is-scrolled) .wa-float{opacity:0;pointer-events:none}
+body:has(.hero-soc):not(.is-scrolled) .fab{opacity:0;pointer-events:none}
+/* Acciones flotantes en la esquina (oct 2026): reemplazan la barra inferior del celular.
+   WhatsApp en círculo + "Cotizar" en pastilla. En computadora solo el círculo
+   (el header ya tiene "Solicitar cotización"). */
+.fab{position:fixed;right:20px;bottom:20px;z-index:42;display:flex;align-items:center;gap:10px;transition:opacity .25s}
+.fab-q{display:none;background:var(--g700);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:0 18px;height:44px;align-items:center;border-radius:22px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.fab-q:hover{background:var(--g500);color:#fff}
+@media (max-width:979px){.fab-q{display:inline-flex}.wa-float{width:54px;height:54px}.wa-float .ic{width:28px;height:28px}}
+/* Pantallas táctiles: íconos apagados como en computadora; color de marca mientras se tocan */
+.soc a.s-wa:active,.hero-soc a.s-wa:active{background:var(--c-wa);border-color:var(--c-wa);color:#fff}
+.soc a.s-fb:active{background:var(--c-fb);border-color:var(--c-fb);color:#fff}
+.soc a.s-li:active{background:var(--c-li);border-color:var(--c-li);color:#fff}
+.soc a.s-ig:active{background:var(--c-ig);border-color:#DD2A7B;color:#fff}
+/* En Contacto el formulario ya está en pantalla: no hace falta la pastilla "Cotizar" */
+body:has(#contactForm) .fab-q{display:none!important}

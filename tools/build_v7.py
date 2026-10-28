@@ -349,8 +349,7 @@ def footer():
     <div class="ft-b"><span>© 2026 ISMAEL S.A. · San Juan, Argentina</span><span>ismaelsa.com</span></div>
   </div>
 </footer>
-{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}
-<div class="mbar" aria-label="Acciones rápidas">{wa_link('mbar.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'mbar-wa')}<a href="{TELH}" {t('mbar.llamar', 'Llamar', 'Call')}>Llamar</a><a href="/contacto" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a></div>
+<div class="fab" aria-label="Acciones rápidas"><a href="/contacto" class="fab-q" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a>{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}</div>
 <script src="/assets/main.js" defer></script>
 </body>
 </html>
