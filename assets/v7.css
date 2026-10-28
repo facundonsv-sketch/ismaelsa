@@ -149,9 +149,11 @@ img{max-width:100%;height:auto}
 body.menu-open{overflow:hidden}
 
 /* Barra fija inferior (móvil) */
-.mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;grid-template-columns:1fr 1fr;background:var(--g900);border-top:1px solid rgba(255,255,255,.15)}
+.mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;grid-template-columns:1.2fr 1fr 1fr;background:var(--g900);border-top:1px solid rgba(255,255,255,.15)}
 .mbar a{text-align:center;padding:17px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.mbar a:first-child{border-right:1px solid rgba(255,255,255,.15)}
+.mbar a{border-right:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;gap:8px}
+.mbar a:last-child{border-right:0}
+.mbar a.mbar-wa{background:var(--wa);color:var(--g900)}
 .mbar a:last-child{background:var(--g500)}
 
 /* ═══════════════ PORTADAS ═══════════════ */
@@ -489,3 +491,130 @@ body.menu-open{overflow:hidden}
 .op-62-55{object-position:62% 55%}.op-58-55{object-position:58% 55%}.op-55-58{object-position:55% 58%}
 .op-45-58{object-position:45% 58%}.op-50-58{object-position:50% 58%}.op-50-62{object-position:50% 62%}
 .op-62-60{object-position:62% 60%}.op-50-55{object-position:50% 55%}
+
+/* ═══════════════ WHATSAPP, REDES Y HOOK (oct 2026) ═══════════════ */
+:root{--wa:#25D366;--wa2:#1EBE5A}
+.ic{width:20px;height:20px;flex:0 0 auto;display:block}
+/* Botón WhatsApp (texto oscuro: el verde WhatsApp con blanco no alcanza contraste AA) */
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:var(--g900)}
+.btn-wa:hover{background:#fff;color:var(--g700)}
+.det-btns{margin-top:28px}
+.det .det-btns .btn-d{margin-top:0}
+/* Botón flotante (escritorio y tablet; en móvil lo reemplaza la barra inferior) */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:42;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s,background .2s}
+.wa-float:hover{background:var(--wa2);color:#fff;transform:scale(1.06)}
+.wa-float .ic{width:32px;height:32px}
+/* Redes */
+.soc{display:flex;gap:10px;align-items:center}
+.soc a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.3);color:#fff;transition:background .2s,color .2s,border-color .2s}
+.soc a:hover{background:#fff;color:var(--g700);border-color:#fff}
+.ft-soc{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft-soc .ft-t{margin:0}
+.soc-d a{border-color:var(--line3);color:var(--g700)}
+.soc-d a:hover{background:var(--g700);border-color:var(--g700);color:#fff}
+.soc-m{margin-top:16px}
+.ft-l a.ft-wa,.mega-p a.mega-wa{display:inline-flex;align-items:center;gap:10px}
+.ft-l a.ft-wa{color:var(--wa)}
+.ft-l a.ft-wa:hover{color:#fff}
+.mega-p a.mega-wa{color:var(--wa)}
+.crows a.c-wa{display:inline-flex;align-items:center;gap:12px}
+.crows a.c-wa .ic{width:26px;height:26px;color:var(--wa2)}
+.mnav-wa{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--wa);color:var(--g900)}
+.mnav-cta2{margin-top:12px}
+@media (max-width:979px){.wa-float{display:none}}
+@media (max-width:759px){.hero-in .btns .btn{width:100%;text-align:center;justify-content:center}}
+
+/* Selector de idioma en la barra principal, al lado de "Solicitar cotización" (oct 2026):
+   reemplaza la barra fina de utilidades. Sigue visible al bajar porque el header es fijo. */
+.hd-lang{display:flex;align-items:center;margin-left:14px}
+.hd-lang .lang-toggle{gap:2px;font-size:13px;letter-spacing:.08em}
+.hd-lang .lang-btn{min-width:36px;min-height:44px;padding:0 6px;font-size:13px;font-weight:700;letter-spacing:.08em}
+.hd-lang .lang-btn:hover{color:#fff}
+@media (max-width:1099px){.hd-cta{margin-left:10px}.hd-cta a{padding:14px 16px}.hd-lang{margin-left:6px}}
+/* Pantallas medianas (820–1099 px): con el selector de idioma en la barra, el nombre no entra junto al menú; queda solo el isotipo */
+@media (min-width:820px) and (max-width:1099px){.hd-logo-t{display:none}}
+/* Redes dentro del megamenú (Empresa y Contacto) */
+.soc-mega{margin-top:6px}
+.mega-t2{margin:28px 0 12px}
+/* Portada: los 4 canales (WhatsApp + redes) como íconos cuadrados del alto de los botones */
+.hero-soc{display:flex;gap:8px;align-items:stretch}
+.hero-soc .soc{gap:8px}
+.hero-soc a{width:54px;height:54px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.6);color:#fff;transition:background .2s,color .2s,border-color .2s}
+.hero-soc a .ic{width:22px;height:22px}
+.hero-soc a:hover{background:#fff;color:var(--g700);border-color:#fff}
+/* ═══════════════ CELULAR MÁS CORTO (oct 2026) ═══════════════
+   Pedido del cliente: en celular la página no puede ser muy larga. Solo < 760 px;
+   escritorio y tablet sin cambios. */
+@media (max-width:759px){
+  :root{--sec:56px;--sec2:52px;--sec3:48px}
+  /* Pie: las listas de Servicios y Empresa repiten el menú → afuera en celular */
+  .ft{padding-top:44px}
+  .ft-g{gap:28px;padding-bottom:28px}
+  .ft-g>div:nth-child(2),.ft-g>div:nth-child(3){display:none}
+  .ft-logo{width:150px;margin-bottom:14px}
+  .ft-soc{padding:20px 0}
+  /* Servicios del Inicio: título + foto (la bajada queda en la página de cada servicio) */
+  .svc-row{padding:14px 0}
+  .svc-row .d{display:none}
+  .svc-row-img{height:92px}
+  .svc-head{margin-bottom:20px}
+  /* Trayectoria: las 3 cifras en una fila */
+  .tray{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tray>div{padding:18px 8px 4px 0;gap:6px}
+  .tray .v{font-size:40px}
+  .tray .k{font-size:13px;line-height:1.35}
+  .tray-sec .lnk{margin-top:18px}
+  /* Mapa más bajo */
+  .map,.bases-g .map{min-height:320px}
+  .pres-t{padding:48px 20px}
+  .pres-t p{margin-bottom:24px}
+  /* Cómo trabajamos / Seguridad / Nuestra gente más compactos */
+  .como>div{padding:18px 0 20px;gap:8px}
+  .como .d{font-size:15px;line-height:1.5}
+  .como-sec .h2{margin-bottom:24px}
+  .roles>div{padding:14px 0;font-size:16px}
+  .h2{margin-bottom:18px}
+  /* Quiénes somos (Empresa): logo más chico, menos aire */
+  .quienes-l{gap:24px}
+  .quienes-logo{width:min(70%,300px)}
+  .quienes p{font-size:17px;line-height:1.6}
+  /* Trabajá con nosotros */
+  .jobs h2{margin-bottom:16px}
+  .jobs p{margin-bottom:22px}
+  .jobs-s{padding-left:16px}
+  /* Cierre */
+  .cta{padding:44px 20px}
+  .cta-in{gap:20px}
+  /* Migas de pan: área táctil cómoda */
+  .crumb a{display:inline-block;padding:12px 0;margin:-12px 0}
+}
+/* Colores de marca de cada red (oct 2026)
+   · Con mouse: apagados (contorno) y se colorean al pasar el mouse.
+   · Pantallas táctiles (sin hover): con su color siempre, para que se noten. */
+:root{--c-wa:#25D366;--c-fb:#1877F2;--c-li:#0A66C2;--c-ig:linear-gradient(45deg,#F58529 0%,#DD2A7B 45%,#8134AF 75%,#515BD4 100%)}
+@media (hover:hover){
+  .soc a.s-wa:hover,.hero-soc a.s-wa:hover{background:var(--c-wa);border-color:var(--c-wa);color:#fff}
+  .soc a.s-fb:hover{background:var(--c-fb);border-color:var(--c-fb);color:#fff}
+  .soc a.s-li:hover{background:var(--c-li);border-color:var(--c-li);color:#fff}
+  .soc a.s-ig:hover{background:var(--c-ig);border-color:#DD2A7B;color:#fff}
+}
+@media (hover:none){
+  .soc a,.hero-soc a{color:#fff;border-color:transparent}
+  .hero-soc a.s-wa{background:var(--c-wa)}
+  .soc a.s-fb{background:var(--c-fb)}
+  .soc a.s-li{background:var(--c-li)}
+  .soc a.s-ig{background:var(--c-ig)}
+}
+/* Celular: los 4 íconos de la portada en una fila pareja */
+@media (max-width:759px){
+  .hero-soc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
+  .hero-soc .soc{display:contents}
+  .hero-soc a{width:auto}
+  .about-logo{width:96px;margin-bottom:18px}
+}
+/* La barra fija inferior (< 980 px) no debe tapar los íconos de la portada */
+@media (max-width:979px){.hero{padding-bottom:58px}}
+/* Portada: arriba de todo ya están los 4 íconos; el botón flotante aparece recién al bajar
+   (si no, en pantallas medianas tapa el ítem 07 de la franja de servicios) */
+.wa-float{transition:transform .2s,background .2s,opacity .25s}
+body:has(.hero-soc):not(.is-scrolled) .wa-float{opacity:0;pointer-events:none}

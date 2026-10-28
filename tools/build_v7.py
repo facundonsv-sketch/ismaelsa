@@ -15,6 +15,28 @@ SITE = 'https://ismaelsa.com'
 TEL = '+54 264 413-1515'; TELH = 'tel:+542644131515'
 MAIL = 'contacto@ismaelsa.info'; RRHH = 'rrhh@ismaelsa.info'
 MAPS = 'https://www.google.com/maps/search/?api=1&query=Gral.+Mariano+Acha+Sur+2356,+Rawson,+San+Juan'
+WA_NUM = '542644131515'
+IG = 'https://www.instagram.com/ismaelsanjuan_/'
+FB = 'https://www.facebook.com/profile.php?id=61567888546865'
+LI = 'https://www.linkedin.com/company/145184473/'
+from urllib.parse import quote as _q
+def wa(text):
+    return f'https://wa.me/{WA_NUM}?text={_q(text)}'
+WA_MSG = ('Hola, quiero consultar por un servicio.', 'Hello, I would like to ask about a service.')
+# Íconos: WhatsApp/Instagram/Facebook de simple-icons (CC0, tools/icons.json); LinkedIn trazado propio.
+_IC = json.load(open(ROOT / 'tools/icons.json', encoding='utf-8'))
+_IC['linkedin'] = 'M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z'
+def icon(name, cls='ic'):
+    return f'<svg class="{cls}" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="{_IC[name]}"/></svg>'
+EXT = 'target="_blank" rel="noopener noreferrer"'
+def wa_link(key, es, en, msg_es, msg_en, cls, label_html=None):
+    """Link a WhatsApp con texto visible y mensaje precargado, ambos traducibles."""
+    T[key + '.href'] = (wa(msg_es), wa(msg_en))
+    lbl = label_html if label_html is not None else f'<span {t(key, es, en)}>{es}</span>'
+    return f'<a href="{wa(msg_es)}" data-i18n-href="{key}.href" class="{cls}" {EXT}>{icon("whatsapp")}{lbl}</a>'
+def socials(cls='soc'):
+    items = [('instagram', IG, 'Instagram', 's-ig'), ('facebook', FB, 'Facebook', 's-fb'), ('linkedin', LI, 'LinkedIn', 's-li')]
+    return f'<div class="{cls}">' + ''.join(f'<a href="{u}" class="{c}" {EXT} aria-label="{n} — ISMAEL S.A." title="{n}">{icon(k)}</a>' for k, u, n, c in items) + '</div>'
 
 # ──────────────────────────────────────────────────────────────────────
 # Diccionario i18n: clave -> (es, en). Se llena al construir el HTML.
@@ -241,7 +263,8 @@ def head(page, title_es, title_en, desc_es, desc_en, path, ldjson, image='hero-c
 ORG = {"@type": "Organization", "@id": f"{SITE}/#organization", "name": "ISMAEL S.A.", "legalName": "ISMAEL S.A.", "url": f"{SITE}/",
        "logo": f"{SITE}/assets/v7/logo-completo-verde.webp", "email": MAIL, "telephone": "+542644131515",
        "address": {"@type": "PostalAddress", "streetAddress": "Gral. Mariano Acha Sur 2356", "addressLocality": "Rawson", "addressRegion": "San Juan", "addressCountry": "AR"},
-       "areaServed": [{"@type": "State", "name": "San Juan, Argentina"}]}
+       "areaServed": [{"@type": "State", "name": "San Juan, Argentina"}],
+       "sameAs": [IG, FB, LI]}
 WEBSITE = {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "name": "ISMAEL S.A.", "inLanguage": "es-AR", "publisher": {"@id": f"{SITE}/#organization"}}
 
 def ld_page(path, name, desc, extra=None):
@@ -265,7 +288,7 @@ def header(active):
   <div class="mega" id="mega" aria-label="Submenú">
     <div class="mega-in mega-empresa" data-mega-panel="empresa" hidden>
       <div><div class="mega-t" {t('mega.emp.t1', 'Conozca la empresa', 'Get to know the company')}>Conozca la empresa</div><div class="mega-p">{emp_links}</div></div>
-      <div><div class="mega-t" {t('mega.emp.t2', 'Más de ISMAEL S.A.', 'More about ISMAEL S.A.')}>Más de ISMAEL S.A.</div><div class="mega-s"><a href="/contacto" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</a><a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a></div></div>
+      <div><div class="mega-t" {t('mega.emp.t2', 'Más de ISMAEL S.A.', 'More about ISMAEL S.A.')}>Más de ISMAEL S.A.</div><div class="mega-s"><a href="/contacto" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</a><a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a>{socials('soc soc-mega')}</div></div>
       <div class="mega-n"><div class="mega-note" {t('mega.emp.note', 'Transporte y logística para minería, construcción y grandes obras, con bases en Rawson y Calingasta.', 'Transport and logistics for mining, construction and large projects, with bases in Rawson and Calingasta.')}>Transporte y logística para minería, construcción y grandes obras, con bases en Rawson y Calingasta.</div><a href="/contacto" class="btn btn-g" {cot}>Solicitar cotización</a></div>
     </div>
     <div class="mega-in mega-servicios" data-mega-panel="servicios" hidden>
@@ -274,8 +297,8 @@ def header(active):
       <div class="mega-n"><div class="mega-note" {t('mega.svc.note', 'Los servicios se contratan por separado o combinados.', 'Services can be contracted separately or combined.')}>Los servicios se contratan por separado o combinados.</div><a href="/contacto" class="btn btn-g" {cot}>Solicitar cotización</a></div>
     </div>
     <div class="mega-in mega-contacto" data-mega-panel="contacto" hidden>
-      <div><div class="mega-t" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</div><div class="mega-p"><a href="/contacto" {cot}>Solicitar cotización</a><a href="{TELH}" {t('mega.con.llamar', 'Llamar', 'Call us')}>Llamar</a><a href="mailto:{MAIL}" {t('mega.con.mail', 'Escribir un correo', 'Send an email')}>Escribir un correo</a></div></div>
-      <div><div class="mega-t" {t('emp.tab.bases', 'Bases operativas', 'Operating bases')}>Bases operativas</div><div class="mega-s"><a href="/empresa#bases" {t('mega.con.rawson', 'Base Rawson · Gran San Juan', 'Rawson base · Greater San Juan')}>Base Rawson · Gran San Juan</a><a href="/empresa#bases" {t('mega.con.calingasta', 'Base Calingasta · Zona cordillerana', 'Calingasta base · Andean zone')}>Base Calingasta · Zona cordillerana</a></div></div>
+      <div><div class="mega-t" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</div><div class="mega-p">{wa_link('mega.con.wa', 'Escribir por WhatsApp', 'Message us on WhatsApp', *WA_MSG, 'mega-wa')}<a href="/contacto" {cot}>Solicitar cotización</a><a href="{TELH}" {t('mega.con.llamar', 'Llamar', 'Call us')}>Llamar</a><a href="mailto:{MAIL}" {t('mega.con.mail', 'Escribir un correo', 'Send an email')}>Escribir un correo</a></div></div>
+      <div><div class="mega-t" {t('emp.tab.bases', 'Bases operativas', 'Operating bases')}>Bases operativas</div><div class="mega-s"><a href="/empresa#bases" {t('mega.con.rawson', 'Base Rawson · Gran San Juan', 'Rawson base · Greater San Juan')}>Base Rawson · Gran San Juan</a><a href="/empresa#bases" {t('mega.con.calingasta', 'Base Calingasta · Zona cordillerana', 'Calingasta base · Andean zone')}>Base Calingasta · Zona cordillerana</a></div><div class="mega-t mega-t2" {t('ft.redes', 'Seguinos en redes', 'Follow us')}>Seguinos en redes</div>{socials('soc soc-mega')}</div>
       <div class="mega-n"><div class="mega-note" {t('mega.con.note', 'Respondemos las consultas en días hábiles.', 'We answer enquiries on business days.')}>Respondemos las consultas en días hábiles.</div><a href="/contacto" class="btn btn-g" {cot}>Solicitar cotización</a></div>
     </div>
   </div>'''
@@ -283,21 +306,18 @@ def header(active):
     mnav = ''.join(f'<a href="{h}" class="mnav-l" {t(k, es, en)}>{es}</a>' for k, es, en, h in
                    [('nav.inicio', 'Inicio', 'Home', '/'), ('nav.empresa', 'Empresa', 'Company', '/empresa'), ('nav.servicios', 'Servicios', 'Services', '/servicios'), ('nav.contacto', 'Contacto', 'Contact', '/contacto')])
     return f'''<header class="hd" id="hd">
-  <div class="hd-util">
-    <span class="hd-util-loc">San Juan · Argentina</span>
-    <div class="hd-util-r"><a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a>{lang}</div>
-  </div>
   <div class="hd-bar">
     <a href="/" class="hd-logo"><img src="/assets/v7/logo-icono.webp" alt="" width="881" height="321"><span class="hd-logo-t"><span class="hd-logo-n">ISMAEL S.A.</span><span class="hd-logo-s" {t('hd.tagline', 'Logística y transporte', 'Logistics and transport')}>Logística y transporte</span></span></a>
-    <nav class="hd-nav" aria-label="Navegación principal">{nav}<div class="hd-cta"><a href="/contacto" {cot}>Solicitar cotización</a></div></nav>
+    <nav class="hd-nav" aria-label="Navegación principal">{nav}<div class="hd-cta"><a href="/contacto" {cot}>Solicitar cotización</a></div><div class="hd-lang">{lang}</div></nav>
     <button type="button" class="hd-burger" id="burger" aria-expanded="false" aria-controls="mnav"><span {t('nav.menu', 'MENÚ', 'MENU')}>MENÚ</span></button>
   </div>{mega}
 </header>
 <nav class="mnav" id="mnav" aria-label="Menú">
   {mnav}
-  <a href="/contacto" class="mnav-cta" {cot}>Solicitar cotización</a>
+  {wa_link('mnav.wa', 'Escribir por WhatsApp', 'Message us on WhatsApp', *WA_MSG, 'mnav-cta mnav-wa')}
+  <a href="/contacto" class="mnav-cta mnav-cta2" {cot}>Solicitar cotización</a>
   <div class="mnav-lang"><span class="lang-toggle" role="group" aria-label="Idioma / Language"><button type="button" class="lang-btn is-active" data-lang="es" lang="es">ES</button><span class="lang-sep" aria-hidden="true">|</span><button type="button" class="lang-btn" data-lang="en" lang="en">EN</button></span></div>
-  <div class="mnav-c">{TEL}<br>{MAIL}</div>
+  <div class="mnav-c">{TEL}<br>{MAIL}{socials('soc soc-m')}</div>
 </nav>
 <main id="main">
 '''
@@ -323,12 +343,14 @@ def footer():
       <div><img src="/assets/v7/logo-completo.webp" alt="ISMAEL S.A." class="ft-logo" width="986" height="547" loading="lazy"><p {t('ft.desc', 'Transporte y logística para minería y grandes obras en San Juan, Argentina.', 'Transport and logistics for mining and large projects in San Juan, Argentina.')}>Transporte y logística para minería y grandes obras en San Juan, Argentina.</p></div>
       <div><div class="ft-t" {t('nav.servicios', 'Servicios', 'Services')}>Servicios</div><div class="ft-l">{svc}</div></div>
       <div><div class="ft-t" {t('nav.empresa', 'Empresa', 'Company')}>Empresa</div><div class="ft-l">{emp}</div></div>
-      <div><div class="ft-t" {t('ft.contacto', 'Contacto general', 'General contact')}>Contacto general</div><div class="ft-l ft-c"><a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><a href="{MAPS}" class="dim" target="_blank" rel="noopener noreferrer" {t('ft.rawson', 'Base Rawson · Gral. Mariano Acha Sur 2356', 'Rawson base · Gral. Mariano Acha Sur 2356')}>Base Rawson · Gral. Mariano Acha Sur 2356</a><span class="dim" {t('ft.horario', 'Lun a vie 9 a 17 h', 'Mon to Fri, 9 am to 5 pm')}>Lun a vie 9 a 17 h</span><span class="dim" {t('ft.calingasta', 'Base Calingasta · San Juan', 'Calingasta base · San Juan')}>Base Calingasta · San Juan</span></div></div>
+      <div><div class="ft-t" {t('ft.contacto', 'Contacto general', 'General contact')}>Contacto general</div><div class="ft-l ft-c">{wa_link('ft.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'ft-wa')}<a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a><a href="{MAPS}" class="dim" target="_blank" rel="noopener noreferrer" {t('ft.rawson', 'Base Rawson · Gral. Mariano Acha Sur 2356', 'Rawson base · Gral. Mariano Acha Sur 2356')}>Base Rawson · Gral. Mariano Acha Sur 2356</a><span class="dim" {t('ft.horario', 'Lun a vie 9 a 17 h', 'Mon to Fri, 9 am to 5 pm')}>Lun a vie 9 a 17 h</span><span class="dim" {t('ft.calingasta', 'Base Calingasta · San Juan', 'Calingasta base · San Juan')}>Base Calingasta · San Juan</span></div></div>
     </div>
+    <div class="ft-soc"><span class="ft-t" {t('ft.redes', 'Seguinos en redes', 'Follow us')}>Seguinos en redes</span>{socials()}</div>
     <div class="ft-b"><span>© 2026 ISMAEL S.A. · San Juan, Argentina</span><span>ismaelsa.com</span></div>
   </div>
 </footer>
-<div class="mbar" aria-label="Acciones rápidas"><a href="{TELH}" {t('mbar.llamar', 'Llamar', 'Call')}>Llamar</a><a href="/contacto" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a></div>
+{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}
+<div class="mbar" aria-label="Acciones rápidas">{wa_link('mbar.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'mbar-wa')}<a href="{TELH}" {t('mbar.llamar', 'Llamar', 'Call')}>Llamar</a><a href="/contacto" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a></div>
 <script src="/assets/main.js" defer></script>
 </body>
 </html>
@@ -369,7 +391,7 @@ def page_index():
     {eye('hero.eye', 'Servicios, logística y transporte · San Juan', 'Services, logistics and transport · San Juan', 'eye-w')}
     <h1 id="hero-h" {t('hero.h1', 'Logística para la minería de San Juan', 'Logistics for San Juan mining')}>Logística para la minería de San Juan</h1>
     <p class="hero-p" {t('hero.p', 'Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.', 'Cargo and water transport, knuckle-boom cranes and personnel transport for mining projects and large works in San Juan. Own fleet and staff.')}>Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.</p>
-    <div class="btns"><a href="/servicios" class="btn btn-g" {t('hero.b1', 'Conozca nuestros servicios', 'Explore our services')}>Conozca nuestros servicios</a><a href="/contacto" class="btn btn-o" {t('hero.b2', 'Contáctenos', 'Contact us')}>Contáctenos</a></div>
+    <div class="btns"><a href="/servicios" class="btn btn-g" {t('hero.b1', 'Conozca nuestros servicios', 'Explore our services')}>Conozca nuestros servicios</a><a href="/contacto" class="btn btn-o" {t('hero.b2', 'Contáctenos', 'Contact us')}>Contáctenos</a><div class="hero-soc">{wa_link('hero.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'hs-wa s-wa', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}{socials('soc soc-hero')}</div></div>
   </div>
   <div class="hero-strip"><div class="hero-strip-in">{strip}</div></div>
 </section>
@@ -556,6 +578,12 @@ def page_servicios():
 {cierre()}'''
     return h + header('servicios') + body + footer()
 
+def svc_wa(s):
+    key = 'svc.' + s['n'] + '.wa'
+    es_href = wa('Hola, quiero consultar por: ' + s['t'][0] + '.')
+    T[key + '.href'] = (es_href, wa('Hello, I would like to ask about: ' + s['t'][1] + '.'))
+    return f'<a href="{es_href}" data-i18n-href="{key}.href" class="btn btn-wa" {EXT}>{icon("whatsapp")}<span {t("det.wa", "Consultar por WhatsApp", "Ask on WhatsApp")}>Consultar por WhatsApp</span></a>'
+
 def page_service(s):
     path = s['url']
     ld = ld_page(path, s['title'][0], s['desc'][0],
@@ -579,7 +607,7 @@ def page_service(s):
       {paras}
       <div class="gal">{gal}</div>
       <div class="quote"><div class="k" {t('det.quote.k', 'Para cotizar', 'For a quote')}>Para cotizar</div><div class="d" {t(k+'.quote', *s['quote'])}>{s['quote'][0]}</div></div>
-      <a href="/contacto?servicio={s['i']}" class="btn btn-d" {t('cta.cotizar', 'Solicitar cotización', 'Request a quote')}>Solicitar cotización</a>
+      <div class="btns det-btns"><a href="/contacto?servicio={s['i']}" class="btn btn-d" {t('cta.cotizar', 'Solicitar cotización', 'Request a quote')}>Solicitar cotización</a>{svc_wa(s)}</div>
     </div>
     <aside class="others"><div class="k" {t('det.others', 'Otros servicios', 'Other services')}>Otros servicios</div>{others}</aside>
   </div>
@@ -606,10 +634,12 @@ def page_contacto():
 <section class="sec-3">
   <div class="wrap cont">
     <div class="crows">
+      <div><div class="k">WhatsApp</div>{wa_link('c.wa', '+54 264 413-1515', '+54 264 413-1515', *WA_MSG, 'c-wa')}</div>
       <div><div class="k" {t('c.tel', 'Teléfono', 'Phone')}>Teléfono</div><a href="{TELH}">{TEL}</a></div>
       <div><div class="k" {t('c.mail', 'Correo', 'Email')}>Correo</div><a href="mailto:{MAIL}">{MAIL}</a></div>
       <div><div class="k" {t('c.rawson', 'Base Rawson · Lun a vie 9 a 17 h', 'Rawson base · Mon to Fri, 9 am to 5 pm')}>Base Rawson · Lun a vie 9 a 17 h</div><a href="{MAPS}" target="_blank" rel="noopener noreferrer">Gral. Mariano Acha Sur 2356, Rawson</a></div>
       <div><div class="k" {t('c.calingasta', 'Base Calingasta', 'Calingasta base')}>Base Calingasta</div><span class="v">Calingasta, San Juan</span></div>
+      <div><div class="k" {t('ft.redes', 'Seguinos en redes', 'Follow us')}>Seguinos en redes</div>{socials('soc soc-d')}</div>
     </div>
     <div class="cbox">
       <form class="form" id="contactForm" action="https://formsubmit.co/{MAIL}" method="POST" novalidate>

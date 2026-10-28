@@ -28,7 +28,7 @@
     document.documentElement.lang = lang === 'en' ? 'en' : 'es-AR';
     $$('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (d[k] !== undefined) el.textContent = d[k]; });
     $$('[data-i18n-html]').forEach(el => { const k = el.dataset.i18nHtml; if (d[k] !== undefined) el.innerHTML = d[k]; });
-    [['alt', 'i18nAlt'], ['placeholder', 'i18nPlaceholder'], ['aria-label', 'i18nAriaLabel'], ['title', 'i18nTitle']].forEach(([attr, ds]) => {
+    [['alt', 'i18nAlt'], ['placeholder', 'i18nPlaceholder'], ['aria-label', 'i18nAriaLabel'], ['title', 'i18nTitle'], ['href', 'i18nHref']].forEach(([attr, ds]) => {
       $$('[data-i18n-' + attr + ']').forEach(el => { const k = el.dataset[ds]; if (d[k] !== undefined) el.setAttribute(attr, d[k]); });
     });
     const tt = $('title[data-i18n-doc]'); if (tt && d[tt.dataset.i18nDoc]) document.title = d[tt.dataset.i18nDoc];
@@ -48,7 +48,7 @@
   const hd = $('#hd');
   const mega = $('#mega');
   let megaTimer = null;
-  function setSolid() { hd.classList.toggle('is-solid', window.scrollY > 40); }
+  function setSolid() { const s = window.scrollY > 40; hd.classList.toggle('is-solid', s); document.body.classList.toggle('is-scrolled', s); }
   window.addEventListener('scroll', setSolid, { passive: true });
   setSolid();
 
