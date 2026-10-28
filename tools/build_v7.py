@@ -388,7 +388,6 @@ def page_index():
   {sl}
   <div class="hero-sh" aria-hidden="true"></div>
   <div class="hero-in">
-    {eye('hero.eye', 'Servicios, logística y transporte · San Juan', 'Services, logistics and transport · San Juan', 'eye-w')}
     <h1 id="hero-h" {t('hero.h1', 'Logística para la minería de San Juan', 'Logistics for San Juan mining')}>Logística para la minería de San Juan</h1>
     <p class="hero-p" {t('hero.p', 'Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.', 'Cargo and water transport, knuckle-boom cranes and personnel transport for mining projects and large works in San Juan. Own fleet and staff.')}>Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.</p>
     <div class="btns"><a href="/servicios" class="btn btn-g" {t('hero.b1', 'Conozca nuestros servicios', 'Explore our services')}>Conozca nuestros servicios</a><a href="/contacto" class="btn btn-o" {t('hero.b2', 'Contáctenos', 'Contact us')}>Contáctenos</a><div class="hero-soc">{wa_link('hero.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'hs-wa s-wa', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}{socials('soc soc-hero')}</div></div>
