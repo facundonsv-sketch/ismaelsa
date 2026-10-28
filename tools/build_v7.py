@@ -17,7 +17,7 @@ MAIL = 'contacto@ismaelsa.info'; RRHH = 'rrhh@ismaelsa.info'
 MAPS = 'https://www.google.com/maps/search/?api=1&query=Gral.+Mariano+Acha+Sur+2356,+Rawson,+San+Juan'
 WA_NUM = '542644131515'
 IG = 'https://www.instagram.com/ismaelsanjuan_/'
-FB = 'https://www.facebook.com/profile.php?id=61567888546865'
+FB = 'https://www.facebook.com/profile.php?id=61594517758193'
 LI = 'https://www.linkedin.com/company/145184473/'
 from urllib.parse import quote as _q
 def wa(text):
