@@ -22,6 +22,23 @@ LI = 'https://www.linkedin.com/company/145184473/'
 from urllib.parse import quote as _q
 def wa(text):
     return f'https://wa.me/{WA_NUM}?text={_q(text)}'
+
+# ──────────────────────────────────────────────────────────────────────
+# Clientes y reseñas (sección futura, hoy APAGADA).
+# IMPORTANTE: solo se cargan clientes, logos y reseñas con PERMISO CONFIRMADO
+# POR LA EMPRESA para nombrarlos. No cargar datos de prueba ni supuestos.
+#   CLIENTES: dict(logo='archivo-sin-extension', nombre='Nombre', permiso=True,
+#                  w=240, h=120)   # logo en assets/v7/clientes/<logo>.webp; w/h = tamaño real
+#   RESENAS:  dict(cita=('Texto ES', 'Text EN'), autor='Nombre', empresa='Empresa', permiso=True)
+# La sección aparece (home + /empresa#clientes + pestaña) solo si SHOW_CLIENTES es
+# True y hay al menos un cliente con permiso=True.
+# ──────────────────────────────────────────────────────────────────────
+SHOW_CLIENTES = False
+CLIENTES = []
+RESENAS = []
+CLIENTES_OK = [c for c in CLIENTES if c.get('permiso') is True]
+RESENAS_OK = [r for r in RESENAS if r.get('permiso') is True]
+CLIENTES_ON = SHOW_CLIENTES and bool(CLIENTES_OK)
 WA_MSG = ('Hola, quiero consultar por un servicio.', 'Hello, I would like to ask about a service.')
 # Íconos: WhatsApp/Instagram/Facebook de simple-icons (CC0, tools/icons.json); LinkedIn trazado propio.
 _IC = json.load(open(ROOT / 'tools/icons.json', encoding='utf-8'))
@@ -78,7 +95,6 @@ def img(name, alt_key, alt_es, alt_en, cls='', lazy=True, extra='', sizes=None):
 SERVICES = [
   dict(slug='logistica-exploracion-perforacion-san-juan', img='svc-exploracion', pos='op-50-30',
        t=('Logística para exploración, perforación y explotación', 'Logistics for exploration, drilling and mining operations'),
-       tag=('Exploración y explotación', 'Exploration and operations'),
        short=('Transporte, recursos y traslados para campañas de exploración y operaciones en explotación.',
               'Transport, resources and crew transfers for exploration campaigns and operating mines.'),
        paras=[('En ISMAEL S.A. acompañamos a las empresas mineras en las distintas etapas de un proyecto. Durante la exploración, cuando el trabajo se concentra en perforar y conocer el yacimiento, nos ocupamos de que los equipos, los insumos y el personal lleguen a tiempo al lugar de trabajo, aun en zonas alejadas y de alta montaña.',
@@ -91,23 +107,23 @@ SERVICES = [
        title=('Logística para exploración, perforación y explotación minera en San Juan | ISMAEL S.A.', 'Logistics for mining exploration, drilling and operations in San Juan | ISMAEL S.A.'),
        desc=('Transporte, recursos y traslados para campañas de exploración y operaciones en explotación en San Juan. Flota y personal propios, bases en Rawson y Calingasta.',
              'Transport, resources and crew transfers for exploration campaigns and operating mines in San Juan. Own fleet and staff, bases in Rawson and Calingasta.')),
-  dict(slug='transporte-agua-mineria', img='svc-agua', pos='op-40-50',
-       t=('Transporte de agua', 'Water transport'), tag=('Transporte de agua', 'Water transport'),
+  dict(slug='transporte-agua-mineria', img='gal-aguatero', pos='op-50-60',
+       t=('Transporte de agua', 'Water transport'),
        short=('Abastecimiento con camiones aguateros a campamentos y operaciones sin red.',
-              'Supply by water tanker trucks to camps and operations without a water network.'),
+              'Water supply by tanker truck to camps and operations with no mains water.'),
        paras=[('El agua es un recurso indispensable en cualquier operación alejada de los centros urbanos. Con nuestros camiones aguateros abastecemos campamentos, obras y operaciones que no cuentan con red, con entregas programadas o a pedido según la necesidad de cada cliente.',
-               'Water is essential to any operation far from urban centres. With our water tanker trucks we supply camps, work sites and operations that have no water network, with scheduled or on-demand deliveries according to each client\'s needs.'),
+               'Water is essential to any operation far from urban centres. With our water tanker trucks we supply camps, work sites and operations with no mains water supply, with scheduled or on-demand deliveries according to each client\'s needs.'),
               ('Las unidades están preparadas para circular por caminos de montaña, ripio y nieve, lo que nos permite sostener el abastecimiento durante toda la campaña y en las distintas épocas del año.',
-               'Our units are equipped for mountain roads, gravel and snow, which allows us to keep the supply going throughout the campaign and at every time of year.')],
+               'Our units are equipped for mountain roads, gravel tracks and snow, which allows us to keep the supply going throughout the campaign and at every time of year.')],
        quote=('Zona, consumo estimado o frecuencia deseada y período de la campaña.',
               'Area, estimated consumption or desired frequency, and campaign period.'),
-       gal=[('gal-aguatero', 'op-50-60', 'Camión aguatero de ISMAEL S.A. en la montaña', 'ISMAEL S.A. water tanker truck in the mountains'),
+       gal=[('fleet-aguateros', 'op-45-55', 'Camión aguatero de ISMAEL S.A. en la base', 'ISMAEL S.A. water tanker truck at the base'),
             ('gal-aguatero-nieve', 'op-50-60', 'Camión aguatero en la cordillera nevada', 'Water tanker truck in the snow-covered Andes')],
        title=('Transporte de agua con camiones aguateros en San Juan | ISMAEL S.A.', 'Water transport by tanker truck in San Juan | ISMAEL S.A.'),
        desc=('Abastecimiento de agua con camiones aguateros propios a campamentos, obras y operaciones sin red en San Juan. Entregas programadas o a pedido.',
-             'Water supply by our own tanker trucks to camps, work sites and operations without a network in San Juan. Scheduled or on-demand deliveries.')),
+             'Water supply by our own tanker trucks to camps, work sites and operations with no mains water in San Juan. Scheduled or on-demand deliveries.')),
   dict(slug='abastecimiento-minero-zonas-remotas', img='svc-remotas', pos='op-50-35',
-       t=('Abastecimiento en zonas remotas', 'Supply to remote areas'), tag=('Zonas remotas', 'Remote areas'),
+       t=('Abastecimiento en zonas remotas', 'Supply to remote areas'),
        short=('Materiales, módulos e insumos hasta puntos de operación de difícil acceso.',
               'Materials, modules and supplies delivered to hard-to-reach operating sites.'),
        paras=[('Muchos proyectos mineros y obras se desarrollan lejos de las ciudades, en lugares donde llegar ya es parte del desafío. Llevamos materiales, módulos e insumos hasta esos puntos de trabajo por rutas de cordillera y caminos sin asfalto.',
@@ -121,13 +137,13 @@ SERVICES = [
        desc=('Materiales, módulos e insumos hasta puntos de operación de difícil acceso en San Juan, por rutas de cordillera y caminos sin asfalto.',
              'Materials, modules and supplies delivered to hard-to-reach operating sites in San Juan, over Andean routes and unpaved roads.')),
   dict(slug='traslado-de-personal-minero', img='svc-personal', pos='op-45-55',
-       t=('Traslado de personal', 'Personnel transport'), tag=('Traslado de personal', 'Personnel transport'),
+       t=('Traslado de personal', 'Personnel transport'),
        short=('Camionetas 4×4 entre bases, proyectos y campamentos.',
               '4×4 pickups between bases, projects and camps.'),
        paras=[('Las personas son el centro de cualquier operación. Trasladamos personal en camionetas 4×4 entre bases, proyectos y campamentos, tanto en rotaciones programadas como en traslados no previstos.',
                'People are at the centre of every operation. We transport personnel in 4×4 pickups between bases, projects and camps, both on scheduled rotations and on unplanned transfers.'),
               ('Nuestros choferes conocen los caminos de montaña y trabajan con control de horas de manejo, para que cada viaje se haga con seguridad y en los tiempos que la operación requiere.',
-               'Our drivers know the mountain roads and work under driving-hours control, so every trip is made safely and within the time the operation requires.')],
+               'Our drivers know the mountain roads and their driving hours are monitored, so every trip is made safely and within the time the operation requires.')],
        quote=('Origen y destino, cantidad de personas y frecuencia de las rotaciones.',
               'Origin and destination, number of people, and rotation frequency.'),
        gal=[('gal-w09', 'op-60-60', 'Camioneta y camión de ISMAEL S.A. en terreno', 'ISMAEL S.A. pickup and truck in the field')],
@@ -135,7 +151,7 @@ SERVICES = [
        desc=('Traslado de personal en camionetas 4×4 entre bases, proyectos y campamentos de San Juan. Rotaciones programadas y traslados no previstos.',
              'Personnel transport in 4×4 pickups between bases, projects and camps in San Juan. Scheduled rotations and unplanned transfers.')),
   dict(slug='transporte-minero-san-juan', img='svc-equipos', pos='op-40-60',
-       t=('Transporte de equipos e insumos', 'Equipment and supplies transport'), tag=('Equipos e insumos', 'Equipment and supplies'),
+       t=('Transporte de equipos e insumos', 'Equipment and supplies transport'),
        short=('Equipos, maquinaria, módulos y estructuras, incluidas cargas sobredimensionadas.',
               'Equipment, machinery, modules and structures, including oversized loads.'),
        paras=[('En la minería, la construcción y las grandes obras, cada etapa depende de que los equipos y materiales estén en el lugar indicado. Transportamos maquinaria, insumos, módulos, tanques y estructuras desde el origen hasta el lugar de trabajo.',
@@ -149,7 +165,7 @@ SERVICES = [
        desc=('Transporte de maquinaria, insumos, módulos, tanques y estructuras hasta proyectos mineros y obras en San Juan, incluidas cargas sobredimensionadas con permisos y camioneta guía.',
              'Transport of machinery, supplies, modules, tanks and structures to mining projects and work sites in San Juan, including oversized loads with permits and pilot vehicle.')),
   dict(slug='soporte-operativo-alta-montana', img='svc-soporte', pos='op-45-55',
-       t=('Soporte operativo en terreno', 'On-site operational support'), tag=('Soporte en terreno', 'On-site support'),
+       t=('Soporte operativo en terreno', 'On-site operational support'),
        short=('Presencia logística en el lugar durante la campaña.',
               'Logistics presence on site throughout the campaign.'),
        paras=[('Hay campañas que necesitan una presencia logística permanente en el lugar. En esos casos ponemos unidades y personal a disposición del proyecto para resolver lo que surja durante el trabajo.',
@@ -164,7 +180,7 @@ SERVICES = [
        desc=('Presencia logística en el lugar durante toda la campaña: unidades y personal a disposición del proyecto, traslado de módulos, abastecimiento y movimiento de materiales y personas.',
              'Logistics presence on site throughout the campaign: units and personnel assigned to the project, module transfers, supply, and movement of materials and people.')),
   dict(slug='hidrogruas-mineria-san-juan', img='svc-hidrogruas', pos='op-50-45',
-       t=('Hidrogrúas y servicios especiales', 'Knuckle-boom cranes and special services'), tag=('Hidrogrúas', 'Knuckle-boom cranes'),
+       t=('Hidrogrúas y servicios especiales', 'Knuckle-boom cranes and special services'),
        short=('Carga, descarga y posicionamiento con hidrogrúas Palfinger sobre camión.',
               'Loading, unloading and positioning with truck-mounted Palfinger knuckle-boom cranes.'),
        paras=[('Cargar, descargar y ubicar una pieza pesada exige equipos adecuados y personal con experiencia. Con hidrogrúas Palfinger montadas sobre camión movemos equipos, contenedores, módulos, tanques y estructuras en bases, obras y campamentos.',
@@ -182,15 +198,17 @@ SERVICES = [
 for i, s in enumerate(SERVICES):
     s['n'] = f'0{i+1}'; s['i'] = i; s['url'] = '/' + s['slug']
 
-EMP_TABS = [('quienes', 'Quiénes somos', 'About us'), ('mision', 'Misión y visión', 'Mission and vision'), ('trayectoria', 'Trayectoria', 'Track record'),
-            ('bases', 'Bases operativas', 'Operating bases'), ('flota', 'Flota', 'Fleet'), ('personas', 'Nuestra gente', 'Our people'), ('seguridad', 'Seguridad', 'Safety')]
+EMP_TABS = [('quienes', 'Quiénes somos', 'About us'), ('mision', 'Misión y visión', 'Mission and vision'), ('trayectoria', 'Trayectoria', 'Track record')]
+if CLIENTES_ON:
+    EMP_TABS.append(('clientes', 'Clientes', 'Clients'))
+EMP_TABS += [('bases', 'Bases operativas', 'Operating bases'), ('flota', 'Flota', 'Fleet'), ('personas', 'Nuestra gente', 'Our people'), ('seguridad', 'Seguridad', 'Safety')]
 TRAY = [('+20', 'Años de trabajo en la minería de San Juan', 'Years working in San Juan mining'),
         ('+50', 'Proyectos mineros asistidos', 'Mining projects served'),
-        ('+25', 'Unidades propias en operación', 'Own units in operation')]
+        ('+25', 'Unidades propias en operación', 'Company-owned units in operation')]
 COMO = [('Antes de salir', 'Before departure', 'Revisión preoperacional de cada unidad y plan de mantenimiento preventivo.', 'Pre-trip inspection of every unit and a preventive maintenance plan.'),
         ('En el camino', 'On the road', 'Seguimiento por GPS. Radio VHF o satelital donde no hay señal de celular.', 'GPS tracking. VHF or satellite radio where there is no mobile signal.'),
-        ('Las personas', 'Our people', 'Control de horas de manejo y descanso. Inducción de seguridad de cada proyecto antes de ingresar.', 'Driving and rest hours control. Each project\'s safety induction before entering the site.'),
-        ('Seguros y habilitaciones', 'Insurance and permits', 'ART, responsabilidad civil y seguro de carga. Habilitaciones y revisión técnica al día.', 'Workers\' compensation, liability and cargo insurance. Permits and technical inspections up to date.')]
+        ('Las personas', 'People', 'Control de horas de manejo y descanso. Inducción de seguridad de cada proyecto antes de ingresar.', 'Monitoring of driving and rest hours. Each project\'s safety induction before going on site.'),
+        ('Seguros y habilitaciones', 'Insurance and permits', 'ART, responsabilidad civil y seguro de carga. Habilitaciones y revisión técnica al día.', 'Workers\' compensation (ART), civil liability and cargo insurance. Permits and roadworthiness inspections up to date.')]
 ROLES = [('Choferes de camiones pesados y de camionetas 4×4', 'Heavy truck and 4×4 pickup drivers'),
          ('Operadores de hidrogrúa, señaleros y eslingadores', 'Knuckle-boom crane operators, signallers and riggers'),
          ('Mecánicos de mantenimiento de flota', 'Fleet maintenance mechanics'),
@@ -198,10 +216,10 @@ ROLES = [('Choferes de camiones pesados y de camionetas 4×4', 'Heavy truck and 
          ('Administración y planificación', 'Administration and planning')]
 FLEET = [('fleet-aguateros', 'op-45-55', 'Camiones aguateros', 'Water tanker trucks'),
          ('fleet-hidrogrua', 'op-55-55', 'Camiones con hidrogrúa Palfinger', 'Trucks with Palfinger knuckle-boom crane'),
-         ('fleet-tractores', 'op-45-58', 'Tractores con semirremolque', 'Tractor units with semi-trailer'),
-         ('fleet-chasis', 'op-50-58', 'Camiones chasis', 'Chassis trucks'),
+         ('fleet-tractores', 'op-45-58', 'Tractores con semirremolque', 'Tractor units with semi-trailers'),
+         ('fleet-chasis', 'op-50-58', 'Camiones chasis', 'Rigid trucks'),
          ('hilux-flota', 'op-50-62', 'Camionetas 4×4', '4×4 pickups')]
-FACTS = [('San Juan', 'San Juan', 'Empresa local, de capitales sanjuaninos', 'Local company, San Juan-owned'),
+FACTS = [('San Juan', 'San Juan', 'Empresa local, de capitales sanjuaninos', 'A local, San Juan-owned company'),
          ('Minería', 'Mining', 'Exploración y operaciones en cordillera', 'Exploration and operations in the Andes'),
          ('Obras', 'Projects', 'Construcción, energía e industria', 'Construction, energy and industry'),
          ('Largo plazo', 'Long term', 'Clientes que repiten campaña tras campaña', 'Clients who return campaign after campaign')]
@@ -285,7 +303,7 @@ def header(active):
     svc_links = ''.join(f'<a href="{s["url"]}" {t("svc."+s["n"]+".t", *s["t"])}>{s["t"][0]}</a>' for s in SERVICES)
     cot = t('cta.cotizar', 'Solicitar cotización', 'Request a quote')
     mega = f'''
-  <div class="mega" id="mega" aria-label="Submenú">
+  <div class="mega" id="mega" {ta('aria-label', 'a11y.mega', 'Submenú', 'Submenu')}>
     <div class="mega-in mega-empresa" data-mega-panel="empresa" hidden>
       <div><div class="mega-t" {t('mega.emp.t1', 'Conozca la empresa', 'Get to know the company')}>Conozca la empresa</div><div class="mega-p">{emp_links}</div></div>
       <div><div class="mega-t" {t('mega.emp.t2', 'Más de ISMAEL S.A.', 'More about ISMAEL S.A.')}>Más de ISMAEL S.A.</div><div class="mega-s"><a href="/contacto" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</a><a href="{TELH}">{TEL}</a><a href="mailto:{MAIL}">{MAIL}</a>{socials('soc soc-mega')}</div></div>
@@ -293,7 +311,7 @@ def header(active):
     </div>
     <div class="mega-in mega-servicios" data-mega-panel="servicios" hidden>
       <div><div class="mega-t" {t('mega.svc.t1', 'Nuestros servicios', 'Our services')}>Nuestros servicios</div><div class="mega-p">{svc_links}</div></div>
-      <div><div class="mega-t" {t('mega.svc.t2', 'Más sobre servicios', 'More about our services')}>Más sobre servicios</div><div class="mega-s"><a href="/servicios" {t('svc.all', 'Ver todos los servicios', 'See all services')}>Ver todos los servicios</a><a href="/empresa#flota" {t('mega.svc.flota', 'Flota propia', 'Own fleet')}>Flota propia</a><a href="/empresa#seguridad" {t('emp.tab.seguridad', 'Seguridad', 'Safety')}>Seguridad</a></div></div>
+      <div><div class="mega-t" {t('mega.svc.t2', 'Más sobre servicios', 'More about our services')}>Más sobre servicios</div><div class="mega-s"><a href="/servicios" {t('svc.all', 'Ver todos los servicios', 'See all services')}>Ver todos los servicios</a><a href="/empresa#flota" {t('mega.svc.flota', 'Flota propia', 'Our own fleet')}>Flota propia</a><a href="/empresa#seguridad" {t('emp.tab.seguridad', 'Seguridad', 'Safety')}>Seguridad</a></div></div>
       <div class="mega-n"><div class="mega-note" {t('mega.svc.note', 'Los servicios se contratan por separado o combinados.', 'Services can be contracted separately or combined.')}>Los servicios se contratan por separado o combinados.</div><a href="/contacto" class="btn btn-g" {cot}>Solicitar cotización</a></div>
     </div>
     <div class="mega-in mega-contacto" data-mega-panel="contacto" hidden>
@@ -308,11 +326,11 @@ def header(active):
     return f'''<header class="hd" id="hd">
   <div class="hd-bar">
     <a href="/" class="hd-logo"><img src="/assets/v7/logo-icono.webp" alt="" width="881" height="321"><span class="hd-logo-t"><span class="hd-logo-n">ISMAEL S.A.</span><span class="hd-logo-s" {t('hd.tagline', 'Logística y transporte', 'Logistics and transport')}>Logística y transporte</span></span></a>
-    <nav class="hd-nav" aria-label="Navegación principal">{nav}<div class="hd-cta"><a href="/contacto" {cot}>Solicitar cotización</a></div><div class="hd-lang">{lang}</div></nav>
+    <nav class="hd-nav" {ta('aria-label', 'a11y.nav', 'Navegación principal', 'Main navigation')}>{nav}<div class="hd-cta"><a href="/contacto" {cot}>Solicitar cotización</a></div><div class="hd-lang">{lang}</div></nav>
     <button type="button" class="hd-burger" id="burger" aria-expanded="false" aria-controls="mnav"><span {t('nav.menu', 'MENÚ', 'MENU')}>MENÚ</span></button>
   </div>{mega}
 </header>
-<nav class="mnav" id="mnav" aria-label="Menú">
+<nav class="mnav" id="mnav" {ta('aria-label', 'a11y.mnav', 'Menú', 'Menu')}>
   {mnav}
   {wa_link('mnav.wa', 'Escribir por WhatsApp', 'Message us on WhatsApp', *WA_MSG, 'mnav-cta mnav-wa')}
   <a href="/contacto" class="mnav-cta mnav-cta2" {cot}>Solicitar cotización</a>
@@ -349,7 +367,7 @@ def footer():
     <div class="ft-b"><span>© 2026 ISMAEL S.A. · San Juan, Argentina</span><span>ismaelsa.com</span></div>
   </div>
 </footer>
-<div class="fab" aria-label="Acciones rápidas"><a href="/contacto" class="fab-q" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a>{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}</div>
+<div class="fab" {ta('aria-label', 'a11y.fab', 'Acciones rápidas', 'Quick actions')}><a href="/contacto" class="fab-q" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a>{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}</div>
 <script src="/assets/main.js" defer></script>
 </body>
 </html>
@@ -358,9 +376,38 @@ def footer():
 def eye(key, es, en, cls=''):
     return f'<div class="eye {cls}" {t(key, es, en)}>{es}</div>'
 
+def clientes_sec(variant):
+    """Sección 'Clientes que confían en nosotros'. variant: 'home' o 'empresa'.
+    Devuelve '' mientras SHOW_CLIENTES sea False o no haya clientes con permiso."""
+    if not CLIENTES_ON:
+        return ''
+    logos = ''.join(f'<li><img src="/assets/v7/clientes/{c["logo"]}.webp" {ta("alt", "cli."+str(i)+".alt", c["nombre"], c["nombre"])} width="{c.get("w", 240)}" height="{c.get("h", 120)}" loading="lazy" decoding="async"></li>' for i, c in enumerate(CLIENTES_OK))
+    citas = ''.join(f'<figure class="resena"><blockquote {t("res."+str(i)+".q", *r["cita"])}>{H.escape(r["cita"][0])}</blockquote><figcaption><span class="a">{H.escape(r["autor"])}</span><span class="e">{H.escape(r["empresa"])}</span></figcaption></figure>' for i, r in enumerate(RESENAS_OK))
+    citas = f'<div class="resenas">{citas}</div>' if citas else ''
+    if variant == 'empresa':
+        open_ = '<section id="clientes" class="sec-2 emp-sec clientes clientes-cont" aria-labelledby="cli-h">'
+        h2 = f'<h2 id="cli-h" class="h2-md" {t("cli.h2", "Clientes que confían en nosotros", "Clients who trust us")}>Clientes que confían en nosotros</h2>'
+        ey = ''
+    else:
+        open_ = '<section class="sec clientes" aria-labelledby="cli-h">'
+        h2 = f'<h2 id="cli-h" class="h2" {t("cli.h2", "Clientes que confían en nosotros", "Clients who trust us")}>Clientes que confían en nosotros</h2>'
+        ey = eye('cli.eye', 'Clientes', 'Clients')
+    return f'''
+{open_}
+  <div class="wrap">
+    {ey}{h2}
+    <ul class="clientes-logos">{logos}</ul>{citas}
+  </div>
+</section>
+'''
+
 # ──────────────────────────────────────────────────────────────────────
 # INICIO
 # ──────────────────────────────────────────────────────────────────────
+def svc_rows():
+    """Filas de servicios con imagen que se agranda al hover (home y /servicios)."""
+    return ''.join(f'''<a href="{s["url"]}" class="svc-row"><div class="svc-row-t"><span class="n">{s["n"]}</span><span class="t" {t("svc."+s["n"]+".t", *s["t"])}>{s["t"][0]}</span><span class="d" {t("svc."+s["n"]+".short", *s["short"])}>{s["short"][0]}</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img">{img(s["img"], "svc."+s["n"]+".img.alt", s["t"][0], s["t"][1], cls=s["pos"], sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw")}</div></a>''' for s in SERVICES)
+
 def page_index():
     ld = {"@context": "https://schema.org", "@graph": [ORG, WEBSITE,
           {"@type": "LocalBusiness", "@id": f"{SITE}/#localbusiness", "name": "ISMAEL S.A.", "parentOrganization": {"@id": f"{SITE}/#organization"},
@@ -372,14 +419,13 @@ def page_index():
                                "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": s['t'][0], "url": f"{SITE}{s['url']}"}} for s in SERVICES]}}]}
     h = head('home', 'ISMAEL S.A. | Logística para la minería de San Juan', 'ISMAEL S.A. | Logistics for San Juan mining',
              'Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios, bases en Rawson y Calingasta.',
-             'Cargo and water transport, knuckle-boom cranes and personnel transport for mining projects and large works in San Juan. Own fleet and staff, bases in Rawson and Calingasta.',
+             'Cargo and water transport, knuckle-boom cranes and personnel transport for mining projects and large construction projects in San Juan. Own fleet and staff, bases in Rawson and Calingasta.',
              '/', ld, leaflet=True)
     slides = [('hero-convoy', 'op-14-50', 'Convoy de camiones de ISMAEL S.A. en ruta', 'ISMAEL S.A. truck convoy on the road'),
               ('hero-hidrogrua', 'op-55-55', 'Camión con hidrogrúa de ISMAEL S.A. en la cordillera', 'ISMAEL S.A. truck with knuckle-boom crane in the Andes'),
               ('hero-equipo', 'op-45-55', 'Camión de ISMAEL S.A. transportando un equipo en la montaña', 'ISMAEL S.A. truck carrying equipment in the mountains')]
     sl = ''.join(img(n, f'hero.slide{i+1}.alt', es, en, cls=f'hero-img {p}' + (' is-active' if i == 0 else ''), lazy=(i != 0), extra=' data-slide') for i, (n, p, es, en) in enumerate(slides))
-    strip = ''.join(f'<a href="{s["url"]}"><span class="n">{s["n"]}</span><span class="t" {t("svc."+s["n"]+".tag", *s["tag"])}>{s["tag"][0]}</span></a>' for s in SERVICES)
-    rows = ''.join(f'''<a href="{s["url"]}" class="svc-row"><div class="svc-row-t"><span class="n">{s["n"]}</span><span class="t" {t("svc."+s["n"]+".t", *s["t"])}>{s["t"][0]}</span><span class="d" {t("svc."+s["n"]+".short", *s["short"])}>{s["short"][0]}</span></div><span class="arr" aria-hidden="true">→</span><div class="svc-row-img">{img(s["img"], "svc."+s["n"]+".img.alt", s["t"][0], s["t"][1], cls=s["pos"], sizes="(max-width:759px) 40vw, (max-width:979px) 44vw, 56vw")}</div></a>''' for s in SERVICES)
+    rows = svc_rows()
     tray = ''.join(f'<div><span class="v">{v}</span><span class="k" {t("tray."+str(i)+".k", es, en)}>{es}</span></div>' for i, (v, es, en) in enumerate(TRAY))
     como = ''.join(f'<div><span class="n">0{i+1}</span><span class="t" {t("como."+str(i)+".t", tes, ten)}>{tes}</span><span class="d" {t("como."+str(i)+".d", des, den)}>{des}</span></div>' for i, (tes, ten, des, den) in enumerate(COMO))
     body = f'''
@@ -388,30 +434,8 @@ def page_index():
   <div class="hero-sh" aria-hidden="true"></div>
   <div class="hero-in">
     <h1 id="hero-h" {t('hero.h1', 'Logística para la minería de San Juan', 'Logistics for San Juan mining')}>Logística para la minería de San Juan</h1>
-    <p class="hero-p" {t('hero.p', 'Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.', 'Cargo and water transport, knuckle-boom cranes and personnel transport for mining projects and large works in San Juan. Own fleet and staff.')}>Transporte de cargas y agua, hidrogrúas y traslado de personal para proyectos mineros y grandes obras en San Juan. Flota y personal propios.</p>
+    <p class="hero-p" {t('hero.p', 'Transporte de cargas y agua, hidrogrúas y traslado de personal. Flota y personal propios.', 'Cargo and water transport, knuckle-boom cranes and personnel transport. Own fleet and staff.')}>Transporte de cargas y agua, hidrogrúas y traslado de personal. Flota y personal propios.</p>
     <div class="btns"><a href="/servicios" class="btn btn-g" {t('hero.b1', 'Conozca nuestros servicios', 'Explore our services')}>Conozca nuestros servicios</a><a href="/contacto" class="btn btn-o" {t('hero.b2', 'Contáctenos', 'Contact us')}>Contáctenos</a><div class="hero-soc">{wa_link('hero.wa', 'WhatsApp', 'WhatsApp', *WA_MSG, 'hs-wa s-wa', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}{socials('soc soc-hero')}</div></div>
-  </div>
-  <div class="hero-strip"><div class="hero-strip-in">{strip}</div></div>
-</section>
-
-<section class="sec" aria-labelledby="about-h">
-  <div class="wrap about">
-    <div>
-      <img src="/assets/v7/logo-icono-verde.webp" alt="" class="about-logo" width="881" height="321" loading="lazy">
-      {eye('about.eye', 'Quiénes somos', 'About us')}
-      <h2 id="about-h" class="h2 bal" {t('about.h2', 'Una empresa sanjuanina al servicio de la minería', 'A San Juan company at the service of mining')}>Una empresa sanjuanina al servicio de la minería</h2>
-      <p {t('about.p1', 'Prestamos servicios de transporte y logística para operadoras mineras y contratistas en la provincia de San Juan, desde dos bases propias: Rawson, en el Gran San Juan, y Calingasta, en la zona cordillerana.', 'We provide transport and logistics services to mining operators and contractors in the province of San Juan, from two bases of our own: Rawson, in Greater San Juan, and Calingasta, in the Andean zone.')}>Prestamos servicios de transporte y logística para operadoras mineras y contratistas en la provincia de San Juan, desde dos bases propias: Rawson, en el Gran San Juan, y Calingasta, en la zona cordillerana.</p>
-      <p class="last" {t('about.p2', 'La flota, el taller y el personal son propios.', 'The fleet, the workshop and the staff are our own.')}>La flota, el taller y el personal son propios.</p>
-      <a href="/empresa" class="lnk" {t('about.lnk', 'Conocer la empresa', 'Learn about the company')}>Conocer la empresa</a>
-    </div>
-    <div>{img('team-pe', 'about.img.alt', 'Personal de ISMAEL S.A.', 'ISMAEL S.A. staff', cls='about-img')}</div>
-  </div>
-</section>
-
-<section class="tray-sec" aria-label="Trayectoria">
-  <div class="wrap">
-    <div class="tray">{tray}</div>
-    <a href="/empresa#trayectoria" class="lnk" {t('tray.lnk', 'Nuestra trayectoria', 'Our track record')}>Nuestra trayectoria</a>
   </div>
 </section>
 
@@ -422,12 +446,28 @@ def page_index():
   </div>
 </section>
 
+<section class="tray-sec" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="tray-head"><div>{eye('about.eye', 'Quiénes somos', 'About us')}<h2 id="about-h" class="h2-md" {t('about.h2', 'Una empresa sanjuanina al servicio de la minería', 'A San Juan company at the service of mining')}>Una empresa sanjuanina al servicio de la minería</h2></div><p {t('about.p1', 'Prestamos servicios de transporte y logística para operadoras mineras y contratistas en la provincia de San Juan, desde dos bases propias: Rawson, en el Gran San Juan, y Calingasta, en la zona cordillerana.', 'We provide transport and logistics services to mining operators and contractors in the province of San Juan, from two bases of our own: Rawson, in Greater San Juan, and Calingasta, in the Andean zone.')}>Prestamos servicios de transporte y logística para operadoras mineras y contratistas en la provincia de San Juan, desde dos bases propias: Rawson, en el Gran San Juan, y Calingasta, en la zona cordillerana.</p></div>
+    <div class="tray">{tray}</div>
+    <a href="/empresa" class="lnk" {t('about.lnk', 'Conocer la empresa', 'Learn about the company')}>Conocer la empresa</a>
+  </div>
+</section>
+
+<section class="sec sec-gray como-sec" aria-labelledby="como-h">
+  <div class="wrap">
+    {eye('como.eye', 'Cómo trabajamos', 'How we work')}
+    <h2 id="como-h" class="h2" {t('como.h2', 'Seguridad en cada operación', 'Safety in every operation')}>Seguridad en cada operación</h2>
+    <div class="como">{como}</div>
+  </div>
+</section>
+{clientes_sec("home")}
 <section class="sec-green" aria-labelledby="pres-h">
   <div class="pres">
     <div class="pres-t">
       {eye('pres.eye', 'Dónde estamos', 'Where we are', 'eye-l')}
       <h2 id="pres-h" {t('pres.h2', 'Presencia en la provincia de San Juan', 'Presence across the province of San Juan')}>Presencia en la provincia de San Juan</h2>
-      <p {t('pres.p', 'Operamos desde dos bases propias y trabajamos en los departamentos cordilleranos, como Calingasta e Iglesia.', 'We operate from two bases of our own and work in the Andean departments, such as Calingasta and Iglesia.')}>Operamos desde dos bases propias y trabajamos en los departamentos cordilleranos, como Calingasta e Iglesia.</p>
+      <p {t('pres.p', 'Operamos desde dos bases propias y trabajamos en los departamentos cordilleranos, como Calingasta e Iglesia.', 'We operate from two company-owned bases and work across the Andean departments, such as Calingasta and Iglesia.')}>Operamos desde dos bases propias y trabajamos en los departamentos cordilleranos, como Calingasta e Iglesia.</p>
       <div class="pres-b">
         <div><div class="k" {t('base.1.k', 'Base 01 · Administración', 'Base 01 · Administration')}>Base 01 · Administración</div><div class="t">Rawson</div><div class="a">Gral. Mariano Acha Sur 2356, Rawson, San Juan</div><div class="h" {t('base.1.h', 'Lunes a viernes de 9 a 17 h', 'Monday to Friday, 9 am to 5 pm')}>Lunes a viernes de 9 a 17 h</div><a href="{MAPS}" target="_blank" rel="noopener noreferrer" class="lnk lnk-l" {t('base.maps', 'Cómo llegar ↗', 'Get directions ↗')}>Cómo llegar ↗</a></div>
         <div><div class="k" {t('base.2.k', 'Base 02 · Operaciones', 'Base 02 · Operations')}>Base 02 · Operaciones</div><div class="t">Calingasta</div><div class="a" {t('base.2.a', 'Zona cordillerana, San Juan', 'Andean zone, San Juan')}>Zona cordillerana, San Juan</div><div class="h" {t('base.2.h', 'Base operativa, sin atención al público', 'Operating base, not open to the public')}>Base operativa, sin atención al público</div></div>
@@ -437,21 +477,13 @@ def page_index():
   </div>
 </section>
 
-<section class="sec como-sec" aria-labelledby="como-h">
-  <div class="wrap">
-    {eye('como.eye', 'Cómo trabajamos', 'How we work')}
-    <h2 id="como-h" class="h2" {t('como.h2', 'Seguridad en cada operación', 'Safety in every operation')}>Seguridad en cada operación</h2>
-    <div class="como">{como}</div>
-  </div>
-</section>
-
-<section class="sec-2 sec-green" aria-labelledby="jobs-h">
+<section class="sec-2 jobs-sec" aria-labelledby="jobs-h">
   <div class="wrap jobs">
     <div>
-      {eye('jobs.eye', 'Súmese al equipo', 'Join the team', 'eye-l')}
+      {eye('jobs.eye', 'Súmese al equipo', 'Join the team')}
       <h2 id="jobs-h" {t('jobs.h2', 'Oportunidades para crecer en la logística minera', 'Opportunities to grow in mining logistics')}>Oportunidades para crecer en la logística minera</h2>
       <p {th('jobs.p', f'Envíe su CV a <a href="mailto:{RRHH}">{RRHH}</a>. En el asunto, escriba el puesto o la actividad que realiza y la localidad donde reside.', f'Send your CV to <a href="mailto:{RRHH}">{RRHH}</a>. In the subject line, state the position or the work you do and the town where you live.')}>Envíe su CV a <a href="mailto:{RRHH}">{RRHH}</a>. En el asunto, escriba el puesto o la actividad que realiza y la localidad donde reside.</p>
-      <div class="btns"><a href="mailto:{RRHH}?subject=CV%20-%20%5BPuesto%5D%20-%20%5BLocalidad%5D" class="btn btn-g" {t('jobs.b1', 'Enviar CV ✉', 'Send CV ✉')}>Enviar CV ✉</a><a href="/contacto" class="btn btn-o" {t('jobs.b2', 'Contactar ahora', 'Contact us now')}>Contactar ahora</a></div>
+      <div class="btns"><a href="mailto:{RRHH}?subject=CV%20-%20%5BPuesto%5D%20-%20%5BLocalidad%5D" class="btn btn-d" {t('jobs.b1', 'Enviar CV ✉', 'Send CV ✉')}>Enviar CV ✉</a><a href="/contacto" class="btn btn-od" {t('jobs.b2', 'Contactar ahora', 'Contact us now')}>Contactar ahora</a></div>
     </div>
     <div class="jobs-s">
       <div class="k" {t('jobs.k', 'Cómo postularse', 'How to apply')}>Cómo postularse</div>
@@ -486,7 +518,7 @@ def page_empresa():
   <div class="phero-sh" aria-hidden="true"></div>
   <div class="phero-in"><div class="crumb"><a href="/" {t('nav.inicio', 'Inicio', 'Home')}>Inicio</a> / <span {t('nav.empresa', 'Empresa', 'Company')}>Empresa</span></div><h1 id="emp-h" {t('nav.empresa', 'Empresa', 'Company')}>Empresa</h1></div>
 </section>
-<nav class="subnav" id="subnav" aria-label="Secciones de Empresa">{sub}</nav>
+<nav class="subnav" id="subnav" {ta('aria-label', 'a11y.subnav', 'Secciones de Empresa', 'Company sections')}>{sub}</nav>
 
 <section id="quienes" class="sec-2 emp-sec" aria-labelledby="q-h">
   <div class="wrap quienes">
@@ -505,7 +537,7 @@ def page_empresa():
   <div class="wrap">
     {eye('emp.tab.mision', 'Misión y visión', 'Mission and vision', 'eye-l')}
     <div class="mision-g">
-      <div><h2 id="m-h" {t('m.h', 'Misión', 'Mission')}>Misión</h2><p {t('m.p', 'Resolver el transporte y la logística que necesitan los proyectos mineros de San Juan, las grandes obras y sus contratistas, con flota y personal propios y con la seguridad como condición de cada operación.', 'To provide the transport and logistics that San Juan mining projects, large works and their contractors need, with our own fleet and staff and with safety as a condition of every operation.')}>Resolver el transporte y la logística que necesitan los proyectos mineros de San Juan, las grandes obras y sus contratistas, con flota y personal propios y con la seguridad como condición de cada operación.</p></div>
+      <div><h2 id="m-h" {t('m.h', 'Misión', 'Mission')}>Misión</h2><p {t('m.p', 'Resolver el transporte y la logística que necesitan los proyectos mineros de San Juan, las grandes obras y sus contratistas, con flota y personal propios y con la seguridad como condición de cada operación.', 'To provide the transport and logistics that San Juan mining projects, large construction projects and their contractors need, with our own fleet and staff and with safety as a condition of every operation.')}>Resolver el transporte y la logística que necesitan los proyectos mineros de San Juan, las grandes obras y sus contratistas, con flota y personal propios y con la seguridad como condición de cada operación.</p></div>
       <div><h2 {t('v.h', 'Visión', 'Vision')}>Visión</h2><p {t('v.p', 'Ser la empresa sanjuanina de referencia en logística para la minería de alta montaña, reconocida por cumplir lo que acuerda.', 'To be the leading San Juan company in logistics for high-mountain mining, known for delivering what it agrees to.')}>Ser la empresa sanjuanina de referencia en logística para la minería de alta montaña, reconocida por cumplir lo que acuerda.</p></div>
     </div>
   </div>
@@ -519,7 +551,7 @@ def page_empresa():
   </div>
 </section>
 
-<section id="bases" class="sec-2 sec-gray emp-sec bases" aria-labelledby="b-h">
+{clientes_sec("empresa")}<section id="bases" class="sec-2 sec-gray emp-sec bases" aria-labelledby="b-h">
   <div class="wrap">
     <h2 id="b-h" class="h2-md" {t('emp.tab.bases', 'Bases operativas', 'Operating bases')}>Bases operativas</h2>
     <div class="bases-g">
@@ -541,7 +573,7 @@ def page_empresa():
 
 <section id="personas" class="sec-2 sec-green emp-sec" aria-labelledby="g-h">
   <div class="wrap gente">
-    <div><h2 id="g-h" class="h2-md h2-w" {t('emp.tab.personas', 'Nuestra gente', 'Our people')}>Nuestra gente</h2><p {t('g.p', 'El personal es propio y forma parte de la estructura de la empresa.', 'Our staff are our own employees and part of the company structure.')}>El personal es propio y forma parte de la estructura de la empresa.</p></div>
+    <div><h2 id="g-h" class="h2-md h2-w" {t('emp.tab.personas', 'Nuestra gente', 'Our people')}>Nuestra gente</h2><p {t('g.p', 'El personal es propio y forma parte de la estructura de la empresa.', 'Our staff are direct employees and part of the company structure.')}>El personal es propio y forma parte de la estructura de la empresa.</p>{img('team-pe', 'g.img.alt', 'Personal de ISMAEL S.A.', 'ISMAEL S.A. staff', cls='gente-img', sizes='(max-width:899px) 100vw, 45vw')}</div>
     <div class="roles">{roles}</div>
   </div>
 </section>
@@ -568,10 +600,17 @@ def page_servicios():
              'Logística para exploración y explotación, transporte de agua, abastecimiento en zonas remotas, traslado de personal, transporte de equipos, soporte en terreno e hidrogrúas.',
              'Exploration and operations logistics, water transport, remote-area supply, personnel transport, equipment transport, on-site support and knuckle-boom cranes.',
              path, ld, image='svc-exploracion')
-    rows = ''.join(f'<a href="{s["url"]}"><span class="n">{s["n"]}</span><span class="t" {t("svc."+s["n"]+".t", *s["t"])}>{s["t"][0]}</span><span class="d" {t("svc."+s["n"]+".short", *s["short"])}>{s["short"][0]}</span><span class="arr" aria-hidden="true">→</span></a>' for s in SERVICES)
     body = f'''
-<section class="phead phead-svc" aria-labelledby="sv-h">
-  <div class="wrap"><div class="crumb"><a href="/" {t('nav.inicio', 'Inicio', 'Home')}>Inicio</a> / <span {t('nav.servicios', 'Servicios', 'Services')}>Servicios</span></div><h1 id="sv-h" {t('nav.servicios', 'Servicios', 'Services')}>Servicios</h1><div class="idx">{rows}</div></div>
+<section class="phero" aria-labelledby="sv-h">
+  {img('gal-w64', 'sv.hero.alt', 'Camión con carretón en la montaña', 'Truck with lowboy trailer in the mountains', cls='op-68-52', lazy=False)}
+  <div class="phero-sh" aria-hidden="true"></div>
+  <div class="phero-in"><div class="crumb"><a href="/" {t('nav.inicio', 'Inicio', 'Home')}>Inicio</a> / <span {t('nav.servicios', 'Servicios', 'Services')}>Servicios</span></div><h1 id="sv-h" {t('nav.servicios', 'Servicios', 'Services')}>Servicios</h1></div>
+</section>
+<section class="sec sec-gray">
+  <div class="wrap">
+    <p class="svc-note" {t('mega.svc.note', 'Los servicios se contratan por separado o combinados.', 'Services can be contracted separately or combined.')}>Los servicios se contratan por separado o combinados.</p>
+    <div class="svc-list">{svc_rows()}</div>
+  </div>
 </section>
 {cierre()}'''
     return h + header('servicios') + body + footer()
@@ -626,8 +665,10 @@ def page_contacto():
              path, ld, image='base-rawson')
     opts = f'<option value="" {t("form.svc.ph", "Seleccione un servicio", "Select a service")}>Seleccione un servicio</option>' + ''.join(f'<option value="{s["i"]}" {t("svc."+s["n"]+".t", *s["t"])}>{s["t"][0]}</option>' for s in SERVICES) + f'<option value="otro" {t("form.svc.otro", "Otra consulta", "Other enquiry")}>Otra consulta</option>'
     body = f'''
-<section class="phead" aria-labelledby="c-h">
-  <div class="wrap"><div class="crumb"><a href="/" {t('nav.inicio', 'Inicio', 'Home')}>Inicio</a> / <span {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</span></div><h1 id="c-h" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</h1></div>
+<section class="phero" aria-labelledby="c-h">
+  {img('gal-w24', 'c.hero.alt', 'Unidades de la flota en terreno', 'Fleet units in the field', cls='op-50-55', lazy=False)}
+  <div class="phero-sh" aria-hidden="true"></div>
+  <div class="phero-in"><div class="crumb"><a href="/" {t('nav.inicio', 'Inicio', 'Home')}>Inicio</a> / <span {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</span></div><h1 id="c-h" {t('nav.contacto', 'Contacto', 'Contact')}>Contacto</h1></div>
 </section>
 <section class="sec-3">
   <div class="wrap cont">
@@ -687,7 +728,7 @@ def write_main_js():
                         ('rl.hours', '{n} h', '{n} h'), ('rl.lesshour', 'menos de una hora', 'less than an hour'),
                         ('nav.close', 'CERRAR', 'CLOSE'), ('map.bases', 'Bases ISMAEL S.A.', 'ISMAEL S.A. bases'), ('map.proy', 'Proyectos mineros de San Juan', 'San Juan mining projects'),
                         ('map.aprox', 'Ubicaciones aproximadas', 'Approximate locations'), ('map.rawson.d', 'Gral. Mariano Acha Sur 2356 · Cómo llegar ↗', 'Gral. Mariano Acha Sur 2356 · Directions ↗'),
-                        ('map.calingasta.d', 'Zona cordillerana', 'Andean zone'), ('map.base.rawson', 'Base Rawson', 'Rawson base'), ('map.base.calingasta', 'Base Calingasta', 'Calingasta base')]:
+                        ('map.calingasta.d', 'Zona cordillerana', 'Andean zone'), ('map.zin', 'Acercar', 'Zoom in'), ('map.zout', 'Alejar', 'Zoom out'), ('map.base.rawson', 'Base Rawson', 'Rawson base'), ('map.base.calingasta', 'Base Calingasta', 'Calingasta base')]:
         es[k] = ves; en[k] = ven
     tpl = (ROOT / 'tools/main.template.js').read_text(encoding='utf-8')
     out = tpl.replace('/*__I18N_ES__*/', json.dumps(es, ensure_ascii=False, indent=2)).replace('/*__I18N_EN__*/', json.dumps(en, ensure_ascii=False, indent=2))

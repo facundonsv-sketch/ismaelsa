@@ -57,14 +57,12 @@ img{max-width:100%;height:auto}
 
 /* Títulos de sección (H2 grandes) */
 .h2{font-size:clamp(36px,4.4vw,68px);line-height:.96;margin:0 0 26px;color:var(--g700)}
-.h2.bal{text-wrap:balance}
 .h2-md{font-size:clamp(34px,4vw,60px);line-height:.96;margin:0;color:var(--g700)}
 .h2-w{color:#fff}
 
 /* Etiqueta con línea verde ("eyebrow") */
 .eye{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g500);margin-bottom:22px}
 .eye::before{content:"";width:36px;height:2px;background:currentColor;flex:0 0 auto}
-.eye-w{color:#fff}
 .eye-l{color:var(--g300)}
 
 /* Botones */
@@ -75,26 +73,21 @@ img{max-width:100%;height:auto}
 .btn-o:hover{background:#fff;color:var(--g700)}
 .btn-d{background:var(--g700);color:#fff}
 .btn-d:hover{background:var(--g500);color:#fff}
+.btn-od{border:1px solid var(--g700);color:var(--g700);padding:17px 28px;background:transparent}
+.btn-od:hover{background:var(--g700);color:#fff}
 .lnk{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g700);padding-bottom:6px;border-bottom:2px solid var(--g500)}
 .lnk:hover{color:var(--g500)}
 /* Área táctil ≥44px sin cambiar el aspecto (los links de texto miden ~25px) */
 .lnk{position:relative}
 .lnk::after{content:"";position:absolute;left:0;right:0;top:-10px;bottom:-10px}
 .ft-l a{padding:7px 0;margin:-7px 0}
-.hd-util-r a{padding:12px 0}
 .lnk-l{font-size:13px;color:var(--g300);border-color:var(--g300);padding-bottom:4px;gap:8px}
 .lnk-l:hover{color:#fff;border-color:#fff}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
 
 /* ═══════════════ HEADER ═══════════════ */
-.hd{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,26,19,0);border-bottom:1px solid rgba(255,255,255,.14);transition:background .3s ease}
-.hd.is-solid,.hd.is-drop{background:var(--g900);border-bottom-color:rgba(255,255,255,0)}
-.hd-util{height:36px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;gap:24px;font-size:13px;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.12)}
-.hd-util-loc{letter-spacing:.06em;text-transform:uppercase}
-.hd-util-r{display:flex;gap:28px;align-items:center}
-.hd-util-r a{color:rgba(255,255,255,.85)}
-.hd-util-r a:hover{color:#fff}
-.hd.is-solid .hd-util{display:none}
+.hd{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,26,19,0);border-bottom:1px solid transparent;transition:background .3s ease}
+.hd.is-solid,.hd.is-drop{background:var(--g900)}
 .hd-bar{height:var(--head);padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;gap:24px;transition:height .3s ease}
 .hd.is-solid .hd-bar{height:72px}
 .hd-logo{display:flex;align-items:center;gap:14px;color:#fff}
@@ -160,14 +153,8 @@ body.menu-open{overflow:hidden}
 .hero h1{font-size:clamp(46px,6.6vw,108px);line-height:.94;margin:0 0 26px;max-width:15ch;text-wrap:balance}
 .hero-p{font-size:clamp(17px,1.35vw,20px);line-height:1.55;margin:0 0 34px;max-width:560px;color:rgba(255,255,255,.88)}
 .hero-in .btns{margin-bottom:clamp(40px,6vw,80px)}
-.hero-strip{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.2);background:rgba(6,16,12,.55);backdrop-filter:blur(6px)}
-.hero-strip-in{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
-.hero-strip a{display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,2vw,28px);border-right:1px solid rgba(255,255,255,.14);color:#fff}
-.hero-strip a:hover{background:rgba(63,166,107,.25);color:#fff}
-.hero-strip .n{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--g300)}
-.hero-strip .t{font-size:15px;font-weight:600;line-height:1.25}
 
-/* Portada interior (Empresa / Servicio) */
+/* Portada interior (Empresa / Servicios / Servicio / Contacto) */
 .phero{position:relative;min-height:46vh;display:flex;align-items:flex-end;background:var(--g800);color:#fff;overflow:hidden;padding-top:150px}
 .phero-svc{min-height:66vh}
 .phero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -180,9 +167,6 @@ body.menu-open{overflow:hidden}
 .phero h1{font-size:clamp(52px,8vw,128px);line-height:.96;margin:0}
 .phero-svc h1{font-size:clamp(46px,7vw,112px);max-width:14ch}
 
-/* Portada plana (Servicios índice / Contacto) */
-.phead{background:var(--g700);color:#fff;padding:clamp(170px,16vw,220px) var(--pad) clamp(56px,7vw,100px)}
-.phead h1{font-size:clamp(52px,8vw,128px);line-height:.96;margin:0}
 
 /* ═══════════════ INICIO ═══════════════ */
 .sec{padding:var(--sec) var(--pad)}
@@ -191,15 +175,8 @@ body.menu-open{overflow:hidden}
 .sec-gray{background:var(--bg2)}
 .sec-green{background:var(--g700);color:#fff}
 
-/* Quiénes somos (home) */
-.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,6vw,96px);align-items:center}
-.about-logo{width:120px;height:auto;display:block;margin-bottom:28px}
-.about p{font-size:18px;line-height:1.65;color:var(--ink3);margin:0 0 18px;max-width:600px}
-.about p.last{margin-bottom:32px}
-.about-img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:62% 60%;display:block}
-
 /* Trayectoria */
-.tray-sec{padding:0 var(--pad) var(--sec2)}
+.tray-sec{padding:var(--sec2) var(--pad)}
 .tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--g700)}
 .tray>div{padding:28px 28px 8px 0;display:flex;flex-direction:column;gap:10px}
 .tray .v{font-family:var(--fsc);font-weight:700;font-size:clamp(56px,6vw,96px);line-height:.9;color:var(--g700)}
@@ -263,6 +240,28 @@ body.menu-open{overflow:hidden}
 .jobs-s{border-left:1px solid rgba(255,255,255,.2);padding-left:clamp(24px,3vw,48px);display:flex;flex-direction:column;gap:14px}
 .jobs-s .k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g300)}
 .jobs-s .d{font-size:16px;line-height:1.6;color:rgba(255,255,255,.85)}
+/* Súmese al equipo sobre fondo claro (home: va entre "Dónde estamos" y el cierre, ambos verdes) */
+.jobs-sec h2{color:var(--g700)}
+.jobs-sec .jobs p{color:var(--ink3)}
+.jobs-sec .jobs p a{color:var(--g700);border-bottom-color:var(--g500)}
+.jobs-sec .jobs p a:hover{color:var(--g500)}
+.jobs-sec .jobs-s{border-left-color:var(--line)}
+.jobs-sec .jobs-s .k{color:var(--g500)}
+.jobs-sec .jobs-s .d{color:var(--mut)}
+
+/* Clientes (sección apagada hasta tener permiso: SHOW_CLIENTES en tools/build_v7.py) */
+.clientes .h2,.clientes .h2-md{margin-bottom:clamp(32px,4vw,56px)}
+.clientes-cont{padding-top:0}
+.clientes-logos{list-style:none;margin:0;padding:28px 0 0;border-top:2px solid var(--g700);display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:clamp(24px,3vw,48px);align-items:center}
+.clientes-logos li{display:flex;align-items:center;justify-content:center;min-height:80px}
+.clientes-logos img{height:56px;width:auto;max-width:100%;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s,opacity .3s}
+.clientes-logos li:hover img{filter:none;opacity:1}
+.resenas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,3vw,48px);margin-top:clamp(40px,5vw,72px)}
+.resena{margin:0;padding:0 0 0 24px;border-left:2px solid var(--g500)}
+.resena blockquote{margin:0 0 16px;font-size:clamp(18px,1.5vw,21px);line-height:1.55;color:var(--ink2)}
+.resena figcaption{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.resena .a{font-weight:700;color:var(--g700)}
+.resena .e{color:var(--mut)}
 
 /* ═══════════════ EMPRESA ═══════════════ */
 .subnav{position:sticky;top:72px;z-index:20;background:#fff;border-bottom:1px solid var(--line2);padding:0 var(--pad);display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
@@ -311,6 +310,7 @@ body.menu-open{overflow:hidden}
 .gente{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,6vw,96px);align-items:start}
 .gente h2{margin-bottom:22px}
 .gente p{font-size:18px;line-height:1.6;color:rgba(255,255,255,.88);margin:0;max-width:520px}
+.gente-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;margin-top:clamp(28px,3vw,40px)}
 .roles{border-top:1px solid rgba(255,255,255,.3)}
 .roles>div{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.18);font-size:17px;line-height:1.4}
 .roles .n{color:var(--g300);font-weight:700;font-size:13px;letter-spacing:.12em;padding-top:3px}
@@ -319,14 +319,7 @@ body.menu-open{overflow:hidden}
 .seg-note{font-size:15px;line-height:1.6;color:var(--mut);margin:24px 0 0;max-width:720px}
 
 /* ═══════════════ SERVICIOS ═══════════════ */
-.phead-svc h1{margin-bottom:clamp(40px,5vw,72px)}
-.idx{border-top:1px solid rgba(255,255,255,.3)}
-.idx a{display:grid;grid-template-columns:60px minmax(0,1.3fr) minmax(0,1fr) 40px;gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(20px,2.4vw,32px) 0;border-bottom:1px solid rgba(255,255,255,.2);color:#fff}
-.idx a:hover{color:var(--g300)}
-.idx .n{font-size:15px;font-weight:700;letter-spacing:.12em;color:var(--g300)}
-.idx .t{font-family:var(--fsc);font-weight:700;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(30px,4.2vw,64px);line-height:.96}
-.idx .d{font-size:16px;line-height:1.5;color:rgba(255,255,255,.78)}
-.idx .arr{font-size:24px;text-align:right}
+.svc-note{font-size:16px;line-height:1.5;color:var(--mut);margin:0 0 clamp(20px,2.4vw,32px);padding:0 clamp(20px,2.6vw,40px)}
 
 .det{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
 .det .lead{font-size:clamp(20px,1.8vw,26px);line-height:1.45;font-weight:500;color:var(--g700);margin:0 0 28px;max-width:720px}
@@ -349,7 +342,7 @@ body.menu-open{overflow:hidden}
 .crows{border-top:2px solid var(--g700)}
 .crows>div{padding:22px 0;border-bottom:1px solid var(--line)}
 .crows .k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g500);margin-bottom:8px}
-.crows a,.crows .v{font-weight:700;font-size:clamp(20px,2vw,28px);color:var(--g700)}
+.crows a,.crows .v{overflow-wrap:anywhere;font-weight:700;font-size:clamp(20px,2vw,28px);color:var(--g700)}
 .cbox{background:var(--bg2);padding:clamp(24px,3vw,44px)}
 .form{display:flex;flex-direction:column;gap:18px}
 .form-t{font-family:var(--fsc);font-weight:700;text-transform:uppercase;letter-spacing:.005em;font-size:28px;color:var(--g700)}
@@ -363,9 +356,6 @@ body.menu-open{overflow:hidden}
 .form-status{display:none;font-size:15px;line-height:1.5;padding:12px 14px}
 .form-status.error{display:block;background:#FBE9E7;color:#8A1C0F;border-left:4px solid #C0392B}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.file{position:relative}
-.file input[type=file]{font-size:14px;padding:10px;background:#fff}
-.file-note{font-size:12px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--mut2)}
 
 /* Gracias / 404 */
 .util-page{min-height:60vh;display:flex;align-items:center;padding:clamp(170px,16vw,220px) var(--pad) clamp(56px,7vw,100px)}
@@ -427,8 +417,6 @@ body.menu-open{overflow:hidden}
 }
 @media (max-width:979px){
   :root{--head:80px}
-  .hd-util{display:none}
-  .hero-strip{display:none}
   .svc-row{grid-template-columns:minmax(0,1fr) 28px 44%}
   .svc-row-img{height:170px}
   @media (hover:hover){.svc-row:hover .svc-row-img{height:260px}}
@@ -446,8 +434,6 @@ body.menu-open{overflow:hidden}
   .gal{display:flex;gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;margin:36px -20px 0;padding:0 20px;scrollbar-width:none;max-width:none}
   .gal::-webkit-scrollbar{display:none}
   .gal figure{flex:0 0 82%;scroll-snap-align:start}
-  .idx a{grid-template-columns:40px 1fr 24px}
-  .idx .d{display:none}
   .ft-g{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ft{padding-bottom:96px}
   }
@@ -595,7 +581,6 @@ body.menu-open{overflow:hidden}
   .hero-soc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
   .hero-soc .soc{display:contents}
   .hero-soc a{width:auto}
-  .about-logo{width:96px;margin-bottom:18px}
 }
 /* Portada: arriba de todo ya están los 4 íconos; el botón flotante aparece recién al bajar
    (si no, en pantallas medianas tapa el ítem 07 de la franja de servicios) */

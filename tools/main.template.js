@@ -129,7 +129,9 @@
       { k: 'map.base.rawson', dk: 'map.rawson.d', url: 'https://www.google.com/maps/search/?api=1&query=Gral.+Mariano+Acha+Sur+2356,+Rawson,+San+Juan', ll: [-31.5655, -68.5212], dir: 'right', off: [18, -40] },
       { k: 'map.base.calingasta', dk: 'map.calingasta.d', ll: [-31.331, -69.425], dir: 'bottom', off: [14, 44] }
     ];
-    const m = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
+    const m = L.map(el, { scrollWheelZoom: false, zoomControl: false, attributionControl: true });
+    L.control.zoom({ zoomInTitle: d['map.zin'], zoomOutTitle: d['map.zout'] }).addTo(m);
+    document.addEventListener('isa:lang', () => { const d2 = dict(); [['in', 'map.zin'], ['out', 'map.zout']].forEach(([c, k]) => { const z = $('.leaflet-control-zoom-' + c, el); if (z) { z.title = d2[k]; z.setAttribute('aria-label', d2[k]); } }); });
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 17, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors' }).addTo(m);
     // Íconos solo con clases (la CSP bloquea style="" dentro del HTML del marcador)
     const pin = L.divIcon({ className: '', iconSize: [34, 44], iconAnchor: [17, 44], html: '<div class="pin"><div class="pulse"></div><svg width="34" height="44" viewBox="0 0 34 44" aria-hidden="true"><path d="M17 0C7.6 0 0 7.4 0 16.6 0 29 17 44 17 44s17-15 17-27.4C34 7.4 26.4 0 17 0z" fill="#0B3D2C"/><circle cx="17" cy="16.5" r="6.5" fill="#fff"/></svg></div>' });
