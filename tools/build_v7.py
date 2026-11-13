@@ -227,8 +227,15 @@ FACTS = [('San Juan', 'San Juan', 'Empresa local, de capitales sanjuaninos', 'A 
 # ──────────────────────────────────────────────────────────────────────
 # Fragmentos compartidos
 # ──────────────────────────────────────────────────────────────────────
-CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; "
-       "img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; "
+# Medición de visitas: Cloudflare Web Analytics (sin cookies). Ver MEDICION.md.
+# Pegar acá el token de dash.cloudflare.com → Web Analytics → ismaelsa.com.
+# Vacío = no se agrega el script a ninguna página (la CSP ya permite los dos dominios).
+CF_TOKEN = '0206355040f5411282134b01c09a1e76'
+BEACON = ('<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" '
+          "data-cf-beacon='{\"token\": \"" + CF_TOKEN + "\"}'></script>\n") if CF_TOKEN else ''
+
+CSP = ("default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; "
+       "img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self' https://cloudflareinsights.com; "
        "form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests")
 
 def head(page, title_es, title_en, desc_es, desc_en, path, ldjson, image='hero-convoy', noindex=False, leaflet=False):
@@ -369,7 +376,7 @@ def footer():
 </footer>
 <div class="fab" {ta('aria-label', 'a11y.fab', 'Acciones rápidas', 'Quick actions')}><a href="/contacto" class="fab-q" {t('mbar.cotizar', 'Cotizar', 'Get a quote')}>Cotizar</a>{wa_link('wa.float', 'WhatsApp', 'WhatsApp', *WA_MSG, 'wa-float', label_html=f'<span class="sr" {t("wa.float.l", "Escribir por WhatsApp", "Message us on WhatsApp")}>Escribir por WhatsApp</span>')}</div>
 <script src="/assets/main.js" defer></script>
-</body>
+{BEACON}</body>
 </html>
 '''
 

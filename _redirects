@@ -2,6 +2,7 @@
 /SEO_NOTES.md            /404.html   404!
 /SEO_CONTENT_PLAN.md     /404.html   404!
 /SECURITY_REPORT.md      /404.html   404!
+/MEDICION.md             /404.html   404!
 /CLAUDE.md               /404.html   404!
 /.claude/*               /404.html   404!
 /.gitignore              /404.html   404!
@@ -23,3 +24,13 @@
 /servicios.html /servicios  301!
 /contacto.html  /contacto   301!
 /gracias.html   /gracias    301!
+
+# ── Links cortos para redes (medición en Cloudflare Web Analytics, ver MEDICION.md) ──
+# Reescritura 200: la URL queda /ig, /fb, etc. y se sirve el inicio tal cual. Cloudflare
+# no registra parámetros (?utm_...), pero sí la ruta, así se ve de qué red vino cada visita.
+# La página mantiene <link rel="canonical" href="https://ismaelsa.com/">, sin contenido duplicado.
+/ig            /   200
+/ig-bio        /   200
+/ig-historia   /   200
+/fb            /   200
+/in            /   200

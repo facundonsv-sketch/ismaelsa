@@ -1,9 +1,11 @@
 ## Security headers para Netlify.
 ## La CSP de acá debe coincidir con la <meta http-equiv="Content-Security-Policy"> de cada
 ## página (el navegador aplica la intersección de ambas). Única fuente externa permitida:
-## los tiles de OpenStreetMap del mapa de bases (img-src). Todo lo demás es same-origin.
+## los tiles de OpenStreetMap del mapa de bases (img-src) y Cloudflare Web Analytics
+## (script-src static.cloudflareinsights.com, connect-src cloudflareinsights.com; ver MEDICION.md).
+## Todo lo demás es same-origin.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self' https://cloudflareinsights.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
